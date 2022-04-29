@@ -1,0 +1,80 @@
+{
+    "rule": {
+        "normal": 2,
+        "star": 1
+    },
+    "data": [
+        {
+            "num": 1,
+            "question": "（趴）翻身（趴著變成仰躺和仰躺變成趴著均能做到才通過）",
+            "answer": 0,
+            "star": true
+        },
+        {
+            "num": 2,
+            "question": "（坐）能自己坐穩數分鐘，不會搖晃或跌倒（仍須雙手撐地面、背部呈圓弓形無法挺直、或容易跌倒均不算通過）",
+            "answer": 0,
+            "star": true
+        },
+        {
+            "num": 3,
+            "question": "（站）能手扶東西站立至少５秒鐘（扶桌面、平台、大人均可）",
+            "answer": 0,
+            "star": false
+        },
+        {
+            "num": 4,
+            "question": "兩隻手可以同時各自握緊一樣東西（如玩具、積木、食物等）５秒鐘以上",
+            "answer": 0,
+            "star": true
+        },
+        {
+            "num": 5,
+            "question": "會重複地做搖的動作讓玩具發出聲音",
+            "answer": 0,
+            "star": false
+        },
+        {
+            "num": 6,
+            "question": "會把玩具或東西，由一手平順地換到另一手（用扯的不算通過）",
+            "answer": 0,
+            "star": true
+        },
+        {
+            "num": 7,
+            "question": "會轉頭向下尋找掉落不見的玩具",
+            "answer": 0,
+            "star": true
+        },
+        {
+            "num": 8,
+            "question": "可以和人維持目光對視，大人說話、笑、玩躲貓貓、拿出玩具就可以把他逗笑",
+            "answer": 0,
+            "star": false
+        },
+        {
+            "num": 9,
+            "question": "可以分辨熟人和陌生人；如喜歡讓熟人抱，看到陌生人會害羞或害怕",
+            "answer": 0,
+            "star": false
+        },
+        {
+            "num": 10,
+            "question": "即便跟他玩，也很少發出聲音",
+            "answer": 1,
+            "star": true
+        },
+        {
+            "num": 11,
+            "question": "完全聽不懂話，例如叫喚名字（或小名）不會回頭、說「不可以」沒有反應等",
+            "answer": 1,
+            "star": false
+        },
+        {
+            "num": 12,
+            "question": "通常無法安靜讓大人抱著坐在大腿上，一直動來動去抱不住，手四處抓東西停不下來",
+            "answer": 1,
+            "star": false
+        }
+    ]
+}

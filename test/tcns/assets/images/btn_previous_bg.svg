@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="106px" height="32px" viewBox="0 0 106 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>btn_previous_bg</title>
+    <g id="btn_previous_bg" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(2.000000, 1.000000)" fill-rule="nonzero">
+            <path d="M8.44685254,29.6712969 L7.51953125e-05,29.6712969 L7.51953125e-05,0.0003984375 L8.44685254,0.0003984375" id="Path-59897" stroke="#224A85"></path>
+            <rect id="Rectangle-83" fill="#224A85" x="0" y="0" width="3.4777348" height="3.4777348"></rect>
+            <rect id="Rectangle-84" fill="#224A85" x="0" y="26.1931763" width="3.4777348" height="3.4777348"></rect>
+            <path d="M94.057,0 L102.503777,0 L102.503777,29.6708984 L94.057,29.6708984" id="Path-59898" stroke="#224A85"></path>
+            <rect id="Rectangle-85" fill="#224A85" transform="translate(100.764867, 27.931867) rotate(180.000000) translate(-100.764867, -27.931867) " x="99.026" y="26.193" width="3.4777348" height="3.4777348"></rect>
+            <rect id="Rectangle-86" fill="#224A85" transform="translate(100.764867, 1.738867) rotate(180.000000) translate(-100.764867, -1.738867) " x="99.026" y="0" width="3.4777348" height="3.4777348"></rect>
+        </g>
+    </g>
+</svg>

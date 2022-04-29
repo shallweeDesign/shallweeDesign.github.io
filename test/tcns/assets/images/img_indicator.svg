@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="4px" height="42px" viewBox="0 0 4 42" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>img_indicator</title>
+    <defs>
+        <linearGradient x1="49.9991894%" y1="99.9999166%" x2="49.9991894%" y2="-0.000201934154%" id="linearGradient-1">
+            <stop stop-color="#F0F0F0" offset="0%"></stop>
+            <stop stop-color="#F4F4F4" offset="51.7195761%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="49.9991894%" y1="100.000179%" x2="49.9991894%" y2="5.85208568e-05%" id="linearGradient-2">
+            <stop stop-color="#F0F0F0" offset="0%"></stop>
+            <stop stop-color="#F4F4F4" offset="51.7195761%"></stop>
+            <stop stop-color="#FFFFFF" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="img_indicator" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <line x1="1.88" y1="40.1988983" x2="1.88" y2="1.87973401" id="Line-32" stroke="#FFFFFF" stroke-width="0.5" fill-rule="nonzero"></line>
+        <circle id="Ellipse-27" fill="url(#linearGradient-1)" fill-rule="nonzero" cx="1.88002241" cy="1.88002241" r="1.88002241"></circle>
+        <circle id="Ellipse-28" fill="url(#linearGradient-2)" fill-rule="nonzero" cx="1.88002241" cy="40.1991752" r="1.88002241"></circle>
+    </g>
+</svg>

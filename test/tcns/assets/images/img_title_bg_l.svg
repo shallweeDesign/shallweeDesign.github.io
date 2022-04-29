@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="220px" height="32px" viewBox="0 0 220 32" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>img_title_bg_l</title>
+    <defs>
+        <linearGradient x1="0.000106311768%" y1="49.9997824%" x2="99.999851%" y2="49.9997824%" id="linearGradient-1">
+            <stop stop-color="#FDD682" offset="40.0000006%"></stop>
+            <stop stop-color="#FAD27D" offset="54.0541172%"></stop>
+            <stop stop-color="#F2C971" offset="68.6164677%"></stop>
+            <stop stop-color="#E4B95C" offset="83.4073484%"></stop>
+            <stop stop-color="#D1A33F" offset="98.2738078%"></stop>
+            <stop stop-color="#CFA13C" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="img_title_bg_l" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <path d="M187.695276,32 L0,32 L6.35843542,17.0850939 C10.7741045,6.72737518 20.9912035,0 32.3047318,0 L220,0 L213.64158,14.913887 C209.225903,25.27159 199.008804,32 187.695276,32 Z" id="Path-89893" fill="url(#linearGradient-1)" fill-rule="nonzero"></path>
+    </g>
+</svg>

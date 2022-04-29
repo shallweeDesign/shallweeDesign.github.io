@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 viewBox="0 0 324 74" style="enable-background:new 0 0 324 74;" xml:space="preserve">
+<style type="text/css">
+	.st0{fill:rgba(255,255,255,0.16);}
+	.st1{fill:#FFFFFF;}
+	.st2{fill:rgba(255,255,255,0.4);}
+</style>
+<g>
+	<g>
+		<rect x="2.2" y="2.2" class="st0" width="319.5" height="69.5"/>
+		<path class="st2" d="M321.5,2.5v69H2.5v-69H321.5 M322,2H2v70h320V2L322,2z"/>
+	</g>
+	<g>
+		<circle class="st1" cx="2" cy="2" r="2"/>
+	</g>
+	<g>
+		<circle class="st1" cx="2" cy="72" r="2"/>
+	</g>
+	<g>
+		<circle class="st1" cx="322" cy="72" r="2"/>
+	</g>
+	<g>
+		<circle class="st1" cx="322" cy="2" r="2"/>
+	</g>
+</g>
+</svg>

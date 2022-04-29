@@ -1,0 +1,548 @@
+[
+    {
+      "id": 1,
+      "name": "三軍總醫院 (汀州、內湖院區)",
+      "address": "台北市內湖區成功路二段325號",
+      "phone": "02-8792-7111",
+      "link": "https://goo.gl/maps/rkVdJgKPVyJXehQk8"
+    },
+    {
+      "id": 2,
+      "name": "中山醫院",
+      "address": "台北市大安區仁愛路四段112巷11號",
+      "phone": "02-2708-1166#9",
+      "link": "https://goo.gl/maps/zfHc1CnDFVK6m5Nh8"
+    },
+    {
+      "id": 3,
+      "name": "中山醫學院附設醫院 (大慶院區)",
+      "address": "台中市南區建國北路一段110號",
+      "phone": "04-2471-9292",
+      "link": "https://goo.gl/maps/Ra4BDzV6CjgAQNQCA"
+    },
+    {
+      "id": 4,
+      "name": "中國醫藥大學兒童醫院",
+      "address": "台中市北區育德路2號",
+      "phone": "04-2205-6631",
+      "link": "https://goo.gl/maps/Zbs2LuvoDqZyB9k88"
+    },
+    {
+      "id": 5,
+      "name": "中國醫藥大學新竹附設醫院",
+      "address": "新竹縣竹北市興隆路一段199號",
+      "phone": "03-558-0558",
+      "link": "https://goo.gl/maps/c3zqFiZsPHJzsLKd9"
+    },
+    {
+      "id": 6,
+      "name": "王建安小兒科診所",
+      "address": "高雄市楠梓區德民路949號",
+      "phone": "07-360-0680",
+      "link": "https://goo.gl/maps/HxwkucHaUB3Xfp5r6"
+    },
+    {
+      "id": 7,
+      "name": "台大兒童醫院",
+      "address": "台北市中正區中山南路8號",
+      "phone": "02-2356-2996",
+      "link": "https://goo.gl/maps/JZrXaJ9kKVhYYjQh8"
+    },
+    {
+      "id": 8,
+      "name": "台大新竹分院",
+      "address": "新竹市北區經國路一段442巷25號",
+      "phone": "03-533-0654",
+      "link": "https://goo.gl/maps/HXUb8mBbsyjNniZm8"
+    },
+    {
+      "id": 9,
+      "name": "台中榮總",
+      "address": "台中市西屯區台灣大道四段1650號",
+      "phone": "04-2359-2311",
+      "link": "https://goo.gl/maps/NB2bavFXiC9oNUm57"
+    },
+    {
+      "id": 11,
+      "name": "台北市立醫院婦幼院區",
+      "address": "臺北市中正區福州街12號",
+      "phone": "02-2391-6470",
+      "link": "https://goo.gl/maps/U4uYAdyuNiPyTTC9A"
+    },
+    {
+      "id": 12,
+      "name": "台北榮總",
+      "address": "台北市北投區石牌路2段201號",
+      "phone": "02-2871-2151",
+      "link": "https://goo.gl/maps/3CCodibGwDBy2N5w6"
+    },
+    {
+      "id": 13,
+      "name": "台北醫學大學附設醫院",
+      "address": "台北市信義區吳興街252號",
+      "phone": "02-2377-1323",
+      "link": "https://goo.gl/maps/fHJVpH7KFqvGTpjj7"
+    },
+    {
+      "id": 14,
+      "name": "台安醫院",
+      "address": "台中市東區進化路203號",
+      "phone": "04-2360-2000",
+      "link": "https://goo.gl/maps/AC2fkxG77VmXThLu5"
+    },
+    {
+      "id": 15,
+      "name": "台東馬偕紀念醫院",
+      "address": "台東縣臺東市長沙街303巷1號",
+      "phone": "089-310-195",
+      "link": "https://goo.gl/maps/qVyRAwZqvmKRRKdV8"
+    },
+    {
+      "id": 16,
+      "name": "台東基督教醫院",
+      "address": "台東縣臺東市開封街350號",
+      "phone": "089-342-910",
+      "link": "https://goo.gl/maps/LvPpYY1LRkQYBAf87"
+    },
+    {
+      "id": 17,
+      "name": "市立聯合醫院",
+      "address": "高雄市鼓山區中華一路976號",
+      "phone": "07-554-9131",
+      "link": "https://goo.gl/maps/FmDBb2Dcxekjjqkh8"
+    },
+    {
+      "id": 18,
+      "name": "市立聯合醫院中興院區",
+      "address": "台北市大同區鄭州路145號",
+      "phone": "02-2552-3467",
+      "link": "https://goo.gl/maps/v8cD6QNwZB9npvAq7"
+    },
+    {
+      "id": 19,
+      "name": "市立聯合醫院和平院區",
+      "address": "台北市中正區中華路2段33號",
+      "phone": "02-2388-9595",
+      "link": "https://goo.gl/maps/hvKhwCgpkHwv1XAd8"
+    },
+    {
+      "id": 20,
+      "name": "市立聯合醫院忠孝院區",
+      "address": "台北市南港區同德路87號",
+      "phone": "02-2786-1288#8563",
+      "link": "https://goo.gl/maps/Q6XMrcYPx3DFEPhq7"
+    },
+    {
+      "id": 21,
+      "name": "市立聯合醫院婦幼院區",
+      "address": "台北市中正區福州路12號",
+      "phone": "02-2826-4400",
+      "link": "https://goo.gl/maps/LhGYm2VR6NaqV3Cz5"
+    },
+    {
+      "id": 22,
+      "name": "市立聯合醫院陽明院區",
+      "address": "台北市士林區雨聲街105號",
+      "phone": "02-2555-3000",
+      "link": "https://goo.gl/maps/Q3ZDxFyFEKMFisP5A"
+    },
+    {
+      "id": 23,
+      "name": "永和耕莘醫院",
+      "address": "新北市永和區中興街80號",
+      "phone": "02-2928-6060 #10650",
+      "link": "https://goo.gl/maps/U4M1zh76fB1xcEuu7"
+    },
+    {
+      "id": 24,
+      "name": "光田醫院",
+      "address": "台中市沙鹿區沙田路117號",
+      "phone": "04-2663-2161",
+      "link": "https://goo.gl/maps/aQCNRRpBhCR41wVM9"
+    },
+    {
+      "id": 25,
+      "name": "安南醫院",
+      "address": "台南市安南區長和路2段66號",
+      "phone": "06-355-6131",
+      "link": "https://goo.gl/maps/CemBD8HPCp4aEiv89"
+    },
+    {
+      "id": 26,
+      "name": "成大附設醫院",
+      "address": "台南市北區勝利路138號",
+      "phone": "06-235-3333",
+      "link": "https://goo.gl/maps/gW18Y1LbHQo8ekoa6"
+    },
+    {
+      "id": 27,
+      "name": "阮綜合醫院",
+      "address": "高雄市苓雅區成功一路162號",
+      "phone": "07-335-3395",
+      "link": "https://goo.gl/maps/4YoVs8MYhP6vV6yx8"
+    },
+    {
+      "id": 28,
+      "name": "亞東醫院",
+      "address": "新北市板橋區南雅南路二段21號",
+      "phone": "02-8966-9000",
+      "link": "https://goo.gl/maps/AZ7DEnQvphy4qDZ19"
+    },
+    {
+      "id": 29,
+      "name": "奇美醫院 (柳營、永康)",
+      "address": "台南市永康區中華路901號",
+      "phone": "06-251-7623",
+      "link": "https://goo.gl/maps/MQfCbv9H3GCFwZtM6"
+    },
+    {
+      "id": 30,
+      "name": "林口長庚醫院",
+      "address": "桃園市龜山區復興街5號",
+      "phone": "03-328-1311",
+      "link": "https://goo.gl/maps/mwiKA79dRomSD3E18"
+    },
+    {
+      "id": 31,
+      "name": "秉坤婦幼醫院",
+      "address": "桃園市平鎮區延平路二段129號",
+      "phone": "03-402-5866",
+      "link": "https://goo.gl/maps/UBoEH6LBEdMC4ZfP9"
+    },
+    {
+      "id": 32,
+      "name": "花蓮慈濟醫院",
+      "address": "花蓮縣花蓮市中央路三段707號",
+      "phone": "03-857-8600",
+      "link": "https://goo.gl/maps/udBkZXpLVjKHzvuC7"
+    },
+    {
+      "id": 33,
+      "name": "虎尾若瑟醫院",
+      "address": "雲林縣虎尾鎮新生路74號",
+      "phone": "05-632-5519",
+      "link": "https://goo.gl/maps/QjVgKBhwVNdHyHM3A"
+    },
+    {
+      "id": 34,
+      "name": "長安醫院",
+      "address": "台中市太平區永平路一段9號",
+      "phone": "04-3611-3611",
+      "link": "https://goo.gl/maps/cAgTC1gfbVPEPwH88"
+    },
+    {
+      "id": 35,
+      "name": "長庚醫院",
+      "address": "台北市松山區敦化北路199號",
+      "phone": "02-2717-3466",
+      "link": "https://goo.gl/maps/5t49hqhDJ3d9Nror6"
+    },
+    {
+      "id": 36,
+      "name": "門諾醫院",
+      "address": "花蓮縣花蓮市民權路44號",
+      "phone": "03-824-1409",
+      "link": "https://goo.gl/maps/Yjygjih9DzzMaMSq6"
+    },
+    {
+      "id": 37,
+      "name": "南投竹山秀傳醫院",
+      "address": "南投縣竹山鎮集山路2段75號",
+      "phone": "049-262-4266 #36789",
+      "link": "https://goo.gl/maps/Y7xL717LXPdtTJF17"
+    },
+    {
+      "id": 38,
+      "name": "屏東基督教醫院",
+      "address": "屏東縣屏東市大連路60號",
+      "phone": "08-737-9234",
+      "link": "https://goo.gl/maps/XRCsYVU531uYC7C17"
+    },
+    {
+      "id": 39,
+      "name": "昭哲診所",
+      "address": "高雄市前鎮區永豐路214號",
+      "phone": "07-713-6366",
+      "link": "https://goo.gl/maps/wrg4hotrmSPj4wGz6"
+    },
+    {
+      "id": 40,
+      "name": "科博特診所",
+      "address": "台中市西屯區府會園道179號全球運籌中心6樓之1",
+      "phone": "04-2258-8595",
+      "link": "https://goo.gl/maps/7birhtLGnk6NuF3e7"
+    },
+    {
+      "id": 41,
+      "name": "埔里基督教醫院",
+      "address": "南投縣埔里鎮鐵山路1號",
+      "phone": "049-291-9595",
+      "link": "https://g.page/1948pch?share"
+    },
+    {
+      "id": 42,
+      "name": "恩主公醫院",
+      "address": "新北市三峽區復興路399號",
+      "phone": "02-2671-9595",
+      "link": "https://goo.gl/maps/4XMSbvuhZXiV3yDj8"
+    },
+    {
+      "id": 43,
+      "name": "耕莘醫院",
+      "address": "新北市永和區中興街80號",
+      "phone": "02-2925-1405",
+      "link": "https://goo.gl/maps/U4M1zh76fB1xcEuu7"
+    },
+    {
+      "id": 44,
+      "name": "馬偕醫院",
+      "address": "台北市中山區中山北路二段92號",
+      "phone": "02-2521-5291",
+      "link": "https://goo.gl/maps/Wfh4dWj7ruBDsLYcA"
+    },
+    {
+      "id": 45,
+      "name": "馬偕醫院",
+      "address": "新北市淡水區民生路45號",
+      "phone": "02-2809-4661",
+      "link": "https://goo.gl/maps/9sQ6JoagSLD6xYzk7"
+    },
+    {
+      "id": 46,
+      "name": "高雄市立小港醫院",
+      "address": "高雄市小港區山明路482號",
+      "phone": "07-805-9152",
+      "link": "https://goo.gl/maps/Pm53c7Lhz5SWUtmz8"
+    },
+    {
+      "id": 47,
+      "name": "高雄長庚 醫院",
+      "address": "高雄市鳥松區大埤路123號",
+      "phone": "07-731-4141",
+      "link": "https://goo.gl/maps/gdF6cwkV5BomjkjR6"
+    },
+    {
+      "id": 48,
+      "name": "高雄榮總醫院",
+      "address": "高雄市左營區大中一路386號",
+      "phone": "07-350-7701",
+      "link": "https://goo.gl/maps/ftJ2hDbVpTKBfoRR7"
+    },
+    {
+      "id": 49,
+      "name": "高醫附設 醫院、小港醫院、大同醫院",
+      "address": "高雄市三民區十全一路100號",
+      "phone": "07-320-8181",
+      "link": "https://goo.gl/maps/KM4FL7emygi6ACsp6"
+    },
+    {
+      "id": 50,
+      "name": "國立陽明交通大學附設醫院",
+      "address": "宜蘭縣宜蘭市校舍路169號",
+      "phone": "03-932-5192",
+      "link": "https://goo.gl/maps/NQP4abvf4YUzSStN9"
+    },
+    {
+      "id": 51,
+      "name": "國立臺灣大學醫學院附設醫院雲林分院",
+      "address": "雲林縣斗六市雲林路二段579號",
+      "phone": "05-535-4740 #3",
+      "link": "https://goo.gl/maps/vCVKEx6XFsmyfm1EA"
+    },
+    {
+      "id": 52,
+      "name": "國軍桃園總醫院",
+      "address": "桃園市龍潭區中興路168號",
+      "phone": "03-499-1668",
+      "link": "https://goo.gl/maps/HtjcAUJF4bDu5Fui7"
+    },
+    {
+      "id": 53,
+      "name": "國泰醫院",
+      "address": "新竹市東區中華路二段678號",
+      "phone": "03-526-0799",
+      "link": "https://goo.gl/maps/RHUCdA2MUJWoL3a46"
+    },
+    {
+      "id": 54,
+      "name": "國泰醫院 汐止分院",
+      "address": "新北市汐止區建成路59巷2號",
+      "phone": "02-2648-6006",
+      "link": "https://goo.gl/maps/LzUaAsZ3CAZojzV16"
+    },
+    {
+      "id": 55,
+      "name": "國泰醫院 (總院)",
+      "address": "台北市大安區仁愛路4段280號",
+      "phone": "02-2702-8723",
+      "link": "https://goo.gl/maps/dN9TrsyUdAg4yh3q9"
+    },
+    {
+      "id": 56,
+      "name": "敏盛醫院",
+      "address": "桃園市桃園區經國路168號",
+      "phone": "03-316-0654",
+      "link": "https://goo.gl/maps/J9QGCochYkGoVnGn7"
+    },
+    {
+      "id": 57,
+      "name": "梧棲童醫院",
+      "address": "臺中市梧棲區臺灣大道八段699號",
+      "phone": "04-2658-1515",
+      "link": "https://goo.gl/maps/gWd1Tvk6LASvD3vN9"
+    },
+    {
+      "id": 58,
+      "name": "部立雙和醫院",
+      "address": "新北市中和區中正路291號",
+      "phone": "02-2249-0088 #2951",
+      "link": "https://goo.gl/maps/rW3JHEuw2R4hbY6Q9"
+    },
+    {
+      "id": 59,
+      "name": "鹿港基督教醫院",
+      "address": "彰化縣鹿港鎮中正路480號",
+      "phone": "04-777-9680",
+      "link": "https://goo.gl/maps/PwYy4T89aKA556H66"
+    },
+    {
+      "id": 60,
+      "name": "慈濟醫院",
+      "address": "新北市新店建國路289號",
+      "phone": "02-6628-9800",
+      "link": "https://goo.gl/maps/HQ5PmAcfXC26iV39A"
+    },
+    {
+      "id": 61,
+      "name": "慈濟醫院 台中院區",
+      "address": "台中市潭子區豐興路一段66號",
+      "phone": "04-3606-0666",
+      "link": "https://goo.gl/maps/cKt3f3q5wjTGKrZS6"
+    },
+    {
+      "id": 62,
+      "name": "新北市立聯合醫院",
+      "address": "新北市三重區新北大道一段3號",
+      "phone": "02-2982-9111 #3317",
+      "link": "https://goo.gl/maps/KXtBCYEtyYqZeixf9"
+    },
+    {
+      "id": 63,
+      "name": "新光醫院",
+      "address": "台北市士林區福佳里文昌路95號",
+      "phone": "02-2833-3000",
+      "link": "https://goo.gl/maps/qB8sxdvYZeJt1Z6PA"
+    },
+    {
+      "id": 64,
+      "name": "新竹馬偕醫院",
+      "address": "新竹市東區光復路二段690號",
+      "phone": "03-611-8866",
+      "link": "https://goo.gl/maps/1EPDQaa6MmY2txtH6"
+    },
+    {
+      "id": 65,
+      "name": "新樓醫院",
+      "address": "台南市東區東門路一段57號",
+      "phone": "06-274-5222",
+      "link": "https://goo.gl/maps/Bx14s4vdy1Td9Jd67"
+    },
+    {
+      "id": 66,
+      "name": "萬芳醫院",
+      "address": "台北市文山區興隆路3段111號",
+      "phone": "02-5555-3030",
+      "link": "https://goo.gl/maps/n7zbM4TfzKwGjAmP7"
+    },
+    {
+      "id": 67,
+      "name": "署立桃園醫院",
+      "address": "桃園市桃園區中山路1492號",
+      "phone": "03-369-9721",
+      "link": "https://goo.gl/maps/tZYVjV5qHcqrExk8A"
+    },
+    {
+      "id": 68,
+      "name": "義大醫院",
+      "address": "高雄市燕巢區角宿里義大路1號",
+      "phone": "07-615-0911",
+      "link": "https://goo.gl/maps/27b456abC3RK2FLp6"
+    },
+    {
+      "id": 69,
+      "name": "聖心診所",
+      "address": "嘉義市東區民權路367號1樓",
+      "phone": "05-222-4800",
+      "link": "https://goo.gl/maps/Yr5DWTD8RMEM1LqR9"
+    },
+    {
+      "id": 70,
+      "name": "嘉安婦幼診所",
+      "address": "嘉義市西區友愛路390號",
+      "phone": "05-233-5515",
+      "link": "https://goo.gl/maps/F2zc9C5ixPXC6F7Q8"
+    },
+    {
+      "id": 71,
+      "name": "嘉義大林慈濟",
+      "address": "嘉義縣大林鎮民生路2號",
+      "phone": "05-264-8111",
+      "link": "https://goo.gl/maps/Vd7Z6to3Vo3gvY2J7"
+    },
+    {
+      "id": 72,
+      "name": "嘉義長庚醫院",
+      "address": "嘉義縣朴子市嘉朴路西段6號",
+      "phone": "05-362-3000",
+      "link": "https://goo.gl/maps/HVdP5AbCmpw6tLzn6"
+    },
+    {
+      "id": 73,
+      "name": "嘉義基督教醫院",
+      "address": "嘉義市東區忠孝路539號",
+      "phone": "05-276-4994",
+      "link": "https://goo.gl/maps/sE7XRU3XpfMvtW3x5"
+    },
+    {
+      "id": 74,
+      "name": "彰化基督教兒童醫院",
+      "address": "彰化縣彰化市光南村南校街135號",
+      "phone": "04-722-5132",
+      "link": "https://goo.gl/maps/q3PiViB3NdaSZ6CF6"
+    },
+    {
+      "id": 75,
+      "name": "臺安醫院",
+      "address": "台北市松山區八德路二段424號",
+      "phone": "02-2771-8151 #2851",
+      "link": "https://goo.gl/maps/udGxx8fHDevSVaEy9"
+    },
+    {
+      "id": 76,
+      "name": "輔大醫院",
+      "address": "新北市泰山區貴子路69號",
+      "phone": "02-8512-8888",
+      "link": "https://goo.gl/maps/zzvfkrH4Pzt6cBYN7"
+    },
+    {
+      "id": 77,
+      "name": "澄清醫院 中港分院",
+      "address": "台中市西屯區中港路三段118號",
+      "phone": "04-2463-2000 #52122",
+      "link": "https://goo.gl/maps/XKn7FTzSkrg8XH3V8"
+    },
+    {
+      "id": 78,
+      "name": "聯新國際醫院",
+      "address": "桃園市平鎮區廣泰路77號",
+      "phone": "03-492-9292",
+      "link": "https://goo.gl/maps/exZPkXUu6K9MfYq47"
+    },
+    {
+      "id": 79,
+      "name": "羅東聖母醫院",
+      "address": "宜蘭縣羅東鎮中正南路160號",
+      "phone": "03-954-4106",
+      "link": "https://goo.gl/maps/7zho5e2EQdxjzL7F9"
+    }
+  ]

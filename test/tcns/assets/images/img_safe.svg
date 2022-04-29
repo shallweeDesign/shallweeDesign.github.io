@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="56px" height="56px" viewBox="0 0 56 56" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>img_safe</title>
+    <g id="img_safe" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Group" transform="translate(6.000000, 3.000000)" fill-rule="nonzero">
+            <path d="M43.4307861,37.6121521 L43.4307861,12.537384 L21.7154541,0 L0,12.537384 L0,37.6121521 L21.7154541,50.1495361 L43.4307861,37.6121521 Z" id="Path-59894" fill="#2F9AEA"></path>
+            <rect id="Rectangle-67" fill="#FFFFFF" transform="translate(16.682006, 27.512006) rotate(315.000000) translate(-16.682006, -27.512006) " x="13.9692095" y="21.1299867" width="5.42559338" height="12.764039"></rect>
+            <rect id="Rectangle-68" fill="#FFFFFF" transform="translate(24.309892, 25.074892) rotate(315.000000) translate(-24.309892, -25.074892) " x="14.4787673" y="22.3620949" width="19.6622486" height="5.42559338"></rect>
+        </g>
+    </g>
+</svg>
