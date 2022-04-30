@@ -3,9 +3,10 @@
   <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=375initial-scale=1,maximum-scale=1">
+    <meta name="viewport" content="width=375,user-scalable=no">
+    <meta og:image=".assets/img/og.jpg">
     <title>台灣小兒神經醫學會｜寶寶腦發展檢測</title>
-  <script defer="defer" src="./assets/js/main.6220a116.js"></script><link href="./assets/css/main.6220a116.css" rel="stylesheet"></head>
+  <script defer="defer" src="./assets/js/main.54884b99.js"></script><link href="./assets/css/main.54884b99.css" rel="stylesheet"></head>
   <body>
     <div class="app">
       <div class="wrapper">
@@ -83,26 +84,28 @@
                     <img class="name-title__bg" src="assets/images/img_button_bg_gold_s.svg">
                     <h3 class="name-title__text">寶寶小名</h3>
                   </div>
-                  <input type="text" id="babyName" class="content__name__input" placeholder="請輸入寶寶小名">
+                  <input type="text" id="babyName" class="content__name__input" maxlength="10" placeholder="請輸入寶寶小名">
                 </div>
                 <div class="content__age age">
                   <div class="content__age__title age-title">寶寶年紀</div>
                   <div class="age__input-box">
                     <select name="age-year" id="ageYear" class="age__input">
-                      <option value="" selected="selected" disabled="disabled"><span>歲</span></option>
-                      <option value="0"><span>0歲</span></option>
+                      <!-- <option value="" selected disabled><span>歲</span></option> -->
+                      <option value="0" selected="selected"><span>0歲</span></option>
                       <option value="1"><span>1歲</span></option>
                       <option value="2"><span>2歲</span></option>
                       <option value="3"><span>3歲</span></option>
                     </select>
+                    <span class="age__input age__input--display" id="ageYearC"></span>
                   </div>
                   <div class="age__input-box">
+                    <span class="age__input age__input--display" id="ageMonthC"></span>
                     <select name="age-month" id="ageMonth" class="age__input">
-                      <option value="" selected="selected" disabled="disabled">月</option>
+                      <!-- <option value="" selected disabled>月</option> -->
                       <option value="0">0月</option>
                       <option value="1">1月</option>
                       <option value="2">2月</option>
-                      <option value="3">3月</option>
+                      <option value="3" selected="selected">3月</option>
                       <option value="4">4月</option>
                       <option value="5">5月</option>
                       <option value="6">6月</option>
@@ -114,8 +117,9 @@
                     </select>
                   </div>
                   <div class="age__input-box">
+                    <span class="age__input age__input--display" id="ageDayC"></span>
                     <select name="age-day" id="ageDay" class="age__input">
-                      <option value="" selected="selected" disabled="disabled">天</option>
+                      <!-- <option value="" selected disabled>天</option> -->
                       <option value="0">0天</option>
                       <option value="1">1天</option>
                       <option value="2">2天</option>
@@ -132,7 +136,7 @@
                       <option value="13">13天</option>
                       <option value="14">14天</option>
                       <option value="15">15天</option>
-                      <option value="16">16天</option>
+                      <option value="16" selected="selected">16天</option>
                       <option value="17">17天</option>
                       <option value="18">18天</option>
                       <option value="19">19天</option>
@@ -301,14 +305,6 @@
                 </div>
             </article>
             <article class="maps__content content">
-                <!-- <div class="info">
-                    <div class="info__content">
-                        <h4 class="info__name">三軍總醫院 (汀州、內湖院區)</h4>
-                        <h4 class="info__addr">台北市內湖區成功路二段325號</h4>
-                        <h4 class="info__phone">02-29385832</h4>
-                    </div>
-                    <a href="" target="_blank" class="info__link">查看地圖</a>
-                </div> -->
             </article>
           </section>
           <section class="view view__r-img">
@@ -316,10 +312,10 @@
               <!-- DownloadImg -->
               <img class="view__r-img__item" src="assets/images/loading.png">
               <canvas class="view__canvas" id="view__canvas"></canvas>
+              <button></button>
             </article>
           </section>
         </main>
-
         <footer>
           <span class="footer__source">
             檢核表資料來源：臺北市學齡前兒童發展檢核，臺北市政府衛生局，<br>
