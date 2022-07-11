@@ -1,0 +1,135 @@
+{
+  "category": [
+    {
+      "num": 0,
+      "title": "生活家電",
+      "color": "#a7c5a3",
+      "layout": "left"
+    },
+    {
+      "num": 1,
+      "title": "廚房家電",
+      "color": "#fee090",
+      "layout": "right"
+    }
+ ],
+  "products": [
+    {
+      "id": 0,
+      "series": 0,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力\n輕量化設計533克\n2000mAh鋰電池無線USB充電設計\n方便持久",
+      "imgUrl": "img/prod1.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9430839&Area=search&mdiv=403&oid=1_3&cid=index&kw=onemeter"
+    },
+    {
+      "id": 10,
+      "series": 1,
+      "model": "ONJ-3011S",
+      "title": "微電腦萬用料理鍋",
+      "info": "微電腦預約定時功能\n11種烹調模式\n一機多用多重防護設計\n不沾內鍋清洗方便",
+      "imgUrl": "img/prod2.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9425662&Area=search&mdiv=403&oid=1_8&cid=index&kw=one-meter"
+    },
+    {
+      "id": 11,
+      "series": 1,
+      "model": "ONJ-2511SQ",
+      "title": "微電腦迷你電子鍋",
+      "info": "9種烹飪模式LED液晶顯示\n預約功能時間彈性\n日本大金塗層不沾內鍋設計\n可拆卸內蓋方便清洗",
+      "imgUrl": "img/prod3.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9464911&Area=search&mdiv=403&oid=1_2&cid=index&kw=onemeter"
+    },
+    {
+      "id": 12,
+      "series": 0,
+      "model": "OFH-1711PT",
+      "title": "智能足部電暖器",
+      "info": "AI智能感應溫控\n多重安全防護\n活性碳除臭\n烘鞋暖腳一機多用",
+      "imgUrl": "img/prod4.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9468342&Area=search&mdiv=403&oid=1_1&cid=index&kw=onemeter"
+    },
+    {
+      "id": 13,
+      "series": 1,
+      "model": "OBO-1211ST",
+      "title": "烘焙蒸氣烤箱",
+      "info": "蒸氣加熱設計\n三段火力，上火、下火、全開模式\n雙層耐高溫玻璃\n30分鐘定時設計",
+      "imgUrl": "img/prod5.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9644289&Area=search&mdiv=403&oid=1_7&cid=index&kw=one-meter"
+    },
+    {
+      "id": 14,
+      "series": 1,
+      "model": "OHL-2011S",
+      "title": "想食料理鍋",
+      "info": "多功能料理(可低溫油炸)\n強化玻璃可視上蓋\n多重防護設計\n日本大金塗層內鍋",
+      "imgUrl": "img/prod6.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9654416&Area=search&mdiv=403&oid=1_6&cid=index&kw=one-meter"
+    },
+    {
+      "id": 15,
+      "series": 0,
+      "model": "OTC-7511UV",
+      "title": "強力除塵蟎機",
+      "info": "每分鐘雙邊拍打15000次\n65度熱風除濕\n紫外線殺菌\n多重過濾，真空吸蟎",
+      "imgUrl": "img/prod7.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9666703&Area=search&mdiv=403&oid=1_9&cid=index&kw=one-meter"
+    },
+    {
+      "id": 16,
+      "series": 1,
+      "model": "OHL-1511CS",
+      "title": "多功能料理鍋",
+      "info": "深鍋、烤盤兩種搭配，一鍋多用\n四段火力，受熱均勻\n輕油少煙，清洗方便\n時尚精美，收納方便",
+      "imgUrl": "img/prod8.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9723052&Area=search&mdiv=403&oid=1_4&cid=index&kw=onemeter"
+    },  
+   {
+      "id": 17,
+      "series": 1,
+      "model": "OBO-2511GF",
+      "title": "玻璃氣炸鍋",
+      "info": "耐用、耐高溫高硼矽內鍋\n輕油少煙，健康飲食\n清洗方便，不易藏汙納垢\n小巧精緻，輕易收納",
+      "imgUrl": "img/prod9.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9751134&Area=search&mdiv=403&oid=1_3&cid=index&kw=one-meter"
+    },  
+   {
+      "id": 18,
+      "series": 0,
+      "model": "OAD10022PT",
+      "title": "智能陶瓷烘被電暖器",
+      "info": "多種烘乾模式，一機多用\n智能暖氣功能\n多種安全裝置，八小時定時設定\n輕巧方便好收納",
+      "imgUrl": "img/prod10.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9771619&Area=search&mdiv=403&oid=1_10&cid=index&kw=onemeter"
+    },  
+   {
+      "id": 19,
+      "series": 0,
+      "model": "OTC-30021CS",
+      "title": "智慧微塵感知無線吸塵器",
+      "info": "智能微塵感知，隨時自動調整模式\n吸頭搭載LED照明燈\n180度滑動彈簧，不受角度拘束\n強勁吸力，降噪設計",
+      "imgUrl": "img/prod11.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9846379&Area=search&mdiv=403&oid=1_14&cid=index&kw=one-meter"
+    },  
+  {
+      "id": 20,
+      "series": 0,
+      "model": "OAS-18021IR",
+      "title": "摺疊蒸氣熨燙機(粉)",
+      "info": "掛燙、熨燙一機兩用\n高溫蒸氣，輕鬆除菌\n摺疊手把，小巧易攜好收納\n30秒迅速預熱，省時快速",
+      "imgUrl": "img/prod12.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9869300&Area=search&mdiv=403&oid=1_16&cid=index&kw=onemeter"
+    },  
+	  {
+      "id": 21,
+      "series": 0,
+      "model": "OAS-18022IR",
+      "title": "摺疊蒸氣熨燙機(白)",
+      "info": "掛燙、熨燙一機兩用\n高溫蒸氣，輕鬆除菌\n摺疊手把，小巧易攜好收納\n30秒迅速預熱，省時快速",
+      "imgUrl": "img/prod13.png",
+      "link": "https://www.momoshop.com.tw/goods/GoodsDetail.jsp?i_code=9869299&Area=search&mdiv=403&oid=1_15&cid=index&kw=onemeter"
+    }  
+  ]
+}

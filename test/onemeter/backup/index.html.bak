@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','GTM-NNF9BW9');</script>
+<!-- End Google Tag Manager -->
+<meta charset="utf-8">
+    <title>Domain Default page</title>
+    <meta name="copyright" content="Copyright 1999-2019. Plesk International GmbH. All rights reserved.">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="favicon.ico">
+    <link rel="preload" href="fonts/lato-v16-latin-regular.woff2" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://assets.plesk.com/static/default-website-content/public/default-website-index.js"></script>
+</head>
+<body>
+    <!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NNF9BW9"
+height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
+<header class="header">
+        <div class="header__inner">
+            <div class="header__content">
+                <a class="header__logo" href="https://www.plesk.com" target="_blank">
+                    <img src="img/logo.svg" width="98" height="41" alt="Plesk">
+                </a>
+                <h1 class="header__title">
+                    This is a default webpage generated for<br>
+                    <script>document.write('<a href="http://' + location.hostname + '">' + location.hostname + '</a>');</script>
+                    by Plesk.
+                </h1>
+                <div class="header__message">
+                    <p>If you are the website owner:</p>
+                    <ul>
+                        <li>Login to Plesk to manage the website and its availability.</li>
+                        <li>Use File Manager to add the website's content.</li>
+                    </ul>
+                    <p>If you are not able to manage the website, contact your service provider.</p>
+                </div>
+                <div class="note">
+                    <span class="note__message">Login to Plesk to create domains and set up hosting.</span>
+                    <script>document.write('<a class="note__button" href="https://' + location.hostname + (location.protocol === 'https:' ? ':8443' : '') + '">Login to Plesk</a>');</script>
+                </div>
+            </div>
+        </div>
+    </header>
+    <main class="content">
+        <div class="content__inner">
+            <h2 class="content__title">What is Plesk</h2>
+            <p><b><a href="https://www.plesk.com">Plesk</a></b> is a hosting
+                <a href="https://www.plesk.com/blog/business-industry/whats-control-panel-all-you-need-to-know/">control panel</a>
+                with simple and secure web server, website and web apps management tools. It is specially designed to help web professionals manage web,
+                DNS, mail and other services through a comprehensive and user-friendly GUI. Plesk is about intelligently managing servers, apps,
+                websites and hosting businesses, on both traditional and cloud hosting.</p>
+            <ul class="resources-list">
+                <li class="resources-list__item">
+                    <a class="plesk-guides" href="https://docs.plesk.com/en-US/obsidian/" target="_blank">
+                        <img class="icon" src="img/plesk-guides.svg" alt="Plesk Guides">
+                        <span>Plesk Guides</span>
+                    </a>
+                </li>
+                <li class="resources-list__item">
+                    <a href="https://support.plesk.com/hc/en-us" target="_blank">
+                        <img class="icon" src="img/knowlede-base.svg" alt="Knowledge Base">
+                        <span>Knowledge Base</span>
+                    </a>
+                </li>
+                <li class="resources-list__item">
+                    <a href="https://talk.plesk.com/" target="_blank">
+                        <img class="icon" src="img/forum.svg" alt="Forum">
+                        <span>Forum</span>
+                    </a>
+                </li>
+                <li class="resources-list__item">
+                    <a href="https://www.plesk.com/blog/" target="_blank">
+                        <img class="icon" src="img/developers-blog.svg" alt="Developer Blog">
+                        <span>Developer Blog</span>
+                    </a>
+                </li>
+                <li class="resources-list__item">
+                    <a href="https://www.youtube.com/channel/UCeU-_6YHGQFcVSHLbEXLNlA/playlists" target="_blank">
+                        <img class="icon" src="img/video-guides.svg" alt="Video Guides">
+                        <span>Video Guides</span>
+                    </a>
+                </li>
+                <li class="resources-list__item">
+                    <a href="https://www.facebook.com/Plesk" target="_blank">
+                        <img class="icon" src="img/facebook.svg" alt="Facebook">
+                        <span>Facebook</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer class="footer">
+        <div class="footer__inner">
+            This page was generated by Plesk. Plesk is the leading WebOps platform to run, automate and grow applications, websites and hosting businesses.
+            Learn more at <a href="https://www.plesk.com" target="_blank">plesk.com</a>
+        </div>
+    </footer>
+</body>
+</html>
