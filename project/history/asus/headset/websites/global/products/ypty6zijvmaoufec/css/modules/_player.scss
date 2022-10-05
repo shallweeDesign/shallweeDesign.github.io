@@ -1,0 +1,84 @@
+.player {
+
+  text-align: center;
+  &__item {
+    padding: 30px 20px 20px;
+    display: block;
+    width: auto;
+    &__button {
+      width: 45px;
+      height: 45px;
+      background-size: cover;
+      display: inline-block;
+      vertical-align: middle;
+      background-image: url("../img/icon_play.png");
+
+      &.active {
+        background-image: url("../img/icon_pause.png");
+      }
+    }
+
+    &__detail {
+      vertical-align: middle;
+      text-align: center;
+      display: inline-block;
+      height: 45px;
+      margin-left: 5px;
+
+      .song-title {
+        line-height: 20px;
+        margin-top: -20px;
+      }
+
+      .song-slider {
+        width: 200px;
+        height: 5px;
+
+        .ui-slider-range {
+          background: #e3001a;
+        }
+
+        .ui-slider-handle {
+          border-color: #e3001a;
+          display: none;
+        }
+
+        &.ui-widget.ui-widget-content {
+          border: none;
+          background-color: #868686;
+        }
+      }
+    }
+  }
+}
+@media (min-width:1366px) {
+  .player {
+    &__item {
+      padding: 20px;
+      display: inline-block;
+      &__button {
+        width: 87px;
+        height: 87px;
+
+        &.active {}
+      }
+
+      &__detail {
+        height: 87px;
+        margin-left: 5px;
+
+        .song-title {
+          line-height: 25px;
+          margin-top: -10px;
+        }
+
+        .song-slider {
+          width: 250px;
+          .ui-slider-range {}
+
+          .ui-slider-handle {}
+        }
+      }
+    }
+  }
+}

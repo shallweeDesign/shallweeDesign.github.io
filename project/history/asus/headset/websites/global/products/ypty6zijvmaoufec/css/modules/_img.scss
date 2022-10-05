@@ -1,0 +1,49 @@
+#overview #sectionOverview {
+  .img__box {
+    width: 100%;
+    overflow: hidden;
+    display: block;
+    position: relative;
+    height: auto;
+
+    .rog-theat__img {
+      // width: 100%;
+      width: 100%;
+      height: auto;
+      user-select: none;
+      display: block;
+      margin:0;
+      padding:0;
+
+
+      // max-width: none !important;
+
+      &.full {
+        width: 100%;
+      }
+      img{
+        width:100%;
+        display: block;
+        margin:0;
+        padding:0;
+      }
+    }
+  }
+}
+@media (min-width:1300px) {
+  #overview #sectionOverview {
+    .img__box {
+      // position: absolute;
+      .rog-theat__img {
+        width: 130%;
+        height: auto;
+        margin-left: -20%;
+
+        &.full {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+    }
+  }
+}
