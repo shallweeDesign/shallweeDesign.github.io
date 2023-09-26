@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 810.15 737.46">
+  <defs>
+    <style>
+      .cls-1 {
+        font-size: 47.35px;
+      }
+
+      .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
+        font-family: SourceHanSansTC-Medium-B5pc-H, 'Source Han Sans TC';
+        font-weight: 500;
+      }
+
+      .cls-1, .cls-4, .cls-9 {
+        fill: #d70000;
+      }
+
+      .cls-2 {
+        font-size: 17.02px;
+      }
+
+      .cls-3 {
+        font-size: 16.13px;
+      }
+
+      .cls-4 {
+        font-size: 24.8px;
+      }
+
+      .cls-5 {
+        font-size: 15.26px;
+      }
+
+      .cls-11 {
+        letter-spacing: -.12em;
+      }
+
+      .cls-12 {
+        letter-spacing: -.24em;
+      }
+
+      .cls-6 {
+        font-size: 12.54px;
+      }
+
+      .cls-7 {
+        font-size: 9.85px;
+      }
+
+      .cls-13, .cls-14, .cls-15 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+      }
+
+      .cls-14 {
+        stroke-width: 1.24px;
+      }
+
+      .cls-8 {
+        font-size: 15.23px;
+      }
+
+      .cls-16 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-17 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-18 {
+        fill: #f48003;
+        stroke-width: 0px;
+      }
+
+      .cls-19 {
+        letter-spacing: -.23em;
+      }
+
+      .cls-15 {
+        stroke-width: 1px;
+      }
+
+      .cls-9 {
+        font-size: 24.92px;
+      }
+
+      .cls-10 {
+        font-size: 13.44px;
+      }
+    </style>
+  </defs>
+  <g id="_圖層_3" data-name="圖層 3">
+    <g>
+      <g>
+        <text class="cls-1" transform="translate(566.51 673.76)"><tspan x="0" y="0">50薪資</tspan></text>
+        <text class="cls-3" transform="translate(276.82 453.07)"><tspan x="0" y="0">扣繳率(B) </tspan></text>
+        <text class="cls-3" transform="translate(407.78 359.94)"><tspan x="0" y="0">所得給付年度</tspan></text>
+        <text class="cls-10" transform="translate(609.34 350.26)"><tspan x="0" y="0">依勞退條例自願提繳</tspan><tspan x="0" y="16.12">之退休金額(E)</tspan></text>
+        <text class="cls-3" transform="translate(261.07 319.62)"><tspan x="0" y="0">XX市 XX區 XX街 XX號 XX 樓</tspan></text>
+        <text class="cls-3" transform="translate(209.12 662.73)"><tspan x="0" y="0">XX市 XX區 XX街 XX號 XX 樓</tspan></text>
+        <text class="cls-3" transform="translate(261.18 284.29)"><tspan x="0" y="0">XXX</tspan></text>
+        <text class="cls-3" transform="translate(432.66 396.29)"><tspan x="0" y="0">1XX</tspan></text>
+        <text class="cls-3" transform="translate(471.18 473.33)"><tspan x="0" y="0">1XX</tspan></text>
+        <text class="cls-3" transform="translate(661.75 396.29)"><tspan x="0" y="0">0</tspan></text>
+        <text class="cls-3" transform="translate(439.13 434.29)"><tspan x="0" y="0">所得給付年度</tspan></text>
+        <text class="cls-3" transform="translate(642.1 454.3)"><tspan x="0" y="0">給付淨額(D=A-C)</tspan></text>
+        <text class="cls-3" transform="translate(669.81 526.86)"><tspan x="0" y="0">XX,XXX</tspan></text>
+        <text class="cls-9" transform="translate(106.25 529.81)"><tspan x="0" y="0">XX,XXX</tspan></text>
+        <text class="cls-6" transform="translate(365.52 509.66)"><tspan x="0" y="0">應扣繳稅額(C1=A)(B)</tspan></text>
+        <text class="cls-6" transform="translate(495.15 509.54)"><tspan x="0" y="0" xml:space="preserve"> 股利或盈餘抵扣稅額</tspan></text>
+        <line class="cls-14" x1="490.62" y1="483.68" x2="490.62" y2="598.8"/>
+        <text class="cls-3" transform="translate(419.57 546.09)"><tspan x="0" y="0">0</tspan></text>
+        <text class="cls-3" transform="translate(550.37 546.09)"><tspan x="0" y="0">0</tspan></text>
+        <text class="cls-3" transform="translate(234.88 584.49)"><tspan x="0" y="0">扣繳單位</tspan></text>
+        <text class="cls-3" transform="translate(46.16 623.13)"><tspan x="0" y="0">名稱</tspan></text>
+        <text class="cls-3" transform="translate(46.16 661.38)"><tspan x="0" y="0">地址</tspan></text>
+        <text class="cls-3" transform="translate(46.16 698.56)"><tspan x="0" y="0">扣繳義務人</tspan></text>
+        <text class="cls-3" transform="translate(209.12 624.21)"><tspan x="0" y="0">XXX公司</tspan></text>
+        <text class="cls-3" transform="translate(209.12 700.35)"><tspan x="0" y="0">XXX</tspan></text>
+        <rect class="cls-13" x="27.7" y="27.7" width="330.56" height="79.73"/>
+        <rect class="cls-13" x="358.27" y="27.7" width="425.52" height="40.09"/>
+        <rect class="cls-13" x="358.27" y="67.79" width="425.52" height="40.09"/>
+        <rect class="cls-13" x="27.7" y="107.43" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="145.28" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="107.43" width="128.55" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="145.28" width="128.55" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="107.43" width="164.39" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="145.28" width="164.39" height="37.85"/>
+        <rect class="cls-13" x="521.76" y="107.43" width="262.48" height="37.85"/>
+        <rect class="cls-13" x="521.76" y="145.28" width="262.48" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="182.68" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="220.53" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="182.68" width="128.55" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="220.53" width="128.55" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="182.68" width="164.39" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="220.53" width="164.39" height="37.85"/>
+        <rect class="cls-13" x="521.76" y="182.68" width="116.46" height="37.85"/>
+        <rect class="cls-13" x="521.76" y="220.53" width="116.46" height="37.85"/>
+        <rect class="cls-13" x="638.21" y="182.68" width="146.02" height="37.85"/>
+        <rect class="cls-13" x="638.21" y="220.53" width="146.02" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="257.93" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="295.78" width="202.01" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="257.93" width="554.97" height="37.85"/>
+        <rect class="cls-13" x="229.26" y="295.78" width="554.97" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="333.18" width="330.12" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="371.03" width="330.12" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="598.57" width="132.14" height="37.85"/>
+        <rect class="cls-13" x="490.85" y="598.57" width="293.39" height="112.65" transform="translate(1275.08 1309.8) rotate(180)"/>
+        <rect class="cls-13" x="27.7" y="636.2" width="132.14" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="673.82" width="132.14" height="37.85"/>
+        <rect class="cls-13" x="159.84" y="598.57" width="331.46" height="37.85" transform="translate(651.13 1235) rotate(180)"/>
+        <rect class="cls-13" x="159.84" y="636.2" width="331.46" height="37.85" transform="translate(651.13 1310.25) rotate(180)"/>
+        <rect class="cls-13" x="159.84" y="673.82" width="331.46" height="37.85" transform="translate(651.13 1385.5) rotate(180)"/>
+        <rect class="cls-13" x="357.37" y="333.18" width="203.8" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="371.03" width="203.8" height="37.85"/>
+        <rect class="cls-13" x="561.17" y="333.18" width="223.06" height="37.85"/>
+        <rect class="cls-13" x="561.17" y="371.03" width="223.06" height="37.85"/>
+        <rect class="cls-13" x="27.7" y="408.43" width="239.64" height="75.25"/>
+        <rect class="cls-13" x="357.37" y="408.43" width="259.34" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="446.28" width="259.34" height="37.85"/>
+        <rect class="cls-13" x="616.71" y="408.43" width="167.52" height="75.25"/>
+        <rect class="cls-13" x="266.89" y="408.43" width="90.48" height="75.25"/>
+        <rect class="cls-13" x="27.7" y="483.68" width="239.64" height="75.25"/>
+        <rect class="cls-15" x="27.7" y="558.93" width="756.09" height="39.86"/>
+        <rect class="cls-13" x="357.37" y="483.68" width="259.34" height="37.85"/>
+        <rect class="cls-13" x="357.37" y="521.53" width="259.34" height="37.85"/>
+        <rect class="cls-13" x="616.71" y="483.68" width="167.52" height="75.25"/>
+        <rect class="cls-13" x="266.89" y="483.68" width="90.48" height="75.25"/>
+        <text class="cls-4" transform="translate(48 79.07)"><tspan x="0" y="0">各類所得扣繳暨免扣繳憑單</tspan></text>
+        <text class="cls-3" transform="translate(59.19 132.65)"><tspan x="0" y="0">扣繳單位統一編號</tspan></text>
+        <text class="cls-3" transform="translate(379 52.02)"><tspan x="0" y="0">租債房屋之房屋稅籍編號:XXXXXXXX</tspan></text>
+        <text class="cls-3" transform="translate(379 92.34)"><tspan x="0" y="0">租債房屋地址: xxxxxxx</tspan></text>
+        <text class="cls-3" transform="translate(45.4 206.11)"><tspan x="0" y="0">所得人統一編號(證)號</tspan></text>
+        <text class="cls-3" transform="translate(241.92 206.11)"><tspan x="0" y="0" xml:space="preserve"> 國內有無住所</tspan></text>
+        <text class="cls-3" transform="translate(546.53 206.11)"><tspan x="0" y="0">國家代碼</tspan></text>
+        <text class="cls-3" transform="translate(665.67 206.11)"><tspan x="0" y="0">適用租稅協定</tspan></text>
+        <text class="cls-5" transform="translate(45.75 287.07)"><tspan x="0" y="0">姓名</tspan></text>
+        <text class="cls-5" transform="translate(45.75 320.98)"><tspan x="0" y="0">地址</tspan></text>
+        <text class="cls-5" transform="translate(45.75 396.72)"><tspan x="0" y="0">X年 XX月 至XX年XX月</tspan></text>
+        <text class="cls-3" transform="translate(45.75 358.4)"><tspan x="0" y="0" xml:space="preserve">所屬           年            月</tspan></text>
+        <text class="cls-8" transform="translate(45.75 442.61)"><tspan x="0" y="0">給付總金額(A)</tspan><tspan x="0" y="18.28">(結算申報時應按本欄數額填報)</tspan></text>
+        <text class="cls-3" transform="translate(257.28 245.52)"><tspan x="0" y="0" xml:space="preserve">有(  )無(  )</tspan></text>
+        <text class="cls-2" transform="translate(259.86 132.65)"><tspan x="0" y="0">稽微機關</tspan></text>
+        <text class="cls-3" transform="translate(83.44 168.48)"><tspan x="0" y="0">XXXXXXXX </tspan></text>
+        <text class="cls-3" transform="translate(83.44 245.52)"><tspan x="0" y="0">XXXXXXXX </tspan></text>
+        <text class="cls-2" transform="translate(272.54 168.48)"><tspan class="cls-19" x="0" y="0">Ａ</tspan><tspan class="cls-12" x="13.04" y="0">１</tspan><tspan class="cls-11" x="25.97" y="0">１</tspan></text>
+        <text class="cls-3" transform="translate(413.05 132.65)"><tspan x="0" y="0">製單編號</tspan></text>
+        <text class="cls-7" transform="translate(378.56 199.84)"><tspan x="0" y="0">所得</tspan><tspan class="cls-16" x="19.71" y="0">人、</tspan><tspan x="34.49" y="0">職業別代</tspan><tspan class="cls-17" x="73.91" y="0">號、</tspan><tspan x="88.69" y="0">其他所得</tspan><tspan x="9.85" y="11.83">給付項目或外籍護照號碼</tspan></text>
+        <text class="cls-3" transform="translate(411.37 168.48)"><tspan x="0" y="0">xxxxxxxx</tspan></text>
+        <text class="cls-3" transform="translate(580.57 132.65)"><tspan x="0" y="0">格式代號及所得類别</tspan></text>
+        <text class="cls-3" transform="translate(631.4 168.48)"><tspan x="0" y="0">50薪資</tspan></text>
+      </g>
+      <g>
+        <polygon class="cls-18" points="13 48.9 0 48.9 0 0 48.9 0 48.9 13 13 13 13 48.9"/>
+        <polygon class="cls-18" points="810.15 48.9 797.15 48.9 797.15 13 761.24 13 761.24 0 810.15 0 810.15 48.9"/>
+        <polygon class="cls-18" points="810.15 737.46 761.24 737.46 761.24 724.46 797.15 724.46 797.15 688.56 810.15 688.56 810.15 737.46"/>
+        <polygon class="cls-18" points="48.9 737.46 0 737.46 0 688.56 13 688.56 13 724.46 48.9 724.46 48.9 737.46"/>
+      </g>
+    </g>
+  </g>
+</svg>

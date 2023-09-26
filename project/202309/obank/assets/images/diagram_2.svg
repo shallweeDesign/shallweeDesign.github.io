@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 797.36 431.52">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: none;
+        stroke: #000;
+        stroke-miterlimit: 10;
+        stroke-width: 1.5px;
+      }
+
+      .cls-2 {
+        font-size: 23.63px;
+      }
+
+      .cls-2, .cls-3, .cls-4, .cls-5, .cls-6 {
+        font-family: SourceHanSansTC-Medium-B5pc-H, 'Source Han Sans TC';
+        font-weight: 500;
+      }
+
+      .cls-2, .cls-3, .cls-5 {
+        fill: #d70000;
+      }
+
+      .cls-7 {
+        letter-spacing: .01em;
+      }
+
+      .cls-3, .cls-6 {
+        font-size: 12.03px;
+      }
+
+      .cls-4 {
+        font-size: 12.7px;
+      }
+
+      .cls-8 {
+        letter-spacing: -.01em;
+      }
+
+      .cls-9 {
+        letter-spacing: .82em;
+      }
+
+      .cls-10 {
+        letter-spacing: 0em;
+      }
+
+      .cls-5 {
+        font-size: 13.36px;
+      }
+    </style>
+  </defs>
+  <g id="_圖層_3" data-name="圖層 3">
+    <g>
+      <text class="cls-2" transform="translate(292.48 20.79)"><tspan x="0" y="0">財政部O區國稅局</tspan></text>
+      <path class="cls-1" d="m.75,410.04V115.35c0-8.09,6.62-14.7,14.7-14.7h766.46c8.09,0,14.7,6.62,14.7,14.7v294.69H.75Z"/>
+      <text class="cls-2" transform="translate(175.16 57.73)"><tspan x="0" y="0">OOO年度綜合所得稅 各類所得資料清單</tspan></text>
+      <text class="cls-4" transform="translate(735.05 63.24)"><tspan x="0" y="0" xml:space="preserve">第   1  頁</tspan></text>
+      <text class="cls-5" transform="translate(628.59 82.18)"><tspan x="0" y="0" xml:space="preserve">調查日期    xxx年xx月xx日</tspan></text>
+      <text class="cls-4" transform="translate(25.27 66.92)"><tspan x="0" y="0">核發單位: xxxxxx</tspan><tspan x="0" y="18.04" xml:space="preserve">編         號: xxxxxx</tspan></text>
+      <text class="cls-3" transform="translate(24.96 122.94)"><tspan x="0" y="0">所得人姓名:</tspan></text>
+      <text class="cls-3" transform="translate(24.96 144.99)"><tspan x="0" y="0">戶籍地址: XX市 XX區 XX街 XX號 XX 樓</tspan></text>
+      <line class="cls-1" x1=".75" y1="220.48" x2="796.61" y2="220.48"/>
+      <line class="cls-1" x1=".75" y1="286.86" x2="796.61" y2="286.86"/>
+      <line class="cls-1" x1=".75" y1="155.44" x2="796.61" y2="155.44"/>
+      <line class="cls-1" x1=".75" y1="351.9" x2="796.61" y2="351.9"/>
+      <text class="cls-6" transform="translate(25.7 179.52)"><tspan x="0" y="0">類別 </tspan></text>
+      <text class="cls-6" transform="translate(25.7 249.01)"><tspan x="0" y="0">利息</tspan></text>
+      <text class="cls-6" transform="translate(25.7 312.5)"><tspan x="0" y="0">利息</tspan></text>
+      <text class="cls-6" transform="translate(25.7 376.65)"><tspan x="0" y="0">其他</tspan></text>
+      <text class="cls-6" transform="translate(92.12 179.52)"><tspan x="0" y="0">證號別 </tspan></text>
+      <text class="cls-6" transform="translate(102.81 249.01)"><tspan x="0" y="0">0</tspan></text>
+      <text class="cls-6" transform="translate(634.72 249.01)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(634.72 269.73)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(634.72 312.5)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(634.72 333.21)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(634.72 376.65)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(634.72 397.36)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(726.94 249.01)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(742.25 269.73)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(726.94 312.5)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(742.25 333.21)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(726.94 376.65)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(742.25 397.36)"><tspan x="0" y="0">00</tspan></text>
+      <text class="cls-6" transform="translate(456.3 249.01)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(456.3 269.73)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(456.3 312.5)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(456.3 333.21)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(456.3 376.65)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(456.3 397.36)"><tspan class="cls-7" x="0" y="0">x</tspan><tspan x="6.46" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 249.01)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 269.73)"><tspan x="0" y="0">x</tspan><tspan class="cls-7" x="6.33" y="0">x</tspan><tspan class="cls-10" x="12.79" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 312.5)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 333.21)"><tspan x="0" y="0">x</tspan><tspan class="cls-7" x="6.33" y="0">x</tspan><tspan class="cls-10" x="12.79" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 376.65)"><tspan x="0" y="0">xxxx</tspan></text>
+      <text class="cls-6" transform="translate(537.83 397.36)"><tspan x="0" y="0">x</tspan><tspan class="cls-7" x="6.33" y="0">x</tspan><tspan class="cls-10" x="12.79" y="0">,xxx</tspan></text>
+      <text class="cls-6" transform="translate(102.81 312.5)"><tspan x="0" y="0">0</tspan></text>
+      <text class="cls-6" transform="translate(103.48 376.65)"><tspan x="0" y="0">0</tspan></text>
+      <text class="cls-6" transform="translate(163.64 179.52)"><tspan x="0" y="0">所得人IDN</tspan></text>
+      <text class="cls-6" transform="translate(163.64 202.91)"><tspan x="0" y="0">所得人姓名</tspan></text>
+      <text class="cls-6" transform="translate(163.64 246.34)"><tspan x="0" y="0">扣繳單位名稱</tspan></text>
+      <text class="cls-6" transform="translate(163.64 265.72)"><tspan x="0" y="0">扣繳單位地址</tspan></text>
+      <text class="cls-6" transform="translate(163.64 311.16)"><tspan x="0" y="0">扣繳單位名稱</tspan></text>
+      <text class="cls-6" transform="translate(163.64 330.54)"><tspan x="0" y="0">扣繳單位地址</tspan></text>
+      <text class="cls-6" transform="translate(163.64 373.97)"><tspan x="0" y="0">扣繳單位名稱</tspan></text>
+      <text class="cls-6" transform="translate(163.64 393.35)"><tspan x="0" y="0">扣繳單位地址</tspan></text>
+      <text class="cls-6" transform="translate(283.05 179.52)"><tspan x="0" y="0">格式註記 </tspan></text>
+      <text class="cls-6" transform="translate(358.55 179.52)"><tspan x="0" y="0">媒申註記</tspan></text>
+      <text class="cls-6" transform="translate(444.75 179.52)"><tspan x="0" y="0">給付總額</tspan></text>
+      <text class="cls-6" transform="translate(456.77 202.91)"><tspan x="0" y="0">所得額</tspan></text>
+      <text class="cls-6" transform="translate(536.29 179.52)"><tspan x="0" y="0">扣繳繳稅</tspan></text>
+      <text class="cls-6" transform="translate(524.27 202.91)"><tspan x="0" y="0">可抵扣稅額</tspan></text>
+      <text class="cls-6" transform="translate(611.8 179.52)"><tspan x="0" y="0">資料來源</tspan></text>
+      <text class="cls-6" transform="translate(611.8 202.91)"><tspan x="0" y="0">異動日期</tspan></text>
+      <text class="cls-6" transform="translate(687.31 179.52)"><tspan x="0" y="0">財產交易損失額</tspan></text>
+      <text class="cls-6" transform="translate(722.06 202.91)"><tspan x="0" y="0">異動機關</tspan></text>
+      <text class="cls-6" transform="translate(283.05 238.5)"><tspan x="0" y="0">xxxx</tspan><tspan x="0" y="13.36">xxxxxxxxxxxxxxxx</tspan><tspan x="0" y="26.73">xxxxx股份有限公司</tspan><tspan x="0" y="40.09">xxxxxxxxx</tspan><tspan class="cls-8" x="56.94" y="40.09">xX</tspan><tspan x="70.17" y="40.09">xxxxx</tspan></text>
+      <text class="cls-6" transform="translate(283.05 302.65)"><tspan x="0" y="0">xxxx</tspan><tspan x="0" y="13.36">xxxxxxxxxxxxxxxx</tspan><tspan x="0" y="26.73">xxxxx股份有限公司</tspan><tspan x="0" y="40.09">xxxxxxxxx</tspan><tspan class="cls-8" x="56.94" y="40.09">xX</tspan><tspan x="70.17" y="40.09">xxxxx</tspan></text>
+      <text class="cls-6" transform="translate(283.05 365.46)"><tspan x="0" y="0">xxxx</tspan><tspan x="0" y="13.36">xxxxxxxxxxxxxxxx</tspan><tspan x="0" y="26.73">xxxxx股份有限公司</tspan><tspan x="0" y="40.09">xxxxxxxxx</tspan><tspan class="cls-8" x="56.94" y="40.09">xX</tspan><tspan x="70.17" y="40.09">xxxxx</tspan></text>
+      <text class="cls-6" transform="translate(283.41 202.91)"><tspan class="cls-9" x="0" y="0">個案存放位</tspan><tspan x="109.59" y="0">置</tspan></text>
+    </g>
+  </g>
+</svg>

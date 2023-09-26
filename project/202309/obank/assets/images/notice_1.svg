@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 354.33 328.88">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        font-family: SourceHanSansTW-Medium-B5pc-H, 'Source Han Sans TW';
+        font-size: 40.22px;
+        font-weight: 500;
+      }
+
+      .cls-2 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-3 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-4 {
+        fill: #f48003;
+        stroke-width: 0px;
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".2"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="_圖層_3" data-name="圖層 3">
+    <g class="cls-2">
+      <rect class="cls-4" width="336.33" height="154.54" rx="9.74" ry="9.74"/>
+      <text class="cls-1" transform="translate(35.5 64.64)"><tspan x="0" y="0">清楚完整四個</tspan><tspan x="0" y="48.27">角落都拍到</tspan><tspan class="cls-3" x="201.12" y="48.27">喔！</tspan></text>
+      <polygon class="cls-4" points="190.05 140.25 279.38 328.88 225.05 140.25 190.05 140.25"/>
+    </g>
+  </g>
+</svg>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 392.69 188.07">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: SourceHanSansTW-Medium-B5pc-H, 'Source Han Sans TW';
+        font-size: 29.1px;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-4 {
+        fill: #f48003;
+        stroke-width: 0px;
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".2"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="_圖層_3" data-name="圖層 3">
+    <g class="cls-1">
+      <rect class="cls-4" y="63.93" width="381.69" height="111.79" rx="9.74" ry="9.74"/>
+      <text class="cls-2" transform="translate(25.68 110.69)"><tspan x="0" y="0">要拍到帳</tspan><tspan class="cls-3" x="116.38" y="0">號、</tspan><tspan x="160.03" y="0">近6個月薪資</tspan><tspan x="0" y="34.92">紀</tspan><tspan class="cls-3" x="29.1" y="34.92">錄、</tspan><tspan x="72.74" y="34.92">上下2頁要同時拍到 </tspan></text>
+      <polygon class="cls-4" points="147.13 72.93 135.19 0 182.13 72.93 147.13 72.93"/>
+    </g>
+  </g>
+</svg>

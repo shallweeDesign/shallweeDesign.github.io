@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_2" data-name="圖層 2" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 425.07 172.49">
+  <defs>
+    <style>
+      .cls-1 {
+        filter: url(#drop-shadow-1);
+      }
+
+      .cls-2 {
+        fill: #fff;
+        font-family: SourceHanSansTW-Medium-B5pc-H, 'Source Han Sans TW';
+        font-size: 29.1px;
+        font-weight: 500;
+      }
+
+      .cls-3 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-4 {
+        letter-spacing: -.25em;
+      }
+
+      .cls-5 {
+        fill: #f48003;
+        stroke-width: 0px;
+      }
+    </style>
+    <filter id="drop-shadow-1" filterUnits="userSpaceOnUse">
+      <feOffset dx="7" dy="7"/>
+      <feGaussianBlur result="blur" stdDeviation="5"/>
+      <feFlood flood-color="#000" flood-opacity=".2"/>
+      <feComposite in2="blur" operator="in"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="_圖層_3" data-name="圖層 3">
+    <g class="cls-1">
+      <rect class="cls-5" width="407.07" height="111.79" rx="9.74" ry="9.74"/>
+      <text class="cls-2" transform="translate(25.68 46.75)"><tspan x="0" y="0">有姓</tspan><tspan class="cls-3" x="58.19" y="0">名、</tspan><tspan x="101.83" y="0">身分證字號之完整頁</tspan><tspan x="0" y="34.92">每頁都要拍照上傳</tspan><tspan class="cls-4" x="232.77" y="34.92">喔！</tspan></text>
+      <polygon class="cls-5" points="182.13 99.55 154.06 172.49 147.13 99.55 182.13 99.55"/>
+    </g>
+  </g>
+</svg>
