@@ -7,7 +7,7 @@
       }
 
       .cls-1, .cls-2, .cls-3, .cls-4, .cls-5, .cls-6, .cls-7, .cls-8, .cls-9, .cls-10 {
-        font-family: SourceHanSansTC-Medium-B5pc-H, 'Source Han Sans TC';
+        font-family: 'Noto Sans TC', SourceHanSansTC-Medium-B5pc-H, 'Source Han Sans TC';
         font-weight: 500;
       }
 

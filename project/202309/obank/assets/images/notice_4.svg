@@ -8,7 +8,7 @@
 
       .cls-2 {
         fill: #fff;
-        font-family: SourceHanSansTW-Medium-B5pc-H, 'Source Han Sans TW';
+        font-family: 'Noto Sans TC', SourceHanSansTW-Medium-B5pc-H, 'Source Han Sans TW';
         font-size: 29.1px;
         font-weight: 500;
       }
