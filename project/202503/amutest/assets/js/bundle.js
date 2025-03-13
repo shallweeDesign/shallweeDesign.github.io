@@ -41,6 +41,17 @@ eval("(typeof navigator !== \"undefined\") && (function (global, factory) {\n   
 
 /***/ }),
 
+/***/ "./src/assets/images/icon_check.svg":
+/*!******************************************!*\
+  !*** ./src/assets/images/icon_check.svg ***!
+  \******************************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+"use strict";
+eval("module.exports = __webpack_require__.p + \"assets/images/70872ce39a2a8dc588a3.svg\";\n\n//# sourceURL=webpack:///./src/assets/images/icon_check.svg?");
+
+/***/ }),
+
 /***/ "./src/assets/performance.json":
 /*!*************************************!*\
   !*** ./src/assets/performance.json ***!
@@ -70,7 +81,7 @@ eval("module.exports = /*#__PURE__*/JSON.parse('{\"ddd\":0,\"h\":1200,\"w\":910,
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   commonFuc: () => (/* binding */ commonFuc)\n/* harmony export */ });\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/styles/style.scss\");\n/* harmony import */ var _ts_main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ts/main */ \"./src/ts/main.ts\");\n/* harmony import */ var _ts_main__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ts_main__WEBPACK_IMPORTED_MODULE_1__);\n\n\nfunction commonFuc(){\n    console.log(\"commonFuc is called\");\n}\n\n//# sourceURL=webpack:///./src/common.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   commonFuc: () => (/* binding */ commonFuc)\n/* harmony export */ });\n/* harmony import */ var _styles_style_scss__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./styles/style.scss */ \"./src/styles/style.scss\");\n/* harmony import */ var _ts_main__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ts/main */ \"./src/ts/main.ts\");\n/* harmony import */ var _ts_main__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_ts_main__WEBPACK_IMPORTED_MODULE_1__);\n/* harmony import */ var _assets_images_icon_check_svg__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./assets/images/icon_check.svg */ \"./src/assets/images/icon_check.svg\");\n\n\n\nfunction commonFuc(){\n    console.log(\"commonFuc is called\");\n}\n\n//# sourceURL=webpack:///./src/common.js?");
 
 /***/ }),
 
@@ -205,6 +216,18 @@ eval("\nfunction init() {\n\n  document.querySelectorAll(\".egfm-card-toggle\").
 /******/ 		};
 /******/ 	})();
 /******/ 	
+/******/ 	/* webpack/runtime/global */
+/******/ 	(() => {
+/******/ 		__webpack_require__.g = (function() {
+/******/ 			if (typeof globalThis === 'object') return globalThis;
+/******/ 			try {
+/******/ 				return this || new Function('return this')();
+/******/ 			} catch (e) {
+/******/ 				if (typeof window === 'object') return window;
+/******/ 			}
+/******/ 		})();
+/******/ 	})();
+/******/ 	
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => (Object.prototype.hasOwnProperty.call(obj, prop))
@@ -219,6 +242,29 @@ eval("\nfunction init() {\n\n  document.querySelectorAll(\".egfm-card-toggle\").
 /******/ 			}
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
+/******/ 	})();
+/******/ 	
+/******/ 	/* webpack/runtime/publicPath */
+/******/ 	(() => {
+/******/ 		var scriptUrl;
+/******/ 		if (__webpack_require__.g.importScripts) scriptUrl = __webpack_require__.g.location + "";
+/******/ 		var document = __webpack_require__.g.document;
+/******/ 		if (!scriptUrl && document) {
+/******/ 			if (document.currentScript && document.currentScript.tagName.toUpperCase() === 'SCRIPT')
+/******/ 				scriptUrl = document.currentScript.src;
+/******/ 			if (!scriptUrl) {
+/******/ 				var scripts = document.getElementsByTagName("script");
+/******/ 				if(scripts.length) {
+/******/ 					var i = scripts.length - 1;
+/******/ 					while (i > -1 && (!scriptUrl || !/^http(s?):/.test(scriptUrl))) scriptUrl = scripts[i--].src;
+/******/ 				}
+/******/ 			}
+/******/ 		}
+/******/ 		// When supporting browsers where an automatic publicPath is not supported you must specify an output.publicPath manually via configuration
+/******/ 		// or pass an empty string ("") and set the __webpack_public_path__ variable from your code to use your own logic.
+/******/ 		if (!scriptUrl) throw new Error("Automatic publicPath is not supported in this browser");
+/******/ 		scriptUrl = scriptUrl.replace(/^blob:/, "").replace(/#.*$/, "").replace(/\?.*$/, "").replace(/\/[^\/]+$/, "/");
+/******/ 		__webpack_require__.p = scriptUrl + "../../";
 /******/ 	})();
 /******/ 	
 /************************************************************************/

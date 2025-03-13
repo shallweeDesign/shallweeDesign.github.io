@@ -880,6 +880,26 @@ body {
 }
 .egfm-nav__link--active {
   color: #008ed2;
+  position: relative;
+  width: 100%;
+}
+.egfm-nav__link--active:before, .egfm-nav__link--active:after {
+  content: "";
+  position: absolute;
+  width: 1.5em;
+  height: 1.5em;
+  background-image: url(../../assets/images/5bbeb5ed874a6ea2ee94.svg);
+  top: 50%;
+  transform: translateY(-50%);
+}
+.egfm-nav__link--active:before {
+  left: 0;
+  margin-left: -1.5em;
+  transform: translateY(-50%) rotate(180deg);
+}
+.egfm-nav__link--active:after {
+  margin-right: -1.5em;
+  right: 0;
 }
 
 .egfm-article {
@@ -1167,7 +1187,7 @@ body {
 .egfm-title:after {
   display: none;
   content: "";
-  background-image: url(../../assets/images/title_mark.svg);
+  background-image: url(../../assets/images/c9061e71e09817bb91fc.svg);
   height: clamp(40px, 3.46vw, 50px);
   width: clamp(40px, 3.46vw, 50px);
   background-repeat: no-repeat;
@@ -1297,7 +1317,7 @@ body {
 .egfm-wrapper .egfm-section__title-wrapper:after {
   display: none;
   content: "";
-  background-image: url(../../assets/images/title_mark.svg);
+  background-image: url(../../assets/images/c9061e71e09817bb91fc.svg);
   height: clamp(40px, 3.46vw, 50px);
   width: clamp(40px, 3.46vw, 50px);
   background-repeat: no-repeat;
@@ -1576,6 +1596,11 @@ body {
     width: 100%;
     flex-direction: column;
     padding: calc(3 * ((100vw - 720px) * 18 / 720 + 18px)) calc(2 * ((100vw - 720px) * 18 / 720 + 18px));
+    height: 56vw;
+    justify-content: center;
+    align-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
   }
 }
 @media (min-width: 1280px) and (max-width: 1439px) {
@@ -3569,6 +3594,7 @@ body {
   display: inline-block;
   width: 1em;
   height: 1em;
+  background-image: url(../../assets/images/70872ce39a2a8dc588a3.svg);
   content: "";
 }
 .egfm .mdm .plan__icon {
@@ -3586,8 +3612,20 @@ body {
 .egfm-wrapper .egfm-page--security .egfm-section__title {
   color: white;
 }
-.egfm-wrapper .egfm-page--security .egfm-section {
-  background-color: white;
+.egfm-wrapper .security-container {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+.egfm-wrapper .security-container .egfm-section__title-wrapper {
+  justify-content: flex-start;
+}
+@media (min-width: 1440px) {
+  .egfm-wrapper .security-container {
+    max-width: 800px;
+    margin-left: calc((100vw - 1280px) / 2);
+  }
 }
 .egfm-wrapper .security__hardware {
   width: 100%;
