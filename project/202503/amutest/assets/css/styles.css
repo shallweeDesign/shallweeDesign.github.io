@@ -2679,6 +2679,7 @@ body {
 @media (min-width: 720px) and (max-width: 1279px) {
   .egfm-main__solution .main-solution__content .detail__schematic {
     display: block;
+    width: 100%;
   }
 }
 @media (min-width: 1280px) and (max-width: 1439px) {
