@@ -3777,6 +3777,9 @@ body {
   object-fit: cover;
   width: auto;
 }
+.egfm-wrapper .security__hardware .parallax__wrapper .parallax__image img {
+  width: 100%;
+}
 .egfm-wrapper .security__hardware .egfm-section__text-wrapper {
   position: relative;
 }
