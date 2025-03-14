@@ -73,19 +73,19 @@ table {
 }
 
 .animate-item {
-  transform: scale(1) translateX(25%);
+  transform: scale(1);
   opacity: 0;
   filter: blur(10px);
-  transition: transform 0.1s ease-in, opacity 0.3s ease-in, filter 0.3s ease;
+  transition: opacity 0.3s ease-in, filter 0.3s ease;
   transform-origin: center;
 }
 .animate-item.is-visible {
-  transform: scale(1) translateX(0) translateY(0);
+  transform: scale(1);
   opacity: 1;
   filter: blur(0);
 }
 .animate-item--fadein {
-  transform: scale(1) translateY(10%) translateX(0);
+  transform: scale(1);
   opacity: 1;
   filter: blur(0);
 }
@@ -615,7 +615,6 @@ body {
 }
 
 .egfm-wrapper .egfm-contact {
-  padding: calc(3.75 * ((100vw - 360px) * 16 / 360 + 16px)) calc(0.75 * ((100vw - 360px) * 16 / 360 + 16px));
   width: 100%;
 }
 .egfm-wrapper .egfm-contact__container {
@@ -2082,6 +2081,7 @@ body {
 @media (max-width: 719px) {
   .egfm-main__carousel .main-carousel-content .splide__item {
     width: calc(100vw - 1.5 * ((100vw - 360px) * 16 / 360 + 16px));
+    height: auto;
   }
 }
 @media (min-width: 720px) and (max-width: 1279px) {
@@ -2295,10 +2295,12 @@ body {
 }
 .egfm-main__carousel .main-carousel-content .splide__track {
   padding-top: calc(4 * ((100vw - 360px) * 16 / 360 + 16px));
+  margin-top: 0;
 }
 @media (max-width: 719px) {
   .egfm-main__carousel .main-carousel-content .splide__track {
     padding-top: calc(4 * ((100vw - 360px) * 16 / 360 + 16px));
+    margin-top: -1em;
   }
 }
 @media (min-width: 720px) and (max-width: 1279px) {
@@ -2849,14 +2851,14 @@ body {
   .egfm-wrapper .egfm-ai .ai-onestop__feature .feature__item {
     flex-direction: column;
     align-items: flex-start;
-    max-height: auto;
+    max-height: none;
     height: auto;
     padding: 1em 0;
   }
 }
 @media (min-width: 720px) and (max-width: 1279px) {
   .egfm-wrapper .egfm-ai .ai-onestop__feature .feature__item {
-    max-height: auto;
+    max-height: none;
     height: auto;
     padding: 1em 0;
   }
@@ -3060,7 +3062,7 @@ body {
   .egfm-wrapper .egfm-ai .ai__lightweight .lightweight__content {
     width: 66%;
     margin: 0 0 0 auto;
-    padding: 5em 4.7em;
+    padding: 5em 3.4em 5em 5.2em;
   }
 }
 @media (min-width: 1440px) {
@@ -3068,7 +3070,7 @@ body {
     width: 63%;
     max-width: 960px;
     margin: 0 0 0 auto;
-    padding: 5em 4.7em;
+    padding: 5em 3.4em 5em 5.2em;
   }
 }
 .egfm-wrapper .egfm-ai .ai__lightweight .lightweight__image {
@@ -3463,12 +3465,12 @@ body {
 }
 @media (min-width: 1280px) and (max-width: 1439px) {
   .egfm .mdm .accordion__item {
-    padding: 4.5em 9em;
+    padding: 4.5em 7.5em;
   }
 }
 @media (min-width: 1440px) {
   .egfm .mdm .accordion__item {
-    padding: 4.5em 9em;
+    padding: 4.5em 7.5em;
   }
 }
 .egfm .mdm .accordion__item.is-active .accordion__content {
@@ -3487,6 +3489,7 @@ body {
   .egfm .mdm .accordion__header {
     flex-direction: column;
     gap: 1em;
+    align-items: flex-start;
   }
 }
 @media (min-width: 720px) and (max-width: 1279px) {
@@ -3558,7 +3561,7 @@ body {
     display: block;
     position: absolute;
     top: 1.2em;
-    right: 3.333em;
+    left: 67%;
   }
 }
 @media (min-width: 1440px) {
@@ -3566,7 +3569,7 @@ body {
     display: block;
     position: absolute;
     top: 1.2em;
-    right: 3.333em;
+    left: 67%;
   }
 }
 .egfm .mdm .accordion__subtitle {
@@ -3809,29 +3812,6 @@ body {
     margin-left: calc((100vw - 1280px) / 2);
   }
 }
-.egfm-wrapper .contt {
-  overflow: visible; /* 確保內容可以滾動 */
-  position: relative; /* 避免影響子元素的滾動 */
-  min-height: 200vh; /* 確保有足夠的滾動空間 */
-}
-.egfm-wrapper .parallax-item {
-  transition: none;
-  font-size: 2rem;
-  margin: 50px;
-  padding: 30px;
-  width: 80%;
-  text-align: center;
-  background: rgba(255, 255, 255, 0.1);
-  backdrop-filter: blur(10px);
-  border-radius: 10px;
-  min-height: 50vh;
-}
-.egfm-wrapper .parallax-item.parallax-1 {
-  background: rgba(255, 0, 255, 0.75);
-}
-.egfm-wrapper .parallax-item.parallax-2 {
-  background: rgba(255, 0, 0, 0.75);
-}
 .egfm-wrapper .security__hardware {
   width: 100%;
   background-color: white;
@@ -3851,7 +3831,7 @@ body {
   display: block;
   height: 500px;
   object-fit: cover;
-  width: auto;
+  width: 100%;
 }
 .egfm-wrapper .security__hardware .parallax__wrapper .parallax__image img {
   width: 100%;
@@ -3966,7 +3946,7 @@ body {
   justify-content: space-between;
   cursor: pointer;
   overflow: hidden;
-  transition: padding-top 0.3s ease, max-height 0.4s ease 0.2s, opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
+  transition: padding-top 0.3s ease, opacity 0.5s ease-in-out, visibility 0.3s ease-in-out;
   padding: calc(1.40625 * ((100vw - 360px) * 16 / 360 + 16px)) calc(1.34375 * ((100vw - 360px) * 16 / 360 + 16px)) 0;
 }
 @media (max-width: 719px) {
@@ -4032,7 +4012,7 @@ body {
 .egfm-wrapper .security-cards .egfm-card .egfm-card-content {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 1.5s, opacity 1s;
+  transition: opacity 1s, transform 1s;
   padding: calc(0.75 * ((100vw - 360px) * 16 / 360 + 16px));
   margin-bottom: 2em;
   opacity: 0;
@@ -4084,7 +4064,7 @@ body {
 }
 .egfm-wrapper .security-cards .egfm-card.expanded .egfm-card-content {
   opacity: 1;
-  transform: translateX(0);
+  transform: translateY(0);
   max-height: 400px;
 }
 .egfm-wrapper .security-cards .egfm-card.expanded .egfm-card-content p {
