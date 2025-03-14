@@ -916,6 +916,9 @@ body {
   right: 0;
 }
 
+.egfm img {
+  width: 100%;
+}
 .egfm-article {
   position: relative;
   width: 100%;
@@ -994,14 +997,13 @@ body {
 .egfm-page {
   visibility: hidden;
   opacity: 0;
-  transition: transform 0.5s ease-out, opacity 0.5s ease-out;
+  transition: opacity 0.5s ease-out;
   display: none;
 }
 .egfm-page--active {
   visibility: visible;
   display: block;
   opacity: 1;
-  transform: translateX(0);
 }
 .egfm-page:not(.egfm-page--active) {
   transform: translateX(-100%);
@@ -3756,6 +3758,29 @@ body {
     margin-left: calc((100vw - 1280px) / 2);
   }
 }
+.egfm-wrapper .contt {
+  overflow: visible; /* 確保內容可以滾動 */
+  position: relative; /* 避免影響子元素的滾動 */
+  min-height: 200vh; /* 確保有足夠的滾動空間 */
+}
+.egfm-wrapper .parallax-item {
+  transition: none;
+  font-size: 2rem;
+  margin: 50px;
+  padding: 30px;
+  width: 80%;
+  text-align: center;
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border-radius: 10px;
+  min-height: 50vh;
+}
+.egfm-wrapper .parallax-item.parallax-1 {
+  background: rgba(255, 0, 255, 0.75);
+}
+.egfm-wrapper .parallax-item.parallax-2 {
+  background: rgba(255, 0, 0, 0.75);
+}
 .egfm-wrapper .security__hardware {
   width: 100%;
   background-color: white;
@@ -3785,6 +3810,9 @@ body {
 }
 .egfm-wrapper .security__hardware .egfm-section__text-wrapper .security__text {
   color: white;
+}
+.egfm-wrapper .security-cards {
+  background-color: #FFF;
 }
 .egfm-wrapper .security-cards .egfm-cards__container {
   display: flex;
