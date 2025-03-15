@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icon-arrow" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 60 60">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #008ed2;
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <g id="icon-arrow-gp">
+    <path class="st0" d="M22.5,30h0l-2,2-2-2h0l12.9-13h4.1l-12.9,13h0ZM31.3,43l-8.8-8.9,2-2,10.9,11h-4.1Z"/>
+  </g>
+</svg>
