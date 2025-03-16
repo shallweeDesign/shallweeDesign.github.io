@@ -10,7 +10,8 @@
       <section class="egfm-banner">
         <div class="egfm-container--hero">
           <div
-            class="egfm-banner__content egfm-banner__content--main egfm-banner__content--active">
+            class="egfm-banner__content egfm-banner__content--main egfm-banner__content--active"
+          >
             <div class="bg-container animate-item">
               <picture class="egfm-banner__bg" data-depth="1">
                 <source
@@ -351,7 +352,6 @@
         </ul>
       </nav>
       <main class="egfm-content">
-
         <section class="egfm-page egfm-main egfm-page--active" id="main">
           <!-- main carousel -->
           <section class="egfm-main__carousel main-carousel egfm-section">
@@ -367,7 +367,7 @@
                   <li class="splide__slide">
                     <div class="splide__item">
                       <div
-                        class="splide-item__background fadeIn fadeInUp"
+                        class="splide-item__background fadeIn fadeInScaleIn"
                         data-delay="0"
                       >
                         <picture>
@@ -428,11 +428,11 @@
                       </div>
                     </div>
                   </li>
-                  <!-- 企業需求客製滿足 -->
+                  <!-- 企業需求 客製滿足 -->
                   <li class="splide__slide">
                     <div class="splide__item">
                       <div
-                        class="splide-item__background fadeIn fadeInUp"
+                        class="splide-item__background fadeIn fadeInScaleIn"
                         data-delay="0"
                       >
                         <picture>
@@ -457,7 +457,7 @@
                             class="splide-item__title fadeIn fadeInUp"
                             data-delay="100"
                           >
-                            企業需求客製滿足
+                            企業需求 客製滿足
                           </h3>
                         </div>
                         <div class="splide-item__container">
@@ -493,7 +493,7 @@
                   <li class="splide__slide">
                     <div class="splide__item">
                       <div
-                        class="splide-item__background fadeIn fadeInUp"
+                        class="splide-item__background fadeIn fadeInScaleIn"
                         data-delay="0"
                       >
                         <picture>
@@ -562,11 +562,11 @@
                       </div>
                     </div>
                   </li>
-                  <!-- 商用安全 永不妥協 -->
+                  <!-- 完善售後 強大客服 -->
                   <li class="splide__slide">
                     <div class="splide__item">
                       <div
-                        class="splide-item__background fadeIn fadeInUp"
+                        class="splide-item__background fadeIn fadeInScaleIn"
                         data-delay="0"
                       >
                         <picture>
@@ -591,7 +591,7 @@
                             class="splide-item__title fadeIn fadeInUp"
                             data-delay="100"
                           >
-                            完善售後強大客服
+                            完善售後 強大客服
                           </h3>
                         </div>
                         <div class="splide-item__container">
@@ -649,11 +649,33 @@
               </div>
             </div>
           </section>
-          <!-- <section class="egfm-main__video main-video  egfm-section">
-            <div class="main-video__container">
-              <iframe width="100%" height="100%" src="https://www.youtube.com/embed/ZAcS-mAsDgQ" title="ASUS Zenfone 12 Ultra:  How to use AI Article Summary and AI Document Summary | 2025" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+          <article class="egfm-main__video main-video egfm-article">
+            <div class="egfm-container">
+              <div class="main-video__container">
+                <div id="player"></div>
+                <div class="main-video__overlay">
+                  <picture class="overlay__bg">
+                    <source srcset="assets/images/main_video_preview.png" />
+                    <img
+                      src="assets/images/main_video_preview.png"
+                      alt="play button"
+                    />
+                  </picture>
+                  <button class="overlay__button" id="custom-play-btn">
+                    <picture class="play-icon">
+                      <source srcset="assets/images/345925b851f3fb4f1a19.svg" />
+                      <img
+                        src="assets/images/icon_play.png"
+                        alt="play button"
+                      />
+                    </picture>
+                  </button>
+                </div>
+             
+              </div>
+              
             </div>
-          </section> -->
+          </article>
 
           <article class="egfm-article egfm-main__solution main-solution">
             <div class="egfm-container">
@@ -746,7 +768,9 @@
                     data-delay="0"
                   >
                     <source
-                      srcset="assets/images/main_solution_bg_integrate_tablet.png"
+                      srcset="
+                        assets/images/main_solution_bg_integrate_tablet.png
+                      "
                       media="(max-width: 1279px)"
                     />
                     <source
@@ -803,7 +827,9 @@
                     data-delay="0"
                   >
                     <source
-                      srcset="assets/images/main_solution_bg_mobile_tablet.png"
+                      srcset="
+                        assets/images/main_solution_bg_mobile_tablet.png
+                      "
                       media="(max-width: 1279px)"
                     />
                     <source
@@ -975,8 +1001,8 @@
                           alt="app 整合"
                         />
                         <div class="text-wrapper">
-                          <h3>APP整合內容</h3>
-                          <p>對接上層APP 與AI Framework或直接整合客戶應用</p>
+                          <h3 class="item__title">APP整合內容</h3>
+                          <p class="item__p">對接上層APP 與AI Framework或直接整合客戶應用</p>
                         </div>
                       </div>
                     </li>
@@ -993,7 +1019,7 @@
                         />
                         <div class="text-wrapper">
                           <h3 class="item__title">輕量化模型</h3>
-                          <p>透過AI Hub輕量化/優化模型，置入手機架構</p>
+                          <p class="item__p">透過AI Hub輕量化/優化模型，置入手機架構</p>
                         </div>
                       </div>
                       <a class="item__button" href="#ai-lightweight"
@@ -1011,8 +1037,8 @@
                           alt="app 整合"
                         />
                         <div class="text-wrapper">
-                          <h3>效能調教</h3>
-                          <p>調度與分配算力核心優化性能/功耗/記憶體佔用</p>
+                          <h3 class="item__title">效能調教</h3>
+                          <p class="item__p">調度與分配算力核心優化性能/功耗/記憶體佔用</p>
                         </div>
                       </div>
 
@@ -1062,7 +1088,10 @@
                       <div class="splide__track">
                         <ul class="feature__list splide__list">
                           <li class="feature__item splide__slide">
-                            <div class="slide__item  fadeIn fadeInUp" data-delay="100">
+                            <div
+                              class="slide__item fadeIn fadeInUp"
+                              data-delay="100"
+                            >
                               <ul class="item__list">
                                 <li>Convert to runtime</li>
                                 <li>Qualcomm</li>
@@ -1072,18 +1101,26 @@
                             </div>
                           </li>
                           <li class="feature__item splide__slide">
-                            <div class="slide__item  fadeIn fadeInUp" data-delay="100">
+                            <div
+                              class="slide__item fadeIn fadeInUp"
+                              data-delay="100"
+                            >
                               <ul class="item__list">
                                 <li>Quantize model</li>
                                 <li>Qualcomm AIMET</li>
                                 <li>INT8 quantization</li>
                               </ul>
-                              <p>把模型從FP32壓縮為INT8 <br/>
-                                Network reduction</p>
+                              <p>
+                                把模型從FP32壓縮為INT8 <br />
+                                Network reduction
+                              </p>
                             </div>
                           </li>
-                          <li class="feature__item splide__slide ">
-                            <div class="slide__item fadeIn fadeInUp" data-delay="100">
+                          <li class="feature__item splide__slide">
+                            <div
+                              class="slide__item fadeIn fadeInUp"
+                              data-delay="100"
+                            >
                               <ul class="item__list">
                                 <li>Optimize model</li>
                                 <li>Qualcomm</li>
@@ -1141,7 +1178,10 @@
                 </h2>
               </div>
               <ul class="egfm-cards">
-                <li class="egfm-cards__item card fadeIn fadeInUp" data-delay="200">
+                <li
+                  class="egfm-cards__item card fadeIn fadeInUp"
+                  data-delay="200"
+                >
                   <picture class="card__icon">
                     <img
                       src="assets/images/813e57649919c759eff7.svg"
@@ -1153,7 +1193,10 @@
                     管理來自人性。提供強大管理能力，同時IT人員享有直觀界面與簡潔操作。
                   </p>
                 </li>
-                <li class="egfm-cards__item card fadeIn fadeInUp" data-delay="400">
+                <li
+                  class="egfm-cards__item card fadeIn fadeInUp"
+                  data-delay="400"
+                >
                   <picture class="card__icon">
                     <img
                       src="assets/images/86aadbbe91575018fd72.svg"
@@ -1165,7 +1208,10 @@
                     作為手機原廠，我們提供深度硬體管控、高安全性政策和彈性管理功能，並將豐富的裝置資訊呈現於儀錶板
                   </p>
                 </li>
-                <li class="egfm-cards__item card fadeIn fadeInUp" data-delay="500">
+                <li
+                  class="egfm-cards__item card fadeIn fadeInUp"
+                  data-delay="500"
+                >
                   <picture class="card__icon">
                     <img
                       src="assets/images/3e93703d270a6fc05fd6.svg"
@@ -1207,13 +1253,19 @@
           </article>
           <article class="egfm-article mdm__article mdm__article--intro intro">
             <div class="egfm-container">
-              <div class="egfm-title title fadeIn fadeInScaleIn" data-delay="50">
+              <div
+                class="egfm-title title fadeIn fadeInScaleIn"
+                data-delay="50"
+              >
                 <h2 class="title__content">
                   ASUS MDM <br class="hidden-laptop" />可以為你做什麽
                 </h2>
               </div>
               <ul class="intro__accordion accordion">
-                <li class="accordion__item fadeIn fadeInScaleIn" data-delay="10">
+                <li
+                  class="accordion__item fadeIn fadeInScaleIn"
+                  data-delay="10"
+                >
                   <div class="accordion__background">
                     <picture class="background-img">
                       <img
@@ -1314,7 +1366,10 @@
                     </ul>
                   </div>
                 </li>
-                <li class="accordion__item fadeIn fadeInScaleIn" data-delay="100">
+                <li
+                  class="accordion__item fadeIn fadeInScaleIn"
+                  data-delay="100"
+                >
                   <div class="accordion__background">
                     <picture class="background-img">
                       <img
@@ -1412,7 +1467,10 @@
                     </ul>
                   </div>
                 </li>
-                <li class="accordion__item fadeIn fadeInScaleIn" data-delay="150">
+                <li
+                  class="accordion__item fadeIn fadeInScaleIn"
+                  data-delay="150"
+                >
                   <div class="accordion__background">
                     <picture class="background-img">
                       <img
@@ -1505,7 +1563,10 @@
                     </ul>
                   </div>
                 </li>
-                <li class="accordion__item fadeIn fadeInScaleIn" data-delay="100">
+                <li
+                  class="accordion__item fadeIn fadeInScaleIn"
+                  data-delay="100"
+                >
                   <div class="accordion__background">
                     <picture class="background-img">
                       <img
@@ -1599,7 +1660,6 @@
                 </h2>
               </div>
               <div class="egfm-content splide mdm-plan" id="mdm-plan">
-
                 <div class="splide__track">
                   <ul class="plan__list splide__list">
                     <li class="plan__item splide__slide">
@@ -1776,7 +1836,6 @@
           </article>
         </section>
         <section class="egfm-page egfm-page--security" id="security">
-
           <section class="egfm-security egfm-section security__hardware">
             <div class="parallax__wrapper">
               <picture class="parallax__image">
@@ -2204,7 +2263,7 @@
 
             <div class="egfm-contact__content">
               <h2 class="egfm-contact__title">
-                借助專家建議，<br class="show-laptop" />制定完善策略
+                借助專家建議，<br class="show-tablet" />制定完善策略
               </h2>
               <div class="egfm-contact__button">
                 <button
