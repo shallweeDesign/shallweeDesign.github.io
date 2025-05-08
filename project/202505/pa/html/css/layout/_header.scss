@@ -1,0 +1,219 @@
+@use '../base/variables' as *;
+
+
+.g_header {
+    position: fixed;
+    left: 0;
+    top: 0;
+    z-index: 99;
+    width: 100%;
+    // background: linear-gradient(0deg, rgba(#fff, .12), rgba(#fff, 0) 10%), linear-gradient(-30deg, $kv1, #9fbad7);
+    // background: linear-gradient(180deg, $blue, rgba($blue,0));
+    // background-color: $kv1;
+    background-color: transparent;
+    transition: all 0.2s ease-out;
+  
+    &.is_active {
+      background-color: $white;
+  
+      .nav_item {
+        padding: 0.5rem 0.9375rem;
+        font-size: 0.875rem;
+      }
+  
+      .nav_link {
+        color: #000;
+      }
+  
+      .header_sns {
+        flex: 0 1 40px;
+        padding: 0 12px;
+  
+        .hover {
+          img {
+            width: 35px;
+          }
+        }
+      }
+    }
+  
+    .header_wrap {
+      position: relative;
+      padding: 0.5rem;
+    }
+  
+    .header_logo {
+      position: absolute;
+      top: 50%;
+      left: 2rem;
+      width: 100px;
+      transform: translateY(-50%);
+    }
+  
+    .menu_btn {
+      position: relative;
+      width: 48px;
+      height: 48px;
+      text-align: center;
+      border-radius: 6px;
+      border: 1px solid #fff;
+  
+      .icon {
+        display: inline-block;
+        position: absolute;
+        left: 20%;
+        top: 50%;
+        width: 60%;
+        height: 4px;
+        margin-top: -2px;
+        background-color: #fff;
+  
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          background-color: #fff;
+        }
+  
+        &::before {
+          top: -200%;
+        }
+  
+        &::after {
+          bottom: -200%;
+        }
+      }
+  
+      &.sty_white {
+        border-color: #fff;
+  
+        .icon {
+          &,
+          &::before,
+          &::after {
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  
+    .nav_area {
+      position: relative;
+      z-index: 3;
+    }
+  
+    .nav_cnt {
+      display: flex;
+      justify-content: flex-end;
+    }
+  
+    .nav_item {
+      position: relative;
+      padding: 0.5rem 0.9375rem;
+      font-size: 1rem;
+      line-height: 1;
+      font-weight: normal;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  
+      &.spBtn {
+        display: inline-flex;
+        background-color: $kv2;
+        border: 1px solid $kv2;
+        border-radius: 10px;
+  
+        transition: all 0.2s ease-out;
+  
+        &:hover {
+          background-color: #fff;
+  
+          .nav_link {
+            color: $kv2;
+          }
+        }
+      }
+    }
+  
+    .nav_link {
+      color: #fff;
+      text-decoration: none;
+      transition: all 0.2s ease-out;
+  
+      &:hover {
+        color: $kv2;
+      }
+    }
+  
+    .header_sns {
+      flex: 0 1 40px;
+      padding: 0 12px;
+      text-align: right;
+  
+      .hover {
+        display: inline-block;
+        position: relative;
+  
+        img {
+          width: 40px;
+          line-height: 0;
+          transition: all 0.2s ease-out;
+        }
+  
+        &:hover {
+          .hover_menu {
+            display: block;
+          }
+        }
+      }
+  
+      .hover_holder {
+        cursor: pointer;
+      }
+  
+      .hover_menu {
+        position: absolute;
+        padding: 0.5em 0;
+        display: none;
+  
+        .hover_item {
+          cursor: pointer;
+          display: block;
+          margin-top: 0.5em;
+        }
+      }
+    }
+  }
+
+  @media screen and (max-width: 1440px) {
+    .g_header {
+        &.is_active {
+          .nav_item {
+            padding: 4px 0.625rem;
+            font-size: 0.875rem;
+          }
+    
+          .header_sns {
+            flex: 0 1 40px;
+            padding: 0 12px;
+    
+            .hover {
+              img {
+                width: 30px;
+              }
+            }
+          }
+        }
+      }
+    
+  }
+
+  @media screen and (max-width: 1440px) {
+    .g_header {
+        display: none;
+      }
+    
+  }
