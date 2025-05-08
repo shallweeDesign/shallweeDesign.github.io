@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <meta name="format-detection" content="telephone=no">
+  <title>AI守門人|打造製造業資安防禦新世界</title>
+  <meta property="og:title" content="AI守門人|打造製造業資安防禦新世界" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.digitimes.com.tw/seminar/PaloAlto_20250724" />
+  <meta property="og:image" content="./img/webtitle.jpg" />
+  <meta property="og:description" content="透過AI智能技術、平台化集中管理與自動化應變流程，我們將引領您打造更快、更穩、更主動的製造業防線。" />
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://www.digitimes.com.tw/seminar/include/gtm.js"></script>
+</head>
+
+<body>
+  <div class="g_fixed fix_aside">
+    <a class="fx_item is_primary" onclick="toFormURL();">
+      <div class="in_wrap txt"><span>立即報名</span></div>
+    </a>
+    <div class="fx_item js_scroll_top">
+      <div class="in_wrap ic">
+        <div class="ic_top"></div>
+      </div>
+    </div>
+  </div>
+  <div class="g_header">
+    <div class="header_wrap">
+      <div class="menu_trigger d-lg-none">
+        <button class="menu_btn navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler"
+          aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation"><span
+            class="icon navbar-toggler-icon"></span></button>
+      </div>
+      <div class="nav_area d-lg-block collapse navbar-collapse justify-content-center align-items-center"
+        id="navbarToggler">
+        <div class="nav_cnt">
+          <div class="nav_item"><a class="nav_link js_page_scroll" href="#sc1">活動介紹</a></div>
+          <div class="nav_item"><a class="nav_link js_page_scroll" href="#sc2">活動議程</a></div>
+          <div class="nav_item spBtn"><a class="nav_link" onclick="toFormURL();">立即報名</a>
+          </div>
+          <div class="header_sns d-none d-md-block">
+            <div class="hover">
+              <span class="hover_holder" title="分享">
+                <img src="img/svg_share.svg" alt="SHARE">
+              </span>
+              <div class="hover_menu">
+                <a class="hover_item sns_fb share-to" data-sns="facebook" data-toggle="tooltip" data-placement="left"
+                  title="分享到FaceBook">
+                  <img src="img/svg_fb.svg" alt="FACEBOOK">
+                </a>
+                <a class="hover_item sns_line share-to" data-sns="line" data-toggle="tooltip" data-placement="left"
+                  title="分享到Line">
+                  <img src="img/svg_line.svg" alt="LINE">
+                </a>
+                <a class="hover_item sns_twitter share-to" data-sns="twitter" data-toggle="tooltip"
+                  data-placement="left" title="分享到X">
+                  <img src="img/svg_x.svg" alt="X">
+                </a>
+                <a class="hover_item sns_linkedin share-to" data-sns="linkedin" data-toggle="tooltip"
+                  data-placement="left" title="分享到linkedin">
+                  <img src="img/svg_linkedin.svg" alt="linkedin">
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="g_kv kv" id="top">
+    <div class="kv_bg" data-aos="zoom-out" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#top">
+      <picture class="bg_img">
+        <source srcset="img/kv_bg.jpg 1x, img/kv_bg@2x.jpg 2x" type="image/jpg">
+        <img src="img/kv_bg.jpg" alt="kv background">
+      </picture>
+      <!-- <picture class="bg_bars">
+        <source srcset="img/kv_bars.png 1x, img/kv_bars@2x.png 2x" type="image/jpg">
+        <img src="img/kv_bars.png" alt="kv background">
+      </picture> -->
+      <div class="bg_bars_mask"></div>
+      <picture class="bg_robot">
+        <source srcset="img/kv_robot.png 1x, img/kv_robot@2x.png 2x" type="image/jpg">
+        <img src="img/kv_robot.png" alt="kv background">
+      </picture>
+      <picture class="bg_human">
+        <source srcset="img/kv_human.png 1x, img/kv_human@2x.png 2x" type="image/jpg">
+        <img src="img/kv_human.png" alt="kv background">
+      </picture>
+    </div>
+    <div class="kv__logo" >
+      <picture class="logo">
+        <source srcset="img/kv_logo.svg" type="image/svg+xml">
+        <source srcset="img/kv_logo.png 1x, img/kv_logo@2x.png 2x" type="image/jpg">
+        <img src="img/kv_logo.png" alt="kv logo">
+      </picture>
+    </div>
+    <div class="kv_info info">
+      <div class="info__title">
+        <h1 class="title"><span class="title--sp">AI</span>守門人</h1>
+        <h2 class="subtitle">打造製造業資安防禦新視界</h2>
+      </div>
+      <div class="info__detail">
+      <picture class="info_time">
+        <source srcset="img/kv_time.svg" type="image/svg+xml">
+        <source srcset="img/kv_time.png 1x, img/kv_time@2x.png 2x" type="image/jpg">
+        <img src="img/kv_time.png" alt="kv background">
+      </picture>
+      <picture class="info_location">
+        <source srcset="img/kv_location.svg" type="image/svg+xml">
+        <source srcset="img/kv_location.png 1x, img/kv_location@2x.png 2x" type="image/jpg">
+        <img src="img/kv_location.png" alt="kv background">
+      </picture>
+      <div class="kv__cta">
+        <a class="kv__cta__content" onclick="toFormURL();">立即報<span class="no-sp">名</span></a>
+      </div>
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="g_main">
+    <section class="g_section">
+      <div class="g_container">
+        <p class="g_intro">面對AI與零時差攻擊時代，隨著勒索軟體、供應鏈滲透與 AI 驅動的攻擊手法日益精密，駭客早已不再投直球，而是充滿變化球與假動作，讓製造業資安防線面臨前所未有的挑戰。</p>
+        <p class="g_intro">現在，是時候建構一套更快、更穩、更具韌性的製造業資安新防線。<br/>透過AI智能技術、平台化集中管理與自動化應變流程，我們將引領您打造更快、更穩、更主動的製造業防線。</p>
+      </div>
+    </section>
+    <section class="g_section g_section--sp" id="sc0">
+      <div class="g_container">
+        <h2 class="g_title">活動焦點議題</h2>
+        <ul class="g_cards">
+          <li class="g_cards__item" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc0">  
+            <h3>勒索軟體與零時差漏洞攻擊</h3>
+            <p>如何使用 AI 驅動的偵測與即時回應機制，防止駭客滲透與資料外洩</p>
+          </li> 
+          <li class="g_cards__item" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200" data-aos-anchor="#sc0">  
+            <h3>AI 的資安威脅</h3>
+            <p>駭客如何利用AI 進行攻擊，並如何透過自動化與AI來回應來對抗</p>
+          </li>
+          <li class="g_cards__item" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor="#sc0">  
+            <h3>AI 模型與生成式 AI 資安隱憂</h3>
+            <p>可視性，管理與防資料外洩及開發AI模型的階段防護</p>
+          </li>
+          <li class="g_cards__item" data-aos="fade-right" data-aos-duration="1000" data-aos-delay="350" data-aos-anchor="#sc0">  
+            <h3>近三分之一的網路攻擊源自於雲端，如何保護雲端環境及迅速阻止攻擊 </h3>
+            <p>帶您了解雲端偵測與回應</p>
+          </li>
+          <li class="g_cards__item" data-aos="fade-left" data-aos-duration="800" data-aos-delay="400" data-aos-anchor="#sc0">  
+            <h3>OT/IT 資安整合挑戰</h3>
+            <p>如何實現跨部門整合，建立完整的 OT/IT 防護體系</p>
+          </li>
+        </ul>
+      </div>
+
+    </section>
+
+    <section class="sc_agenda g_section" id="sc2">
+      <div class="container g_container" data-aos="fade" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc2">
+        <h2 class="g_title">活動議程</h2>
+        <div class="agenda_cnt">
+          <div class="table">
+
+            <div class="tr HL" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc2">
+              <div class="time">12:00–13:00</div>
+              <div class="infor">
+                <div class="topic">
+                  報到與交流 午餐
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc2">
+              <div class="time">13:00–13:10</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    開場致詞
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks<br/>台灣區總經理 尤惠生
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="200" data-aos-anchor="#sc2">
+              <div class="time">13:10–13:30</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    AI應用的資安威脅觀察
+                  </div>
+                  <div class="tit">
+                    DIGITIMES 研究中心<br/>分析師 陳冠榮
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor="#sc2">
+              <div class="time">13:30–13:50</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    當AI正在重寫駭客劇本：您的資安防線準備好了嗎？<br/>Overall 架構
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks <br/>技術總監 范俊平
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="400" data-aos-anchor="#sc2">
+              <div class="time">13:50- 14:20</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    安全使用AI工具
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks <br/>資安顧問 陳大為
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tr" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor="#sc2">
+              <div class="time">14:20–14:40</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    暢行瀏覽無所畏懼－企業瀏覽器安全連接新世界
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks <br/>資安顧問 何宇軒
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tr HL" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc2">
+              <div class="time">14:40–15:00</div>
+              <div class="infor">
+                <div class="topic">
+                  茶歇與展示互動區體驗
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="200" data-aos-anchor="#sc2">
+              <div class="time">15:00–15:40</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    從「事後處理」到「事前防禦」：資安策略不只是IT部門的事<br/>資安已不是選項，而是你的商業模型韌性指數
+                  </div>
+                  <div class="tit">
+                    
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor="#sc2">
+              <div class="time">15:40–16:10</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    CDR 保護AI Model
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks<br/>資安顧問 楊松倫
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="tr" data-aos="fade-right" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor="#sc2">
+              <div class="time">16:10–16:40</div>
+              <div class="infor">
+                <div class="wording">
+                  <div class="topic">
+                    不再各自為政，讓IT與OT資安整合的關鍵策略<br/>如何實現跨部門整合，建立完整的 OT/IT 防護體系
+                  </div>
+                  <div class="tit">
+                    Palo Alto Networks<br/>資深資安顧問 藍博彥
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="tr HL" data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc2">
+              <div class="time">16:40–17:00</div>
+              <div class="infor">
+                <div class="topic">
+                  結語與現場抽獎
+                </div>
+              </div>
+            </div>
+
+          </div>
+          
+        </div>
+      </div>
+    </section>
+    <section class="g_section g_section--sp">
+      <div class="g_container">
+        <div class="cta_box" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor="#sc2">
+          <h3 class="cta_box__text">2025/07/10(四) 12:00-16:30｜新竹國賓飯店</h3>
+          <div class="bttn">
+            <a onclick="toFormURL();">立即報名參加</a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="g_section" id="sc_speaker">
+      <div class="g_container">
+        <h2 class="g_title">講師資訊</h2>
+        <ul class="g_speaker">
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker0.jpg 1x, img/speaker0@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker0.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">尤惠生</h3>
+              <p class="info__title">Palo Alto Networks<br/>台灣區總經理</p>
+            </div>
+          </li>
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="200" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker1.jpg 1x, img/speaker1@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker1.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">范俊平</h3>
+              <p class="info__title">Palo Alto Networks<br/>技術總監</p>
+            </div>
+          </li>
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="300" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker2.jpg 1x, img/speaker2@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker2.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">藍博彥</h3>
+              <p class="info__title">Palo Alto Networks<br/>資深資安顧問</p>
+            </div>
+          </li>
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="400" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker3.jpg 1x, img/speaker3@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker3.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">陳大為</h3>
+              <p class="info__title">Palo Alto Networks<br/>資安顧問</p>
+            </div>
+          </li>
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="500" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker4.jpg 1x, img/speaker4@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker4.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">楊松倫</h3>
+              <p class="info__title">Palo Alto Networks<br/>資安顧問</p>
+            </div>
+          </li>
+          <li class="g_speaker__item" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="600" data-aos-anchor="#sc_speaker">
+            <picture class="speaker__img">
+              <source srcset="img/speaker5.jpg 1x, img/speaker5@2x.jpg 2x" type="image/jpg">
+              <img src="img/speaker5.jpg" alt="speaker">
+            </picture>
+            <div class="info">
+              <h3 class="info__name">何宇軒</h3>
+              <p class="info__title">Palo Alto Networks<br/>資安顧問</p>
+            </div>
+          </li>
+
+        </ul>
+      </div>
+    </section>
+    <section class="g_section g_section--sp" id="sc_gift">
+      <div class="g_container">
+        <h2 class="g_title" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="000" data-aos-anchor="#sc_gift">活動好禮</h2>
+        <ul class="g_gift gift">
+          <li class="gift__item"  data-aos="fade-left" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc_gift">
+            <picture class="gift__img">
+              <img src="img/gift1.jpg" alt="speaker">
+            </picture>
+            <div class="gift__info">
+              <h4 class="info__title">抽獎禮</h4>
+              <h3 class="info__name">Cleer CRESCENT<br/>新月高級智慧無線藍牙音響</h3>
+              <p class="info__text">(市價22900，1名)</p>
+            </div>
+          </li>
+          <li class="gift__item"  data-aos="fade-right" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#sc_gift">
+            <picture class="gift__img">
+              <img src="img/gift2.jpg" alt="speaker">
+            </picture>
+            <div class="gift__info">
+              <h4 class="info__title">問卷禮</h4>
+              <h3 class="info__name">手電筒</h3>
+              <p class="info__text">活動當天全程參加、完成問卷填寫者，可於活動結束前於報到處領取。</p>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="g_section sc_active" id="act">
+      <div class="g_container container" data-aos="fade-up" data-aos-duration="1200" data-aos-delay="100" data-aos-anchor="#act">
+        <h2 class="g_title">
+            注意事項
+        </h2>
+        <ol>
+          <li>本活動採預先線上報名並完成登錄手續，主辦單位保留報名資格之最後審核權利。</li>
+          <li>本活動將由主辦單位進行出席資格審核，與主題及屬性符合者為優先考量。</li>
+          <li>凡參加本次活動所舉辦之贈品或抽獎，因有登錄資料不實或冒用他人身份，主辦單位有權取消其得獎資格。</li>
+          <li>為符合行政院禁止所屬公務人員贈受財物及接受招待辦法和 Palo Alto Networks 相關政策規定，本活動贈品無法提供給具有公務人員身份之參與者。</li>
+          <li>若因不可預測之突發因素，主辦單位得保留研討會課程及講師之變更權利。</li>
+        </ol>
+        <div class="policy_cnt">
+          <a href="http://www.digitimes.com.tw/svc/DIGITIMES_privacy_v2.asp" target="_blank"
+            class="btn btn-outline-secondary" style="width:250px; display:block; margin:auto;">DIGITIMES
+            隱私權聲明</a>
+        </div>
+      </div>
+    </section>
+
+
+  </div>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  </script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+    integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous">
+    </script>
+  <script type="text/javascript" src="https://www.digitimes.com.tw/seminar/snsShare/jquery.snsShare.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script type="text/javascript">
+    AOS.init();
+    $(function () {
+      $('.share-to').snsShare('駕馭AI運算 × 強化資安韌性',
+        'https://www.digitimes.com.tw/seminar/PaloAlto_20250724'
+      );
+
+      let scrollVal = $(this).scrollTop();
+
+      let checkScroll = () => {
+        if (scrollVal > $(window).height() - 200) {
+          $('.fix_aside').addClass('is_active');
+          $('.g_header').addClass('is_active');
+        } else {
+          $('.fix_aside').removeClass('is_active');
+          $('.g_header').removeClass('is_active');
+        }
+      };
+
+      checkScroll();
+
+      $(window).scroll(() => {
+        scrollVal = $(this).scrollTop()
+        checkScroll();
+      })
+
+      var $scrollTopNow = 0,
+        $body = $("html, body");
+
+      function bScroll(tarTop, aniDuration) {
+        $body.animate({
+          scrollTop: tarTop
+        }, aniDuration);
+      }
+
+      $('.js_page_scroll').on('click', function (e) {
+
+        $scrollTopNow = $('html, body').scrollTop();
+
+        var $tar = $(this),
+          $tarTop = $($tar.attr('href')).offset().top - 60,
+          $aniDuration = Math.abs($tarTop - $scrollTopNow) * .6 > 1200 ? 1200 : (Math.abs($tarTop -
+            $scrollTopNow) * .6);
+
+        bScroll($tarTop, $aniDuration);
+
+        e.preventDefault();
+
+        if ($(window).width() <= 768) {
+          $('.nav_area').collapse('hide');
+          console.log($tarTop, $aniDuration)
+        }
+      });
+
+      $('.js_scroll_top').on('click', () => {
+        bScroll(0, 800);
+      });
+    })
+
+    var parameters = "";
+    try {
+      var urlquery = location.href.split("?");
+      parameters = urlquery[1];
+      if (typeof (parameters) !== "undefined") {
+        parameters = parameters;
+      } else {
+        parameters = "";
+      }
+    } catch (e) { }
+
+    function toFormURL() {
+      let url = 'https://www.digitimes.com.tw/OnLine/DataInput.asp?ProdGroup=053AE0724-0';
+      let newUrl = url + '&' + parameters;
+      console.log('newUrl:', newUrl);
+      if (parameters != '') {
+        window.open(newUrl);
+      } else {
+        window.open(url);
+      }
+    }
+  </script>
+</body>
+
+</html>
