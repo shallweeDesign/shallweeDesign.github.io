@@ -358,13 +358,13 @@ a {
 
   .cta_box {
     position: relative;
-    padding: 20px 0;
+    padding: 20px 0 0;
     text-align: center;
     &__text {
       text-align: center;
       font-size: 1.25rem;
       color: $kv2;
-      margin-bottom: 2rem;
+      margin-bottom: 0.5rem;
     }
     .bttn {
       a {
