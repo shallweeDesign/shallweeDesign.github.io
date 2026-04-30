@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>[Your Name] — Frontend Developer</title>
+  <meta name="description" content="Freelance frontend developer crafting beautiful, high-performance web experiences." />
+  <link rel="stylesheet" href="style.css" />
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+</head>
+<body>
+
+  <!-- NAV -->
+  <header class="nav">
+    <div class="nav__inner">
+      <a href="#" class="nav__logo">[Your Name]</a>
+      <nav>
+        <ul class="nav__links">
+          <li><a href="#about"   class="nav__link">About</a></li>
+          <li><a href="#services" class="nav__link">Services</a></li>
+          <li><a href="#portfolio" class="nav__link">Work</a></li>
+          <li><a href="#blog"    class="nav__link">Blog</a></li>
+        </ul>
+      </nav>
+      <a href="#contact" class="nav__cta">Get in touch</a>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- HERO -->
+    <section class="hero">
+      <canvas class="hero__canvas" id="hero-canvas"></canvas>
+      <div class="hero__inner">
+        <div class="hero__content">
+          <p class="hero__eyebrow">Freelance Frontend Developer</p>
+          <h1 class="hero__title">Hello, I'm<br />[Your Name].</h1>
+          <p class="hero__subtitle">I craft beautiful, fast, and accessible websites that people love to use.</p>
+          <div class="hero__actions">
+            <a href="#portfolio" class="btn btn--primary">View my work</a>
+            <a href="#contact"   class="btn btn--ghost">Get in touch</a>
+          </div>
+        </div>
+        <!-- Three.js renders the 3D object here via canvas -->
+      </div>
+    </section>
+
+    <!-- ABOUT -->
+    <section class="section section--alt" id="about">
+      <div class="container">
+        <div class="about__grid">
+          <div class="about__image">🧑‍💻</div>
+          <div class="about__content">
+            <p class="section__eyebrow">About me</p>
+            <h2 class="section__title">Crafted with care,<br />built for impact.</h2>
+            <p class="about__text">
+              [Your bio goes here. Tell your story — where you're from, what you love about building for the web, and what drives you to do great work. Keep it human, keep it real.]
+            </p>
+            <p class="about__text">
+              [Add a second paragraph about your technical approach, your design sensibility, or what makes you different from other developers.]
+            </p>
+            <div class="about__stats">
+              <div class="about__stat">
+                <div class="about__stat-number">[X]+</div>
+                <div class="about__stat-label">Projects delivered</div>
+              </div>
+              <div class="about__stat">
+                <div class="about__stat-number">[X]+</div>
+                <div class="about__stat-label">Happy clients</div>
+              </div>
+              <div class="about__stat">
+                <div class="about__stat-number">[X]yr</div>
+                <div class="about__stat-label">Experience</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES -->
+    <section class="section" id="services">
+      <div class="container">
+        <div class="services__header">
+          <p class="section__eyebrow">What I do</p>
+          <h2 class="section__title">Services</h2>
+          <p class="section__subtitle">From pixel-perfect designs to production-ready code — I handle the full frontend stack.</p>
+        </div>
+        <div class="services__grid">
+
+          <div class="services__card">
+            <div class="services__card-icon">🎨</div>
+            <h3 class="services__card-title">Web Design</h3>
+            <p class="services__card-desc">Beautiful, user-focused interfaces designed with precision. Every pixel serves a purpose, every interaction feels natural.</p>
+            <div class="services__card-tags">
+              <span class="services__card-tag">Figma</span>
+              <span class="services__card-tag">UI/UX</span>
+              <span class="services__card-tag">Prototyping</span>
+            </div>
+          </div>
+
+          <div class="services__card">
+            <div class="services__card-icon">⚡</div>
+            <h3 class="services__card-title">Frontend Development</h3>
+            <p class="services__card-desc">Clean, semantic, and performant code. Responsive by default, accessible by design, maintainable for the long run.</p>
+            <div class="services__card-tags">
+              <span class="services__card-tag">HTML/CSS</span>
+              <span class="services__card-tag">JavaScript</span>
+              <span class="services__card-tag">React</span>
+            </div>
+          </div>
+
+          <div class="services__card">
+            <div class="services__card-icon">🚀</div>
+            <h3 class="services__card-title">Performance & Polish</h3>
+            <p class="services__card-desc">Speed matters. I optimize for Core Web Vitals, smooth animations, and experiences that feel native across every device.</p>
+            <div class="services__card-tags">
+              <span class="services__card-tag">Animation</span>
+              <span class="services__card-tag">Performance</span>
+              <span class="services__card-tag">Accessibility</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- PORTFOLIO — scatter → focus reveal -->
+    <section class="gallery-reveal" id="portfolio">
+      <div class="gallery-reveal__sticky">
+
+        <!-- Section header (fades out on scroll) -->
+        <div class="gallery-reveal__header" id="galleryHeader">
+          <p class="section__eyebrow">Selected work</p>
+          <h2 class="section__title">Portfolio</h2>
+          <p class="gallery-reveal__hint">↓ Scroll</p>
+        </div>
+
+        <!-- Centre image — expands to fill screen -->
+        <div class="gallery-reveal__img gallery-reveal__img--c" id="galImgC">
+          <div class="gallery-reveal__img-inner" style="background:#e8eaf6;">🌐</div>
+          <div class="gallery-reveal__img-info">
+            <span class="gallery-reveal__img-tag">Web Design · React</span>
+            <h3>[Featured Project]</h3>
+            <a href="#" class="btn btn--ghost">View project</a>
+          </div>
+        </div>
+
+        <!-- Scattered images -->
+        <div class="gallery-reveal__img gallery-reveal__img--tl" id="galImgTL">
+          <div class="gallery-reveal__img-inner" style="background:#e8f5e9;">✨</div>
+        </div>
+        <div class="gallery-reveal__img gallery-reveal__img--tr" id="galImgTR">
+          <div class="gallery-reveal__img-inner" style="background:#fce4ec;">🛍️</div>
+        </div>
+        <div class="gallery-reveal__img gallery-reveal__img--bl" id="galImgBL">
+          <div class="gallery-reveal__img-inner" style="background:#fff3e0;">🎨</div>
+        </div>
+        <div class="gallery-reveal__img gallery-reveal__img--br" id="galImgBR">
+          <div class="gallery-reveal__img-inner" style="background:#f3e5f5;">⚡</div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- BLOG -->
+    <section class="section" id="blog">
+      <div class="container">
+        <div class="blog__header">
+          <div>
+            <p class="section__eyebrow">Thoughts & writing</p>
+            <h2 class="section__title">Blog</h2>
+          </div>
+          <a href="#" class="btn btn--ghost">All posts</a>
+        </div>
+        <div class="blog__grid">
+
+          <article class="blog__card">
+            <div class="blog__card-image">📝</div>
+            <div class="blog__card-body">
+              <p class="blog__card-meta">[Month DD, YYYY] · [X] min read</p>
+              <h3 class="blog__card-title">[Post title goes here — make it catchy]</h3>
+              <p class="blog__card-excerpt">[A short excerpt that gives readers a reason to click through. One or two sentences is ideal.]</p>
+              <a href="#" class="blog__card-link">Read more</a>
+            </div>
+          </article>
+
+          <article class="blog__card">
+            <div class="blog__card-image">💡</div>
+            <div class="blog__card-body">
+              <p class="blog__card-meta">[Month DD, YYYY] · [X] min read</p>
+              <h3 class="blog__card-title">[Post title goes here — make it catchy]</h3>
+              <p class="blog__card-excerpt">[A short excerpt that gives readers a reason to click through. One or two sentences is ideal.]</p>
+              <a href="#" class="blog__card-link">Read more</a>
+            </div>
+          </article>
+
+          <article class="blog__card">
+            <div class="blog__card-image">🔧</div>
+            <div class="blog__card-body">
+              <p class="blog__card-meta">[Month DD, YYYY] · [X] min read</p>
+              <h3 class="blog__card-title">[Post title goes here — make it catchy]</h3>
+              <p class="blog__card-excerpt">[A short excerpt that gives readers a reason to click through. One or two sentences is ideal.]</p>
+              <a href="#" class="blog__card-link">Read more</a>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section class="section section--alt" id="contact">
+      <div class="container">
+        <div class="contact__inner">
+          <div class="contact__info">
+            <p class="section__eyebrow">Let's work together</p>
+            <h2 class="section__title">Get in<br />touch.</h2>
+            <p class="section__subtitle">Have a project in mind? I'd love to hear about it. Send me a message and let's make something great.</p>
+            <a href="mailto:[your@email.com]" class="contact__email">[your@email.com]</a>
+            <div class="contact__socials">
+              <a href="#" class="contact__social">GitHub</a>
+              <a href="#" class="contact__social">LinkedIn</a>
+              <a href="#" class="contact__social">Twitter / X</a>
+            </div>
+          </div>
+          <form class="contact__form" onsubmit="return false;">
+            <div class="contact__field">
+              <label class="contact__label" for="name">Name</label>
+              <input class="contact__input" type="text" id="name" placeholder="Your name" />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="email">Email</label>
+              <input class="contact__input" type="email" id="email" placeholder="your@email.com" />
+            </div>
+            <div class="contact__field">
+              <label class="contact__label" for="message">Message</label>
+              <textarea class="contact__textarea" id="message" placeholder="Tell me about your project..."></textarea>
+            </div>
+            <button type="submit" class="contact__submit">Send message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__inner">
+        <span class="footer__brand">[Your Name]</span>
+        <span class="footer__copy">© 2026 · Built with care</span>
+        <nav class="footer__links">
+          <a href="#about"     class="footer__link">About</a>
+          <a href="#portfolio" class="footer__link">Work</a>
+          <a href="#contact"   class="footer__link">Contact</a>
+        </nav>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/scene.js"></script>
+  <script src="js/portfolio-scroll.js"></script>
+  <script src="js/gallery-reveal.js"></script>
+</body>
+</html>

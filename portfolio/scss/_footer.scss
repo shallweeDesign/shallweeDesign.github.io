@@ -1,0 +1,37 @@
+.footer {
+  background: $off-white;
+  border-top: 1px solid $light-gray;
+  padding: $sp-lg 0;
+
+  &__inner {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: $sp-sm;
+  }
+
+  &__brand {
+    font-size: 15px;
+    font-weight: 600;
+    color: $black;
+  }
+
+  &__copy {
+    font-size: 13px;
+    color: $gray;
+  }
+
+  &__links {
+    display: flex;
+    gap: $sp-md;
+  }
+
+  &__link {
+    font-size: 13px;
+    color: $gray;
+    transition: color 0.2s;
+
+    &:hover { color: $black; }
+  }
+}

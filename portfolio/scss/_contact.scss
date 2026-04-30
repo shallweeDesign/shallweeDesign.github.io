@@ -1,0 +1,104 @@
+.contact {
+  &__inner {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $sp-xl;
+    align-items: start;
+
+    @media (max-width: 768px) {
+      grid-template-columns: 1fr;
+      gap: $sp-lg;
+    }
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-md;
+  }
+
+  &__email {
+    font-size: 24px;
+    font-weight: 600;
+    color: $blue;
+
+    &:hover { text-decoration: underline; }
+  }
+
+  &__socials {
+    display: flex;
+    gap: $sp-sm;
+    flex-wrap: wrap;
+  }
+
+  &__social {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    color: $gray;
+    padding: 8px 16px;
+    border-radius: 980px;
+    border: 1px solid $light-gray;
+    transition: all 0.2s;
+
+    &:hover {
+      color: $black;
+      border-color: $black;
+    }
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: $sp-sm;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  &__label {
+    font-size: 13px;
+    font-weight: 500;
+    color: $gray;
+  }
+
+  &__input,
+  &__textarea {
+    font-family: $font;
+    font-size: 15px;
+    color: $black;
+    background: $off-white;
+    border: 1px solid $light-gray;
+    border-radius: $radius-sm;
+    padding: 12px 16px;
+    transition: border-color 0.2s;
+    outline: none;
+    width: 100%;
+
+    &:focus { border-color: $blue; }
+    &::placeholder { color: $light-gray; }
+  }
+
+  &__textarea {
+    resize: vertical;
+    min-height: 140px;
+  }
+
+  &__submit {
+    align-self: flex-start;
+    background: $blue;
+    color: $white;
+    padding: 14px 28px;
+    border-radius: 980px;
+    font-size: 15px;
+    font-weight: 500;
+    transition: background 0.2s;
+
+    &:hover { background: $blue-hover; }
+  }
+}

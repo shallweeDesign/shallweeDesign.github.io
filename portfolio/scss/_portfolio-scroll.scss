@@ -1,0 +1,125 @@
+.portfolio-scroll {
+  // Height = viewport height × multiplier — stores scroll distance for horizontal travel
+  height: 400vh;
+  position: relative;
+
+  &__sticky {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background: $off-white;
+  }
+
+  &__header {
+    padding: $sp-md $sp-md $sp-sm;
+    display: flex;
+    align-items: baseline;
+    gap: $sp-md;
+    flex-wrap: wrap;
+
+    .section__eyebrow { margin-bottom: 0; }
+    .section__title   { margin-bottom: 0; }
+  }
+
+  &__hint {
+    font-size: 13px;
+    color: $light-gray;
+    margin-left: auto;
+  }
+
+  &__track {
+    overflow: hidden;
+    padding: 0 $sp-md;
+  }
+
+  &__rail {
+    display: flex;
+    gap: $sp-md;
+    will-change: transform;
+  }
+
+  &__card {
+    flex: 0 0 420px;
+    border-radius: $radius-lg;
+    background: $white;
+    overflow: hidden;
+    border: 1px solid $light-gray;
+    transition: box-shadow 0.3s;
+    cursor: pointer;
+
+    &:hover {
+      box-shadow: 0 16px 48px rgba(0,0,0,0.1);
+    }
+
+    @media (max-width: 600px) { flex: 0 0 85vw; }
+
+    &-image {
+      width: 100%;
+      aspect-ratio: 16/10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 64px;
+    }
+
+    &-body {
+      padding: $sp-md;
+    }
+
+    &-tags {
+      display: flex;
+      gap: 6px;
+      margin-bottom: $sp-xs;
+
+      span {
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        color: $blue;
+      }
+    }
+
+    &-title {
+      font-size: 22px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      margin-bottom: 6px;
+    }
+
+    &-desc {
+      font-size: 14px;
+      color: $gray;
+      line-height: 1.55;
+      margin-bottom: $sp-sm;
+    }
+
+    &-link {
+      font-size: 14px;
+      font-weight: 500;
+      color: $blue;
+
+      &:hover { text-decoration: underline; }
+    }
+  }
+
+  &__progress {
+    height: 2px;
+    background: $light-gray;
+    margin: $sp-md $sp-md 0;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  &__progress-bar {
+    height: 100%;
+    width: 0%;
+    background: $blue;
+    border-radius: 2px;
+    transition: width 0.05s linear;
+  }
+}
