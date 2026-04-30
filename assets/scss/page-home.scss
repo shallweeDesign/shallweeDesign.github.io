@@ -1,4 +1,16 @@
-@import 'variables';
-@import 'reset';
-@import 'shared';
-@import 'home';
+// Abstract
+@import 'abstract/variables';
+@import 'abstract/mixins';
+
+// Base
+@import 'base/reset';
+@import 'base/base';
+
+// Components
+@import 'components/nav';
+@import 'components/button';
+@import 'components/footer';
+@import 'components/cursor';
+
+// Page
+@import 'pages/home';

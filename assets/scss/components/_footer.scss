@@ -1,0 +1,21 @@
+.footer {
+  border-top: 1px solid $border;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  &__brand { font-family: $font-mono; font-size: 13px; color: $green; }
+  &__copy  { font-family: $font-mono; font-size: 12px; color: $text-dim; }
+  &__links { display: flex; gap: 24px; }
+
+  &__link, &__back {
+    font-family: $font-mono;
+    font-size: 12px;
+    color: $text-dim;
+    transition: color 0.2s;
+    &:hover { color: $green; }
+  }
+}

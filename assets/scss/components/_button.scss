@@ -1,0 +1,27 @@
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-family: $font-mono;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+
+  &--primary {
+    background: $green;
+    color: #000;
+    border-color: $green;
+    &:hover { filter: brightness(1.15); }
+  }
+
+  &--ghost {
+    background: transparent;
+    color: $green-mid;
+    border-color: $border;
+    &:hover { border-color: $green-mid; color: $green; }
+  }
+}
