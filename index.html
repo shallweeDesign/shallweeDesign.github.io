@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>shallweedesign — Frontend Developer</title>
+  <meta name="description" content="Frontend developer crafting web experiences with code and creativity." />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:         #070809;
+      --surface:    #0f1117;
+      --surface-2:  #161b22;
+      --border:     #1e2a38;
+      --text:       #adbac7;
+      --text-dim:   #545d68;
+      --green:      #39ff14;
+      --green-mid:  #22c55e;
+      --green-dim:  #0d3320;
+      --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      --font-mono:  'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--font-sans);
+      background: var(--bg);
+      color: var(--text);
+      font-size: 16px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    ul { list-style: none; }
+
+    /* ── Nav ───────────────────────────────────────── */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      height: 56px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 40px;
+      background: rgba(7,8,9,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav__logo {
+      font-family: var(--font-mono);
+      font-size: 15px;
+      color: var(--green);
+      letter-spacing: -0.01em;
+    }
+
+    .nav__logo span { color: var(--text-dim); }
+
+    .nav__links {
+      display: flex;
+      gap: 32px;
+    }
+
+    .nav__link {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .nav__link:hover { color: var(--green); }
+    .nav__link--active { color: var(--text); }
+
+    /* ── Hero ──────────────────────────────────────── */
+    .hero {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 80px 40px 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Subtle grid background */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(var(--border) 1px, transparent 1px),
+        linear-gradient(90deg, var(--border) 1px, transparent 1px);
+      background-size: 48px 48px;
+      opacity: 0.35;
+      mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+    }
+
+    .hero__inner {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .hero__prompt {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--text-dim);
+      margin-bottom: 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero__prompt::before {
+      content: '>';
+      color: var(--green);
+    }
+
+    .hero__title {
+      font-size: clamp(42px, 7vw, 88px);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      line-height: 1.0;
+      color: #fff;
+      margin-bottom: 20px;
+    }
+
+    .hero__title em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .hero__subtitle {
+      font-family: var(--font-mono);
+      font-size: clamp(14px, 2vw, 17px);
+      color: var(--text-dim);
+      line-height: 1.7;
+      margin-bottom: 40px;
+      max-width: 560px;
+    }
+
+    .hero__subtitle .hl { color: var(--green-mid); }
+
+    .hero__actions {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 10px 22px;
+      border-radius: 6px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      font-weight: 500;
+      transition: all 0.2s;
+      cursor: pointer;
+      border: 1px solid transparent;
+    }
+
+    .btn--primary {
+      background: var(--green);
+      color: #000;
+      border-color: var(--green);
+    }
+
+    .btn--primary:hover { filter: brightness(1.15); }
+
+    .btn--ghost {
+      background: transparent;
+      color: var(--green-mid);
+      border-color: var(--border);
+    }
+
+    .btn--ghost:hover {
+      border-color: var(--green-mid);
+      color: var(--green);
+    }
+
+    /* Blinking cursor */
+    .cursor {
+      display: inline-block;
+      width: 3px;
+      height: 1em;
+      background: var(--green);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      0%, 100% { opacity: 1; }
+      50%       { opacity: 0; }
+    }
+
+    /* ── Section base ──────────────────────────────── */
+    .section {
+      padding: 100px 40px;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section__label {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--green-mid);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .section__label::before { content: '//'; color: var(--text-dim); }
+
+    .section__title {
+      font-size: clamp(28px, 4vw, 44px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      color: #fff;
+      margin-bottom: 48px;
+    }
+
+    /* ── About ─────────────────────────────────────── */
+    .about {
+      border-top: 1px solid var(--border);
+    }
+
+    .about__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+
+      @media (max-width: 768px) { grid-template-columns: 1fr; gap: 40px; }
+    }
+
+    .about__text {
+      font-size: 17px;
+      color: var(--text);
+      line-height: 1.75;
+      margin-bottom: 20px;
+    }
+
+    .about__stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 32px;
+    }
+
+    .about__tag {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      padding: 4px 12px;
+      border-radius: 4px;
+      background: var(--green-dim);
+      color: var(--green-mid);
+      border: 1px solid rgba(57,255,20,0.15);
+    }
+
+    .about__terminal {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      overflow: hidden;
+    }
+
+    .about__terminal-bar {
+      background: var(--surface-2);
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about__terminal-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      &:nth-child(1) { background: #ff5f57; }
+      &:nth-child(2) { background: #febc2e; }
+      &:nth-child(3) { background: #28c840; }
+    }
+
+    .about__terminal-title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .about__terminal-body {
+      padding: 24px;
+      font-family: var(--font-mono);
+      font-size: 13px;
+      line-height: 2;
+    }
+
+    .tl-prompt { color: var(--green); }
+    .tl-cmd    { color: #fff; }
+    .tl-key    { color: #79c0ff; }
+    .tl-val    { color: var(--green-mid); }
+    .tl-str    { color: #a5d6ff; }
+    .tl-dim    { color: var(--text-dim); }
+
+    /* ── Projects ──────────────────────────────────── */
+    .projects { border-top: 1px solid var(--border); }
+
+    .projects__grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+
+      @media (max-width: 700px) { grid-template-columns: 1fr; }
+    }
+
+    .project-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      padding: 28px;
+      transition: border-color 0.2s, box-shadow 0.2s;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top left, rgba(57,255,20,0.04), transparent 60%);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(57,255,20,0.3);
+      box-shadow: 0 0 24px rgba(57,255,20,0.06);
+    }
+
+    .project-card:hover::before { opacity: 1; }
+
+    .project-card--featured {
+      grid-column: span 2;
+      flex-direction: row;
+      align-items: center;
+      gap: 40px;
+
+      @media (max-width: 700px) { grid-column: span 1; flex-direction: column; gap: 20px; }
+    }
+
+    .project-card__year {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    .project-card__title {
+      font-size: 20px;
+      font-weight: 600;
+      color: #fff;
+      letter-spacing: -0.01em;
+    }
+
+    .project-card__desc {
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.6;
+      flex: 1;
+    }
+
+    .project-card__tags {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 4px;
+    }
+
+    .project-card__tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: var(--green-dim);
+      color: var(--green-mid);
+    }
+
+    .project-card__arrow {
+      font-size: 20px;
+      color: var(--text-dim);
+      transition: color 0.2s, transform 0.2s;
+      margin-left: auto;
+    }
+
+    .project-card:hover .project-card__arrow {
+      color: var(--green);
+      transform: translate(3px, -3px);
+    }
+
+    /* ── Lab ───────────────────────────────────────── */
+    .lab { border-top: 1px solid var(--border); }
+
+    .lab__card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+      cursor: pointer;
+
+      @media (max-width: 700px) { flex-direction: column; padding: 32px; }
+    }
+
+    .lab__card::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(57,255,20,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .lab__card:hover { border-color: rgba(57,255,20,0.3); }
+
+    .lab__icon {
+      font-size: 48px;
+      filter: grayscale(0.3);
+    }
+
+    .lab__content { flex: 1; }
+
+    .lab__title {
+      font-size: 32px;
+      font-weight: 700;
+      color: #fff;
+      letter-spacing: -0.02em;
+      margin-bottom: 10px;
+    }
+
+    .lab__desc {
+      font-size: 16px;
+      color: var(--text-dim);
+      line-height: 1.65;
+      max-width: 480px;
+    }
+
+    .lab__cta {
+      font-family: var(--font-mono);
+      font-size: 14px;
+      color: var(--green);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: gap 0.2s;
+    }
+
+    .lab__card:hover .lab__cta { gap: 12px; }
+
+    /* ── Footer ────────────────────────────────────── */
+    .footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .footer__brand {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--green);
+    }
+
+    .footer__copy {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+    }
+
+    .footer__links {
+      display: flex;
+      gap: 24px;
+    }
+
+    .footer__link {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .footer__link:hover { color: var(--green); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="nav">
+    <a href="/" class="nav__logo"><span>~/</span>shallweedesign</a>
+    <ul class="nav__links">
+      <li><a href="#about"    class="nav__link nav__link--active">about</a></li>
+      <li><a href="#projects" class="nav__link">projects</a></li>
+      <li><a href="/lab/"     class="nav__link">lab</a></li>
+      <li><a href="/portfolio/" class="nav__link">portfolio ↗</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero__inner">
+      <p class="hero__prompt">whoami</p>
+      <h1 class="hero__title">Frontend<br /><em>Developer.</em></h1>
+      <p class="hero__subtitle">
+        crafting web experiences with <span class="hl">code</span> and <span class="hl">creativity</span>.<br />
+        based in taiwan — available for freelance work.
+      </p>
+      <div class="hero__actions">
+        <a href="/portfolio/" class="btn btn--primary">View Portfolio</a>
+        <a href="https://github.com/shallweeDesign" class="btn btn--ghost" target="_blank" rel="noopener">GitHub ↗</a>
+        <a href="#projects" class="btn btn--ghost">Projects</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="section about" id="about">
+    <p class="section__label">about</p>
+    <div class="about__grid">
+      <div>
+        <h2 class="section__title">Building the<br />web, one pixel<br />at a time.</h2>
+        <p class="about__text">[Your bio — tell your story as a frontend developer. What drives you, what you care about, what kind of work you love doing.]</p>
+        <p class="about__text">[A second line about your background, approach, or values.]</p>
+        <div class="about__stack">
+          <span class="about__tag">HTML</span>
+          <span class="about__tag">CSS / SCSS</span>
+          <span class="about__tag">JavaScript</span>
+          <span class="about__tag">Three.js</span>
+          <span class="about__tag">React</span>
+          <span class="about__tag">Figma</span>
+          <span class="about__tag">Git</span>
+        </div>
+      </div>
+      <div class="about__terminal">
+        <div class="about__terminal-bar">
+          <div class="about__terminal-dot"></div>
+          <div class="about__terminal-dot"></div>
+          <div class="about__terminal-dot"></div>
+          <span class="about__terminal-title">profile.json</span>
+        </div>
+        <div class="about__terminal-body">
+          <div><span class="tl-dim">{</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"name"</span><span class="tl-dim">:</span> <span class="tl-str">"[Your Name]"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"role"</span><span class="tl-dim">:</span> <span class="tl-str">"Frontend Developer"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"location"</span><span class="tl-dim">:</span> <span class="tl-str">"Taiwan 🇹🇼"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"available"</span><span class="tl-dim">:</span> <span class="tl-val">true</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"focus"</span><span class="tl-dim">: [</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"Web Design"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"Creative Dev"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"3D &amp; Animation"</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-dim">],</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"contact"</span><span class="tl-dim">:</span> <span class="tl-str">"[your@email.com]"</span></div>
+          <div><span class="tl-dim">}</span> <span class="cursor"></span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section class="section projects" id="projects">
+    <p class="section__label">projects</p>
+    <h2 class="section__title">Selected Work</h2>
+    <div class="projects__grid">
+
+      <a href="/portfolio/" class="project-card project-card--featured">
+        <div style="flex:1">
+          <p class="project-card__year">2026 · Featured</p>
+          <h3 class="project-card__title">Portfolio Website</h3>
+          <p class="project-card__desc">Personal portfolio built with Apple-inspired design, Three.js wave animations, and scroll-driven interactions.</p>
+          <div class="project-card__tags">
+            <span class="project-card__tag">Three.js</span>
+            <span class="project-card__tag">SCSS</span>
+            <span class="project-card__tag">Vanilla JS</span>
+          </div>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </a>
+
+      <a href="/project/202505/" class="project-card">
+        <p class="project-card__year">2025 · 05</p>
+        <h3 class="project-card__title">[Project Name]</h3>
+        <p class="project-card__desc">[Short description of what this project is.]</p>
+        <div class="project-card__tags">
+          <span class="project-card__tag">HTML</span>
+          <span class="project-card__tag">CSS</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </a>
+
+      <a href="/project/202503/" class="project-card">
+        <p class="project-card__year">2025 · 03</p>
+        <h3 class="project-card__title">[Project Name]</h3>
+        <p class="project-card__desc">[Short description of what this project is.]</p>
+        <div class="project-card__tags">
+          <span class="project-card__tag">JavaScript</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </a>
+
+      <a href="/project/202502/" class="project-card">
+        <p class="project-card__year">2025 · 02</p>
+        <h3 class="project-card__title">[Project Name]</h3>
+        <p class="project-card__desc">[Short description of what this project is.]</p>
+        <div class="project-card__tags">
+          <span class="project-card__tag">CSS</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </a>
+
+      <a href="/project/202309/" class="project-card">
+        <p class="project-card__year">2023 · 09</p>
+        <h3 class="project-card__title">[Project Name]</h3>
+        <p class="project-card__desc">[Short description of what this project is.]</p>
+        <div class="project-card__tags">
+          <span class="project-card__tag">HTML</span>
+        </div>
+        <span class="project-card__arrow">↗</span>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- LAB -->
+  <section class="section lab" id="lab">
+    <p class="section__label">lab</p>
+    <h2 class="section__title">Experiments</h2>
+    <a href="/lab/" class="lab__card">
+      <span class="lab__icon">⚗️</span>
+      <div class="lab__content">
+        <h3 class="lab__title">The Lab</h3>
+        <p class="lab__desc">A collection of experiments, prototypes, and creative coding explorations. Where ideas get tested before they become real projects.</p>
+      </div>
+      <span class="lab__cta">Enter the Lab →</span>
+    </a>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <span class="footer__brand">~/shallweedesign</span>
+    <span class="footer__copy">© 2026 — Built with curiosity</span>
+    <nav class="footer__links">
+      <a href="https://github.com/shallweeDesign" class="footer__link" target="_blank" rel="noopener">GitHub</a>
+      <a href="/portfolio/" class="footer__link">Portfolio</a>
+      <a href="/lab/" class="footer__link">Lab</a>
+    </nav>
+  </footer>
+
+</body>
+</html>
