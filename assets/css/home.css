@@ -1,0 +1,501 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #070809;
+  color: #adbac7;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(7, 8, 9, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1e2a38;
+}
+.nav__logo {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 15px;
+  color: #39ff14;
+  letter-spacing: -0.01em;
+}
+.nav__logo span {
+  color: #545d68;
+}
+.nav__links {
+  display: flex;
+  gap: 32px;
+}
+.nav__link {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: #545d68;
+  transition: color 0.2s;
+}
+.nav__link:hover {
+  color: #39ff14;
+}
+.nav__link--active {
+  color: #adbac7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn--primary {
+  background: #39ff14;
+  color: #000;
+  border-color: #39ff14;
+}
+.btn--primary:hover {
+  filter: brightness(1.15);
+}
+.btn--ghost {
+  background: transparent;
+  color: #22c55e;
+  border-color: #1e2a38;
+}
+.btn--ghost:hover {
+  border-color: #22c55e;
+  color: #39ff14;
+}
+
+.section {
+  padding: 100px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section__label {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #22c55e;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section__label::before {
+  content: "//";
+  color: #545d68;
+}
+.section__title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 48px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: #39ff14;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.footer {
+  border-top: 1px solid #1e2a38;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer__brand {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: #39ff14;
+}
+.footer__copy {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #545d68;
+}
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+.footer__link, .footer__back {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #545d68;
+  transition: color 0.2s;
+}
+.footer__link:hover, .footer__back:hover {
+  color: #39ff14;
+}
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(#1e2a38 1px, transparent 1px), linear-gradient(90deg, #1e2a38 1px, transparent 1px);
+  background-size: 5px 5px;
+  opacity: 0.18;
+  mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+}
+.hero__inner {
+  position: relative;
+  max-width: 860px;
+}
+.hero__prompt {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  color: #545d68;
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.hero__prompt::before {
+  content: ">";
+  color: #39ff14;
+}
+.hero__title {
+  font-size: clamp(42px, 7vw, 88px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  line-height: 1;
+  color: #fff;
+  margin-bottom: 20px;
+}
+.hero__title em {
+  font-style: normal;
+  color: #39ff14;
+}
+.hero__subtitle {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: clamp(14px, 2vw, 17px);
+  color: #545d68;
+  line-height: 1.7;
+  margin-bottom: 40px;
+  max-width: 560px;
+}
+.hero__subtitle .hl {
+  color: #22c55e;
+}
+.hero__actions {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.about {
+  border-top: 1px solid #1e2a38;
+}
+.about__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+}
+@media (max-width: 768px) {
+  .about__grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+.about__text {
+  font-size: 17px;
+  color: #adbac7;
+  line-height: 1.75;
+  margin-bottom: 20px;
+}
+.about__stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 32px;
+}
+.about__tag {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  padding: 4px 12px;
+  border-radius: 4px;
+  background: #0d3320;
+  color: #22c55e;
+  border: 1px solid rgba(57, 255, 20, 0.15);
+}
+.about__terminal {
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.about__terminal-bar {
+  background: #161b22;
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  border-bottom: 1px solid #1e2a38;
+}
+.about__terminal-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+}
+.about__terminal-dot:nth-child(1) {
+  background: #ff5f57;
+}
+.about__terminal-dot:nth-child(2) {
+  background: #febc2e;
+}
+.about__terminal-dot:nth-child(3) {
+  background: #28c840;
+}
+.about__terminal-title {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #545d68;
+  margin: 0 auto;
+}
+.about__terminal-body {
+  padding: 24px;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  line-height: 2;
+}
+
+.tl-key {
+  color: #79c0ff;
+}
+
+.tl-val {
+  color: #22c55e;
+}
+
+.tl-str {
+  color: #a5d6ff;
+}
+
+.tl-dim {
+  color: #545d68;
+}
+
+.projects {
+  border-top: 1px solid #1e2a38;
+}
+.projects__grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+@media (max-width: 700px) {
+  .projects__grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.project-card {
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 10px;
+  padding: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top left, rgba(57, 255, 20, 0.04), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.project-card:hover {
+  border-color: rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.06);
+}
+.project-card:hover::before {
+  opacity: 1;
+}
+.project-card:hover .project-card__arrow {
+  color: #39ff14;
+  transform: translate(3px, -3px);
+}
+.project-card--featured {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 40px;
+}
+@media (max-width: 700px) {
+  .project-card--featured {
+    grid-column: span 1;
+    flex-direction: column;
+    gap: 20px;
+  }
+}
+.project-card__year {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  color: #545d68;
+  letter-spacing: 0.08em;
+}
+.project-card__title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.project-card__desc {
+  font-size: 14px;
+  color: #545d68;
+  line-height: 1.6;
+  flex: 1;
+}
+.project-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+.project-card__tag {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #0d3320;
+  color: #22c55e;
+}
+.project-card__arrow {
+  font-size: 20px;
+  color: #545d68;
+  transition: color 0.2s, transform 0.2s;
+  margin-left: auto;
+}
+
+.lab {
+  border-top: 1px solid #1e2a38;
+}
+.lab__card {
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 12px;
+  padding: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  position: relative;
+  overflow: hidden;
+  transition: border-color 0.3s;
+  cursor: pointer;
+}
+@media (max-width: 700px) {
+  .lab__card {
+    flex-direction: column;
+    padding: 32px;
+  }
+}
+.lab__card::after {
+  content: "";
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(57, 255, 20, 0.08), transparent 70%);
+  pointer-events: none;
+}
+.lab__card:hover {
+  border-color: rgba(57, 255, 20, 0.3);
+}
+.lab__card:hover .lab__cta {
+  gap: 12px;
+}
+.lab__icon {
+  font-size: 48px;
+}
+.lab__content {
+  flex: 1;
+}
+.lab__title {
+  font-size: 32px;
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: -0.02em;
+  margin-bottom: 10px;
+}
+.lab__desc {
+  font-size: 16px;
+  color: #545d68;
+  line-height: 1.65;
+  max-width: 480px;
+}
+.lab__cta {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  color: #39ff14;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  transition: gap 0.2s;
+}

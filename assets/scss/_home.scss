@@ -1,0 +1,254 @@
+// ── Hero ──────────────────────────────────────────
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 80px 40px 60px;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image:
+      linear-gradient($border 1px, transparent 1px),
+      linear-gradient(90deg, $border 1px, transparent 1px);
+    background-size: 5px 5px;
+    opacity: 0.18;
+    mask-image: radial-gradient(ellipse at center, black 30%, transparent 80%);
+  }
+
+  &__inner { position: relative; max-width: 860px; }
+
+  &__prompt {
+    font-family: $font-mono;
+    font-size: 14px;
+    color: $text-dim;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &::before { content: '>'; color: $green; }
+  }
+
+  &__title {
+    font-size: clamp(42px, 7vw, 88px);
+    font-weight: 700;
+    letter-spacing: -0.03em;
+    line-height: 1.0;
+    color: #fff;
+    margin-bottom: 20px;
+
+    em { font-style: normal; color: $green; }
+  }
+
+  &__subtitle {
+    font-family: $font-mono;
+    font-size: clamp(14px, 2vw, 17px);
+    color: $text-dim;
+    line-height: 1.7;
+    margin-bottom: 40px;
+    max-width: 560px;
+
+    .hl { color: $green-mid; }
+  }
+
+  &__actions { display: flex; gap: 16px; flex-wrap: wrap; }
+}
+
+// ── About ─────────────────────────────────────────
+.about {
+  border-top: 1px solid $border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 80px;
+    align-items: start;
+
+    @media (max-width: 768px) { grid-template-columns: 1fr; gap: 40px; }
+  }
+
+  &__text {
+    font-size: 17px;
+    color: $text;
+    line-height: 1.75;
+    margin-bottom: 20px;
+  }
+
+  &__stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-top: 32px;
+  }
+
+  &__tag {
+    font-family: $font-mono;
+    font-size: 12px;
+    padding: 4px 12px;
+    border-radius: 4px;
+    background: $green-dim;
+    color: $green-mid;
+    border: 1px solid rgba(57,255,20,0.15);
+  }
+
+  &__terminal {
+    background: $surface;
+    border: 1px solid $border;
+    border-radius: 10px;
+    overflow: hidden;
+
+    &-bar {
+      background: $surface-2;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      border-bottom: 1px solid $border;
+    }
+
+    &-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+      &:nth-child(1) { background: #ff5f57; }
+      &:nth-child(2) { background: #febc2e; }
+      &:nth-child(3) { background: #28c840; }
+    }
+
+    &-title {
+      font-family: $font-mono;
+      font-size: 12px;
+      color: $text-dim;
+      margin: 0 auto;
+    }
+
+    &-body {
+      padding: 24px;
+      font-family: $font-mono;
+      font-size: 13px;
+      line-height: 2;
+    }
+  }
+}
+
+.tl-key { color: #79c0ff; }
+.tl-val { color: $green-mid; }
+.tl-str { color: #a5d6ff; }
+.tl-dim { color: $text-dim; }
+
+// ── Projects ──────────────────────────────────────
+.projects {
+  border-top: 1px solid $border;
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+
+    @media (max-width: 700px) { grid-template-columns: 1fr; }
+  }
+}
+
+.project-card {
+  background: $surface;
+  border: 1px solid $border;
+  border-radius: 10px;
+  padding: 28px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at top left, rgba(57,255,20,0.04), transparent 60%);
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+
+  &:hover {
+    border-color: rgba(57,255,20,0.3);
+    box-shadow: 0 0 24px rgba(57,255,20,0.06);
+    &::before { opacity: 1; }
+    .project-card__arrow { color: $green; transform: translate(3px,-3px); }
+  }
+
+  &--featured {
+    grid-column: span 2;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+
+    @media (max-width: 700px) { grid-column: span 1; flex-direction: column; gap: 20px; }
+  }
+
+  &__year  { font-family: $font-mono; font-size: 11px; color: $text-dim; letter-spacing: 0.08em; }
+  &__title { font-size: 20px; font-weight: 600; color: #fff; letter-spacing: -0.01em; }
+  &__desc  { font-size: 14px; color: $text-dim; line-height: 1.6; flex: 1; }
+
+  &__tags  { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px; }
+  &__tag   { font-family: $font-mono; font-size: 11px; padding: 2px 8px; border-radius: 4px; background: $green-dim; color: $green-mid; }
+
+  &__arrow { font-size: 20px; color: $text-dim; transition: color 0.2s, transform 0.2s; margin-left: auto; }
+}
+
+// ── Lab teaser ────────────────────────────────────
+.lab {
+  border-top: 1px solid $border;
+
+  &__card {
+    background: $surface;
+    border: 1px solid $border;
+    border-radius: 12px;
+    padding: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s;
+    cursor: pointer;
+
+    @media (max-width: 700px) { flex-direction: column; padding: 32px; }
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: -60px; right: -60px;
+      width: 200px; height: 200px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(57,255,20,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    &:hover {
+      border-color: rgba(57,255,20,0.3);
+      .lab__cta { gap: 12px; }
+    }
+  }
+
+  &__icon    { font-size: 48px; }
+  &__content { flex: 1; }
+  &__title   { font-size: 32px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; }
+  &__desc    { font-size: 16px; color: $text-dim; line-height: 1.65; max-width: 480px; }
+
+  &__cta {
+    font-family: $font-mono;
+    font-size: 14px;
+    color: $green;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: gap 0.2s;
+  }
+}

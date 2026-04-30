@@ -1,0 +1,352 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul {
+  list-style: none;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #070809;
+  color: #adbac7;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 40px;
+  background: rgba(7, 8, 9, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1e2a38;
+}
+.nav__logo {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 15px;
+  color: #39ff14;
+  letter-spacing: -0.01em;
+}
+.nav__logo span {
+  color: #545d68;
+}
+.nav__links {
+  display: flex;
+  gap: 32px;
+}
+.nav__link {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: #545d68;
+  transition: color 0.2s;
+}
+.nav__link:hover {
+  color: #39ff14;
+}
+.nav__link--active {
+  color: #adbac7;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 10px 22px;
+  border-radius: 6px;
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  font-weight: 500;
+  transition: all 0.2s;
+  cursor: pointer;
+  border: 1px solid transparent;
+}
+.btn--primary {
+  background: #39ff14;
+  color: #000;
+  border-color: #39ff14;
+}
+.btn--primary:hover {
+  filter: brightness(1.15);
+}
+.btn--ghost {
+  background: transparent;
+  color: #22c55e;
+  border-color: #1e2a38;
+}
+.btn--ghost:hover {
+  border-color: #22c55e;
+  color: #39ff14;
+}
+
+.section {
+  padding: 100px 40px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.section__label {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #22c55e;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.section__label::before {
+  content: "//";
+  color: #545d68;
+}
+.section__title {
+  font-size: clamp(28px, 4vw, 44px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  color: #fff;
+  margin-bottom: 48px;
+}
+
+.cursor {
+  display: inline-block;
+  width: 3px;
+  height: 1em;
+  background: #39ff14;
+  vertical-align: middle;
+  animation: blink 1s step-end infinite;
+}
+
+@keyframes blink {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+.footer {
+  border-top: 1px solid #1e2a38;
+  padding: 32px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+}
+.footer__brand {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 13px;
+  color: #39ff14;
+}
+.footer__copy {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #545d68;
+}
+.footer__links {
+  display: flex;
+  gap: 24px;
+}
+.footer__link, .footer__back {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #545d68;
+  transition: color 0.2s;
+}
+.footer__link:hover, .footer__back:hover {
+  color: #39ff14;
+}
+
+.lab-header {
+  padding: 140px 40px 60px;
+  border-bottom: 1px solid #1e2a38;
+  position: relative;
+  overflow: hidden;
+}
+.lab-header::before {
+  content: "LAB";
+  position: absolute;
+  right: -20px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 220px;
+  font-weight: 900;
+  color: rgba(57, 255, 20, 0.03);
+  line-height: 1;
+  pointer-events: none;
+  user-select: none;
+}
+.lab-header::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(#1e2a38 1px, transparent 1px), linear-gradient(90deg, #1e2a38 1px, transparent 1px);
+  background-size: 5px 5px;
+  opacity: 0.18;
+  mask-image: radial-gradient(ellipse at 20% 50%, black 20%, transparent 70%);
+  pointer-events: none;
+}
+.lab-header__label {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #22c55e;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  position: relative;
+}
+.lab-header__label::before {
+  content: "// ";
+  color: #545d68;
+}
+.lab-header__title {
+  font-size: clamp(40px, 7vw, 80px);
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  color: #fff;
+  line-height: 1;
+  margin-bottom: 20px;
+  position: relative;
+}
+.lab-header__title em {
+  font-style: normal;
+  color: #39ff14;
+}
+.lab-header__desc {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 14px;
+  color: #545d68;
+  max-width: 480px;
+  line-height: 1.8;
+  position: relative;
+}
+
+.lab-grid {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 64px 40px 100px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 900px) {
+  .lab-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 580px) {
+  .lab-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.lab-card {
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 10px;
+  padding: 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  transition: border-color 0.2s, transform 0.2s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+}
+.lab-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at top right, rgba(57, 255, 20, 0.05), transparent 60%);
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+.lab-card:hover {
+  border-color: rgba(57, 255, 20, 0.25);
+  transform: translateY(-2px);
+}
+.lab-card:hover::before {
+  opacity: 1;
+}
+.lab-card:hover .lab-card__link {
+  color: #39ff14;
+}
+.lab-card--wide {
+  grid-column: span 2;
+  flex-direction: row;
+  align-items: center;
+  gap: 32px;
+}
+@media (max-width: 580px) {
+  .lab-card--wide {
+    grid-column: span 1;
+    flex-direction: column;
+  }
+}
+.lab-card__icon {
+  font-size: 36px;
+  flex-shrink: 0;
+}
+.lab-card__title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #fff;
+  letter-spacing: -0.01em;
+}
+.lab-card__desc {
+  font-size: 13px;
+  color: #545d68;
+  line-height: 1.65;
+  flex: 1;
+}
+.lab-card__link {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 12px;
+  color: #22c55e;
+  margin-top: auto;
+  transition: color 0.2s;
+}
+.lab-card__status {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 20px;
+  width: fit-content;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.lab-card__status--wip {
+  background: rgba(254, 188, 46, 0.1);
+  color: #febc2e;
+  border: 1px solid rgba(254, 188, 46, 0.2);
+}
+.lab-card__status--live {
+  background: #0d3320;
+  color: #22c55e;
+  border: 1px solid rgba(57, 255, 20, 0.15);
+}
+.lab-card__status--idea {
+  background: rgba(121, 192, 255, 0.08);
+  color: #79c0ff;
+  border: 1px solid rgba(121, 192, 255, 0.15);
+}

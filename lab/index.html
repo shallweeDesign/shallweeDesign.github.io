@@ -3,271 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Lab — shallweedesign</title>
-  <meta name="description" content="Experiments, prototypes, and creative coding explorations." />
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    :root {
-      --bg:         #070809;
-      --surface:    #0f1117;
-      --surface-2:  #161b22;
-      --border:     #1e2a38;
-      --text:       #adbac7;
-      --text-dim:   #545d68;
-      --green:      #39ff14;
-      --green-mid:  #22c55e;
-      --green-dim:  #0d3320;
-      --font-sans:  -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-      --font-mono:  'SF Mono', 'Fira Code', 'Cascadia Code', Consolas, monospace;
-    }
-
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: var(--font-sans);
-      background: var(--bg);
-      color: var(--text);
-      line-height: 1.6;
-      -webkit-font-smoothing: antialiased;
-    }
-    a { color: inherit; text-decoration: none; }
-
-    /* ── Nav ───────────────────────────────────────── */
-    .nav {
-      position: fixed;
-      top: 0; left: 0; right: 0;
-      z-index: 100;
-      height: 56px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 40px;
-      background: rgba(7,8,9,0.85);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav__logo {
-      font-family: var(--font-mono);
-      font-size: 15px;
-      color: var(--green);
-    }
-
-    .nav__logo span { color: var(--text-dim); }
-
-    .nav__links {
-      display: flex;
-      gap: 32px;
-      list-style: none;
-    }
-
-    .nav__link {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--text-dim);
-      transition: color 0.2s;
-    }
-
-    .nav__link:hover,
-    .nav__link--active { color: var(--green); }
-
-    /* ── Header ────────────────────────────────────── */
-    .lab-header {
-      padding: 140px 40px 60px;
-      border-bottom: 1px solid var(--border);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .lab-header::before {
-      content: 'LAB';
-      position: absolute;
-      right: -20px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-family: var(--font-mono);
-      font-size: 220px;
-      font-weight: 900;
-      color: rgba(57,255,20,0.03);
-      line-height: 1;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .lab-header__label {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--green-mid);
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      margin-bottom: 16px;
-    }
-
-    .lab-header__label::before { content: '// '; color: var(--text-dim); }
-
-    .lab-header__title {
-      font-size: clamp(40px, 7vw, 80px);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      color: #fff;
-      line-height: 1;
-      margin-bottom: 20px;
-    }
-
-    .lab-header__title em {
-      font-style: normal;
-      color: var(--green);
-    }
-
-    .lab-header__desc {
-      font-family: var(--font-mono);
-      font-size: 14px;
-      color: var(--text-dim);
-      max-width: 480px;
-      line-height: 1.8;
-    }
-
-    /* ── Grid ──────────────────────────────────────── */
-    .lab-grid {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 64px 40px 100px;
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    @media (max-width: 900px) { .lab-grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 580px) { .lab-grid { grid-template-columns: 1fr; } }
-
-    .lab-card {
-      background: var(--surface);
-      border: 1px solid var(--border);
-      border-radius: 10px;
-      padding: 28px;
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      transition: border-color 0.2s, transform 0.2s;
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-    }
-
-    .lab-card::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle at top right, rgba(57,255,20,0.05), transparent 60%);
-      opacity: 0;
-      transition: opacity 0.3s;
-    }
-
-    .lab-card:hover {
-      border-color: rgba(57,255,20,0.25);
-      transform: translateY(-2px);
-    }
-
-    .lab-card:hover::before { opacity: 1; }
-
-    .lab-card--wide {
-      grid-column: span 2;
-      flex-direction: row;
-      align-items: center;
-      gap: 32px;
-    }
-
-    @media (max-width: 580px) { .lab-card--wide { grid-column: span 1; flex-direction: column; } }
-
-    .lab-card__icon {
-      font-size: 36px;
-      flex-shrink: 0;
-    }
-
-    .lab-card__status {
-      font-family: var(--font-mono);
-      font-size: 10px;
-      padding: 2px 8px;
-      border-radius: 20px;
-      width: fit-content;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-    }
-
-    .lab-card__status--wip {
-      background: rgba(254,188,46,0.1);
-      color: #febc2e;
-      border: 1px solid rgba(254,188,46,0.2);
-    }
-
-    .lab-card__status--live {
-      background: var(--green-dim);
-      color: var(--green-mid);
-      border: 1px solid rgba(57,255,20,0.15);
-    }
-
-    .lab-card__status--idea {
-      background: rgba(121,192,255,0.08);
-      color: #79c0ff;
-      border: 1px solid rgba(121,192,255,0.15);
-    }
-
-    .lab-card__title {
-      font-size: 18px;
-      font-weight: 600;
-      color: #fff;
-      letter-spacing: -0.01em;
-    }
-
-    .lab-card__desc {
-      font-size: 13px;
-      color: var(--text-dim);
-      line-height: 1.65;
-      flex: 1;
-    }
-
-    .lab-card__link {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--green-mid);
-      margin-top: auto;
-      transition: color 0.2s;
-    }
-
-    .lab-card:hover .lab-card__link { color: var(--green); }
-
-    /* ── Footer ────────────────────────────────────── */
-    .footer {
-      border-top: 1px solid var(--border);
-      padding: 32px 40px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 16px;
-    }
-
-    .footer__brand {
-      font-family: var(--font-mono);
-      font-size: 13px;
-      color: var(--green);
-    }
-
-    .footer__back {
-      font-family: var(--font-mono);
-      font-size: 12px;
-      color: var(--text-dim);
-      transition: color 0.2s;
-    }
-
-    .footer__back:hover { color: var(--green); }
-  </style>
+  <title>Lab — Jams Huang</title>
+  <meta name="description" content="Experiments, prototypes, and creative coding explorations by Jams Huang." />
+  <link rel="stylesheet" href="../assets/css/lab.css" />
 </head>
 <body>
 
   <!-- NAV -->
   <nav class="nav">
-    <a href="/" class="nav__logo"><span>~/</span>shallweedesign</a>
+    <a href="/" class="nav__logo"><span>~/</span>jams</a>
     <ul class="nav__links">
       <li><a href="/"           class="nav__link">home</a></li>
       <li><a href="/#projects"  class="nav__link">projects</a></li>
@@ -311,7 +55,7 @@
       <span class="lab-card__icon">🌊</span>
       <span class="lab-card__status lab-card__status--wip">WIP</span>
       <h2 class="lab-card__title">[Experiment Name]</h2>
-      <p class="lab-card__desc">[What are you experimenting with? Three.js, CSS animations, generative art...]</p>
+      <p class="lab-card__desc">[What are you experimenting with?]</p>
       <span class="lab-card__link">Coming soon</span>
     </div>
 
@@ -319,7 +63,7 @@
       <span class="lab-card__icon">⚡</span>
       <span class="lab-card__status lab-card__status--idea">Idea</span>
       <h2 class="lab-card__title">[Experiment Name]</h2>
-      <p class="lab-card__desc">[An idea you want to explore — a UI pattern, a visual effect, a tool.]</p>
+      <p class="lab-card__desc">[An idea you want to explore.]</p>
       <span class="lab-card__link">Planned</span>
     </div>
 
@@ -335,7 +79,7 @@
 
   <!-- FOOTER -->
   <footer class="footer">
-    <span class="footer__brand">~/shallweedesign/lab</span>
+    <span class="footer__brand">~/jams/lab</span>
     <a href="/" class="footer__back">← Back to home</a>
   </footer>
 
