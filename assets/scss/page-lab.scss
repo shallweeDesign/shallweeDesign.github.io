@@ -1,16 +1,12 @@
-// Abstract
-@import 'abstract/variables';
-@import 'abstract/mixins';
-
 // Base
-@import 'base/reset';
-@import 'base/base';
+@use 'base/reset';
+@use 'base/base';
 
 // Components
-@import 'components/nav';
-@import 'components/button';
-@import 'components/footer';
-@import 'components/cursor';
+@use 'components/nav';
+@use 'components/button';
+@use 'components/footer';
+@use 'components/cursor';
 
 // Page
-@import 'pages/lab';
+@use 'pages/lab';
