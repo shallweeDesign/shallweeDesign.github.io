@@ -13,11 +13,12 @@
   <nav class="nav">
     <a href="/" class="nav__logo"><span>~/</span>jams</a>
     <ul class="nav__links">
-      <li><a href="#about"    class="nav__link nav__link--active">about</a></li>
-      <li><a href="#projects" class="nav__link">projects</a></li>
-      <li><a href="/lab/"     class="nav__link">lab</a></li>
-      <li><a href="/portfolio/" class="nav__link">portfolio ↗</a></li>
+      <li><a href="#about" class="nav__link nav__link--active">about</a></li>
+      <li><a href="/lab/"  class="nav__link">lab</a></li>
     </ul>
+    <button class="nav__hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -30,9 +31,8 @@
         freelancing since <span class="hl">2015</span> — based in taiwan.
       </p>
       <div class="hero__actions">
-        <a href="/portfolio/" class="btn btn--primary">View Portfolio</a>
-        <a href="#projects"   class="btn btn--ghost">Projects</a>
-        <a href="#about"      class="btn btn--ghost">About me</a>
+        <a href="#about"              class="btn btn--primary">About me</a>
+        <a href="mailto:shallweedesign@gmail.com" class="btn btn--ghost">Get in touch</a>
       </div>
     </div>
   </section>
@@ -82,70 +82,6 @@
     </div>
   </section>
 
-  <!-- PROJECTS -->
-  <section class="section projects" id="projects">
-    <p class="section__label">projects</p>
-    <h2 class="section__title">Selected Work</h2>
-    <div class="projects__grid">
-
-      <a href="/portfolio/" class="project-card project-card--featured">
-        <div style="flex:1">
-          <p class="project-card__year">2026 · Featured</p>
-          <h3 class="project-card__title">Portfolio Website</h3>
-          <p class="project-card__desc">Personal portfolio built with Apple-inspired design, Three.js wave animations, and scroll-driven interactions.</p>
-          <div class="project-card__tags">
-            <span class="project-card__tag">Three.js</span>
-            <span class="project-card__tag">SCSS</span>
-            <span class="project-card__tag">Vanilla JS</span>
-          </div>
-        </div>
-        <span class="project-card__arrow">↗</span>
-      </a>
-
-      <a href="/project/202505/" class="project-card">
-        <p class="project-card__year">2025 · 05</p>
-        <h3 class="project-card__title">[Project Name]</h3>
-        <p class="project-card__desc">[Short description of what this project is.]</p>
-        <div class="project-card__tags">
-          <span class="project-card__tag">HTML</span>
-          <span class="project-card__tag">CSS</span>
-        </div>
-        <span class="project-card__arrow">↗</span>
-      </a>
-
-      <a href="/project/202503/" class="project-card">
-        <p class="project-card__year">2025 · 03</p>
-        <h3 class="project-card__title">[Project Name]</h3>
-        <p class="project-card__desc">[Short description of what this project is.]</p>
-        <div class="project-card__tags">
-          <span class="project-card__tag">JavaScript</span>
-        </div>
-        <span class="project-card__arrow">↗</span>
-      </a>
-
-      <a href="/project/202502/" class="project-card">
-        <p class="project-card__year">2025 · 02</p>
-        <h3 class="project-card__title">[Project Name]</h3>
-        <p class="project-card__desc">[Short description of what this project is.]</p>
-        <div class="project-card__tags">
-          <span class="project-card__tag">CSS</span>
-        </div>
-        <span class="project-card__arrow">↗</span>
-      </a>
-
-      <a href="/project/202309/" class="project-card">
-        <p class="project-card__year">2023 · 09</p>
-        <h3 class="project-card__title">[Project Name]</h3>
-        <p class="project-card__desc">[Short description of what this project is.]</p>
-        <div class="project-card__tags">
-          <span class="project-card__tag">HTML</span>
-        </div>
-        <span class="project-card__arrow">↗</span>
-      </a>
-
-    </div>
-  </section>
-
   <!-- LAB -->
   <section class="section lab" id="lab">
     <p class="section__label">lab</p>
@@ -154,7 +90,7 @@
       <span class="lab__icon">⚗️</span>
       <div class="lab__content">
         <h3 class="lab__title">The Lab</h3>
-        <p class="lab__desc">A collection of experiments, prototypes, and creative coding explorations. Where ideas get tested before they become real projects.</p>
+        <p class="lab__desc">A space for creative coding experiments — JS effects, interactive visuals, and motion explorations.</p>
       </div>
       <span class="lab__cta">Enter the Lab →</span>
     </a>
@@ -166,10 +102,10 @@
     <span class="footer__copy">© 2026 Jams Huang</span>
     <nav class="footer__links">
       <a href="mailto:shallweedesign@gmail.com" class="footer__link">Contact</a>
-      <a href="/portfolio/" class="footer__link">Portfolio</a>
       <a href="/lab/" class="footer__link">Lab</a>
     </nav>
   </footer>
 
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Wave — Lab / Jams Huang</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #070809;
+      --green:    #39ff14;
+      --text-dim: #545d68;
+      --border:   #1e2a38;
+      --font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+    }
+
+    body { background: var(--bg); overflow: hidden; }
+
+    canvas {
+      position: fixed;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+    }
+
+    .ui {
+      position: fixed;
+      z-index: 10;
+      pointer-events: none;
+    }
+
+    .ui--top {
+      top: 0; left: 0; right: 0;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ui__back {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+      pointer-events: all;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .ui__back:hover { color: var(--green); }
+
+    .ui__title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.08em;
+    }
+
+    .ui__title em {
+      font-style: normal;
+      color: var(--green);
+    }
+
+    .ui--bottom {
+      bottom: 24px; left: 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+    }
+
+    .ui__tag {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+    }
+  </style>
+</head>
+<body>
+
+  <canvas id="c"></canvas>
+
+  <!-- UI overlay -->
+  <div class="ui ui--top">
+    <a href="/lab/" class="ui__back">← lab</a>
+    <span class="ui__title">lab / <em>wave</em></span>
+  </div>
+
+  <div class="ui ui--bottom">
+    <span class="ui__tag">Three.js · WebGL</span>
+    <span class="ui__tag">move mouse to interact</span>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
+  <script>
+    const canvas   = document.getElementById('c');
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
+    renderer.setPixelRatio(Math.min(devicePixelRatio, 2));
+    renderer.setClearColor(0x070809, 1);
+
+    const scene  = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(60, 1, 0.1, 100);
+    camera.position.set(0, 5, 7);
+    camera.lookAt(0, 0, -2);
+
+    // Wave
+    const SEGS_X = 16, SEGS_Z = 25;
+    const geo  = new THREE.PlaneGeometry(22, 28, SEGS_X, SEGS_Z);
+    geo.rotateX(-Math.PI / 2);
+    const base = Float32Array.from(geo.attributes.position.array);
+    const mat  = new THREE.MeshBasicMaterial({ color: 0x0055bb, wireframe: true, transparent: true, opacity: 0.28 });
+    const wave = new THREE.Mesh(geo, mat);
+    wave.position.set(0, -1.8, -6);
+    scene.add(wave);
+
+    let mouseX = 0, mouseY = 0;
+    document.addEventListener('mousemove', e => {
+      mouseX = (e.clientX / innerWidth  - 0.5) * 2;
+      mouseY = (e.clientY / innerHeight - 0.5) * 2;
+    });
+
+    function resize() {
+      renderer.setSize(innerWidth, innerHeight);
+      camera.aspect = innerWidth / innerHeight;
+      camera.updateProjectionMatrix();
+      const fc = new THREE.Vector3(11, -1.8, -20);
+      fc.project(camera);
+      wave.scale.x = Math.max(1, 1 / Math.abs(fc.x));
+    }
+    resize();
+    window.addEventListener('resize', resize);
+
+    let t = 0;
+    function animate() {
+      requestAnimationFrame(animate);
+      t += 0.007;
+      const pos = geo.attributes.position;
+      for (let i = 0; i < pos.count; i++) {
+        const x = base[i * 3], z = base[i * 3 + 2];
+        pos.setY(i,
+          Math.sin(x * 0.55 + z * 0.45 - t * 1.8) * 0.42 +
+          Math.sin(x * 0.9  - z * 0.35 - t * 1.26) * 0.21 +
+          Math.sin(x * 0.25 + z * 0.7  - t * 2.34) * 0.147
+        );
+      }
+      pos.needsUpdate = true;
+      camera.position.x += (mouseX * 0.4 - camera.position.x) * 0.03;
+      camera.lookAt(0, 0, -2);
+      renderer.render(scene, camera);
+    }
+    animate();
+  </script>
+</body>
+</html>

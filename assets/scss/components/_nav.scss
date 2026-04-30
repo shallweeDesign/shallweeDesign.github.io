@@ -13,6 +13,8 @@
   backdrop-filter: blur(12px);
   border-bottom: 1px solid $border;
 
+  @include tablet { padding: 0 24px; }
+
   &__logo {
     font-family: $font-mono;
     font-size: 15px;
@@ -21,14 +23,67 @@
     span { color: $text-dim; }
   }
 
-  &__links { display: flex; gap: 32px; }
+  // Desktop links
+  &__links {
+    display: flex;
+    gap: 32px;
+
+    @include tablet {
+      display: none;
+      position: absolute;
+      top: 56px;
+      left: 0; right: 0;
+      flex-direction: column;
+      gap: 0;
+      background: $bg;
+      border-bottom: 1px solid $border;
+
+      &.is-open { display: flex; }
+    }
+  }
 
   &__link {
     font-family: $font-mono;
     font-size: 13px;
     color: $text-dim;
     transition: color 0.2s;
+
     &:hover   { color: $green; }
     &--active { color: $text; }
+
+    @include tablet {
+      padding: 14px 24px;
+      border-bottom: 1px solid $border;
+      &:last-child { border-bottom: none; }
+    }
+  }
+
+  // Hamburger button
+  &__hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 32px;
+    height: 32px;
+    cursor: pointer;
+    padding: 4px;
+
+    @include tablet { display: flex; }
+
+    span {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: $text;
+      border-radius: 2px;
+      transition: all 0.25s ease;
+    }
+
+    &.is-open {
+      span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
+      span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+      span:nth-child(3) { transform: rotate(-45deg) translate(5px, -5px); }
+    }
   }
 }

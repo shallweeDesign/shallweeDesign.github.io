@@ -69,6 +69,11 @@ body {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #1e2a38;
 }
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 24px;
+  }
+}
 .nav__logo {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   font-size: 15px;
@@ -82,6 +87,22 @@ body {
   display: flex;
   gap: 32px;
 }
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #070809;
+    border-bottom: 1px solid #1e2a38;
+  }
+  .nav__links.is-open {
+    display: flex;
+  }
+}
 .nav__link {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   font-size: 13px;
@@ -93,6 +114,48 @@ body {
 }
 .nav__link--active {
   color: #adbac7;
+}
+@media (max-width: 768px) {
+  .nav__link {
+    padding: 14px 24px;
+    border-bottom: 1px solid #1e2a38;
+  }
+  .nav__link:last-child {
+    border-bottom: none;
+  }
+}
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  padding: 4px;
+}
+@media (max-width: 768px) {
+  .nav__hamburger {
+    display: flex;
+  }
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #adbac7;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.nav__hamburger.is-open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav__hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__hamburger.is-open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .btn {
@@ -293,19 +356,69 @@ body {
 }
 .lab-card--wide {
   grid-column: span 2;
-  flex-direction: row;
-  align-items: center;
-  gap: 32px;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
 }
 @media (max-width: 580px) {
   .lab-card--wide {
     grid-column: span 1;
-    flex-direction: column;
   }
 }
-.lab-card__icon {
-  font-size: 36px;
+.lab-card--empty {
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-style: dashed;
+  cursor: default;
+}
+.lab-card--empty:hover {
+  border-color: #1e2a38;
+  transform: none;
+}
+.lab-card--empty:hover::before {
+  opacity: 0;
+}
+.lab-card__plus {
+  font-size: 28px;
+  color: #1e2a38;
+  line-height: 1;
+}
+.lab-card__empty-label {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 11px;
+  color: #545d68;
+  letter-spacing: 0.06em;
+}
+.lab-card__preview {
+  width: 100%;
+  height: 200px;
   flex-shrink: 0;
+}
+.lab-card__preview--wave {
+  background: linear-gradient(160deg, #070c18 0%, #0a1628 50%, #050810 100%);
+  position: relative;
+  overflow: hidden;
+}
+.lab-card__preview--wave::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(rgba(0, 85, 187, 0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 85, 187, 0.3) 1px, transparent 1px);
+  background-size: 20px 20px;
+  mask-image: linear-gradient(to top, black, transparent 80%);
+  transform: perspective(200px) rotateX(40deg) scaleY(1.4);
+  transform-origin: bottom;
+}
+.lab-card__body {
+  padding: 24px 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex: 1;
 }
 .lab-card__title {
   font-size: 18px;
@@ -317,14 +430,26 @@ body {
   font-size: 13px;
   color: #545d68;
   line-height: 1.65;
-  flex: 1;
 }
 .lab-card__link {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   font-size: 12px;
   color: #22c55e;
-  margin-top: auto;
+  margin-top: 4px;
   transition: color 0.2s;
+}
+.lab-card__tags {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+.lab-card__tags span {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 4px;
+  background: #0d3320;
+  color: #22c55e;
 }
 .lab-card__status {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;

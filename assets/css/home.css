@@ -69,6 +69,11 @@ body {
   backdrop-filter: blur(12px);
   border-bottom: 1px solid #1e2a38;
 }
+@media (max-width: 768px) {
+  .nav {
+    padding: 0 24px;
+  }
+}
 .nav__logo {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   font-size: 15px;
@@ -82,6 +87,22 @@ body {
   display: flex;
   gap: 32px;
 }
+@media (max-width: 768px) {
+  .nav__links {
+    display: none;
+    position: absolute;
+    top: 56px;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    gap: 0;
+    background: #070809;
+    border-bottom: 1px solid #1e2a38;
+  }
+  .nav__links.is-open {
+    display: flex;
+  }
+}
 .nav__link {
   font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
   font-size: 13px;
@@ -93,6 +114,48 @@ body {
 }
 .nav__link--active {
   color: #adbac7;
+}
+@media (max-width: 768px) {
+  .nav__link {
+    padding: 14px 24px;
+    border-bottom: 1px solid #1e2a38;
+  }
+  .nav__link:last-child {
+    border-bottom: none;
+  }
+}
+.nav__hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  padding: 4px;
+}
+@media (max-width: 768px) {
+  .nav__hamburger {
+    display: flex;
+  }
+}
+.nav__hamburger span {
+  display: block;
+  width: 22px;
+  height: 2px;
+  background: #adbac7;
+  border-radius: 2px;
+  transition: all 0.25s ease;
+}
+.nav__hamburger.is-open span:nth-child(1) {
+  transform: rotate(45deg) translate(5px, 5px);
+}
+.nav__hamburger.is-open span:nth-child(2) {
+  opacity: 0;
+  transform: scaleX(0);
+}
+.nav__hamburger.is-open span:nth-child(3) {
+  transform: rotate(-45deg) translate(5px, -5px);
 }
 
 .btn {

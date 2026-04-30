@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Lab — Jams Huang</title>
-  <meta name="description" content="Experiments, prototypes, and creative coding explorations by Jams Huang." />
+  <meta name="description" content="Creative coding experiments by Jams Huang." />
   <link rel="stylesheet" href="../assets/css/lab.css" />
 </head>
 <body>
@@ -13,66 +13,58 @@
   <nav class="nav">
     <a href="/" class="nav__logo"><span>~/</span>jams</a>
     <ul class="nav__links">
-      <li><a href="/"           class="nav__link">home</a></li>
-      <li><a href="/#projects"  class="nav__link">projects</a></li>
-      <li><a href="/lab/"       class="nav__link nav__link--active">lab</a></li>
-      <li><a href="/portfolio/" class="nav__link">portfolio ↗</a></li>
+      <li><a href="/"     class="nav__link">home</a></li>
+      <li><a href="/lab/" class="nav__link nav__link--active">lab</a></li>
     </ul>
+    <button class="nav__hamburger" aria-label="Toggle menu">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HEADER -->
   <header class="lab-header">
-    <p class="lab-header__label">experiments</p>
+    <p class="lab-header__label">creative coding</p>
     <h1 class="lab-header__title">The <em>Lab.</em></h1>
     <p class="lab-header__desc">
-      where ideas get tested before they become real.<br />
-      prototypes, experiments, and creative explorations.
+      js experiments, visual effects, and interactive explorations.<br />
+      click to view each experiment fullscreen.
     </p>
   </header>
 
   <!-- GRID -->
   <main class="lab-grid">
 
-    <a href="/test/tcns/" class="lab-card lab-card--wide">
-      <span class="lab-card__icon">🧪</span>
-      <div>
+    <a href="/lab/wave/" class="lab-card lab-card--wide">
+      <div class="lab-card__preview lab-card__preview--wave"></div>
+      <div class="lab-card__body">
         <span class="lab-card__status lab-card__status--live">Live</span>
-        <h2 class="lab-card__title">TCNS — Test Site</h2>
-        <p class="lab-card__desc">An experimental build for TCNS. Testing layout, typography, and interaction patterns in a real environment.</p>
+        <h2 class="lab-card__title">Wave</h2>
+        <p class="lab-card__desc">Three.js wireframe wave animation driven by sine functions. Scroll parallax and mouse interaction.</p>
+        <div class="lab-card__tags">
+          <span>Three.js</span><span>WebGL</span><span>Scroll</span>
+        </div>
         <span class="lab-card__link">View experiment →</span>
       </div>
     </a>
 
-    <a href="/test/onemeter/" class="lab-card">
-      <span class="lab-card__icon">📐</span>
-      <span class="lab-card__status lab-card__status--live">Live</span>
-      <h2 class="lab-card__title">Onemeter</h2>
-      <p class="lab-card__desc">[Short description of this experiment.]</p>
-      <span class="lab-card__link">View →</span>
-    </a>
-
-    <div class="lab-card">
-      <span class="lab-card__icon">🌊</span>
-      <span class="lab-card__status lab-card__status--wip">WIP</span>
-      <h2 class="lab-card__title">[Experiment Name]</h2>
-      <p class="lab-card__desc">[What are you experimenting with?]</p>
-      <span class="lab-card__link">Coming soon</span>
+    <div class="lab-card lab-card--empty">
+      <span class="lab-card__plus">+</span>
+      <p class="lab-card__empty-label">Coming soon</p>
     </div>
 
-    <div class="lab-card">
-      <span class="lab-card__icon">⚡</span>
-      <span class="lab-card__status lab-card__status--idea">Idea</span>
-      <h2 class="lab-card__title">[Experiment Name]</h2>
-      <p class="lab-card__desc">[An idea you want to explore.]</p>
-      <span class="lab-card__link">Planned</span>
+    <div class="lab-card lab-card--empty">
+      <span class="lab-card__plus">+</span>
+      <p class="lab-card__empty-label">Coming soon</p>
     </div>
 
-    <div class="lab-card">
-      <span class="lab-card__icon">🎨</span>
-      <span class="lab-card__status lab-card__status--idea">Idea</span>
-      <h2 class="lab-card__title">[Experiment Name]</h2>
-      <p class="lab-card__desc">[Another idea in the pipeline.]</p>
-      <span class="lab-card__link">Planned</span>
+    <div class="lab-card lab-card--empty">
+      <span class="lab-card__plus">+</span>
+      <p class="lab-card__empty-label">Coming soon</p>
+    </div>
+
+    <div class="lab-card lab-card--empty">
+      <span class="lab-card__plus">+</span>
+      <p class="lab-card__empty-label">Coming soon</p>
     </div>
 
   </main>
@@ -80,8 +72,9 @@
   <!-- FOOTER -->
   <footer class="footer">
     <span class="footer__brand">~/jams/lab</span>
-    <a href="/" class="footer__back">← Back to home</a>
+    <a href="/" class="footer__back">← home</a>
   </footer>
 
+  <script src="../assets/js/main.js"></script>
 </body>
 </html>
