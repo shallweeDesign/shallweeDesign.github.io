@@ -146,7 +146,6 @@
       position: relative;
       overflow: hidden;
 
-      // CSS-only wave hint
       &::after {
         content: '';
         position: absolute;
@@ -158,6 +157,34 @@
         mask-image: linear-gradient(to top, black, transparent 80%);
         transform: perspective(200px) rotateX(40deg) scaleY(1.4);
         transform-origin: bottom;
+      }
+    }
+
+    &--blinds {
+      background: linear-gradient(135deg, #0a1628 0%, #112244 60%, #0d2035 100%);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+
+      // Slat lines
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background: repeating-linear-gradient(
+          180deg,
+          transparent 0px,
+          transparent calc(100% / 8 - 1px),
+          rgba(57,255,20,0.12) calc(100% / 8 - 1px),
+          rgba(57,255,20,0.12) calc(100% / 8)
+        );
+        animation: blindsPreview 2.5s ease-in-out infinite;
+      }
+
+      @keyframes blindsPreview {
+        0%, 100% { clip-path: inset(0 0 100% 0); }
+        60%, 80% { clip-path: inset(0 0 0% 0); }
       }
     }
   }

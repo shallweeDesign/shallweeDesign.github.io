@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blinds — Lab / Jams Huang</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:        #070809;
+      --green:     #39ff14;
+      --text-dim:  #545d68;
+      --border:    #1e2a38;
+      --font-mono: 'SF Mono', 'Fira Code', Consolas, monospace;
+      --slats:     12;
+    }
+
+    body {
+      background: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* ── UI overlay ──────────────────────────────── */
+    .ui {
+      position: fixed;
+      z-index: 100;
+      pointer-events: none;
+    }
+
+    .ui--top {
+      top: 0; left: 0; right: 0;
+      padding: 20px 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .ui__back {
+      font-family: var(--font-mono);
+      font-size: 13px;
+      color: var(--text-dim);
+      text-decoration: none;
+      pointer-events: all;
+      transition: color 0.2s;
+    }
+
+    .ui__back:hover { color: var(--green); }
+
+    .ui__title {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .ui__title em { font-style: normal; color: var(--green); }
+
+    .ui--bottom {
+      bottom: 24px; left: 0; right: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .ui__hint {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      letter-spacing: 0.06em;
+    }
+
+    .ui__replay {
+      font-family: var(--font-mono);
+      font-size: 12px;
+      color: var(--green);
+      border: 1px solid rgba(57,255,20,0.3);
+      background: transparent;
+      padding: 8px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      pointer-events: all;
+      transition: all 0.2s;
+      letter-spacing: 0.06em;
+    }
+
+    .ui__replay:hover {
+      background: rgba(57,255,20,0.08);
+      border-color: var(--green);
+    }
+
+    /* ── Controls ────────────────────────────────── */
+    .controls {
+      position: fixed;
+      right: 28px;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 100;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .ctrl {
+      font-family: var(--font-mono);
+      font-size: 11px;
+      color: var(--text-dim);
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .ctrl__label { letter-spacing: 0.06em; text-transform: uppercase; }
+
+    .ctrl__btn {
+      background: var(--border);
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      padding: 5px 10px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-family: var(--font-mono);
+      font-size: 11px;
+      transition: all 0.15s;
+
+      &:hover, &.active {
+        background: rgba(57,255,20,0.1);
+        border-color: var(--green);
+        color: var(--green);
+      }
+    }
+
+    /* ── Stage ───────────────────────────────────── */
+    .stage {
+      width: min(600px, 90vw);
+      aspect-ratio: 4/3;
+      position: relative;
+      cursor: pointer;
+    }
+
+    /* ── Blinds container ────────────────────────── */
+    .blinds {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      border-radius: 8px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blinds--horizontal { flex-direction: column; }
+    .blinds--vertical   { flex-direction: row; }
+
+    /* ── Each slat ───────────────────────────────── */
+    .slat {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+      transform-origin: top;
+      transform: rotateX(90deg);
+
+      .blinds--vertical & {
+        transform-origin: left;
+        transform: rotateY(90deg);
+      }
+    }
+
+    /* Image inside slat — offset so all slats together show the full image */
+    .slat__img {
+      position: absolute;
+      width: 100%;
+      height: calc(var(--slats) * 100%);
+      top: calc(var(--idx) * -100%);
+      background: linear-gradient(135deg, #0a1628 0%, #112244 40%, #0d2035 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      .blinds--vertical & {
+        width: calc(var(--slats) * 100%);
+        height: 100%;
+        top: 0;
+        left: calc(var(--idx) * -100%);
+      }
+
+      /* Placeholder content — replace with real image */
+      &::after {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 40px,
+            rgba(0,85,187,0.15) 40px,
+            rgba(0,85,187,0.15) 41px
+          ),
+          repeating-linear-gradient(
+            90deg,
+            transparent,
+            transparent 40px,
+            rgba(0,85,187,0.15) 40px,
+            rgba(0,85,187,0.15) 41px
+          );
+      }
+    }
+
+    /* Overlay text on the "image" */
+    .stage__label {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-mono);
+      color: rgba(57,255,20,0.7);
+      font-size: clamp(24px, 5vw, 48px);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      pointer-events: none;
+      z-index: 1;
+      text-shadow: 0 0 40px rgba(57,255,20,0.4);
+    }
+
+    .stage__label span {
+      font-size: 13px;
+      color: rgba(57,255,20,0.35);
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      margin-top: 8px;
+    }
+
+    /* ── Animation states ────────────────────────── */
+    .slat.animate {
+      animation: blindOpen var(--dur, 0.5s) var(--ease, cubic-bezier(.4,0,.2,1)) forwards;
+      animation-delay: calc(var(--idx) * var(--stagger, 50ms));
+
+      .blinds--vertical & {
+        animation-name: blindOpenV;
+      }
+    }
+
+    @keyframes blindOpen {
+      from { transform: rotateX(90deg); }
+      to   { transform: rotateX(0deg); }
+    }
+
+    @keyframes blindOpenV {
+      from { transform: rotateY(90deg); }
+      to   { transform: rotateY(0deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- UI -->
+  <div class="ui ui--top">
+    <a href="/lab/" class="ui__back">← lab</a>
+    <span class="ui__title">lab / <em>blinds</em></span>
+  </div>
+
+  <div class="ui ui--bottom">
+    <p class="ui__hint">click image to replay</p>
+    <button class="ui__replay" id="replayBtn">↺ replay</button>
+  </div>
+
+  <!-- Controls -->
+  <div class="controls">
+    <div class="ctrl">
+      <span class="ctrl__label">Direction</span>
+      <button class="ctrl__btn active" data-dir="horizontal">↔ H</button>
+      <button class="ctrl__btn" data-dir="vertical">↕ V</button>
+    </div>
+    <div class="ctrl">
+      <span class="ctrl__label">Slats</span>
+      <button class="ctrl__btn" data-slats="6">6</button>
+      <button class="ctrl__btn active" data-slats="12">12</button>
+      <button class="ctrl__btn" data-slats="20">20</button>
+    </div>
+    <div class="ctrl">
+      <span class="ctrl__label">Speed</span>
+      <button class="ctrl__btn" data-speed="fast">Fast</button>
+      <button class="ctrl__btn active" data-speed="normal">Normal</button>
+      <button class="ctrl__btn" data-speed="slow">Slow</button>
+    </div>
+  </div>
+
+  <!-- Stage -->
+  <div class="stage" id="stage">
+    <div class="stage__label">
+      blinds<span>— click to replay</span>
+    </div>
+  </div>
+
+  <script>
+    const stage = document.getElementById('stage');
+
+    let config = {
+      slats: 12,
+      direction: 'horizontal',
+      dur: 500,
+      stagger: 50,
+    };
+
+    function buildBlinds() {
+      // Remove old
+      stage.querySelector('.blinds')?.remove();
+
+      const container = document.createElement('div');
+      container.className = `blinds blinds--${config.direction}`;
+
+      for (let i = 0; i < config.slats; i++) {
+        const slat = document.createElement('div');
+        slat.className = 'slat';
+        slat.style.setProperty('--idx', i);
+        slat.style.setProperty('--slats', config.slats);
+
+        const img = document.createElement('div');
+        img.className = 'slat__img';
+        slat.appendChild(img);
+        container.appendChild(slat);
+      }
+
+      stage.appendChild(container);
+    }
+
+    function play() {
+      const slats = stage.querySelectorAll('.slat');
+      // Reset
+      slats.forEach(s => {
+        s.classList.remove('animate');
+        s.style.setProperty('--dur', `${config.dur}ms`);
+        s.style.setProperty('--stagger', `${config.stagger}ms`);
+      });
+      // Trigger reflow then animate
+      void stage.offsetWidth;
+      slats.forEach(s => s.classList.add('animate'));
+    }
+
+    // Build & play on load
+    buildBlinds();
+    setTimeout(play, 300);
+
+    // Click stage to replay
+    stage.addEventListener('click', play);
+    document.getElementById('replayBtn').addEventListener('click', play);
+
+    // Direction buttons
+    document.querySelectorAll('[data-dir]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-dir]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        config.direction = btn.dataset.dir;
+        buildBlinds();
+        setTimeout(play, 50);
+      });
+    });
+
+    // Slats buttons
+    document.querySelectorAll('[data-slats]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-slats]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        config.slats = parseInt(btn.dataset.slats);
+        buildBlinds();
+        setTimeout(play, 50);
+      });
+    });
+
+    // Speed buttons
+    const speeds = { fast: [250, 30], normal: [500, 50], slow: [800, 80] };
+    document.querySelectorAll('[data-speed]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('[data-speed]').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        [config.dur, config.stagger] = speeds[btn.dataset.speed];
+        play();
+      });
+    });
+  </script>
+</body>
+</html>

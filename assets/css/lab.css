@@ -413,6 +413,28 @@ body {
   transform: perspective(200px) rotateX(40deg) scaleY(1.4);
   transform-origin: bottom;
 }
+.lab-card__preview--blinds {
+  background: linear-gradient(135deg, #0a1628 0%, #112244 60%, #0d2035 100%);
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+.lab-card__preview--blinds::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(180deg, transparent 0px, transparent calc(12.5% - 1px), rgba(57, 255, 20, 0.12) calc(12.5% - 1px), rgba(57, 255, 20, 0.12) 12.5%);
+  animation: blindsPreview 2.5s ease-in-out infinite;
+}
+@keyframes blindsPreview {
+  0%, 100% {
+    clip-path: inset(0 0 100% 0);
+  }
+  60%, 80% {
+    clip-path: inset(0 0 0% 0);
+  }
+}
 .lab-card__body {
   padding: 24px 28px;
   display: flex;
