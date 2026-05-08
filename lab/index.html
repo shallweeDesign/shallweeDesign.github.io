@@ -7,26 +7,29 @@
   <meta name="description" content="Creative coding experiments by Jams Huang." />
   <link rel="stylesheet" href="../assets/css/lab.css" />
 </head>
-<body>
+<body data-page="lab">
 
   <!-- NAV -->
   <nav class="nav">
     <a href="/" class="nav__logo"><span>~/</span>jams</a>
     <ul class="nav__links">
-      <li><a href="/"         class="nav__link">home</a></li>
-      <li><a href="/project/" class="nav__link">project</a></li>
-      <li><a href="/lab/"     class="nav__link nav__link--active">lab</a></li>
+      <li><a href="/"         class="nav__link" data-i18n="nav.home">home</a></li>
+      <li><a href="/project/" class="nav__link" data-i18n="nav.project">project</a></li>
+      <li><a href="/lab/"     class="nav__link nav__link--active" data-i18n="nav.lab">lab</a></li>
     </ul>
-    <button class="nav__hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav__actions">
+      <button class="lang-toggle" id="lang-toggle">中文</button>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HEADER -->
   <header class="lab-header">
-    <p class="lab-header__label">creative coding</p>
-    <h1 class="lab-header__title">The <em>Lab.</em></h1>
-    <p class="lab-header__desc">
+    <p class="lab-header__label" data-i18n="lab.header.label">creative coding</p>
+    <h1 class="lab-header__title" data-i18n="lab.header.title">The <em>Lab.</em></h1>
+    <p class="lab-header__desc" data-i18n="lab.header.desc">
       js experiments, visual effects, and interactive explorations.<br />
       click to view each experiment fullscreen.
     </p>
@@ -40,11 +43,11 @@
       <div class="lab-card__body">
         <span class="lab-card__status lab-card__status--live">Live</span>
         <h2 class="lab-card__title">Wave</h2>
-        <p class="lab-card__desc">Three.js wireframe wave animation driven by sine functions. Scroll parallax and mouse interaction.</p>
+        <p class="lab-card__desc" data-i18n="lab.wave.desc">Three.js wireframe wave animation driven by sine functions. Scroll parallax and mouse interaction.</p>
         <div class="lab-card__tags">
           <span>Three.js</span><span>WebGL</span><span>Scroll</span>
         </div>
-        <span class="lab-card__link">View experiment →</span>
+        <span class="lab-card__link" data-i18n="lab.view">View experiment →</span>
       </div>
     </a>
 
@@ -53,27 +56,27 @@
       <div class="lab-card__body">
         <span class="lab-card__status lab-card__status--live">Live</span>
         <h2 class="lab-card__title">Blinds</h2>
-        <p class="lab-card__desc">Venetian blind image reveal — slats animate open with staggered timing. Horizontal or vertical.</p>
+        <p class="lab-card__desc" data-i18n="lab.blinds.desc">Venetian blind image reveal — slats animate open with staggered timing. Horizontal or vertical.</p>
         <div class="lab-card__tags">
           <span>CSS</span><span>JS</span><span>Animation</span>
         </div>
-        <span class="lab-card__link">View experiment →</span>
+        <span class="lab-card__link" data-i18n="lab.view">View experiment →</span>
       </div>
     </a>
 
     <div class="lab-card lab-card--empty">
       <span class="lab-card__plus">+</span>
-      <p class="lab-card__empty-label">Coming soon</p>
+      <p class="lab-card__empty-label" data-i18n="lab.coming">Coming soon</p>
     </div>
 
     <div class="lab-card lab-card--empty">
       <span class="lab-card__plus">+</span>
-      <p class="lab-card__empty-label">Coming soon</p>
+      <p class="lab-card__empty-label" data-i18n="lab.coming">Coming soon</p>
     </div>
 
     <div class="lab-card lab-card--empty">
       <span class="lab-card__plus">+</span>
-      <p class="lab-card__empty-label">Coming soon</p>
+      <p class="lab-card__empty-label" data-i18n="lab.coming">Coming soon</p>
     </div>
 
   </main>
@@ -81,9 +84,10 @@
   <!-- FOOTER -->
   <footer class="footer">
     <span class="footer__brand">~/jams/lab</span>
-    <a href="/" class="footer__back">← home</a>
+    <a href="/" class="footer__back" data-i18n="footer.back.short">← home</a>
   </footer>
 
   <script src="../assets/js/main.js"></script>
+  <script src="../assets/js/i18n.js"></script>
 </body>
 </html>

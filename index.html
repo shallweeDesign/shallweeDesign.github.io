@@ -7,19 +7,22 @@
   <meta name="description" content="Frontend developer crafting interactive web experiences since 2015." />
   <link rel="stylesheet" href="assets/css/home.css" />
 </head>
-<body>
+<body data-page="home">
 
   <!-- NAV -->
   <nav class="nav">
     <a href="/" class="nav__logo"><span>~/</span>jams</a>
     <ul class="nav__links">
-      <li><a href="#about"   class="nav__link nav__link--active">about</a></li>
-      <li><a href="/project/" class="nav__link">project</a></li>
-      <li><a href="/lab/"     class="nav__link">lab</a></li>
+      <li><a href="#about"    class="nav__link nav__link--active" data-i18n="nav.about">about</a></li>
+      <li><a href="/project/" class="nav__link" data-i18n="nav.project">project</a></li>
+      <li><a href="/lab/"     class="nav__link" data-i18n="nav.lab">lab</a></li>
     </ul>
-    <button class="nav__hamburger" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
-    </button>
+    <div class="nav__actions">
+      <button class="lang-toggle" id="lang-toggle">中文</button>
+      <button class="nav__hamburger" aria-label="Toggle menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
   </nav>
 
   <!-- HERO -->
@@ -27,13 +30,13 @@
     <div class="hero__inner">
       <p class="hero__prompt">whoami</p>
       <h1 class="hero__title">Jams<br /><em>Huang.</em></h1>
-      <p class="hero__subtitle">
+      <p class="hero__subtitle" data-i18n="hero.subtitle">
         frontend developer crafting <span class="hl">interactive</span> web experiences.<br />
         freelancing since <span class="hl">2015</span> — based in taiwan.
       </p>
       <div class="hero__actions">
-        <a href="#about"              class="btn btn--primary">About me</a>
-        <a href="mailto:shallweedesign@gmail.com" class="btn btn--ghost">Get in touch</a>
+        <a href="#about"                          class="btn btn--primary" data-i18n="hero.btn.about">About me</a>
+        <a href="mailto:shallweedesign@gmail.com" class="btn btn--ghost"   data-i18n="hero.btn.contact">Get in touch</a>
       </div>
     </div>
   </section>
@@ -43,9 +46,9 @@
     <p class="section__label">about</p>
     <div class="about__grid">
       <div>
-        <h2 class="section__title">Building the<br />web, one pixel<br />at a time.</h2>
-        <p class="about__text">I've been building for the web since 2015 — brand product launches, e-commerce campaign pages, mini games. Work where design and code have to move in sync.</p>
-        <p class="about__text">I'm drawn to motion and visual design. My philosophy: rhythm is what makes animation feel alive, not just moving. I work remotely alongside designers, turning their vision into something that actually runs in a browser.</p>
+        <h2 class="section__title" data-i18n="about.title">Building the<br />web, one pixel<br />at a time.</h2>
+        <p class="about__text" data-i18n="about.text1">I've been building for the web since 2015 — brand product launches, e-commerce campaign pages, mini games. Work where design and code have to move in sync.</p>
+        <p class="about__text" data-i18n="about.text2">I'm drawn to motion and visual design. My philosophy: rhythm is what makes animation feel alive, not just moving. I work remotely alongside designers, turning their vision into something that actually runs in a browser.</p>
         <div class="about__stack">
           <span class="about__tag">HTML</span>
           <span class="about__tag">CSS / SCSS</span>
@@ -66,16 +69,16 @@
         <div class="about__terminal-body">
           <div><span class="tl-dim">{</span></div>
           <div>&nbsp;&nbsp;<span class="tl-key">"name"</span><span class="tl-dim">:</span> <span class="tl-str">"Jams Huang"</span><span class="tl-dim">,</span></div>
-          <div>&nbsp;&nbsp;<span class="tl-key">"role"</span><span class="tl-dim">:</span> <span class="tl-str">"Frontend Developer"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"role"</span><span class="tl-dim">:</span> <span class="tl-str" data-i18n="terminal.role">"Frontend Developer"</span><span class="tl-dim">,</span></div>
           <div>&nbsp;&nbsp;<span class="tl-key">"location"</span><span class="tl-dim">:</span> <span class="tl-str">"Taiwan 🇹🇼"</span><span class="tl-dim">,</span></div>
-          <div>&nbsp;&nbsp;<span class="tl-key">"freelance"</span><span class="tl-dim">:</span> <span class="tl-str">"since 2015"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"freelance"</span><span class="tl-dim">:</span> <span class="tl-str" data-i18n="terminal.free">"since 2015"</span><span class="tl-dim">,</span></div>
           <div>&nbsp;&nbsp;<span class="tl-key">"available"</span><span class="tl-dim">:</span> <span class="tl-val">true</span><span class="tl-dim">,</span></div>
           <div>&nbsp;&nbsp;<span class="tl-key">"focus"</span><span class="tl-dim">: [</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"Motion &amp; Visual Design"</span><span class="tl-dim">,</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"Campaign &amp; Product Pages"</span><span class="tl-dim">,</span></div>
-          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str">"Mini Games"</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str" data-i18n="terminal.focus1">"Motion &amp; Visual Design"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str" data-i18n="terminal.focus2">"Campaign &amp; Product Pages"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;&nbsp;&nbsp;<span class="tl-str" data-i18n="terminal.focus3">"Mini Games"</span></div>
           <div>&nbsp;&nbsp;<span class="tl-dim">],</span></div>
-          <div>&nbsp;&nbsp;<span class="tl-key">"style"</span><span class="tl-dim">:</span> <span class="tl-str">"rhythm makes motion alive"</span><span class="tl-dim">,</span></div>
+          <div>&nbsp;&nbsp;<span class="tl-key">"style"</span><span class="tl-dim">:</span> <span class="tl-str" data-i18n="terminal.style">"rhythm makes motion alive"</span><span class="tl-dim">,</span></div>
           <div>&nbsp;&nbsp;<span class="tl-key">"contact"</span><span class="tl-dim">:</span> <span class="tl-str">"shallweedesign@gmail.com"</span></div>
           <div><span class="tl-dim">}</span> <span class="cursor"></span></div>
         </div>
@@ -87,7 +90,7 @@
   <section class="section projects-home" id="projects">
     <p class="section__label">projects</p>
     <div class="projects-home__header">
-      <h2 class="section__title">Selected<br /><em>Work.</em></h2>
+      <h2 class="section__title" data-i18n="projects.title">Selected<br /><em>Work.</em></h2>
       <div class="projects-home__controls">
         <button class="proj-nav proj-nav--prev" aria-label="Previous">←</button>
         <button class="proj-nav proj-nav--next" aria-label="Next">→</button>
@@ -156,21 +159,21 @@
     </div>
 
     <div class="projects-home__footer">
-      <a href="/project/" class="btn btn--ghost">View all projects →</a>
+      <a href="/project/" class="btn btn--ghost" data-i18n="projects.viewall">View all projects →</a>
     </div>
   </section>
 
   <!-- LAB -->
   <section class="section lab" id="lab">
     <p class="section__label">lab</p>
-    <h2 class="section__title">Experiments</h2>
+    <h2 class="section__title" data-i18n="home.lab.title">Experiments</h2>
     <a href="/lab/" class="lab__card">
       <span class="lab__icon">⚗️</span>
       <div class="lab__content">
-        <h3 class="lab__title">The Lab</h3>
-        <p class="lab__desc">A space for creative coding experiments — JS effects, interactive visuals, and motion explorations.</p>
+        <h3 class="lab__title" data-i18n="home.lab.card.title">The Lab</h3>
+        <p class="lab__desc" data-i18n="home.lab.card.desc">A space for creative coding experiments — JS effects, interactive visuals, and motion explorations.</p>
       </div>
-      <span class="lab__cta">Enter the Lab →</span>
+      <span class="lab__cta" data-i18n="home.lab.cta">Enter the Lab →</span>
     </a>
   </section>
 
@@ -179,11 +182,12 @@
     <span class="footer__brand">~/jams</span>
     <span class="footer__copy">© 2026 Jams Huang</span>
     <nav class="footer__links">
-      <a href="mailto:shallweedesign@gmail.com" class="footer__link">Contact</a>
-      <a href="/lab/" class="footer__link">Lab</a>
+      <a href="mailto:shallweedesign@gmail.com" class="footer__link" data-i18n="footer.contact">Contact</a>
+      <a href="/lab/" class="footer__link" data-i18n="footer.lab">Lab</a>
     </nav>
   </footer>
 
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/i18n.js"></script>
 </body>
 </html>
