@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_1" data-name="圖層_1" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 80 80">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: #44a9ff;
+      }
+
+      .st1 {
+        fill-rule: evenodd;
+      }
+    </style>
+  </defs>
+  <path class="st1" d="M50,10l6,6v10h-6v-10h-20v10h-6v-10l6-6h20ZM22,20h-12l-6,6v40l6,6h60l6-6V26l-6-6h-12v6h12v40H10V26h12v-6Z"/>
+  <path class="st1" d="M40,60c8.8,0,16-7.2,16-16s-7.2-16-16-16-16,7.2-16,16,7.2,16,16,16ZM40,54c5.5,0,10-4.5,10-10s-4.5-10-10-10-10,4.5-10,10,4.5,10,10,10Z"/>
+  <rect x="58" y="30" width="8" height="6"/>
+  <circle class="st0" cx="40" cy="44" r="6"/>
+</svg>

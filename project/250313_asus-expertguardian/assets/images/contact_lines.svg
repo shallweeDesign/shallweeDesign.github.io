@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 499.3 750">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .cm3 {
+        fill: none;
+        stroke: #fff;
+        stroke-width: 2px;
+      }
+    </style>
+  </defs>
+  <g id="lines">
+    <line class="cm3" x1="-.5" y1=".3" x2="499.3" y2="750"/>
+    <line class="cm3" y1="750" x2="499.3"/>
+    <line class="cm3" x1="498.3" y1="374" x2="249" y2="374"/>
+  </g>
+</svg>

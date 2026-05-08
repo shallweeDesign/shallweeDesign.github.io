@@ -1,0 +1,35 @@
+.banner{
+  position: relative;
+  width: 100%;
+  height: auto;
+  &__img{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    top:0;
+    left:0;
+  }
+  &__content{
+    padding: 100px 0;
+    color: #FFF;
+    text-align: center;
+    .btn__country{
+
+      color: $main-color;
+      &:before{
+        content: "";
+        display: inline-block;
+        height:100%;
+        vertical-align: middle;
+      }
+      span, i{
+        display: inline-block;
+        vertical-align: middle;
+        color: $main-color;
+      }
+    }
+  }
+}

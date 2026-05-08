@@ -1,0 +1,72 @@
+body {
+  margin: 0;
+}
+*:focus, *:active, *:visited {
+    outline: none;
+}
+button:focus{
+    outline: none;
+}
+a{
+  color:inherit;
+  &:hover{
+    text-decoration: none;
+    color: inherit;
+  }
+}
+
+.nice-select {
+  background: rgba(0,0,0,0);
+  border: none;
+  color: #FFF;
+  width: 150px;
+  clear: both;
+  float: none;
+  margin: 0 auto;
+
+  span.current {
+    position: absolute;
+    left: 50%;
+    transform: translate(-60%, 0);
+  }
+
+  .list {
+    margin-left: 15px;
+    text-align: center;
+    color: #666;
+
+    .option {
+      min-width: 50px;
+      padding-left: 30px;
+      padding-right: 30px;
+      text-align: center;
+    }
+  }
+
+  &:after {
+    border-bottom: 2px solid #FFF;
+    border-right: 2px solid #FFF;
+  }
+}
+
+.btn__country {
+  margin: 20px auto 0;
+  background-color: #FFF;
+  width: 150px;
+  height: 40px;
+  border-radius: 20px;
+  color: #F44336;
+  display: block;
+  position: relative;
+  i.fa-arrow-right{
+    display: inline-block;
+    vertical-align: middle;
+    margin-right: -20px;
+    margin-top: 1px;
+    margin-left: 20px;
+  }
+  &:active{
+    border: 1px solid #F44336;
+  }
+
+}

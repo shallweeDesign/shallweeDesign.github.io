@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="lines" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 1593.8 1303.1">
+  <!-- Generator: Adobe Illustrator 29.3.1, SVG Export Plug-In . SVG Version: 2.1.0 Build 151)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: none;
+        stroke: #fff;
+        stroke-miterlimit: 10;
+      }
+    </style>
+  </defs>
+  <line id="line3" class="st0" x2="792.7" y2="1301.9"/>
+  <line id="line2" class="st0" y1="1303.1" x2="792.7"/>
+  <line id="line1" class="st0" x1="1591.7" y1="651.5" x2="396.9" y2="651.5"/>
+</svg>

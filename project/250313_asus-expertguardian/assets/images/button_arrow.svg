@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="icon-arrow" data-name="icon-arrow" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 60">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        fill: #008ed2;
+      }
+    </style>
+  </defs>
+  <g id="icon-arrow-gp" data-name="icon-arrow-gp">
+    <g>
+      <circle class="cls-2" cx="30" cy="30" r="30"/>
+      <path class="cls-1" d="M37.52,30h0s2.04-2.05,2.04-2.05l2.04,2.05h0l-12.92,13h-4.08l12.92-13ZM28.68,17l8.84,8.89-2.04,2.05-10.88-10.95h4.08Z"/>
+    </g>
+  </g>
+</svg>

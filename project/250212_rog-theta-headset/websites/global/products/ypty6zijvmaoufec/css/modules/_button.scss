@@ -1,0 +1,20 @@
+#videoBtn{
+  position: absolute;
+  top:50%;
+  left:50%;
+  width:45px;
+  height:45px;
+  margin-left: - 22.5px;
+  margin-top: - 22.5px;
+  img{
+    width:100%;
+  }
+}
+@media (min-width:768px){
+  #videoBtn{
+    width:87px;
+    height:87px;
+    margin-left: - 43.5px;
+    margin-top: - 43.5px;
+  }
+}

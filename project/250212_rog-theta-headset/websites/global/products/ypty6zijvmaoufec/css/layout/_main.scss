@@ -1,0 +1,1105 @@
+#overview #sectionOverview {
+  .rog-theat {
+    overflow-x: hidden;
+
+    div.text__box:after {
+      content: "";
+      clear: both;
+    }
+
+    ol {
+      padding-left: 5px;
+      margin-top: 20px;
+
+      li {
+        font-family: 'Roboto-Light';
+
+        span {
+          display: inline-block;
+          width: calc(100% - 25px);
+          line-height: 150%;
+          vertical-align: top;
+          color: #aaaaaa;
+          padding-top: 0.3rem;
+          font-family: 'Roboto-Light';
+
+          b {
+            color: #e3001a;
+            font-weight: bold;
+            font-family: 'Roboto-Bold';
+          }
+        }
+        counter-increment: step-counter;
+        margin: 20px 0;
+
+        &:before {
+          content: counter(step-counter);
+          vertical-align: -webkit-baseline-middle;
+          margin-right: 5px;
+          font-size: 80%;
+          background-color: #80060a;
+          color: white;
+          font-weight: bold;
+          border-radius: 50%;
+          width: 20px;
+          height: 20px;
+          display: inline-block;
+          text-align: center;
+          line-height: 20px;
+        }
+      }
+    }
+
+    section {
+      position: relative;
+      box-sizing: border-box;
+      overflow: hidden;
+
+      &:after,
+      &:before {
+        content: "";
+        display: table;
+      }
+    }
+
+    .align-left {
+      .img__box {
+        position: relative;
+        // z-index: -1;
+      }
+
+      .text__box {
+        .rog-theat__p {
+          margin-bottom: 2rem;
+        }
+      }
+
+      .player {}
+    }
+
+    .align-right {
+      // min-height: 47vw;
+      .img__box {
+        position: relative;
+        // z-index: -1;
+        width: 100%;
+      }
+
+      .text__box {
+        margin-top: -100px;
+        width: auto;
+        margin-left: 0;
+      }
+    }
+
+    &__kv {
+      .text__box {
+        text-align: center;
+        margin: 0 auto;
+      }
+    }
+
+    &__brand {
+      padding: 50px 20px 40px;
+      background-color: #282828;
+
+      .brand__info {
+        margin: 30px auto 20px;
+      }
+    }
+
+    &__video {
+      width: 100%;
+    }
+
+    &__soundmix {
+      .img__box {
+        position: relative;
+        width: 100%;
+
+        .rog-theat__img {
+          width: 100%;
+        }
+
+        &__item {
+          position: absolute;
+          width: 60%;
+          top: 22.6%;
+          margin-left: 20%;
+
+          &-img {
+            width: 100%;
+          }
+
+          .note {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            margin-top: -10px;
+
+            .rog-theat__h3 {
+              padding: 5px;
+              font-size: 1rem;
+            }
+
+            &-0 {
+              min-width: 85px;
+              margin-left: calc(-25% - 5.5rem);
+            }
+
+            &-1 {
+              min-width: 122px;
+              margin-left: calc(+25% - 7rem);
+            }
+          }
+        }
+      }
+
+      .text__box {
+        margin-top: -100px;
+        width: auto;
+        margin-left: 0;
+      }
+    }
+
+    &__boarding {
+      .text__box {
+        width: auto;
+        margin: -20vw auto 0;
+      }
+    }
+
+    &__ai {
+      .img__box {
+        position: relative;
+        // z-index: -1;
+        .rog-theat__img {
+          width: 130%;
+          // max-width: 130% !important;
+          margin-left: -30%;
+        }
+      }
+
+      .text__box {
+        margin-top: -35%;
+        padding-bottom: 0;
+
+        .rog-theat__p {
+          margin-bottom: 2.5rem;
+        }
+      }
+
+      &__img {
+        display: block;
+        position: relative;
+        width: calc(100% - 40px);
+        margin: 0 auto;
+        max-width: 960px !important;
+        margin-bottom: 4.5rem;
+      }
+
+      .note {
+        margin: 40px auto 30px;
+      }
+
+      .player {
+        position: relative;
+      }
+    }
+
+    &__award {
+      background-color: #101010;
+
+      .img__box {
+        width: 100%;
+        margin: 20px auto 0;
+        padding-top: 50px;
+        text-align: center;
+
+        &__item {
+          margin: 0 10px;
+          display: inline-block;
+          vertical-align: middle;
+
+          &-0 {
+            height: 95px;
+            width: 95px;
+          }
+
+          &-1 {
+            height: 95px;
+            width: 68px;
+          }
+        }
+      }
+
+      .text__box {
+        padding-top: 20px;
+        max-width: 400px;
+        text-align: center;
+        margin: 0 auto;
+
+        .rog-theat__p {
+          margin-top: 1rem;
+        }
+      }
+    }
+
+    &__light {
+      .text__box {
+        margin-top: 0;
+        position: absolute;
+        padding: 20px;
+
+        .rog-theat__p {
+          margin-bottom: 2rem;
+        }
+
+        .btn__box {
+          position: relative;
+
+          .rog-theat__btn {
+            padding: 0;
+            display: inline-block;
+            width: 24%;
+            text-align: center;
+            text-decoration: none;
+            color: #FFF;
+
+            &.on {
+              .rog-theat__h4 {
+                color: #e3001a;
+              }
+            }
+
+            .rog-theat__img {
+              width: 75px;
+            }
+
+            .btn_col {}
+          }
+        }
+
+        #color {
+          display: none;
+        }
+
+        #colorpicker {
+          position: absolute;
+          top: 120px;
+          right: 3%;
+        }
+
+        .color_mask {
+          position: absolute;
+          top: 122px;
+          right: 71px;
+          width: 57px;
+          height: 57px;
+        }
+      }
+
+      .img__box {
+        .bg {
+          height: 90%;
+          top: 5%;
+          position: absolute;
+          width: 100%;
+          z-index: 0;
+          left: 0;
+        }
+
+        img {
+          position: relative;
+          z-index: 1;
+        }
+      }
+    }
+
+    &__expertly {
+      // min-height: 47vw;
+      .img__box {
+        position: relative;
+        //z-index: -1;
+        width: 100%;
+      }
+
+      .text__box {
+        margin-top: -100px;
+        width: auto;
+        margin-left: 0;
+      }
+    }
+
+    &__twotype {
+      .text__box {
+        margin-top: -90px;
+      }
+
+      .img__box {
+        .rog-theat__img {
+          width: 100%;
+        }
+
+        &__item {
+          position: absolute;
+          width: 90%;
+          right: 5%;
+          top: 15%;
+
+          &-img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &__metal-ear {
+      .text__box {
+        margin-top: -20px !important;
+      }
+
+      .img__box {
+        .rog-theat__img {
+          width: 100%;
+          margin-left: 0;
+        }
+
+        &__item {
+          position: absolute;
+          bottom: -1%;
+          width: 70%;
+          left: 13%;
+
+          .num__mark-1 {
+            bottom: 48%;
+            left: 38%;
+          }
+
+          .num__mark-2 {
+            bottom: 41%;
+            left: 38%;
+          }
+
+          &-img {
+            width: 100%;
+          }
+        }
+      }
+    }
+
+    &__multi {
+      .text__box {
+        padding: 100px 20px 50px;
+      }
+
+      .img__box {
+        &__item {
+          position: absolute;
+          top: 10%;
+          left: 0;
+          text-align: center;
+          width: 100%;
+
+          .row {
+            width: 100%;
+            display: inline-block;
+
+            &-1 {}
+
+            &-2 {
+              margin-top: -8%;
+            }
+          }
+
+          &-img {
+            width: 100%;
+          }
+
+          &-con {
+            text-align: center;
+            width: 28vw;
+            display: inline-block;
+          }
+        }
+      }
+    }
+
+    &__armoury {
+      .img__box {
+        position: relative;
+        // z-index: -1;
+        padding-top: 90px;
+      }
+
+      .text__box {
+        margin-top: 0;
+        padding-top: 0;
+        margin-bottom: -35%;
+        padding: 50px 20px 0;
+        position: relative;
+      }
+    }
+
+    &__theta-line {
+      padding: 0 20px;
+
+      .rog-theat__h2 {
+        text-align: center;
+        margin: 50px auto;
+      }
+
+      .rog-theat__table {
+        margin: 0 auto;
+        max-width: 800px;
+        border-collapse: collapse;
+
+        &:nth-child(1) {
+          margin: 0 auto;
+          max-width: 860px;
+        }
+
+        .table__title {
+          tr.rog-theat__tr {
+            border-bottom: 1px solid #808080;
+
+            &:nth-last-child(1) {
+              border-bottom: 1px solid #808080;
+            }
+          }
+        }
+
+        .rog-theat__h3 {
+          color: #e3001a;
+          margin-bottom: 20px;
+        }
+
+        .rog-theat__img {
+          width: 80%;
+        }
+
+        th {
+          vertical-align: bottom;
+          text-align: left;
+          padding-bottom: 5px;
+          padding-left: 5px;
+          font-weight: bold;
+          font-family: 'Roboto-Light';
+        }
+
+        tr.rog-theat__tr {
+          border-bottom: 1px solid #808080;
+
+          &:nth-last-child(1) {
+            border-bottom: none;
+            margin-bottom: 50px;
+          }
+        }
+
+        td {
+          text-align: center;
+          height: 4rem;
+          vertical-align: middle;
+          padding-bottom: 16px;
+          line-height: 1.5;
+          font-family: 'Roboto-Light';
+        }
+      }
+    }
+  }
+}
+@media (min-width:768px) {
+  #overview #sectionOverview {
+    .rog-theat {
+      &__light {
+        .text__box {
+          width: 50%;
+          padding-top: 5%;
+
+          .rog-theat__h2 {
+            text-align: right;
+          }
+
+          .rog-theat__p {
+            text-align: right;
+          }
+
+          .btn__box {
+            width: 55%;
+            margin-left: 49%;
+
+            .rog-theat__btn {
+              width: 48%;
+              padding: 20px 0 0;
+
+              .btn_col {}
+            }
+          }
+
+          #color {}
+
+          #colorpicker {
+            top: 30px;
+            right: auto;
+            left: -130px;
+          }
+
+          .color_mask {}
+        }
+
+        .img__box {
+          .bg {}
+
+          .rog-theat__img {
+            width: 200%;
+            // max-width: 200% !important;
+            margin-left: -50%;
+          }
+        }
+      }
+
+      &__multi {
+        .text__box {
+          padding: 100px 40px;
+        }
+      }
+
+      &__soundmix {
+        .img__box {
+          &__item {
+            .note {
+              .rog-theat__h3 {
+                padding: 5px 10px;
+              }
+
+              &-0 {
+                margin-left: calc(-25% - 5rem);
+              }
+
+              &-1 {
+                margin-left: calc(+25% - 6rem);
+              }
+            }
+          }
+        }
+      }
+
+      &__armoury {
+        .img__box {}
+
+        .text__box {
+          padding: 50px 40px 0;
+        }
+      }
+    }
+  }
+}
+@media (min-width:1024px) {
+  #overview #sectionOverview {
+    .rog-theat {
+      &__boarding {}
+
+      &__ai {
+        .img__box {
+          position: relative;
+          // z-index: -1;
+          .rog-theat__img {
+            width: 120%;
+            // max-width: 120% !important;
+            margin-left: -20%;
+          }
+        }
+
+        .text__box {
+          margin-top: -30%;
+
+          .rog-theat__p {
+            margin-bottom: 2.5rem;
+          }
+        }
+
+        .player {}
+      }
+
+      &__multi.align-left {
+        display: -ms-flexbox;
+        display: flex;
+        // align-items: center;
+        .text__box {
+          padding-top: 10%;
+          width: 40%;
+          margin-left: 7%;
+          padding-bottom: 10%;
+          margin-top: 0;
+          text-align: right;
+        }
+
+        .img__box {
+          position: absolute;
+          width: 100%;
+          height: auto;
+
+          top: 0;
+          &__item {
+            width: 50%;
+            max-width: 500px;
+            left: 52%;
+            top: 15%;
+
+            .row {
+              width: 30%;
+              vertical-align: middle;
+              margin-right: 10%;
+
+              &-2 {
+                margin-top: 0;
+              }
+            }
+
+            &-con {
+              width: 100%;
+            }
+          }
+
+          .rog-theat__img {
+            width: 2048px;
+            // max-width: 2048px !important;
+            margin-left: calc((100% - 2048px)/2);
+            margin-top: calc((45vw - 582px)/2);
+          }
+        }
+      }
+
+      &__light {
+        .text__box {
+          padding-top: 10%;
+          width: 40vw;
+          margin-left: 10vw;
+        }
+      }
+
+      &__armoury {}
+    }
+  }
+}
+@media (min-width:1300px) {
+  #overview #sectionOverview {
+    .rog-theat {
+      .align-left {
+        .img__box {
+          position: absolute;
+        }
+
+        .text__box {
+          text-align: right;
+        }
+      }
+
+      .align-right {
+        position: relative;
+        width: 100%;
+
+        .img__box {
+          top: 0;
+          left: 0;
+          position: absolute;
+          overflow: hidden;
+
+          .rog-theat__img {
+            width: 120%;
+            // max-width: 120% !important;
+            margin-left: -10%;
+          }
+        }
+
+        .text__box {
+          width: 40%;
+          margin-left: 50%;
+        }
+      }
+
+      &__brand {
+        padding: 150px 20px 40px;
+
+        .brand__info {
+          margin: 30px auto 20px;
+        }
+      }
+
+      &__soundmix {
+        position: relative;
+        width: 100%;
+        // min-height: 40vw;
+        display: -ms-flexbox;
+        display: flex;
+        // align-items: center;
+        .img__box {
+          top: 0;
+          left: 0;
+          position: absolute;
+          overflow: hidden;
+
+          &__item {
+            width: 35%;
+            top: 23.2%;
+            margin-left: 13.3%;
+
+            .note {
+              margin-top: -10px;
+
+              .rog-theat__h3 {
+                padding: 5px 10px;
+                font-size: 1.2rem;
+              }
+
+              &-0 {
+                min-width: 85px;
+                margin-left: calc(-25% - 6.5rem);
+              }
+
+              &-1 {
+                min-width: 122px;
+                margin-left: calc(+25% - 7rem);
+              }
+            }
+          }
+
+          .rog-theat__img {
+            width: 120%;
+            // max-width: 120% !important;
+            margin-left: -10%;
+          }
+        }
+
+        .text__box {
+          margin-top: 0;
+          width: 45%;
+          margin-left: 50%;
+          padding-top: 5%;
+          padding-bottom: 5%;
+        }
+      }
+
+      &__boarding {
+        .text__box {
+          width: 61vw;
+          margin: -22vw auto 0;
+
+          .rog-theat__p {
+            max-width: 90%;
+          }
+        }
+      }
+
+      &__ai {
+        .img__box {
+          position: absolute;
+        }
+
+        .text__box {
+          padding-top: 10%;
+          width: 45%;
+          margin-left: 5%;
+          text-align: right;
+          margin-top: 0;
+          padding-bottom: 2rem;
+          display: block;
+        }
+
+        &__img {}
+      }
+
+      &__award {
+        .img__box {}
+
+        .text__box {
+          padding-bottom: 50px;
+
+          .rog-theat__p {}
+        }
+      }
+
+      &__twotype {
+        display: -ms-flexbox;
+        display: flex;
+        // align-items: center;
+        // min-height: 50vw;
+        .img__box {
+          .rog-theat__img {
+            width: 130%;
+            // max-width: 130% !important;
+            margin-left: -20%;
+          }
+
+          &__item {
+            width: 50%;
+            right: 8%;
+            top: 15%;
+          }
+        }
+
+        .text__box {
+          padding-top: 5%;
+          margin-top: 0;
+          padding-bottom: 5%;
+          width: 35%;
+          margin-left: 4%;
+        }
+      }
+
+      &__metal-ear {
+        .text__box {
+          padding-top: 14%;
+          padding-bottom: 0;
+        }
+
+        .img__box {
+          .rog-theat__img {
+            width: 140%;
+            // max-width: 140% !important;
+            margin-left: -20%;
+          }
+
+          &__item {
+            width: 31.4%;
+            left: 15.4%;
+
+            .num__mark-1 {
+              bottom: 48%;
+              left: 38%;
+            }
+
+            .num__mark-2 {
+              bottom: 41%;
+              left: 38%;
+            }
+          }
+        }
+      }
+
+      &__multi.align-left {
+        .text__box {
+          padding-top: 10%;
+          width: 40%;
+          max-width: 40%;
+          margin-left: 8%;
+
+          .rog-theat__h2 {
+            // margin-bottom: 0.2em;
+          }
+        }
+
+        .img__box {
+          .rog-theat__img {
+            margin-top: 0;
+          }
+        }
+      }
+
+      &__light {
+        .text__box {
+          width: 45%;
+          margin-right: 55%;
+          padding-top: 5%;
+          padding-bottom: 5%;
+
+          .rog-theat__p {}
+
+          .btn__box {
+            width: 50%;
+            margin-left: 49%;
+
+            .rog-theat__btn {
+              width: 48%;
+              padding: 20px 0 0;
+
+              .rog-theat__img {
+                width: 87px;
+              }
+
+              .btn_col {}
+            }
+          }
+
+          #color {}
+
+          #colorpicker {
+            top: 60px;
+            right: auto;
+            left: -150px;
+          }
+
+          .color_mask {}
+        }
+
+        .img__box {
+          .bg {}
+
+          .rog-theat__img {
+            width: 120%;
+            // max-width: 120% !important;
+            margin-left: -10%;
+          }
+        }
+      }
+
+      &__expertly {
+        position: relative;
+        width: 100%;
+        display: -ms-flexbox;
+        display: flex;
+        // align-items: center;
+        .img__box {
+          top: 0;
+          left: 0;
+          position: absolute;
+          overflow: hidden;
+
+          .rog-theat__img {
+            width: 2560px;
+            height: 960px;
+            // max-width: 2560px !important;
+            margin-left: calc((100% - 2560px)/2);
+          }
+        }
+
+        .text__box {
+          margin-top: 0;
+          width: 40%;
+          margin-left: 50%;
+          padding-top: 13%;
+          padding-bottom: 5%;
+        }
+      }
+
+      &__armoury {
+        .text__box {
+          display: block;
+          max-width: 1000px;
+          margin-bottom: 0;
+          left: 50%;
+          position: absolute;
+          margin-left: -620px;
+          padding-top: 7%;
+        }
+
+        .img__box {
+          position: relative;
+          padding-top: 0;
+
+          .rog-theat__img {
+            width: 2544px;
+            // max-width: 2544px !important;
+            height: 1330px;
+            margin-left: calc((100% - 2480px)/2);
+          }
+        }
+      }
+    }
+  }
+}
+@media (min-width:1920px) {
+  #overview #sectionOverview {
+    .rog-theat {
+      section {
+        // min-height: 50vw;
+      }
+
+      &__brand {
+        padding: 150px 20px 40px;
+
+        .brand__info {
+          margin: 30px auto 20px;
+        }
+      }
+
+      &__soundmix {
+        // max-height: 1080px;
+        .img__box {
+          .rog-theat__img {
+            width: 100%;
+            margin-left: 0;
+          }
+
+          &__item {
+            width: 35%;
+            top: 23.2%;
+            margin-left: 13.3%;
+          }
+        }
+
+        .text__box {
+          padding-top: 5%;
+        }
+      }
+
+      &__ai {
+        .text__box {
+          padding-bottom: 0;
+          width: 900px;
+          margin-left: calc(50% - 900px);
+        }
+
+        &__img {
+          width: 900px;
+          margin-left: calc(50% - 900px);
+          padding: 0 20px;
+          margin-bottom: 80px;
+        }
+
+        .note {
+          margin: 40px auto;
+        }
+      }
+
+      &__light {
+        .text__box {
+          margin-left: calc(50% - 900px);
+        }
+      }
+
+      &__expertly {
+        // min-height: 37vw;
+        .text__box {
+          padding-top: 6%;
+        }
+      }
+
+      &__twotype {
+        .img__box {
+          .rog-theat__img {
+            width: 2562px;
+            // max-width: 2562px !important;
+            height: 884px;
+            margin-left: calc((100% - 2560px)/2);
+            margin-top: 0;
+          }
+
+          &__item {
+            width: 45%;
+            right: 5%;
+            top: 20%;
+          }
+        }
+
+        .text__box {
+          width: 35%;
+          margin-left: 10%;
+        }
+      }
+
+      &__metal-ear {
+        .text__box {
+          padding-top: 20%;
+        }
+      }
+
+      &__multi.align-left {
+        .text__box {
+          width: 40%;
+          margin-left: 7%;
+        }
+      }
+    }
+  }
+}

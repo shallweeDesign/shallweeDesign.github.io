@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-tw" dir="ltr">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0">
+
+
+  <title>重工FUN假遊</title>
+  <link rel="stylesheet" href="js/lib/slick/slick.css">
+  <link rel="stylesheet" href="js/lib/slick/slick-theme.css">
+  <link rel="stylesheet" href="js/lib/cropper/cropper.css">
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/flick/jquery-ui.css">
+  <link rel="stylesheet" href="css/main.css">
+
+
+</head>
+
+<body>
+  <header>
+    <a class="logo" href="http://www.heavyduty.com.tw/GoWeb2/include/index.php" target="_blank">
+      <img src="img/logo.png" alt="logo"/>
+    </a>
+  </header>
+  <div class="wrapper">
+    <section class="page page__pick-view">
+      <img class="title" src="img/title_fun.png" alt="重工FUN假遊" />
+      <h4 class="subtitle">跟著阿部寬經典作品，來次趣味的踩點之旅</h4>
+      <div class="view-box">
+        <div class="view-slick">
+
+
+          <div class="view view_0">
+            <a id="view0" href="javascript:;" class="view__btn">
+              <img class="view__img" src="img/view_0.png" alt="">
+            </a>
+          </div>
+          <div class="view view_1">
+            <a  id="view1" href="javascript:;" class="view__btn">
+              <img class="view__img" src="img/view_1.png" alt="">
+            </a>
+          </div>
+          <div class="view view_2">
+            <a  id="view2" href="javascript:;" class="view__btn">
+              <img class="view__img" src="img/view_2.png" alt="">
+            </a>
+          </div>
+          <div class="view view_3">
+            <a  id="view3" href="javascript:;" class="view__btn">
+              <img class="view__img" src="img/view_3.png" alt="">
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="page page__upload">
+      <h4 class="subtitle">上傳最滿意的照片，加上造型配件，<br class="showM"/>和螢幕上的阿部寬一樣玩美有型 !</h4>
+      <div class="photo__editor">
+        <div class="upload__preview">
+            <div class="photo">
+              <img src="img/empty.png" class="photo__head cropper-hidden" id="photo__head"/>
+            </div>
+            <div class="mask">
+              <img src="img/photo_mask.png" />
+            </div>
+
+        </div>
+
+        <h5 class="info">請選擇5MB以內大頭照</h5>
+        <div class="btn__wrapper">
+          <div class="notice upload__notice">
+            上傳一張<br/>最好看的大頭照吧
+          </div>
+          <label class="btn upload__btn" for="btn_upload">
+            上傳圖片
+            <input type="file" id="btn_upload" accept="image/*" />
+          </label>
+        </div>
+
+        <div class="icon__box">
+          <div class="icon icon__rotate">
+            <img src="img/icon_rotate.png"/>
+          </div>
+          <div class="icon icon__zoom-in">
+            <img src="img/icon_zoomin.png"/>
+          </div>
+          <div class="icon icon__zoom-out">
+            <img src="img/icon_zoomout.png"/>
+          </div>
+        </div>
+      </div>
+      <div class="feature">
+        <div class="feature__gender-box">
+
+          <h4>選擇性別</h4>
+          <div class="btn__wrapper">
+            <div class="notice gender__notice">
+              請 選 擇 性 別 喔
+            </div>
+
+          <div class="feature__gender feature__gender-f feature__gender-active">
+            <img src="img/gender_f.png"/>
+          </div>
+          <div class="feature__gender feature__gender-m">
+            <img src="img/gender_m.png"/>
+          </div>
+        </div>
+        </div>
+        <div class="feature__item-box">
+          <h4>選擇配件</h4>
+          <div class="btn__wrapper">
+            <div class="notice item__notice">
+              請左右選擇<br/>搭配有趣的配件
+            </div>
+
+          <div class="item__slider">
+            <div class="">
+              <div class="feature__item" id="item0">
+                <img src="img/item_0.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item1">
+                <img src="img/item_1.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item2">
+                <img src="img/item_2.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item3">
+                <img src="img/item_3.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item4">
+                <img src="img/item_4.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item5">
+                <img src="img/item_5.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item6">
+                <img src="img/item_6.png"/>
+              </div>
+            </div>
+            <div class="">
+              <div class="feature__item" id="item7">
+                <img src="img/item_7.png"/>
+              </div>
+            </div>
+          </div>
+          </div>
+          <div class="btn" id="btn__go">
+            選擇完畢 GO
+          </div>
+        </div>
+      </div>
+
+    </section>
+    <section class="page page__result">
+      <div class="content">
+        <!-- <canvas id="myCanvas" width="1200" height="675"></canvas> -->
+      </div>
+      <h5 class="info">覺得有趣? 分享給更多朋友來玩吧 !</h5>
+      <div class="btn-box">
+        <a class="btn btn__share">
+          立即分享 GO
+        </a>
+        <a class="btn btn__playagain">
+          重新出發
+        </a>
+      </div>
+      <div class="loading">
+        <div class="loader"></div>
+      </div>
+    </section>
+  </div>
+  <footer>
+    <div class="container">
+      <div class="copyright">
+        ©2019 上洋產業股份有限公司 UP YOUNG CORNERSTONE CORP. All Rights Reserved.<br/>
+         Certified Distributor of MITSUBISHI HEAVY INDUSTRIES – MAHAJAK AIR CONDITIONERS CO, LTD.
+      </div>
+      <div class="contact">
+        消費者專線：<a href="tel:0800-3007-66">0800-3007-66</a>
+      </div>
+    </div>
+
+  </footer>
+
+  <script src="https://code.jquery.com/jquery-1.12.4.min.js" integrity="sha384-nvAa0+6Qg9clwYCGGPpDQLVpLNn0fRaROjHqs13t4Ggj3Ez50XnGQqc/r8MhnRDZ" crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script> -->
+  <script type="text/javascript" src="js/lib/slick/slick.min.js"></script>
+  <script type="text/javascript" src="js/lib/exif.js"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui-touch-punch/0.2.3/jquery.ui.touch-punch.min.js"></script>
+
+  <!-- <script type="text/javascript" src="js/lib/croppic/croppic.js"></script> -->
+  <script type="text/javascript" src="js/lib/cropper/cropper.js"></script>
+  <!-- <script src="http://code.baidu.com/touch-0.2.14.min.js"></script> -->
+  <!-- <script src="js/lib/touch-0.2.14.min.js"></script> -->
+  <!-- <script src="js/lib/jquery.ui.rotatable.js"></script> -->
+
+
+  <script type="text/javascript" src="js/main.js"></script>
+</body>
+
+</html>

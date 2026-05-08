@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="egfm_tri" data-name="egfm_tri" xmlns="http://www.w3.org/2000/svg" version="1.1" viewBox="0 0 128 206">
+  <defs>
+    <style>
+      .egfm_tri_item {
+        fill: #008ed2;
+      }
+    </style>
+  </defs>
+  <polygon class="egfm_tri_item" points="0 0 128 206 0 206 0 0"/>
+</svg>

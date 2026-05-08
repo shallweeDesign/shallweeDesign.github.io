@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0" />
+  <meta name="apple-mobile-web-app-capable" content="no" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  <title>HAKU</title>
+
+  <script>
+    if (navigator.userAgent.indexOf('MSIE') !== -1 || navigator.appVersion.indexOf('Trident/') > 0) {
+
+    } else {
+      // location.href = '../index.html';
+    }
+  </script>
+<link href="assets/css/style.565b6dc1.css" rel="stylesheet"></head>
+
+<body>
+  <!-- <a id="btform" href="#form_2"></a> -->
+
+  <div id="hakuApp" class="app" role="main">
+    <div class="app_wrapper">
+      <!--Nav-->
+      <nav class="app_nav">
+        <a href="" class="logo"><img class="logo__img" src="assets/images/logo.75a367af.png" /></a>
+        <input class="menu-btn" type="checkbox" id="menu-btn" />
+        <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+        <ul class="menu">
+          <li><a id="btn_index" href="#kv">首頁</a></li>
+          <li><a id="btn_commercial" href="#video">影片介紹</a></li>
+          <li><a id="btn_about" href="#model">美白迷思</a></li>
+          <li><a id="btn_info" href="#feature">植萃美白</a></li>
+          <li><a id="btn_form" href="#form">領取試用</a></li>
+        </ul>
+      </nav>
+
+      <div class="app_content">
+        <!--KV / A01-->
+        <section id="kv" class="kv app_section">
+          <img src="assets/images/kv.f3f2ef7d.jpg" />
+        </section>
+
+        <!--Kaleidoscope / A02-->
+        <section id="kaleidoscope" class="kaleidoscope app_section">
+          <img src="assets/images/kale.b4e34973.jpg" />
+        </section>
+
+        <!--VideoIntro / A03-->
+        <section id="videoIntro" class="videointro app_section">
+          <img src="assets/images/videoIntro.60b9dd8b.jpg" />
+        </section>
+
+        <!--Video / A04-->
+        <section id="video" class="video app_section">
+          <div class="app_section_content">
+            <div class="video__container">
+              <div class="ratio">
+                <div id="youtubePlayer"></div>
+              </div>
+            </div>
+          </div>
+          <img src="assets/images/video_bg.35ef4598.jpg" />
+        </section>
+
+        <!--Model / A05-->
+        <section id="model" class="model app_section">
+          <img src="assets/images/model.8c0ce5d8.jpg" />
+        </section>
+
+        <!--AfterModel / A06~A07-->
+        <section id="afterModel" class="afterModel app_section">
+          <img src="assets/images/production.303d4070.jpg" />
+        </section>
+
+        <!-- feature / B01~B02 -->
+        <section id="feature" class="feature app_section">
+          <img src="assets/images/feature_1.cdde7f93.jpg" alt="">
+          <img src="assets/images/tri_1.80e44f00.jpg" alt="">
+          <img src="assets/images/tri_2.acc438ee.jpg" alt="">
+          <img src="assets/images/tri_3.1adcae20.jpg" alt="">
+          <img src="assets/images/tri_4.f32fe70e.jpg" alt="">
+
+
+        </section>
+        <!-- slogan / B03 -->
+        <section id="slogan" class="slogan app_section">
+          <img src="assets/images/tri_5.efacbca8.jpg" alt="">
+        </section>
+
+        <!-- ripple / B03 -->
+        <section id="ripple" class="ripple app_section">
+          <img src="assets/images/ripple_1.e48f832f.jpg" alt="">
+          <img src="assets/images/ripple_2.ee6b3bf6.jpg" alt="">
+        </section>
+
+        <!-- form / C01 -->
+        <section id="form" class="form app_section">
+          <div class="app_section_content">
+            <div id="form__bg" class="form__bg"></div>
+          </div>
+          <div class="form_content">
+            <div class="form__step form__step1">
+              <h7 class="form__step1__text rl font-jpm">植萃綺肌露 新發售</h7>
+              <img class="form__step1__img" src="assets/images/production_2.db4b3383.png" />
+              <form class="form__step1__table" action="" method="post">
+                <h6 class="table__row table__row__intro font-jpm">
+                  請填寫資料預約<span class="font-twm">，</span><br class="showPC" />
+                  並於三日內憑簡訊連結畫面<br />
+                  至指定專櫃免費領取「植萃綺肌露」體驗禮乙份
+                </h6>
+                <div class="table__row align-left">
+                  <label class="form__label font-hei" for="form__name">姓名</label>
+                  <input type="text" class="form__name font-hei" id="form__name" />
+                </div>
+                <div class="table__row align-left">
+                  <label class="form__label font-hei" for="form__tel">電話</label>
+                  <input type="tel" class="form__tel font-hei" id="form__tel" />
+                </div>
+                <div class="table__row align-left">
+                  <label class="form__label font-hei" for="form__email">Email</label>
+                  <input type="email" class="form__email font-hei" id="form__email" />
+                </div>
+                <div class="table__row align-left">
+                  <label class="form__label font-hei" for="form__addr">領取據點</label>
+                  <input disabled class="form__addr font-hei" id="form__addr" value="" />
+                  <input class="form__button font-hei" id="button__addr" type="button" value="選擇據點" />
+                </div>
+                <div class="table__row align-left form__check">
+
+                  <div class="form__check__box">
+                    <input type="checkbox" checked="checked" id="contract" value="" /><label for="contract">已同意個資法條款與注意事項</label>
+                  </div>
+                  <div class="form__check__box">
+                    <input type="checkbox" checked="checked" value="" id="oneforone" /><label for="oneforone">一人限領一次，不可多門號重複領取</label>
+                  </div>
+                  <div class="form__check__box">
+                    妳是否有購買過資生堂品牌的任何相關產品？<br />
+                    <label class="check-box__label" for="buyBefore_y">是 </label><input type="radio" class="check-box__input" name="buyBefore" id="buyBefore_y" value="" />
+                    <span>&emsp;</span>
+                    <label for="buyBefore_n" class="check-box__label">否</label><input type="radio" class="check-box__input" id="buyBefore_n" name="buyBefore" value="" />
+                  </div>
+
+                </div>
+                <div class="table__row  button__row">
+                  <input class="form__button2 font-hei" type="button" id="button__submit" value="確認送出" />
+                  <input class="form__button2 form__button--w font-hei" id="button__reset" type="reset" value="重新填寫" />
+                </div>
+                <div class="table__row">
+                  <p class="table__row__description font-hei">
+                    *體驗禮每人限領乙次<span class="font-twm">，</span>數量有限<span class="font-twm">，</span>兌完為止。<br />
+                    *資生堂東京櫃保有贈品更換之權利。
+                  </p>
+                </div>
+              </form>
+            </div>
+            <div class="form__step form__step2">
+              <div class="form__step2__container">
+                <div class="form__step2__map">
+                  <img src="assets/images/map.3269c79e.png" />
+                </div>
+                <input type="button" id="button__nearby" class="button__nearby" name="button__nearby" value="尋找附近櫃點" />
+              </div>
+              <div class="form__step2__container">
+                <h5 class="form__step2__title font-jpm">選擇欲購的據點</h5>
+                <div class="custom-select">
+                  <select class="font-hei" id="select__city" name="" data-callback="showArea" data-placeholder="選擇縣市">
+                    <option value="Taipei">Taipei</option>
+                    <option value="Taipei">Taipei</option>
+                    <option value="Taipei">Taipei</option>
+                  </select>
+                </div>
+                <div class="custom-select">
+                  <select id="select__area" class="font-hei" name="" data-callback="showStore" data-placeholder="選擇區域">
+                    <option value="Taipei">Taipei</option>
+                    <option value="Taipei">Taipei</option>
+                    <option value="Taipei">Taipei</option>
+                  </select>
+                </div>
+                <div class="form__step2__store">
+                  <ul class="font-hei">
+                    <li>
+                      <input id="store_0" class="form__step2__radio " type="radio" name="store" value="store_0" checked>
+                      <label for="store_0">宜蘭縣羅東鎮集祥里民生路11號 (03)9544469</label>
+                    </li>
+                    <li>
+                      <input id="store_1" class="form__step2__radio" type="radio" name="store" value="store_1">
+                      <label for="store_1">宜蘭縣羅東鎮集祥里民生路11號 (03)9544469</label>
+                    </li>
+                  </ul>
+
+                </div>
+                <input type="button" id="button__confirm" class="button__confirm font-hei" name="" value="確認送出" />
+              </div>
+            </div>
+            <div class="form__step form__step3">
+              <div class="step2_flex_container">
+                <!--left-->
+                <div class="item">
+                  <div class="form__step3__box">
+                    <h4 class="form__step3__title font-jpm">恭喜完成HAKU</h4>
+                    <h6 class="form__step3__text font-jpm">植萃+美白三角科技新體驗</h6>
+                    <div class="form__step3__img">
+                      <img src="assets/images/form-end.a3a6e7fb.png" />
+                    </div>
+                    <p class="form__step3__text2 font-jpm">
+                      若15分鐘內<span class="font-twm">，</span>仍未收到簡訊<span class="font-twm">，</span>請按此<a href="javascript:void(0);" id="resent__msg">補發簡訊</a>
+                    </p>
+                  </div>
+                </div>
+                <!--right-->
+                <div class="item">
+                  <div class="line__bg">
+                    <form class="line__form font-hei" action="" method="post">
+                      <h5 class="line__form__title font-jpb">您值得更好的禮遇</h5>
+                      <h6 class="line__form__text font-jpm">若您曾在資生堂東京櫃消費<span class="font-twm">，</span>請輸入您的生日<span class="font-twm">，</span><br />
+                        獲得資生堂LINE會員認證！<br />
+                        將不定期收到會員專屬獨家優惠訊息！
+                      </h6>
+                      <input class="line__input line__input__year" type="text" name="" value="">西元年<input class="line__input line__input__month" type="text" name="" value="">月<input class="line__input line__input__date" type="text" name="" value="">日
+                      <input class="line__button" type="button" value="確認送出" />
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section id="ig" class="ig">
+          <!-- <div class="app_section_content">
+              </div> -->
+          <div class="ig__content">
+            <div class="ig__box">
+              <a class="ig__box__item" target="_blank"
+                href="https://minimedusa.pixnet.net/blog/post/228885149-%E3%80%96-%E4%BF%9D%E9%A4%8A-%E3%80%97-%E6%88%91%E7%9A%84%E8%87%89%E9%83%A8%E7%BE%8E%E7%99%BD%E6%96%B9%E6%B3%95-haku-%E9%A9%85%E9%BB%91%E6%B7%A8%E7%99%BD%E6%A4%8D">
+                <div class="ig__box__image ig__box__item--1"></div>
+              </a>
+              <a class="ig__box__item youtube-link" youtubeid="rLSVg5Lknoc">
+                <div class="ig__box__image ig__box__item--2"></div>
+              </a>
+              <div class="ig__box__item showPC"></div>
+
+              <div class="ig__box__item showPC"></div>
+              <a class="ig__box__item" target="_blank"
+                href="https://missrachelnina.pixnet.net/blog/post/351715843-%e8%b3%87%e7%94%9f%e5%a0%82%e7%be%8e%e7%99%bd%e7%b2%be%e8%8f%af%e6%8e%a8%e8%96%a6%e6%96%b0%e5%93%81%e2%94%82shiseido%e8%b3%87%e7%94%9f%e5%a0%82%e6%9d%b1%e4%ba%ac">
+                <div class="ig__box__image ig__box__item--3"></div>
+              </a>
+              <a class="ig__box__item youtube-link" youtubeid="Wea9HQlRC6I">
+                <div class="ig__box__image ig__box__item--4"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8QGH-qgQ59/">
+                <div class="ig__box__image ig__box__item--5"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B70vtMXFVeL/">
+                <div class="ig__box__image ig__box__item--6"></div>
+              </a>
+
+              <div class="ig__box__item showPC"></div>
+              <div class="ig__box__item showPC"></div>
+
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8dXpQplCbX/">
+                <div class="ig__box__image ig__box__item--7"></div>
+              </a>
+              <a class="ig__box__link hidePC" href="#form">
+                <div class="ig__box__link--icon"><img src="assets/images/icon_ig.bb0d576b.png" /></div>
+                <h6 class="ig__box__link--text">立刻領取免費試用包！</h6>
+              </a>
+
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8gaaZ2FGF4/?utm_source=ig_web_copy_link">
+                <div class="ig__box__image ig__box__item--8"></div>
+              </a>
+              <a class="ig__box__link showPC" href="#form">
+                <div class="ig__box__link--icon"><img src="assets/images/icon_ig.bb0d576b.png" /></div>
+                <h6 class="ig__box__link--text">立刻領取免費試用包！</h6>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8YfPveHV_w/">
+                <div class="ig__box__image ig__box__item--9"></div>
+              </a>
+
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7nzuEzpS3q/">
+                <div class="ig__box__image ig__box__item--10"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7it_xrpkb0/">
+                <div class="ig__box__image ig__box__item--11"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7nybCBAB1s/">
+                <div class="ig__box__image ig__box__item--12"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7rAVyaB_X8/">
+                <div class="ig__box__image ig__box__item--13"></div>
+              </a>
+
+              <div class="ig__box__item showPC"></div>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7lMm-rnElV/">
+                <div class="ig__box__image ig__box__item--14"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8OSJU9nU6w/">
+                <div class="ig__box__image ig__box__item--15"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B7m6hMaHfUj/">
+                <div class="ig__box__image ig__box__item--16"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8BG_ElB1oa/">
+                <div class="ig__box__image ig__box__item--17"></div>
+              </a>
+              <a class="ig__box__item" target="_blank" href="https://www.instagram.com/p/B8BeZsTlRtO/">
+                <div class="ig__box__image ig__box__item--18"></div>
+              </a>
+            </div>
+          </div>
+        </section>
+        <a class="cta" href="#form"></a>
+      </div>
+    </div>
+    <!-- <div class="loading">
+
+    </div> -->
+  </div>
+
+<script type="text/javascript" src="assets/js/vendor.565b6dc1.js"></script><script type="text/javascript" src="assets/js/app.565b6dc1.js"></script></body>
+
+
+<script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var formSection = document.querySelector("#form");
+    var step1 = formSection.querySelector(".form__step1");
+    var step2 = formSection.querySelector(".form__step2");
+    var step3 = formSection.querySelector(".form__step3");
+
+    var buttonSubmit = formSection.querySelector("#button__submit");
+    buttonSubmit.addEventListener("click", function() {
+      step1.style.display = "none";
+      step3.style.display = "block";
+    });
+
+    var buttonAddr = formSection.querySelector("#button__addr");
+    buttonAddr.addEventListener("click", function() {
+      step2.style.display = "block";
+    });
+
+    var confirmAddr = formSection.querySelector("#button__confirm");
+    confirmAddr.addEventListener("click", function() {
+      step2.style.display = "none";
+    });
+  });
+</script>
+
+</html>

@@ -1,0 +1,107 @@
+html {
+  font-size: 10px;
+  line-height: 150%;
+}
+@media (min-width:576px) {
+  html {
+    font-size: 13.33px;
+  }
+}
+@media (min-width:768px) {
+  html {
+    font-size: 16px;
+  }
+}
+@media (min-width:1024px) {
+  html {
+    font-size: 16px;
+  }
+}
+#sectionOverview{
+.rog-theat {
+  background-color: rgba(0,0,0,1);
+  color: #FFF;
+  font-size: 10px;
+  line-height: 150%;
+  font-family: "Roboto-Light";
+
+  &__h1 {
+    font-size: 3.5em;
+    font-family: "Xolonium";
+    margin: 50px auto 25px;
+    line-height: 150%;
+    color: #FFF;
+  }
+
+  &__h2 {
+    font-size: 1.625em;
+    font-family: "Xolonium";
+    line-height: 100%;
+    color: #FFF;
+  }
+
+  &__h3 {
+    font-size: 1.1em;
+    font-family: "Xolonium";
+    line-height: 130%;
+    color: #FFF;
+  }
+
+  &__h4 {
+    font-size: 1em;
+    font-family: "Xolonium";
+    line-height: 150%;
+    color: #FFF;
+  }
+
+  &__p {
+    font-size: 1.125em;
+    font-family: "Roboto-Light";
+    line-height: 150%;
+    color: #FFF;
+    margin-bottom: 1.5em;
+  }
+}
+}
+@media (min-width:576px) {
+  #sectionOverview{
+  .rog-theat {
+    font-size: 13.33px;
+  }}
+}
+@media (min-width:768px) {
+  #sectionOverview{
+  .rog-theat {
+  }
+}
+}
+@media(min-width:768px) {
+  #sectionOverview{
+  .rog-theat {
+
+      font-size: 16px;
+    &__h2 {
+      font-size: 2.625em;
+    }
+
+    &__h3 {
+      font-size: 1.3em;
+    }
+  }}
+}
+@media(min-width:1024px) {
+  #sectionOverview{
+    .rog-theat {
+      font-size: 16px;
+    }
+  }
+}
+@media (min-width:1300px) {
+
+  #sectionOverview{
+    .rog-theat {
+    &__h3 {
+      font-size: 1.5em;
+    }
+  }}
+}

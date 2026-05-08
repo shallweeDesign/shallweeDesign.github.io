@@ -1,0 +1,62 @@
+#sectionOverview {
+  .rog-theat {
+    .num__mark {
+      font-size: 80%;
+      background-color: rgba(254,6,5,0.5);
+      color: white;
+      font-weight: bold;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      display: inline-block;
+      text-align: center;
+      line-height: 15px;
+      position: absolute;
+    }
+
+    .note {
+      text-align: center;
+
+      .rog-theat__h3 {
+        padding: 5px 20px;
+        border: 1px solid #e3001a;
+        display: inline-block;
+        color: #e3001a;
+        text-align: center;
+        background-color: rgba(0,0,0,0.5);
+      }
+
+      &-w {
+        .rog-theat__h3 {
+          border: 1px solid #FFF;
+          color: #FFF;
+        }
+      }
+    }
+  }
+}
+@media (min-width:768px){
+  #sectionOverview {
+    .rog-theat {
+      .num__mark {
+        width: 20px;
+        height: 20px;
+        line-height: 20px;
+
+      }
+
+      .note {
+
+        .rog-theat__h3 {
+
+        }
+
+        &-w {
+          .rog-theat__h3 {
+
+          }
+        }
+      }
+    }
+  }
+}
