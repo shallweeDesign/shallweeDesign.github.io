@@ -493,6 +493,117 @@ body {
   margin-left: auto;
 }
 
+/* ── Projects carousel (home) ──────────────────── */
+.projects-home {
+  border-top: 1px solid #1e2a38;
+}
+.projects-home__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-bottom: 32px;
+}
+.projects-home__header .section__title {
+  margin-bottom: 0;
+}
+.projects-home__header .section__title em {
+  font-style: normal;
+  color: #39ff14;
+}
+.projects-home__controls {
+  display: flex;
+  gap: 8px;
+  padding-bottom: 6px;
+}
+.proj-nav {
+  width: 40px; height: 40px;
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 6px;
+  color: #adbac7;
+  font-size: 16px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  display: flex; align-items: center; justify-content: center;
+}
+.proj-nav:hover:not(:disabled) {
+  border-color: #39ff14;
+  color: #39ff14;
+}
+.proj-nav:disabled {
+  opacity: 0.25;
+  cursor: default;
+}
+
+.proj-carousel {
+  overflow: hidden;
+}
+.proj-carousel__track {
+  display: flex;
+  gap: 16px;
+  transition: transform 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+.proj-carousel__card {
+  flex: 0 0 calc((100% - 32px) / 3);
+  background: #0f1117;
+  border: 1px solid #1e2a38;
+  border-radius: 10px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  text-decoration: none;
+}
+.proj-carousel__card:hover {
+  border-color: rgba(57, 255, 20, 0.3);
+  box-shadow: 0 0 24px rgba(57, 255, 20, 0.06);
+}
+@media (max-width: 960px) {
+  .proj-carousel__card { flex: 0 0 calc((100% - 16px) / 2); }
+}
+@media (max-width: 600px) {
+  .proj-carousel__card { flex: 0 0 82%; }
+}
+
+.proj-carousel__thumb {
+  width: 100%; aspect-ratio: 16/9;
+  overflow: hidden; background: #0f1117; flex-shrink: 0;
+}
+.proj-carousel__thumb img {
+  width: 100%; height: 100%; object-fit: cover; display: block;
+  transition: transform 0.4s ease;
+}
+.proj-carousel__card:hover .proj-carousel__thumb img {
+  transform: scale(1.03);
+}
+.proj-carousel__body {
+  padding: 18px 22px 22px;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.proj-carousel__year {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 11px; color: #545d68; letter-spacing: 0.08em;
+}
+.proj-carousel__title {
+  font-size: 16px; font-weight: 600; color: #fff;
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.proj-carousel__tags {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 2px;
+}
+.proj-carousel__tags span {
+  font-family: "SF Mono", "Fira Code", "Cascadia Code", Consolas, monospace;
+  font-size: 11px; padding: 2px 8px; border-radius: 4px;
+  background: #0d3320; color: #22c55e;
+  border: 1px solid rgba(57, 255, 20, 0.12);
+}
+.projects-home__footer {
+  margin-top: 32px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* ── Lab ───────────────────────────────────────── */
 .lab {
   border-top: 1px solid #1e2a38;
 }
