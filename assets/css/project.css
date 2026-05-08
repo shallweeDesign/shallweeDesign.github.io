@@ -1,0 +1,183 @@
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+a { color: inherit; text-decoration: none; }
+ul { list-style: none; }
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  background: #070809;
+  color: #adbac7;
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Nav ───────────────────────────────────────── */
+.nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  height: 56px; display: flex; align-items: center;
+  justify-content: space-between; padding: 0 40px;
+  background: rgba(7,8,9,0.85); backdrop-filter: blur(12px);
+  border-bottom: 1px solid #1e2a38;
+}
+@media (max-width: 768px) { .nav { padding: 0 24px; } }
+.nav__logo {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 15px; color: #39ff14;
+}
+.nav__logo span { color: #545d68; }
+.nav__links { display: flex; gap: 32px; }
+@media (max-width: 768px) {
+  .nav__links {
+    display: none; position: absolute; top: 56px; left: 0; right: 0;
+    flex-direction: column; gap: 0; background: #070809;
+    border-bottom: 1px solid #1e2a38;
+  }
+  .nav__links.is-open { display: flex; }
+}
+.nav__link {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 13px; color: #545d68; transition: color 0.2s;
+}
+.nav__link:hover { color: #39ff14; }
+.nav__link--active { color: #adbac7; }
+@media (max-width: 768px) {
+  .nav__link { padding: 14px 24px; border-bottom: 1px solid #1e2a38; }
+  .nav__link:last-child { border-bottom: none; }
+}
+.nav__hamburger {
+  display: none; flex-direction: column; justify-content: center;
+  gap: 5px; width: 32px; height: 32px; cursor: pointer; padding: 4px;
+  background: none; border: none;
+}
+@media (max-width: 768px) { .nav__hamburger { display: flex; } }
+.nav__hamburger span {
+  display: block; width: 22px; height: 2px;
+  background: #adbac7; border-radius: 2px; transition: all 0.25s ease;
+}
+.nav__hamburger.is-open span:nth-child(1) { transform: rotate(45deg) translate(5px,5px); }
+.nav__hamburger.is-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.nav__hamburger.is-open span:nth-child(3) { transform: rotate(-45deg) translate(5px,-5px); }
+
+/* ── Page header ───────────────────────────────── */
+.page-header {
+  padding: 140px 40px 80px;
+  max-width: 1100px; margin: 0 auto;
+}
+.page-header__label {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 12px; color: #22c55e; letter-spacing: 0.1em;
+  text-transform: uppercase; display: flex; align-items: center;
+  gap: 8px; margin-bottom: 16px;
+}
+.page-header__label::before { content: "//"; color: #545d68; }
+.page-header__title {
+  font-size: clamp(40px, 6vw, 80px); font-weight: 700;
+  letter-spacing: -0.03em; line-height: 1; color: #fff; margin-bottom: 20px;
+}
+.page-header__title em { font-style: normal; color: #39ff14; }
+.page-header__sub {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: clamp(13px, 1.6vw, 15px); color: #545d68; line-height: 1.8;
+}
+
+/* ── Projects grid ─────────────────────────────── */
+.projects-section {
+  padding: 0 40px 120px;
+  max-width: 1100px; margin: 0 auto;
+}
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+@media (max-width: 960px) { .projects-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 600px) { .projects-grid { grid-template-columns: 1fr; } }
+
+/* ── Project card ──────────────────────────────── */
+.proj-card {
+  background: #0f1117; border: 1px solid #1e2a38; border-radius: 10px;
+  overflow: hidden; display: flex; flex-direction: column;
+  transition: border-color 0.2s, box-shadow 0.2s; cursor: pointer;
+}
+.proj-card:hover {
+  border-color: rgba(57,255,20,0.3);
+  box-shadow: 0 0 24px rgba(57,255,20,0.06);
+}
+.proj-card:hover .proj-card__link { color: #39ff14; gap: 10px; }
+
+.proj-card__preview {
+  width: 100%; aspect-ratio: 16/9;
+  position: relative; overflow: hidden; flex-shrink: 0;
+}
+.proj-card__preview::before {
+  content: ""; position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.04) 1px, transparent 1px);
+  background-size: 24px 24px;
+}
+.proj-card__preview::after {
+  content: ""; position: absolute; inset: 0;
+  background: radial-gradient(circle at 30% 40%, var(--accent, rgba(57,255,20,0.15)), transparent 65%);
+}
+
+/* per-project accent colors */
+.proj-card__preview--secops       { background: #0d0020; --accent: rgba(147,51,234,0.25); }
+.proj-card__preview--ai-guardian  { background: #00101a; --accent: rgba(99,102,241,0.25); }
+.proj-card__preview--windriver    { background: #00101f; --accent: rgba(51,144,255,0.25); }
+.proj-card__preview--expertguard  { background: #001a14; --accent: rgba(16,185,129,0.25); }
+.proj-card__preview--platform     { background: #000d1a; --accent: rgba(51,100,234,0.25); }
+.proj-card__preview--rog-theta    { background: #120000; --accent: rgba(220,38,38,0.25); }
+.proj-card__preview--rog-pink     { background: #150010; --accent: rgba(236,72,153,0.25); }
+.proj-card__preview--gartner      { background: #00071a; --accent: rgba(80,80,220,0.25); }
+.proj-card__preview--asus-biz     { background: #000a1a; --accent: rgba(51,80,200,0.25); }
+.proj-card__preview--obank        { background: #001414; --accent: rgba(20,184,166,0.25); }
+.proj-card__preview--mitsubishi   { background: #100000; --accent: rgba(185,28,28,0.25); }
+.proj-card__preview--kkdays       { background: #140800; --accent: rgba(234,140,51,0.25); }
+.proj-card__preview--haku         { background: #0f1117; --accent: rgba(150,150,150,0.2); }
+
+.proj-card__body {
+  padding: 20px 24px 24px;
+  display: flex; flex-direction: column; gap: 8px; flex: 1;
+}
+.proj-card__year {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 11px; color: #545d68; letter-spacing: 0.08em;
+}
+.proj-card__title {
+  font-size: 17px; font-weight: 600; color: #fff;
+  letter-spacing: -0.01em; line-height: 1.3;
+}
+.proj-card__tags {
+  display: flex; gap: 6px; flex-wrap: wrap; margin-top: 4px;
+}
+.proj-card__tags span {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 11px; padding: 2px 8px; border-radius: 4px;
+  background: #0d3320; color: #22c55e;
+  border: 1px solid rgba(57,255,20,0.12);
+}
+.proj-card__link {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 12px; color: #545d68; display: flex;
+  align-items: center; gap: 6px; transition: color 0.2s, gap 0.2s;
+  margin-top: auto; padding-top: 12px;
+}
+
+/* ── Footer ────────────────────────────────────── */
+.footer {
+  border-top: 1px solid #1e2a38; padding: 32px 40px;
+  display: flex; align-items: center; justify-content: space-between;
+  flex-wrap: wrap; gap: 16px;
+}
+.footer__back, .footer__link {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 12px; color: #545d68; transition: color 0.2s;
+}
+.footer__back:hover, .footer__link:hover { color: #39ff14; }
+.footer__copy {
+  font-family: "SF Mono","Fira Code",Consolas,monospace;
+  font-size: 12px; color: #545d68;
+}
+.footer__links { display: flex; gap: 24px; }
