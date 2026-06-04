@@ -1,0 +1,139 @@
+{
+  "products": [
+    {
+      "id": 0,
+      "series": 0,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 1,
+      "series": 0,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/prod2.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 2,
+      "series": 0,
+      "model": "",
+      "title": "",
+      "info": "",
+      "imgUrl": "img/holding.png",
+      "link": ""
+    },
+    {
+      "id": 3,
+      "series": 1,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 4,
+      "series": 1,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 5,
+      "series": 1,
+      "model": "",
+      "title": "",
+      "info": "",
+      "imgUrl": "img/holding.png",
+      "link": ""
+    },
+    {
+      "id": 6,
+      "series": 2,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 7,
+      "series": 2,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 8,
+      "series": 2,
+      "model": "",
+      "title": "",
+      "info": "",
+      "imgUrl": "img/holding.png",
+      "link": ""
+    },
+    {
+      "id": 9,
+      "series": 3,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 10,
+      "series": 3,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 11,
+      "series": 3,
+      "model": "",
+      "title": "",
+      "info": "",
+      "imgUrl": "img/holding.png",
+      "link": ""
+    },
+    {
+      "id": 12,
+      "series": 4,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 13,
+      "series": 4,
+      "model": "OVC-0911PL",
+      "title": "無線超長吸塵器",
+      "info": "小體積大吸力，輕量化設計533克\n2000mAh鋰電池無線USB充電設計，方便持久",
+      "imgUrl": "img/p1.png",
+      "link": "www.google.com"
+    },
+    {
+      "id": 14,
+      "series": 4,
+      "model": "",
+      "title": "",
+      "info": "",
+      "imgUrl": "img/holding.png",
+      "link": ""
+    }
+  ]
+}
