@@ -4,7 +4,7 @@ import threading
 import http.server
 import socketserver
 
-BASE = "/Users/jamsychuang/Documents/shallweedesign/shallweeDesign.github.io"
+BASE = "/Volumes/j256g/jGitHub/shallweeDesign/shallweeDesign.github.io"
 OUT  = f"{BASE}/project/assets/screenshots"
 PORT = 8999
 
