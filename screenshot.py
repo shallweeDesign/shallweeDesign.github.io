@@ -9,6 +9,8 @@ OUT  = f"{BASE}/project/assets/screenshots"
 PORT = 8999
 
 projects = [
+    ("211014_onemeter",                      "project/211014_onemeter/index.html"),
+    ("202012_lab22",                         "project/202012_lab22/index.html"),
     ("250515_pa-secops-seminar",             "project/250515_pa-secops-seminar/html/index.html"),
     ("250508_pa-ai-guardian",                "project/250508_pa-ai-guardian/html/index.html"),
     ("250507_windriver-ai-edge-forum",       "project/250507_windriver-ai-edge-forum/html/index.html"),
