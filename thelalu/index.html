@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<title>The Lalu</title>
+<script>
+  var lang = (navigator.language || 'zh-tw').toLowerCase();
+  var target = lang.indexOf('ja') === 0 ? 'ja'
+             : lang.indexOf('en') === 0 ? 'en'
+             : 'zh-tw';
+  location.replace(target + '/');
+</script>
+</head>
+<body><noscript><a href="zh-tw/">The Lalu</a></noscript></body>
+</html>
