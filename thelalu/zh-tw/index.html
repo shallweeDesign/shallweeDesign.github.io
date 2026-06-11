@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="體驗 Kerry Hill 建築之美。涵碧樓年度特企，住宿套裝、SPA 療程，探索極簡建築的靜謐之美。">
   <title>體驗 Kerry Hill 建築之美 — 涵碧樓 The Lalu</title>
-<script defer="defer" src="../assets/js/main.8594ad62.js"></script><link href="../assets/css/main.aafdec31.css" rel="stylesheet">  <link rel="canonical" href="https://shallweedesign.github.io/thelalu/zh-tw/">
+<script defer="defer" src="../assets/js/main.b982987d.js"></script><link href="../assets/css/main.55912b6e.css" rel="stylesheet">  <link rel="canonical" href="https://shallweedesign.github.io/thelalu/zh-tw/">
   <link rel="alternate" hreflang="zh-TW" href="https://shallweedesign.github.io/thelalu/zh-tw/">
   <link rel="alternate" hreflang="en" href="https://shallweedesign.github.io/thelalu/en/">
   <link rel="alternate" hreflang="ja" href="https://shallweedesign.github.io/thelalu/ja/">
@@ -67,20 +67,31 @@
 
       <!-- ==================================================
            HERO
+           Image layer is pinned (sticky); the title layer + everything below
+           scroll UP over it, so the image reads as fixed while text scrolls.
       ================================================== -->
-      <section class="hero" id="hero">
+      <div class="hero-bg">
         <div class="hero__inner">
           <picture>
             <source type="image/webp" srcset="../assets/images/hero.webp, ../assets/images/hero@2x.webp 2x">
             <img class="hero__img" srcset="../assets/images/hero.jpg, ../assets/images/hero@2x.jpg 2x" src="../assets/images/hero.jpg" alt="涵碧樓 Kerry Hill 建築外觀" loading="eager" fetchpriority="high">
           </picture>
           <div class="hero__overlay" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <section class="hero" id="hero">
+        <div class="hero__inner">
           <div class="hero__title">
             <p class="hero__subtitle">年度特企──</p>
             <h1 class="hero__headline">體驗 Kerry Hill 建築之美</h1>
           </div>
         </div>
       </section>
+
+      <!-- Everything below the hero scrolls UP over the pinned hero image
+           (solid background + higher stacking) — gives the fixed-image look. -->
+      <div class="hero-cover">
 
       <!-- ==================================================
            INTRO CARDS
@@ -240,9 +251,11 @@
           <h2 class="spa__title">Lalu SPA</h2>
           <p class="spa__desc">涵碧樓 LALU 經典按摩：以特有的長推手法，結合芳香精油的按摩，能有效放鬆肌肉及神經系統，達到身心靈平衡的境界。翡翠按摩：雙人四手一致的按摩節奏，如行雲流水般的默契、和諧，為您帶來前所未有的體驗。脈輪能量療程：利用溫熱的精油滴注在身體主要能量點（七脈輪），這個如儀式般的滴油過程，有助於平衡能量和淨化身體，便能保持良好的健康與純淨的心靈。</p>
           <a class="spa__cta" href="#">
-            <span class="spa__cta-arrow spa__cta-arrow--left" aria-hidden="true"></span>
+            <span class="spa__cta-arrow" aria-hidden="true">
+              <span class="spa__cta-arrow-icon"></span>
+              <span class="spa__cta-arrow-icon"></span>
+            </span>
             <span class="spa__cta-text">立即預約</span>
-            <span class="spa__cta-arrow spa__cta-arrow--right" aria-hidden="true"></span>
           </a>
         </div>
         <div class="spa__media js-reveal">
@@ -268,6 +281,8 @@
           </div>
         </div>
       </section>
+
+      </div><!-- /.hero-cover -->
 
     </main>
 

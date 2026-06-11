@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <meta name="description" content="Experience the beauty of Kerry Hill architecture at The Lalu. Annual feature — stay packages and SPA treatments exploring minimalist design.">
   <title>Experience Kerry Hill Architecture — The Lalu</title>
-<script defer="defer" src="../assets/js/main.8594ad62.js"></script><link href="../assets/css/main.aafdec31.css" rel="stylesheet">  <link rel="canonical" href="https://shallweedesign.github.io/thelalu/en/">
+<script defer="defer" src="../assets/js/main.b982987d.js"></script><link href="../assets/css/main.55912b6e.css" rel="stylesheet">  <link rel="canonical" href="https://shallweedesign.github.io/thelalu/en/">
   <link rel="alternate" hreflang="zh-TW" href="https://shallweedesign.github.io/thelalu/zh-tw/">
   <link rel="alternate" hreflang="en" href="https://shallweedesign.github.io/thelalu/en/">
   <link rel="alternate" hreflang="ja" href="https://shallweedesign.github.io/thelalu/ja/">
@@ -67,20 +67,31 @@
 
       <!-- ==================================================
            HERO
+           Image layer is pinned (sticky); the title layer + everything below
+           scroll UP over it, so the image reads as fixed while text scrolls.
       ================================================== -->
-      <section class="hero" id="hero">
+      <div class="hero-bg">
         <div class="hero__inner">
           <picture>
             <source type="image/webp" srcset="../assets/images/hero.webp, ../assets/images/hero@2x.webp 2x">
             <img class="hero__img" srcset="../assets/images/hero.jpg, ../assets/images/hero@2x.jpg 2x" src="../assets/images/hero.jpg" alt="The Lalu exterior by Kerry Hill" loading="eager" fetchpriority="high">
           </picture>
           <div class="hero__overlay" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <section class="hero" id="hero">
+        <div class="hero__inner">
           <div class="hero__title">
             <p class="hero__subtitle">Annual Feature──</p>
             <h1 class="hero__headline">Experience the Beauty of Kerry Hill Architecture</h1>
           </div>
         </div>
       </section>
+
+      <!-- Everything below the hero scrolls UP over the pinned hero image
+           (solid background + higher stacking) — gives the fixed-image look. -->
+      <div class="hero-cover">
 
       <!-- ==================================================
            INTRO CARDS
@@ -240,9 +251,11 @@
           <h2 class="spa__title">Lalu SPA</h2>
           <p class="spa__desc">The Lalu LALU Classic Massage: using signature long-stroke techniques combined with aromatic oils to effectively relax muscles and the nervous system, achieving balance of body, mind and spirit. Jade Massage: four-handed synchronised strokes flowing in perfect harmony to deliver an unparalleled experience. Chakra Energy Treatment: warm essential oils are dripped onto the body's seven main energy points in a ritual-like process to balance energy, purify the body and nurture a pure mind.</p>
           <a class="spa__cta" href="#">
-            <span class="spa__cta-arrow spa__cta-arrow--left" aria-hidden="true"></span>
+            <span class="spa__cta-arrow" aria-hidden="true">
+              <span class="spa__cta-arrow-icon"></span>
+              <span class="spa__cta-arrow-icon"></span>
+            </span>
             <span class="spa__cta-text">Book a Treatment</span>
-            <span class="spa__cta-arrow spa__cta-arrow--right" aria-hidden="true"></span>
           </a>
         </div>
         <div class="spa__media js-reveal">
@@ -268,6 +281,8 @@
           </div>
         </div>
       </section>
+
+      </div><!-- /.hero-cover -->
 
     </main>
 
