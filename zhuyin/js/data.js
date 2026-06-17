@@ -1,0 +1,82 @@
+// 注音符號資料 + Emoji + 結合韻
+
+export const SYMBOL_EMOJI = {
+  b: "👨", p: "👵", m: "👩", f: "🍚",
+  d: "👦", t: "🐇", n: "🥛", l: "👩‍🏫",
+  g: "🧑", k: "👖", h: "🌊",
+  j: "🥚", q: "🚗", x: "🍉",
+  zh: "🕷️", ch: "🍽️", sh: "🦁", r: "🌭",
+  z: "🚶", c: "🍓", s: "🔺",
+  a: "🦐", o: "🥬", e: "🦢", ê: "🥥",
+  ai: "❤️", ei: "🥤", ao: "🐱", ou: "🌍",
+  an: "🔒", en: "💭", ang: "🍬", eng: "💡", er: "👂",
+  i: "👕", u: "🐢", ü: "🐟",
+};
+
+export const zhuyinSymbols = [
+  // ── 聲符 21 個 ─────────────────────────────────────
+  { id: "b",  symbol: "ㄅ", category: "consonant", group: "雙唇音", pinyin: "b",  exampleWord: "爸爸", exampleZhuyin: "ㄅㄚˋ ㄅㄚ", lipShape: "closed",       tonguePosition: "low-flat",       mouthNote: "雙唇緊閉，氣流衝出時嘴唇瞬間張開，不送氣。", strokeCount: 1 },
+  { id: "p",  symbol: "ㄆ", category: "consonant", group: "雙唇音", pinyin: "p",  exampleWord: "婆婆", exampleZhuyin: "ㄆㄛˊ ㄆㄛ", lipShape: "closed",       tonguePosition: "low-flat",       mouthNote: "雙唇緊閉，用力送氣衝開嘴唇。", strokeCount: 2 },
+  { id: "m",  symbol: "ㄇ", category: "consonant", group: "雙唇音", pinyin: "m",  exampleWord: "媽媽", exampleZhuyin: "ㄇㄚ ㄇㄚ",   lipShape: "closed",       tonguePosition: "low-flat",       mouthNote: "雙唇閉合，氣流由鼻腔流出，聲帶振動。", strokeCount: 2 },
+  { id: "f",  symbol: "ㄈ", category: "consonant", group: "唇齒音", pinyin: "f",  exampleWord: "飯",   exampleZhuyin: "ㄈㄢˋ",       lipShape: "spread",       tonguePosition: "low-flat",       mouthNote: "上齒輕觸下唇，氣流從縫隙摩擦而出。", strokeCount: 2 },
+  { id: "d",  symbol: "ㄉ", category: "consonant", group: "舌尖音", pinyin: "d",  exampleWord: "弟弟", exampleZhuyin: "ㄉㄧˋ ㄉㄧ", lipShape: "relaxed-open", tonguePosition: "tip-alveolar",  mouthNote: "舌尖頂住上齒齦，放開時氣流衝出，不送氣。", strokeCount: 2 },
+  { id: "t",  symbol: "ㄊ", category: "consonant", group: "舌尖音", pinyin: "t",  exampleWord: "兔子", exampleZhuyin: "ㄊㄨˋ ㄗ",   lipShape: "relaxed-open", tonguePosition: "tip-alveolar",  mouthNote: "舌尖頂住上齒齦，用力送氣衝開。", strokeCount: 3 },
+  { id: "n",  symbol: "ㄋ", category: "consonant", group: "舌尖音", pinyin: "n",  exampleWord: "牛奶", exampleZhuyin: "ㄋㄧㄡˊ ㄋㄞˇ", lipShape: "relaxed-open", tonguePosition: "tip-alveolar", mouthNote: "舌尖抵住上齒齦，氣流從鼻腔流出。", strokeCount: 1 },
+  { id: "l",  symbol: "ㄌ", category: "consonant", group: "舌尖音", pinyin: "l",  exampleWord: "老師", exampleZhuyin: "ㄌㄠˇ ㄕ",   lipShape: "relaxed-open", tonguePosition: "tip-alveolar",  mouthNote: "舌尖抵住上齒齦，氣流從舌頭兩側流出。", strokeCount: 2 },
+  { id: "g",  symbol: "ㄍ", category: "consonant", group: "舌根音", pinyin: "g",  exampleWord: "哥哥", exampleZhuyin: "ㄍㄜ ㄍㄜ",   lipShape: "relaxed-open", tonguePosition: "back-velar",    mouthNote: "舌根抬高抵住軟顎，放開時氣流衝出，不送氣。", strokeCount: 2 },
+  { id: "k",  symbol: "ㄎ", category: "consonant", group: "舌根音", pinyin: "k",  exampleWord: "褲子", exampleZhuyin: "ㄎㄨˋ ㄗ",   lipShape: "relaxed-open", tonguePosition: "back-velar",    mouthNote: "舌根抬高抵住軟顎，用力送氣衝開。", strokeCount: 2 },
+  { id: "h",  symbol: "ㄏ", category: "consonant", group: "舌根音", pinyin: "h",  exampleWord: "河流", exampleZhuyin: "ㄏㄜˊ ㄌㄧㄡˊ", lipShape: "relaxed-open", tonguePosition: "back-velar",  mouthNote: "舌根接近軟顎，氣流摩擦而出。", strokeCount: 2 },
+  { id: "j",  symbol: "ㄐ", category: "consonant", group: "舌面音", pinyin: "j",  exampleWord: "雞蛋", exampleZhuyin: "ㄐㄧ ㄉㄢˋ", lipShape: "spread",       tonguePosition: "front-palatal", mouthNote: "舌面前部抬高抵硬顎，不送氣。", strokeCount: 2 },
+  { id: "q",  symbol: "ㄑ", category: "consonant", group: "舌面音", pinyin: "q",  exampleWord: "汽車", exampleZhuyin: "ㄑㄧˋ ㄔㄜ", lipShape: "spread",       tonguePosition: "front-palatal", mouthNote: "舌面前部抬高抵硬顎，送氣。", strokeCount: 1 },
+  { id: "x",  symbol: "ㄒ", category: "consonant", group: "舌面音", pinyin: "x",  exampleWord: "西瓜", exampleZhuyin: "ㄒㄧ ㄍㄨㄚ", lipShape: "spread",       tonguePosition: "front-palatal", mouthNote: "舌面前部接近硬顎，氣流摩擦而出。", strokeCount: 2 },
+  { id: "zh", symbol: "ㄓ", category: "consonant", group: "翹舌音", pinyin: "zh", exampleWord: "蜘蛛", exampleZhuyin: "ㄓ ㄓㄨ",     lipShape: "relaxed-open", tonguePosition: "tip-curled",    mouthNote: "舌尖捲翹抵硬顎前部，不送氣。", strokeCount: 4 },
+  { id: "ch", symbol: "ㄔ", category: "consonant", group: "翹舌音", pinyin: "ch", exampleWord: "吃飯", exampleZhuyin: "ㄔ ㄈㄢˋ",   lipShape: "relaxed-open", tonguePosition: "tip-curled",    mouthNote: "舌尖捲翹抵硬顎前部，送氣。", strokeCount: 3 },
+  { id: "sh", symbol: "ㄕ", category: "consonant", group: "翹舌音", pinyin: "sh", exampleWord: "獅子", exampleZhuyin: "ㄕ ㄗ",       lipShape: "relaxed-open", tonguePosition: "tip-curled",    mouthNote: "舌尖捲翹接近硬顎前部，氣流摩擦而出。", strokeCount: 3 },
+  { id: "r",  symbol: "ㄖ", category: "consonant", group: "翹舌音", pinyin: "r",  exampleWord: "熱狗", exampleZhuyin: "ㄖㄜˋ ㄍㄡˇ", lipShape: "relaxed-open", tonguePosition: "tip-curled",    mouthNote: "舌尖捲翹，聲帶振動同時摩擦出聲。", strokeCount: 4 },
+  { id: "z",  symbol: "ㄗ", category: "consonant", group: "平舌音", pinyin: "z",  exampleWord: "走路", exampleZhuyin: "ㄗㄡˇ ㄌㄨˋ", lipShape: "spread",       tonguePosition: "tip-alveolar",  mouthNote: "舌尖貼近上齒背，不送氣。", strokeCount: 2 },
+  { id: "c",  symbol: "ㄘ", category: "consonant", group: "平舌音", pinyin: "c",  exampleWord: "草莓", exampleZhuyin: "ㄘㄠˇ ㄇㄟˊ", lipShape: "spread",       tonguePosition: "tip-alveolar",  mouthNote: "舌尖貼近上齒背，送氣。", strokeCount: 2 },
+  { id: "s",  symbol: "ㄙ", category: "consonant", group: "平舌音", pinyin: "s",  exampleWord: "三角形", exampleZhuyin: "ㄙㄢ ㄐㄧㄠˇ ㄒㄧㄥˊ", lipShape: "spread", tonguePosition: "tip-alveolar", mouthNote: "舌尖接近上齒背，氣流摩擦而出。", strokeCount: 2 },
+
+  // ── 韻符 16 個 ─────────────────────────────────────
+  { id: "a",   symbol: "ㄚ", category: "vowel", group: "單韻母", pinyin: "a",   exampleWord: "蝦子", exampleZhuyin: "ㄒㄧㄚ ㄗ",     lipShape: "relaxed-open", tonguePosition: "low-flat",       mouthNote: "嘴巴張大，舌頭自然放平。", strokeCount: 3 },
+  { id: "o",   symbol: "ㄛ", category: "vowel", group: "單韻母", pinyin: "o",   exampleWord: "菠菜", exampleZhuyin: "ㄅㄛ ㄘㄞˋ",    lipShape: "small-round",  tonguePosition: "mid-central",    mouthNote: "嘴唇略微收圓，舌頭後部稍微抬高。", strokeCount: 2 },
+  { id: "e",   symbol: "ㄜ", category: "vowel", group: "單韻母", pinyin: "e",   exampleWord: "鵝",   exampleZhuyin: "ㄜˊ",           lipShape: "relaxed-open", tonguePosition: "mid-central",    mouthNote: "嘴巴半開，舌頭放在中央位置。", strokeCount: 2 },
+  { id: "ê",   symbol: "ㄝ", category: "vowel", group: "單韻母", pinyin: "ê",   exampleWord: "椰子", exampleZhuyin: "ㄧㄝˊ ㄗ",      lipShape: "spread",       tonguePosition: "mid-central",    mouthNote: "嘴巴半開，嘴角略往兩側展開。", strokeCount: 3 },
+  { id: "ai",  symbol: "ㄞ", category: "vowel", group: "複韻母", pinyin: "ai",  exampleWord: "愛心", exampleZhuyin: "ㄞˋ ㄒㄧㄣ",    lipShape: "relaxed-open", tonguePosition: "low-flat",       mouthNote: "由「ㄚ」滑向「ㄧ」，嘴巴從張大漸漸收小。", strokeCount: 3 },
+  { id: "ei",  symbol: "ㄟ", category: "vowel", group: "複韻母", pinyin: "ei",  exampleWord: "杯子", exampleZhuyin: "ㄅㄟ ㄗ",       lipShape: "spread",       tonguePosition: "mid-central",    mouthNote: "由「ㄝ」滑向「ㄧ」，嘴角漸漸往兩側展開。", strokeCount: 1 },
+  { id: "ao",  symbol: "ㄠ", category: "vowel", group: "複韻母", pinyin: "ao",  exampleWord: "貓",   exampleZhuyin: "ㄇㄠ",          lipShape: "relaxed-open", tonguePosition: "low-flat",       mouthNote: "由「ㄚ」滑向「ㄨ」，嘴唇漸漸收圓。", strokeCount: 3 },
+  { id: "ou",  symbol: "ㄡ", category: "vowel", group: "複韻母", pinyin: "ou",  exampleWord: "歐洲", exampleZhuyin: "ㄡ ㄓㄡ",       lipShape: "small-round",  tonguePosition: "mid-central",    mouthNote: "由「ㄛ」滑向「ㄨ」，嘴唇漸漸收圓。", strokeCount: 2 },
+  { id: "an",  symbol: "ㄢ", category: "vowel", group: "聲隨韻母", pinyin: "an", exampleWord: "安全", exampleZhuyin: "ㄢ ㄑㄩㄢˊ",  lipShape: "relaxed-open", tonguePosition: "low-flat",       mouthNote: "先張嘴發「ㄚ」，再將舌尖抵上齒齦收尾。", strokeCount: 2 },
+  { id: "en",  symbol: "ㄣ", category: "vowel", group: "聲隨韻母", pinyin: "en", exampleWord: "嗯",   exampleZhuyin: "ㄣ",           lipShape: "relaxed-open", tonguePosition: "mid-central",    mouthNote: "先發「ㄜ」，再將舌尖抵上齒齦收尾。", strokeCount: 1 },
+  { id: "ang", symbol: "ㄤ", category: "vowel", group: "聲隨韻母", pinyin: "ang", exampleWord: "糖",  exampleZhuyin: "ㄊㄤˊ",        lipShape: "relaxed-open", tonguePosition: "low-flat",       mouthNote: "先張嘴發「ㄚ」，再將舌根抬高靠軟顎，鼻音收尾。", strokeCount: 3 },
+  { id: "eng", symbol: "ㄥ", category: "vowel", group: "聲隨韻母", pinyin: "eng", exampleWord: "燈",  exampleZhuyin: "ㄉㄥ",         lipShape: "relaxed-open", tonguePosition: "mid-central",    mouthNote: "先發「ㄜ」，再將舌根抬高靠軟顎，鼻音收尾。", strokeCount: 1 },
+  { id: "er",  symbol: "ㄦ", category: "vowel", group: "聲隨韻母", pinyin: "er", exampleWord: "耳朵", exampleZhuyin: "ㄦˇ ㄉㄨㄛ",  lipShape: "relaxed-open", tonguePosition: "tip-curled",    mouthNote: "舌頭中央隆起，舌尖微微翹起，類似捲舌。", strokeCount: 2 },
+  { id: "i",   symbol: "ㄧ", category: "vowel", group: "介音",   pinyin: "i",   exampleWord: "衣服", exampleZhuyin: "ㄧ ㄈㄨˊ",     lipShape: "spread",       tonguePosition: "high-front",     mouthNote: "嘴角向兩側展開像微笑，舌面前部抬到最高。", strokeCount: 1 },
+  { id: "u",   symbol: "ㄨ", category: "vowel", group: "介音",   pinyin: "u",   exampleWord: "烏龜", exampleZhuyin: "ㄨ ㄍㄨㄟ",    lipShape: "wide-round",   tonguePosition: "high-back-round", mouthNote: "嘴唇用力縮成小圓形向前突出，舌面後部抬高。", strokeCount: 2 },
+  { id: "ü",   symbol: "ㄩ", category: "vowel", group: "介音",   pinyin: "ü",   exampleWord: "魚",   exampleZhuyin: "ㄩˊ",          lipShape: "small-round",  tonguePosition: "high-front-round", mouthNote: "嘴唇縮圓，舌面前部抬高，像同時發「ㄧ」和「ㄨ」。", strokeCount: 2 },
+];
+
+export const combinedFinals = [
+  { id: "ia",   symbols: "ㄧㄚ", pinyin: "ia",   medial: "ㄧ", exampleWord: "牙",   exampleZhuyin: "ㄧㄚˊ" },
+  { id: "io",   symbols: "ㄧㄛ", pinyin: "io",   medial: "ㄧ", exampleWord: "唷",   exampleZhuyin: "ㄧㄛ" },
+  { id: "ie",   symbols: "ㄧㄝ", pinyin: "ie",   medial: "ㄧ", exampleWord: "葉子", exampleZhuyin: "ㄧㄝˋ ㄗ" },
+  { id: "ian",  symbols: "ㄧㄢ", pinyin: "ian",  medial: "ㄧ", exampleWord: "眼睛", exampleZhuyin: "ㄧㄢˇ ㄐㄧㄥ" },
+  { id: "in",   symbols: "ㄧㄣ", pinyin: "in",   medial: "ㄧ", exampleWord: "音樂", exampleZhuyin: "ㄧㄣ ㄩㄝˋ" },
+  { id: "iang", symbols: "ㄧㄤ", pinyin: "iang", medial: "ㄧ", exampleWord: "羊",   exampleZhuyin: "ㄧㄤˊ" },
+  { id: "ing",  symbols: "ㄧㄥ", pinyin: "ing",  medial: "ㄧ", exampleWord: "鷹",   exampleZhuyin: "ㄧㄥ" },
+  { id: "iou",  symbols: "ㄧㄡ", pinyin: "iou",  medial: "ㄧ", exampleWord: "油",   exampleZhuyin: "ㄧㄡˊ" },
+  { id: "ua",   symbols: "ㄨㄚ", pinyin: "ua",   medial: "ㄨ", exampleWord: "蛙",   exampleZhuyin: "ㄨㄚ" },
+  { id: "uo",   symbols: "ㄨㄛ", pinyin: "uo",   medial: "ㄨ", exampleWord: "我",   exampleZhuyin: "ㄨㄛˇ" },
+  { id: "uai",  symbols: "ㄨㄞ", pinyin: "uai",  medial: "ㄨ", exampleWord: "外",   exampleZhuyin: "ㄨㄞˋ" },
+  { id: "uei",  symbols: "ㄨㄟ", pinyin: "uei",  medial: "ㄨ", exampleWord: "尾巴", exampleZhuyin: "ㄨㄟˇ ㄅㄚ" },
+  { id: "uan",  symbols: "ㄨㄢ", pinyin: "uan",  medial: "ㄨ", exampleWord: "玩",   exampleZhuyin: "ㄨㄢˊ" },
+  { id: "uen",  symbols: "ㄨㄣ", pinyin: "uen",  medial: "ㄨ", exampleWord: "文字", exampleZhuyin: "ㄨㄣˊ ㄗˋ" },
+  { id: "uang", symbols: "ㄨㄤ", pinyin: "uang", medial: "ㄨ", exampleWord: "王",   exampleZhuyin: "ㄨㄤˊ" },
+  { id: "ueng", symbols: "ㄨㄥ", pinyin: "ueng", medial: "ㄨ", exampleWord: "翁",   exampleZhuyin: "ㄨㄥ" },
+  { id: "yue",  symbols: "ㄩㄝ", pinyin: "üe",  medial: "ㄩ", exampleWord: "月亮", exampleZhuyin: "ㄩㄝˋ ㄌㄧㄤ" },
+  { id: "yuan", symbols: "ㄩㄢ", pinyin: "üan", medial: "ㄩ", exampleWord: "圓",   exampleZhuyin: "ㄩㄢˊ" },
+  { id: "yun",  symbols: "ㄩㄣ", pinyin: "ün",  medial: "ㄩ", exampleWord: "雲",   exampleZhuyin: "ㄩㄣˊ" },
+  { id: "yung", symbols: "ㄩㄥ", pinyin: "üng", medial: "ㄩ", exampleWord: "游泳", exampleZhuyin: "ㄧㄡˊ ㄩㄥˇ" },
+];
+
+export const symbolById = Object.fromEntries(zhuyinSymbols.map(s => [s.id, s]));
