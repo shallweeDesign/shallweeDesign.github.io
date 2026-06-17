@@ -44,6 +44,10 @@ export function speak(text, rate = 0.8) {
 }
 
 export function playSymbolAudio(id, fallbackText) {
+  // Cancel any ongoing TTS first — iOS keeps the speech audio session active
+  // after speak() finishes, which ducks subsequent HTMLAudioElement volume.
+  if (isSpeechSupported()) window.speechSynthesis.cancel();
+
   if (_currentAudio) {
     _currentAudio.pause();
     _currentAudio.currentTime = 0;
