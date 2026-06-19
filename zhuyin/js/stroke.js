@@ -110,18 +110,21 @@ export class StrokeAnimator {
 
   _loadMasks() {
     this._maskCanvases = Array(this.totalStrokes).fill(null);
-    for (let i = 0; i < this.totalStrokes; i++) {
-      const img = new Image();
-      const idx = i;
-      img.onload = () => {
-        const oc = document.createElement("canvas");
-        oc.width = CANVAS_SIZE;
-        oc.height = CANVAS_SIZE;
-        oc.getContext("2d").drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-        this._maskCanvases[idx] = oc;
-      };
-      img.src = this._strokeSrc(i + 1);
-    }
+    this._maskReady = Array.from({ length: this.totalStrokes }, (_, i) =>
+      new Promise(resolve => {
+        const img = new Image();
+        img.onload = () => {
+          const oc = document.createElement("canvas");
+          oc.width = CANVAS_SIZE;
+          oc.height = CANVAS_SIZE;
+          oc.getContext("2d").drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
+          this._maskCanvases[i] = oc;
+          resolve(oc);
+        };
+        img.onerror = () => resolve(null);
+        img.src = this._strokeSrc(i + 1);
+      })
+    );
   }
 
   _loadTracks(autoPlay = false) {
@@ -145,28 +148,39 @@ export class StrokeAnimator {
   _animateStroke(strokeIdx, onDone) {
     if (!this.tracks) return;
     const pts = smooth(this.tracks[strokeIdx]);
-    const t0 = performance.now();
 
-    const tick = (now) => {
-      const prog = Math.min((now - t0) / DRAW_MS, 1);
-      const upTo = Math.ceil(prog * pts.length);
+    const startRAF = () => {
+      const t0 = performance.now();
+      const tick = (now) => {
+        const prog = Math.min((now - t0) / DRAW_MS, 1);
+        const upTo = Math.ceil(prog * pts.length);
 
-      if (this._committedSnapshot) {
-        this.ctx.putImageData(this._committedSnapshot, 0, 0);
-      } else {
-        this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-      }
+        if (this._committedSnapshot) {
+          this.ctx.putImageData(this._committedSnapshot, 0, 0);
+        } else {
+          this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+        }
 
-      paintMasked(this.ctx, pts, upTo, this._maskCanvases[strokeIdx] ?? null, this._offCanvas);
+        paintMasked(this.ctx, pts, upTo, this._maskCanvases[strokeIdx] ?? null, this._offCanvas);
 
-      if (prog < 1) {
-        this._rafId = requestAnimationFrame(tick);
-      } else {
-        this._rafId = null;
-        onDone();
-      }
+        if (prog < 1) {
+          this._rafId = requestAnimationFrame(tick);
+        } else {
+          this._rafId = null;
+          onDone();
+        }
+      };
+      this._rafId = requestAnimationFrame(tick);
     };
-    this._rafId = requestAnimationFrame(tick);
+
+    if (this._maskCanvases[strokeIdx]) {
+      startRAF();
+    } else {
+      // Mask not yet loaded — wait for it, then start only if still playing
+      this._maskReady[strokeIdx]?.then(() => {
+        if (this.playing) startRAF();
+      });
+    }
   }
 
   _showUpTo(n, animate) {
