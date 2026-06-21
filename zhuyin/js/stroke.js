@@ -1,7 +1,11 @@
 // Canvas stroke animation — ported from StrokeAnimated.tsx
 // Uses destination-in compositing to clip brush within SVG stroke shape.
 
-const CANVAS_SIZE = 512;
+// Scale canvas by device pixel ratio so CSS zoom doesn't upscale raw pixels.
+// Cap at 2× — 1024px is enough for 5× zoom on Retina without excessive memory.
+const CANVAS_SIZE = Math.round(512 * Math.min(
+  (typeof window !== "undefined" && window.devicePixelRatio) || 1, 2
+));
 const COORD_SCALE = CANVAS_SIZE / 2048;
 const INK = "#222222";
 const BRUSH_SCALE = 1.8;
@@ -83,6 +87,8 @@ export class StrokeAnimator {
    */
   constructor(canvas, symbol, symbolId, totalStrokes, onTick) {
     this.canvas = canvas;
+    canvas.width = CANVAS_SIZE;
+    canvas.height = CANVAS_SIZE;
     this.ctx = canvas.getContext("2d");
     this.symbol = symbol;
     this.symbolId = symbolId;
