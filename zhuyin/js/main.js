@@ -208,10 +208,10 @@ function renderGhostStrokes() {
 // ── init ───────────────────────────────────────────────────────────────────────
 
 function init() {
-  const canvas = document.getElementById("stroke-canvas");
-  if (canvas) {
+  const strokeSvg = document.getElementById("stroke-svg");
+  if (strokeSvg) {
     animator = new StrokeAnimator(
-      canvas,
+      strokeSvg,
       selected.symbol,
       selected.id,
       selected.strokeCount,

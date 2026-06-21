@@ -106,10 +106,9 @@ function createSymbolCard(item) {
     ghostContainer.appendChild(img);
   }
 
-  const canvas = document.createElement("canvas");
-  canvas.width = 512;
-  canvas.height = 512;
-  canvas.className = "sym-canvas";
+  const canvas = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+  canvas.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+  canvas.className = "sym-svg";
 
   const counter = document.createElement("span");
   counter.className = "sym-stroke-counter";
@@ -141,7 +140,7 @@ function createSymbolCard(item) {
     }
   });
 
-  onTap(canvas, () => animator?.play());
+  onTap(strokeWrap, () => animator?.play());
 
   // ── example word ────────────────────────────────────────────────────────────
   const wordBtn = document.createElement("button");

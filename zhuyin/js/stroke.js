@@ -1,12 +1,8 @@
-// Canvas stroke animation — ported from StrokeAnimated.tsx
-// Uses destination-in compositing to clip brush within SVG stroke shape.
+// SVG stroke animation — resolution-independent, scales without aliasing.
+// Mask shapes are inlined as <path> elements (not <image> refs) so the browser
+// renders them as live vectors — no rasterization, no hard edges at any zoom.
 
-// Scale canvas by device pixel ratio so CSS zoom doesn't upscale raw pixels.
-// Cap at 2× — 1024px is enough for 5× zoom on Retina without excessive memory.
-const CANVAS_SIZE = Math.round(512 * Math.min(
-  (typeof window !== "undefined" && window.devicePixelRatio) || 1, 2
-));
-const COORD_SCALE = CANVAS_SIZE / 2048;
+const SVG_NS = "http://www.w3.org/2000/svg";
 const INK = "#222222";
 const BRUSH_SCALE = 1.8;
 const SMOOTH_STEPS = 20;
@@ -38,58 +34,32 @@ function smooth(pts) {
   return out;
 }
 
-function paint(ctx, pts, from, to) {
-  ctx.fillStyle = INK;
-  ctx.strokeStyle = INK;
-  ctx.lineCap = "round";
-  ctx.lineJoin = "round";
-  for (let i = from; i < to && i < pts.length; i++) {
-    const [x, y, sz] = pts[i];
-    ctx.beginPath();
-    ctx.arc(x * COORD_SCALE, y * COORD_SCALE, (sz / 2) * COORD_SCALE * BRUSH_SCALE, 0, Math.PI * 2);
-    ctx.fill();
-    if (i > 0) {
-      const [px, py, ps] = pts[i - 1];
-      ctx.beginPath();
-      ctx.lineWidth = ((ps + sz) / 2) * COORD_SCALE * BRUSH_SCALE;
-      ctx.moveTo(px * COORD_SCALE, py * COORD_SCALE);
-      ctx.lineTo(x * COORD_SCALE, y * COORD_SCALE);
-      ctx.stroke();
-    }
-  }
+function mkSVG(tag, attrs) {
+  const el = document.createElementNS(SVG_NS, tag);
+  if (attrs) for (const [k, v] of Object.entries(attrs)) el.setAttribute(k, v);
+  return el;
 }
 
-// paintMasked: draw brush strokes clipped to SVG mask, then composite onto mainCtx.
-// Pass upTo=Infinity to draw all points (used for committed strokes).
-// Pass alpha < 1 to render as a ghost guide.
-function paintMasked(mainCtx, pts, upTo, mask, offCanvas, alpha = 1) {
-  const oc = offCanvas.getContext("2d");
-  oc.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-  paint(oc, pts, 0, upTo);
-  if (mask) {
-    oc.globalCompositeOperation = "destination-in";
-    oc.drawImage(mask, 0, 0);
-    oc.globalCompositeOperation = "source-over";
-  }
-  mainCtx.save();
-  mainCtx.globalAlpha = alpha;
-  mainCtx.drawImage(offCanvas, 0, 0);
-  mainCtx.restore();
+// Extract all <path d="..."> strings from an SVG text.
+function parsePaths(svgText) {
+  const doc = new DOMParser().parseFromString(svgText, "image/svg+xml");
+  return [...doc.querySelectorAll("path")]
+    .map(p => p.getAttribute("d"))
+    .filter(Boolean);
 }
 
 export class StrokeAnimator {
   /**
-   * @param {HTMLCanvasElement} canvas
+   * @param {SVGSVGElement} svg
    * @param {string} symbol      — Bopomofo char (e.g. "ㄅ"), used as track key
    * @param {string} symbolId    — romanized id (e.g. "b"), used for file paths
    * @param {number} totalStrokes
    * @param {(current: number) => void} [onTick]
    */
-  constructor(canvas, symbol, symbolId, totalStrokes, onTick) {
-    this.canvas = canvas;
-    canvas.width = CANVAS_SIZE;
-    canvas.height = CANVAS_SIZE;
-    this.ctx = canvas.getContext("2d");
+  constructor(svg, symbol, symbolId, totalStrokes, onTick) {
+    this.svg = svg;
+    svg.setAttribute("viewBox", "0 0 2048 2048");
+
     this.symbol = symbol;
     this.symbolId = symbolId;
     this.totalStrokes = totalStrokes;
@@ -99,14 +69,15 @@ export class StrokeAnimator {
     this.current = 0;
     this.playing = false;
     this._rafId = null;
-    this._committedSnapshot = null;
-    this._maskCanvases = Array(totalStrokes).fill(null);
+    this._animGroup = null;
 
-    this._offCanvas = document.createElement("canvas");
-    this._offCanvas.width = CANVAS_SIZE;
-    this._offCanvas.height = CANVAS_SIZE;
+    this._defs = mkSVG("defs");
+    svg.appendChild(this._defs);
 
-    this._loadMasks();
+    // null = not yet fetched; [] = fetched but no paths; [...] = ready
+    this._pathData = Array(totalStrokes).fill(null);
+    this._pathReady = this._preloadPaths();
+
     this._loadTracks();
   }
 
@@ -114,23 +85,63 @@ export class StrokeAnimator {
     return `./strokes/${encodeURIComponent(this.symbolId)}/${n}.svg`;
   }
 
-  _loadMasks() {
-    this._maskCanvases = Array(this.totalStrokes).fill(null);
-    this._maskReady = Array.from({ length: this.totalStrokes }, (_, i) =>
-      new Promise(resolve => {
-        const img = new Image();
-        img.onload = () => {
-          const oc = document.createElement("canvas");
-          oc.width = CANVAS_SIZE;
-          oc.height = CANVAS_SIZE;
-          oc.getContext("2d").drawImage(img, 0, 0, CANVAS_SIZE, CANVAS_SIZE);
-          this._maskCanvases[i] = oc;
-          resolve(oc);
-        };
-        img.onerror = () => resolve(null);
-        img.src = this._strokeSrc(i + 1);
-      })
+  // Fetch each stroke SVG and cache its path data for inline mask use.
+  _preloadPaths() {
+    return Array.from({ length: this.totalStrokes }, (_, i) =>
+      fetch(this._strokeSrc(i + 1))
+        .then(r => r.text())
+        .then(text => {
+          const paths = parsePaths(text);
+          this._pathData[i] = paths.length ? paths : [];
+          return this._pathData[i];
+        })
+        .catch(() => { this._pathData[i] = []; return []; })
     );
+  }
+
+  // Build or reuse a mask for the given stroke index.
+  // Inline paths → browser renders them as vectors → smooth anti-aliased edges.
+  // Falls back to <image> only if path data failed to load.
+  _ensureMask(strokeIdx) {
+    const id = `_zm_${strokeIdx}`;
+    if (!this._defs.querySelector(`#${id}`)) {
+      const mask = mkSVG("mask", { id });
+      mask.setAttribute("style", "mask-type: alpha");
+      const paths = this._pathData[strokeIdx];
+      if (paths?.length) {
+        for (const d of paths) {
+          mask.appendChild(mkSVG("path", { d, fill: "black" }));
+        }
+      } else {
+        // Fallback — still works but may have aliased edges at high zoom.
+        mask.appendChild(mkSVG("image", {
+          href: this._strokeSrc(strokeIdx + 1),
+          width: "2048", height: "2048",
+        }));
+      }
+      this._defs.appendChild(mask);
+    }
+    return id;
+  }
+
+  _addCommitted(strokeIdx) {
+    const paths = this._pathData[strokeIdx];
+    if (paths?.length) {
+      // Render directly as <path> with outline — no mask needed, vector edges, clean outline.
+      // paint-order:stroke fill draws the outline behind the fill, so only the outer
+      // half of stroke-width is visible as the border.
+      for (const d of paths) {
+        this.svg.appendChild(mkSVG("path", { d, fill: INK }));
+      }
+    } else {
+      // Fallback when path data unavailable (fetch failed).
+      const maskId = this._ensureMask(strokeIdx);
+      this.svg.appendChild(mkSVG("rect", {
+        x: "0", y: "0", width: "2048", height: "2048",
+        fill: INK,
+        mask: `url(#${maskId})`,
+      }));
+    }
   }
 
   _loadTracks(autoPlay = false) {
@@ -149,6 +160,16 @@ export class StrokeAnimator {
       cancelAnimationFrame(this._rafId);
       this._rafId = null;
     }
+    if (this._animGroup) {
+      this._animGroup.remove();
+      this._animGroup = null;
+    }
+  }
+
+  _clearSVG() {
+    for (const child of [...this.svg.children]) {
+      if (child !== this._defs) child.remove();
+    }
   }
 
   _animateStroke(strokeIdx, onDone) {
@@ -156,34 +177,61 @@ export class StrokeAnimator {
     const pts = smooth(this.tracks[strokeIdx]);
 
     const startRAF = () => {
+      const maskId = this._ensureMask(strokeIdx);
+
+      const g = mkSVG("g", { mask: `url(#${maskId})` });
+      this.svg.appendChild(g);
+      this._animGroup = g;
+
+      let lastUpTo = 0;
       const t0 = performance.now();
+
       const tick = (now) => {
         const prog = Math.min((now - t0) / DRAW_MS, 1);
         const upTo = Math.ceil(prog * pts.length);
 
-        if (this._committedSnapshot) {
-          this.ctx.putImageData(this._committedSnapshot, 0, 0);
-        } else {
-          this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-        }
+        // Append only new elements — incremental, no clear/rebuild.
+        for (let i = lastUpTo; i < upTo && i < pts.length; i++) {
+          const [x, y, sz] = pts[i];
+          const r = (sz / 2) * BRUSH_SCALE;
 
-        paintMasked(this.ctx, pts, upTo, this._maskCanvases[strokeIdx] ?? null, this._offCanvas);
+          if (i > 0) {
+            const [px, py, ps] = pts[i - 1];
+            g.appendChild(mkSVG("line", {
+              x1: px.toFixed(1), y1: py.toFixed(1),
+              x2: x.toFixed(1),  y2: y.toFixed(1),
+              stroke: INK,
+              "stroke-width": (((ps + sz) / 2) * BRUSH_SCALE).toFixed(1),
+              "stroke-linecap": "round",
+            }));
+          }
+          g.appendChild(mkSVG("circle", {
+            cx: x.toFixed(1), cy: y.toFixed(1),
+            r: r.toFixed(1),
+            fill: INK,
+          }));
+        }
+        lastUpTo = upTo;
 
         if (prog < 1) {
           this._rafId = requestAnimationFrame(tick);
         } else {
           this._rafId = null;
+          this._animGroup = null;
+          g.remove();
+          this._addCommitted(strokeIdx);
           onDone();
         }
       };
       this._rafId = requestAnimationFrame(tick);
     };
 
-    if (this._maskCanvases[strokeIdx]) {
+    // Wait for inline path data before starting — ensures the mask uses a
+    // vector path, not the fallback <image>, so edges are properly anti-aliased.
+    if (this._pathData[strokeIdx] !== null) {
       startRAF();
     } else {
-      // Mask not yet loaded — wait for it, then start only if still playing
-      this._maskReady[strokeIdx]?.then(() => {
+      this._pathReady[strokeIdx]?.then(() => {
         if (this.playing) startRAF();
       });
     }
@@ -192,17 +240,16 @@ export class StrokeAnimator {
   _showUpTo(n, animate) {
     if (!this.tracks) return;
     this._cancelAnim();
-    this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-    if (n === 0) { this._committedSnapshot = null; return; }
+    this._clearSVG();
+    if (n === 0) return;
 
-    const strokeIdx = n - 1;
-    for (let s = 0; s < strokeIdx && s < this.tracks.length; s++) {
-      paintMasked(this.ctx, smooth(this.tracks[s]), Infinity, this._maskCanvases[s] ?? null, this._offCanvas);
+    for (let s = 0; s < n - 1 && s < this.tracks.length; s++) {
+      this._addCommitted(s);
     }
+    const strokeIdx = n - 1;
     if (strokeIdx >= this.tracks.length) return;
 
     if (animate) {
-      this._committedSnapshot = this.ctx.getImageData(0, 0, CANVAS_SIZE, CANVAS_SIZE);
       this._animateStroke(strokeIdx, () => {
         if (this.playing) {
           const next = this.current + 1;
@@ -217,8 +264,7 @@ export class StrokeAnimator {
         }
       });
     } else {
-      this._committedSnapshot = null;
-      paintMasked(this.ctx, smooth(this.tracks[strokeIdx]), Infinity, this._maskCanvases[strokeIdx] ?? null, this._offCanvas);
+      this._addCommitted(strokeIdx);
     }
   }
 
@@ -230,13 +276,12 @@ export class StrokeAnimator {
     this._cancelAnim();
     this.playing = true;
     this.current = 1;
-    this._committedSnapshot = null;
-    this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
+    this._clearSVG();
     this.onTick?.(this.current);
     setTimeout(() => this._showUpTo(1, true), 10);
   }
 
-  // Reset for a new symbol without re-creating the object
+  // Reset for a new symbol without re-creating the object.
   reset(symbol, symbolId, totalStrokes) {
     this._cancelAnim();
     this.symbol = symbol;
@@ -244,11 +289,11 @@ export class StrokeAnimator {
     this.totalStrokes = totalStrokes;
     this.current = 0;
     this.playing = false;
-    this._committedSnapshot = null;
-    this.ctx.clearRect(0, 0, CANVAS_SIZE, CANVAS_SIZE);
-    this._loadMasks();
+    this._clearSVG();
+    for (const mask of [...this._defs.querySelectorAll("mask")]) mask.remove();
+    this._pathData = Array(totalStrokes).fill(null);
+    this._pathReady = this._preloadPaths();
     this.onTick?.(0);
-    // Always re-read from cache for new symbol key
     this.tracks = _tracksCache ? (_tracksCache[symbol] ?? null) : null;
     if (this.tracks) {
       this.play();
