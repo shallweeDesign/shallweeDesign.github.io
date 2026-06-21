@@ -27,8 +27,10 @@
 
         <!-- Stroke animation -->
         <button id="stroke-btn" aria-label="點擊重播筆順">
-          <div id="ghost-strokes"></div>
-          <canvas id="stroke-canvas" width="512" height="512"></canvas>
+          <div id="stroke-zoom">
+            <div id="ghost-strokes"></div>
+            <canvas id="stroke-canvas" width="512" height="512"></canvas>
+          </div>
           <span id="stroke-counter"></span>
           <span class="stroke-replay-hint" aria-hidden="true">↺</span>
         </button>

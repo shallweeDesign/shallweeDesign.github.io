@@ -176,6 +176,17 @@ function selectSymbol(item) {
   renderGhostStrokes();
   renderDisplayPanel();
   updateKeyboardSelection();
+  resetStrokeZoom();
+}
+
+// ── stroke pinch-to-zoom ───────────────────────────────────────────────────────
+
+let _strokeZoom = 1;
+
+function resetStrokeZoom() {
+  _strokeZoom = 1;
+  const el = document.getElementById("stroke-zoom");
+  if (el) { el.style.transform = ""; el.style.transformOrigin = "center center"; }
 }
 
 // ── ghost strokes (position guide) ────────────────────────────────────────────
@@ -215,11 +226,57 @@ function init() {
     );
 
     const strokeBtn = document.getElementById("stroke-btn");
-    if (strokeBtn) {
-      onTap(strokeBtn, () => {
-        animator.play();
-        playSymbolAudio(selected.id, selected.symbol);
-      });
+    const strokeZoom = document.getElementById("stroke-zoom");
+    if (strokeBtn && strokeZoom) {
+      let _pinchStartDist = 0;
+      let _pinchStartZoom = 1;
+      let _lastTap = 0;
+      let _lastFired = 0;
+
+      const playStroke = () => {
+        const now = Date.now();
+        if (now - _lastFired > 350) {
+          _lastFired = now;
+          animator.play();
+          playSymbolAudio(selected.id, selected.symbol);
+        }
+      };
+
+      strokeBtn.addEventListener("touchstart", (e) => {
+        if (e.touches.length === 2) {
+          const t0 = e.touches[0], t1 = e.touches[1];
+          _pinchStartDist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
+          _pinchStartZoom = _strokeZoom;
+          // Zoom origin = midpoint of two fingers
+          const rect = strokeBtn.getBoundingClientRect();
+          const ox = ((t0.clientX + t1.clientX) / 2 - rect.left) / rect.width * 100;
+          const oy = ((t0.clientY + t1.clientY) / 2 - rect.top) / rect.height * 100;
+          strokeZoom.style.transformOrigin = `${ox.toFixed(1)}% ${oy.toFixed(1)}%`;
+        } else if (e.touches.length === 1) {
+          const now = Date.now();
+          // Double-tap resets zoom
+          if (now - _lastTap < 280 && _strokeZoom > 1) {
+            resetStrokeZoom();
+            _lastTap = 0;
+            return;
+          }
+          _lastTap = now;
+          playStroke();
+        }
+      }, { passive: true });
+
+      strokeBtn.addEventListener("touchmove", (e) => {
+        if (e.touches.length === 2) {
+          e.preventDefault();
+          const t0 = e.touches[0], t1 = e.touches[1];
+          const dist = Math.hypot(t1.clientX - t0.clientX, t1.clientY - t0.clientY);
+          _strokeZoom = Math.max(1, Math.min(5, _pinchStartZoom * dist / _pinchStartDist));
+          strokeZoom.style.transform = `scale(${_strokeZoom.toFixed(3)})`;
+        }
+      }, { passive: false });
+
+      // Desktop fallback
+      strokeBtn.addEventListener("click", playStroke);
     }
   }
 
