@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>麥克風測試｜ㄅㄆㄇ大冒險</title>
+  <meta name="description" content="測試麥克風收音與語音辨識是否正常運作。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <a href="game.html" class="nav-link">← 遊戲</a>
+      <span class="app-header__title">麥克風測試</span>
+      <a href="index.html" class="nav-link">鍵盤</a>
+    </header>
+
+    <main class="mictest">
+
+      <!-- 1. Environment checks -->
+      <section class="mictest-card">
+        <h2>1️⃣ 環境檢查</h2>
+        <ul id="env-checks" class="mictest-checks"></ul>
+      </section>
+
+      <!-- 2. Volume meter -->
+      <section class="mictest-card">
+        <h2>2️⃣ 收音測試</h2>
+        <p class="mictest-hint">確認麥克風有收到聲音 — 說話時綠條會跳動。</p>
+        <div class="meter-track"><div id="meter-bar" class="meter-bar"></div></div>
+        <button id="meter-btn" type="button" class="game-start-btn">開始收音測試</button>
+        <p id="meter-status" class="mictest-status"></p>
+      </section>
+
+      <!-- 3. Recognition test -->
+      <section class="mictest-card">
+        <h2>3️⃣ 語音辨識測試</h2>
+        <p class="mictest-hint">確認說的話能被辨識，以及會對應到哪些注音符號。</p>
+        <button id="rec-btn" type="button" class="game-start-btn">開始辨識測試</button>
+        <p id="rec-status" class="mictest-status"></p>
+        <ul id="rec-log" class="rec-log"></ul>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script type="module" src="js/mictest.js"></script>
+</body>
+</html>
