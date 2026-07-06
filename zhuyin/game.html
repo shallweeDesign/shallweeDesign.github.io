@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>聽說小遊戲｜注音小天使</title>
+  <meta name="description" content="注音符號從天而降，五秒內大聲說出正確發音就能得分！20 個關卡等你挑戰。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <a href="index.html" class="nav-link">← 鍵盤</a>
+      <span id="game-level-label" class="app-header__title">聽說小遊戲</span>
+      <div class="game-hud">
+        <span id="game-hearts" class="game-hearts"></span>
+        <span id="game-round" class="game-round"></span>
+        <span class="game-score-wrap">⭐ <span id="game-score">0</span></span>
+        <button id="level-nav-btn" type="button" class="nav-link nav-link--btn">關卡</button>
+      </div>
+    </header>
+
+    <!-- Playfield -->
+    <main id="playfield" class="game-playfield">
+
+      <div id="falling-tile" class="falling-tile" hidden>
+        <span id="tile-timer" class="tile-timer">5</span>
+        <span id="tile-symbol" class="tile-symbol">ㄅ</span>
+        <span id="tile-emoji" class="tile-emoji">👨</span>
+      </div>
+
+      <div id="game-transcript" class="game-transcript"></div>
+
+      <!-- Level select -->
+      <div id="level-select" class="level-select" hidden>
+        <h1 class="level-select__title">🎤 選擇關卡</h1>
+        <p class="level-select__hint">符號落地前大聲說出它的發音，就能得分！說範例詞也可以喔。</p>
+        <div id="level-grid" class="level-grid"></div>
+      </div>
+    </main>
+
+    <!-- Result / error overlay -->
+    <div id="game-overlay" class="game-overlay" hidden>
+      <div class="game-overlay__card">
+        <h1 id="overlay-title"></h1>
+        <div id="overlay-stars" class="game-overlay__stars" hidden></div>
+        <p id="overlay-desc"></p>
+        <button id="overlay-btn" type="button" class="game-start-btn"></button>
+        <button id="overlay-btn2" type="button" class="game-secondary-btn" hidden></button>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="js/game.js"></script>
+</body>
+</html>
