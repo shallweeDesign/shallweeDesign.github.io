@@ -108,7 +108,7 @@ function createSymbolCard(item) {
 
   const canvas = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   canvas.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-  canvas.className = "sym-svg";
+  canvas.setAttribute("class", "sym-svg"); // SVGElement.className is read-only
 
   const counter = document.createElement("span");
   counter.className = "sym-stroke-counter";

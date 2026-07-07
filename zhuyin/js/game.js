@@ -1,6 +1,7 @@
 import { playSymbolAudio } from "./audio.js";
 import { createRecognizer, matchesSymbol, isRecognitionSupported } from "./speech.js";
 import { LEVELS, GAME_ITEMS } from "./levels.js";
+import { Waveform } from "./waveform.js";
 
 const MAX_HEARTS = 3;
 const PROGRESS_KEY = "zhuyin-game-progress";
@@ -8,6 +9,7 @@ const PROGRESS_KEY = "zhuyin-game-progress";
 // ── state ──────────────────────────────────────────────────────────────────────
 
 let recognizer = null;
+let waveform = null;
 let playing = false;
 let roundActive = false;   // ignore ASR results between rounds
 let currentItem = null;
@@ -50,6 +52,7 @@ function showLevelSelect() {
   cancelAnimationFrame(rafId);
   clearTimeout(nextTimer);
   recognizer?.stop();
+  waveform?.stop();
   tile().hidden = true;
   setTranscript("");
   $("game-overlay").hidden = true;
@@ -218,6 +221,7 @@ function startLevel(idx) {
           playing = false;
           roundActive = false;
           cancelAnimationFrame(rafId);
+          waveform?.stop();
           showOverlay({
             title: "需要麥克風權限",
             desc: "請到瀏覽器設定允許使用麥克風，再重新開始。",
@@ -228,12 +232,15 @@ function startLevel(idx) {
     });
   }
   recognizer.start();
+  if (!waveform) waveform = new Waveform($("voice-wave"));
+  waveform.start(); // best-effort — game runs fine without the visual
   startRound();
 }
 
 function levelComplete() {
   playing = false;
   recognizer?.stop();
+  waveform?.stop();
   const stars = misses === 0 ? 3 : misses === 1 ? 2 : 1;
   saveStars(levelIndex, stars);
 
@@ -252,6 +259,7 @@ function levelComplete() {
 function levelFailed() {
   playing = false;
   recognizer?.stop();
+  waveform?.stop();
   showOverlay({
     title: "再試一次！",
     desc: `第 ${levelIndex + 1} 關｜得分 ${score} 分`,

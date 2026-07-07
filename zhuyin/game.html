@@ -28,17 +28,31 @@
     <!-- Playfield -->
     <main id="playfield" class="game-playfield">
 
+      <!-- sky scene decorations -->
+      <div class="sky-decor" aria-hidden="true">
+        <span class="sky-sun">🌞</span>
+        <span class="sky-cloud" style="top:10%; animation-duration:42s;">☁️</span>
+        <span class="sky-cloud" style="top:26%; animation-duration:58s; animation-delay:-25s; font-size:30px;">☁️</span>
+        <span class="sky-cloud" style="top:5%;  animation-duration:70s; animation-delay:-48s; font-size:24px;">⛅</span>
+        <div class="ground"></div>
+        <div class="ground-flowers"><span>🌼</span><span>🌷</span><span>🌱</span><span>🌸</span><span>🍄</span></div>
+      </div>
+
       <div id="falling-tile" class="falling-tile" hidden>
         <span id="tile-timer" class="tile-timer">5</span>
         <span id="tile-symbol" class="tile-symbol">ㄅ</span>
         <span id="tile-emoji" class="tile-emoji">👨</span>
       </div>
 
+      <canvas id="voice-wave" class="voice-wave" aria-hidden="true"></canvas>
       <div id="game-transcript" class="game-transcript"></div>
 
       <!-- Level select -->
       <div id="level-select" class="level-select" hidden>
-        <h1 class="level-select__title">🎤 選擇關卡</h1>
+        <span class="decor decor--lg" style="top:10px; left:5%;  animation-delay:-1s;" aria-hidden="true">🎈</span>
+        <span class="decor"           style="top:12px; right:6%; animation-delay:-2.5s;" aria-hidden="true">🚀</span>
+        <span class="decor decor--sm" style="top:64px; left:16%; animation-delay:-4s;" aria-hidden="true">⭐</span>
+        <h1 class="level-select__title">🌈 選擇關卡</h1>
         <p class="level-select__hint">符號落地前大聲說出它的發音，就能得分！說範例詞也可以喔。<br><a href="mic-test.html" class="level-select__miclink">🎙️ 麥克風怪怪的？點我測試</a></p>
         <div id="level-grid" class="level-grid"></div>
       </div>

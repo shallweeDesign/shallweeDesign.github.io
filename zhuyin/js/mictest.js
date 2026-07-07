@@ -1,5 +1,6 @@
 import { createRecognizer, matchesSymbol, isRecognitionSupported } from "./speech.js";
 import { GAME_ITEMS } from "./levels.js";
+import { Waveform } from "./waveform.js";
 
 const $ = (id) => document.getElementById(id);
 
@@ -67,6 +68,7 @@ function stopMeter() {
 
 let recognizer = null;
 let recognizing = false;
+let recWave = null;
 const logEntries = [];
 
 function logResult(texts) {
@@ -95,6 +97,7 @@ function startRecognition() {
       onStateChange: (on, error) => {
         if (error) {
           recognizing = false;
+          recWave?.stop();
           $("rec-btn").textContent = "開始辨識測試";
           $("rec-status").textContent = "❌ 沒有麥克風權限，請到瀏覽器設定允許";
         }
@@ -102,6 +105,8 @@ function startRecognition() {
     });
   }
   recognizer.start();
+  if (!recWave) recWave = new Waveform($("rec-wave"));
+  recWave.start();
   recognizing = true;
   $("rec-btn").textContent = "停止辨識測試";
   $("rec-status").textContent = "🎤 辨識中… 試著說「ㄅ」（波）、「ㄚ」（啊）或任何詞";
@@ -110,6 +115,7 @@ function startRecognition() {
 function stopRecognition() {
   if (!recognizing) return;
   recognizer?.stop();
+  recWave?.stop();
   recognizing = false;
   $("rec-btn").textContent = "開始辨識測試";
   $("rec-status").textContent = "";
