@@ -135,7 +135,7 @@ export function matchesSymbol(transcripts, item) {
 
 // Thin wrapper: continuous zh-TW recognition with interim results and
 // auto-restart (iOS Safari ends sessions frequently on its own).
-export function createRecognizer({ onText, onStateChange }) {
+export function createRecognizer({ onText, onStateChange, onDebug }) {
   if (!SR) return null;
 
   const rec = new SR();
@@ -145,6 +145,12 @@ export function createRecognizer({ onText, onStateChange }) {
   rec.maxAlternatives = 5;
 
   let active = false;
+  const dbg = (msg) => onDebug?.(msg);
+
+  rec.onstart = () => dbg("session start");
+  rec.onaudiostart = () => dbg("audio start (mic delivering)");
+  rec.onspeechstart = () => dbg("speech detected");
+  rec.onspeechend = () => dbg("speech ended");
 
   rec.onresult = (e) => {
     const texts = [];
@@ -160,13 +166,16 @@ export function createRecognizer({ onText, onStateChange }) {
 
   rec.onend = () => {
     if (active) {
+      dbg("session end → restart");
       try { rec.start(); } catch { /* already started */ }
     } else {
+      dbg("session end");
       onStateChange?.(false);
     }
   };
 
   rec.onerror = (e) => {
+    dbg(`error: ${e.error}`);
     if (e.error === "not-allowed" || e.error === "service-not-allowed") {
       active = false;
       onStateChange?.(false, e.error);

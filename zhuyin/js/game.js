@@ -6,6 +6,30 @@ import { Waveform } from "./waveform.js";
 const MAX_HEARTS = 3;
 const PROGRESS_KEY = "zhuyin-game-progress";
 
+// Debug switches: ?debug=1 shows an on-screen ASR event log (iPad has no
+// console); ?nowave=1 skips the waveform's second getUserMedia session to
+// test whether it starves SpeechRecognition of mic audio.
+const PARAMS = new URLSearchParams(location.search);
+const DEBUG = PARAMS.has("debug");
+const NO_WAVE = PARAMS.has("nowave");
+
+let debugPanel = null;
+function debugLog(msg) {
+  if (!DEBUG) return;
+  if (!debugPanel) {
+    debugPanel = document.createElement("div");
+    debugPanel.style.cssText =
+      "position:fixed;left:0;right:0;bottom:0;max-height:38vh;overflow:hidden;" +
+      "background:rgba(0,0,0,.78);color:#7CFC90;font:11px/1.45 Menlo,monospace;" +
+      "padding:6px 10px;z-index:9999;pointer-events:none;white-space:pre-wrap;";
+    document.body.appendChild(debugPanel);
+  }
+  const line = document.createElement("div");
+  line.textContent = `${(performance.now() / 1000).toFixed(1)}s  ${msg}`;
+  debugPanel.appendChild(line);
+  while (debugPanel.childNodes.length > 40) debugPanel.removeChild(debugPanel.firstChild);
+}
+
 // ── state ──────────────────────────────────────────────────────────────────────
 
 let recognizer = null;
@@ -212,10 +236,13 @@ function startLevel(idx) {
   if (!recognizer) {
     recognizer = createRecognizer({
       onText: (texts) => {
+        const hit = currentItem ? matchesSymbol(texts, currentItem) : false;
+        debugLog(`heard [${texts.join(" ｜ ")}]  target=${currentItem?.id ?? "-"}  match=${hit}  active=${roundActive}`);
         if (!playing || !roundActive || !currentItem) return;
         setTranscript(`聽到：${texts[0]}`);
-        if (matchesSymbol(texts, currentItem)) onCorrect(texts[0]);
+        if (hit) onCorrect(texts[0]);
       },
+      onDebug: debugLog,
       onStateChange: (on, error) => {
         if (error) {
           playing = false;
@@ -232,8 +259,12 @@ function startLevel(idx) {
     });
   }
   recognizer.start();
-  if (!waveform) waveform = new Waveform($("voice-wave"));
-  waveform.start(); // best-effort — game runs fine without the visual
+  if (NO_WAVE) {
+    debugLog("waveform disabled (?nowave=1)");
+  } else {
+    if (!waveform) waveform = new Waveform($("voice-wave"));
+    waveform.start(); // best-effort — game runs fine without the visual
+  }
   startRound();
 }
 
