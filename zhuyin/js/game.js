@@ -16,10 +16,11 @@ const NO_WAVE = PARAMS.has("nowave");
 // "voice" (default) = local MFCC+DTW template matching against the game's own
 // pronunciation WAVs; "asr" = legacy Web Speech API homophone matching.
 const ENGINE = PARAMS.get("engine") === "asr" ? "asr" : "voice";
-// Strict accept: the target must be rank-1 AND beat the runner-up by this
-// factor. Ambiguous wins are rejected (measured 0% false-accepts vs 3.8%
-// with the old margin rule; retries within the fall window are free).
-const MIN_SEPARATION = 1.10;
+// Accept: the target must be rank-1 AND beat the runner-up by this factor.
+// 1.10 measured 0% false-accepts but felt too strict in play; 1.02 is
+// rank-1 with a tie guard (measured ~1.5% FA / ~5% FR). Tune live with
+// ?sep=1.05 — no redeploy needed.
+const MIN_SEPARATION = parseFloat(PARAMS.get("sep")) || 1.02;
 
 let debugPanel = null;
 function debugLog(msg) {
