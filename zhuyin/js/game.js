@@ -1,5 +1,6 @@
 import { playSymbolAudio } from "./audio.js";
 import { createRecognizer, matchesSymbol, isRecognitionSupported } from "./speech.js";
+import { VoiceMatcher } from "./voicematch.js";
 import { LEVELS, GAME_ITEMS } from "./levels.js";
 import { Waveform } from "./waveform.js";
 
@@ -12,6 +13,11 @@ const PROGRESS_KEY = "zhuyin-game-progress";
 const PARAMS = new URLSearchParams(location.search);
 const DEBUG = PARAMS.has("debug");
 const NO_WAVE = PARAMS.has("nowave");
+// "voice" (default) = local MFCC+DTW template matching against the game's own
+// pronunciation WAVs; "asr" = legacy Web Speech API homophone matching.
+const ENGINE = PARAMS.get("engine") === "asr" ? "asr" : "voice";
+// accept when the target is within 10% of the best-scoring candidate
+const MATCH_MARGIN = 1.10;
 
 let debugPanel = null;
 function debugLog(msg) {
@@ -33,6 +39,7 @@ function debugLog(msg) {
 // ── state ──────────────────────────────────────────────────────────────────────
 
 let recognizer = null;
+let matcher = null;
 let waveform = null;
 let playing = false;
 let roundActive = false;   // ignore ASR results between rounds
@@ -76,6 +83,7 @@ function showLevelSelect() {
   cancelAnimationFrame(rafId);
   clearTimeout(nextTimer);
   recognizer?.stop();
+  matcher?.stop();
   waveform?.stop();
   tile().hidden = true;
   setTranscript("");
@@ -233,6 +241,67 @@ function startLevel(idx) {
   $("game-overlay").hidden = true;
   renderHud();
 
+  if (ENGINE === "voice") startVoiceEngine();
+  else startAsrEngine();
+  startRound();
+}
+
+function micDenied() {
+  playing = false;
+  roundActive = false;
+  cancelAnimationFrame(rafId);
+  waveform?.stop();
+  showOverlay({
+    title: "需要麥克風權限",
+    desc: "請到瀏覽器設定允許使用麥克風，再重新開始。",
+    primary: { label: "回關卡選單", onClick: showLevelSelect },
+  });
+}
+
+function startWaveform(stream) {
+  if (NO_WAVE) {
+    debugLog("waveform disabled (?nowave=1)");
+    return;
+  }
+  if (!waveform) waveform = new Waveform($("voice-wave"));
+  waveform.start(stream); // best-effort — game runs fine without the visual
+}
+
+// ── voice engine (local MFCC+DTW template matching) ────────────────────────────
+
+async function startVoiceEngine() {
+  try {
+    if (!matcher) {
+      matcher = new VoiceMatcher({ onUtterance: handleUtterance, onDebug: debugLog });
+      await matcher.init(Object.keys(GAME_ITEMS));
+    }
+    const stream = await matcher.start();
+    startWaveform(stream); // share the matcher's mic session
+  } catch (err) {
+    debugLog(`voice engine failed: ${err?.message ?? err}`);
+    micDenied();
+  }
+}
+
+function handleUtterance(samples) {
+  if (!playing || !roundActive || !currentItem) return;
+  const candidates = LEVELS[levelIndex].symbols;
+  const scores = matcher.match(samples, candidates);
+  if (!scores.length) return;
+  const target = currentItem.id;
+  const targetScore = scores.find(s => s.id === target);
+  const hit = scores[0].id === target
+    || (targetScore && targetScore.d <= scores[0].d * MATCH_MARGIN);
+  debugLog(`utt ${(samples.length / 16000).toFixed(2)}s → `
+    + scores.slice(0, 3).map(s => `${s.id}:${s.d.toFixed(2)}`).join("  ")
+    + `  target=${target} hit=${hit}`);
+  if (hit) onCorrect(currentItem.symbol);
+  else setTranscript("🎤 聽到了！再說一次試試");
+}
+
+// ── legacy Web Speech engine (?engine=asr) ─────────────────────────────────────
+
+function startAsrEngine() {
   if (!recognizer) {
     recognizer = createRecognizer({
       onText: (texts) => {
@@ -244,33 +313,18 @@ function startLevel(idx) {
       },
       onDebug: debugLog,
       onStateChange: (on, error) => {
-        if (error) {
-          playing = false;
-          roundActive = false;
-          cancelAnimationFrame(rafId);
-          waveform?.stop();
-          showOverlay({
-            title: "需要麥克風權限",
-            desc: "請到瀏覽器設定允許使用麥克風，再重新開始。",
-            primary: { label: "回關卡選單", onClick: showLevelSelect },
-          });
-        }
+        if (error) micDenied();
       },
     });
   }
   recognizer.start();
-  if (NO_WAVE) {
-    debugLog("waveform disabled (?nowave=1)");
-  } else {
-    if (!waveform) waveform = new Waveform($("voice-wave"));
-    waveform.start(); // best-effort — game runs fine without the visual
-  }
-  startRound();
+  startWaveform();
 }
 
 function levelComplete() {
   playing = false;
   recognizer?.stop();
+  matcher?.stop();
   waveform?.stop();
   const stars = misses === 0 ? 3 : misses === 1 ? 2 : 1;
   saveStars(levelIndex, stars);
@@ -290,6 +344,7 @@ function levelComplete() {
 function levelFailed() {
   playing = false;
   recognizer?.stop();
+  matcher?.stop();
   waveform?.stop();
   showOverlay({
     title: "再試一次！",

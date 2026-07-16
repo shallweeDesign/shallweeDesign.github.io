@@ -18,13 +18,22 @@ export class Waveform {
     this._samples = [];
   }
 
-  async start() {
+  // Pass an existing MediaStream to share another consumer's mic session
+  // (avoids a second getUserMedia, which iOS dislikes); we then don't own
+  // the tracks and won't stop them.
+  async start(existingStream) {
     if (this._stream) return true;
-    if (!navigator.mediaDevices?.getUserMedia) return false;
-    try {
-      this._stream = await navigator.mediaDevices.getUserMedia({ audio: true });
-    } catch {
-      return false;
+    if (existingStream) {
+      this._stream = existingStream;
+      this._owned = false;
+    } else {
+      if (!navigator.mediaDevices?.getUserMedia) return false;
+      try {
+        this._stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+      } catch {
+        return false;
+      }
+      this._owned = true;
     }
     this._audioCtx = new (window.AudioContext || window.webkitAudioContext)();
     if (this._audioCtx.state === "suspended") this._audioCtx.resume();
@@ -41,7 +50,7 @@ export class Waveform {
   stop() {
     cancelAnimationFrame(this._raf);
     this._raf = 0;
-    this._stream?.getTracks().forEach(t => t.stop());
+    if (this._owned) this._stream?.getTracks().forEach(t => t.stop());
     this._audioCtx?.close();
     this._stream = null;
     this._audioCtx = null;
