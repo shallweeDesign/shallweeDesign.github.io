@@ -30,7 +30,7 @@ export class VoiceMatcher {
   constructor({ onUtterance, onDebug } = {}) {
     this.onUtterance = onUtterance;
     this.onDebug = onDebug;
-    this._templates = new Map(); // id → MFCC frames
+    this._templates = new Map(); // id → [MFCC frames, …] (multiple takes per id)
     this._stream = null;
     this._node = null;
     this._source = null;
@@ -49,28 +49,68 @@ export class VoiceMatcher {
 
   // ── templates ────────────────────────────────────────────────────────────────
 
-  // Load + featurize pronunciation WAVs. Base symbols live in audio/,
-  // synthesized syllable templates (結合韻/拼音) in audio/templates/.
+  _addTemplate(id, data) {
+    const seg = findSpeech(data, { minMs: 60, hangMs: 150 });
+    if (seg) data = data.subarray(seg[0], Math.min(seg[1], data.length));
+    const frames = mfcc(data);
+    if (frames.length < 5) return;
+    if (!this._templates.has(id)) this._templates.set(id, []);
+    this._templates.get(id).push(frames);
+  }
+
+  async _fetchWav(url) {
+    try {
+      const res = await fetch(url);
+      if (!res.ok) return null;
+      const audio = await this._ctx.decodeAudioData(await res.arrayBuffer());
+      return resampleLinear(audio.getChannelData(0), audio.sampleRate, SAMPLE_RATE);
+    } catch {
+      return null;
+    }
+  }
+
+  // Load + featurize pronunciation templates, best-match wins at runtime:
+  //  1. bundled defaults — audio/{id}.wav (37 recordings) or
+  //     audio/templates/{id}.wav (synthesized 結合韻/拼音)
+  //  2. personal takes committed to the repo — audio/personal/ (manifest.json)
+  //  3. takes recorded on THIS device via record.html (IndexedDB)
   async init(ids) {
     const jobs = ids.map(async (id) => {
       const enc = encodeURIComponent(id);
-      let buf = null;
-      for (const url of [`./audio/${enc}.wav`, `./audio/templates/${enc}.wav`]) {
-        try {
-          const res = await fetch(url);
-          if (res.ok) { buf = await res.arrayBuffer(); break; }
-        } catch { /* try next */ }
-      }
-      if (!buf) { this._dbg(`template missing: ${id}`); return; }
-      const audio = await this._ctx.decodeAudioData(buf);
-      let data = audio.getChannelData(0);
-      data = resampleLinear(data, audio.sampleRate, SAMPLE_RATE);
-      const seg = findSpeech(data, { minMs: 60, hangMs: 150 });
-      if (seg) data = data.subarray(seg[0], Math.min(seg[1], data.length));
-      this._templates.set(id, mfcc(data));
+      const data = await this._fetchWav(`./audio/${enc}.wav`)
+        ?? await this._fetchWav(`./audio/templates/${enc}.wav`);
+      if (data) this._addTemplate(id, data);
+      else this._dbg(`template missing: ${id}`);
     });
     await Promise.all(jobs);
-    this._dbg(`templates ready: ${this._templates.size}/${ids.length}`);
+
+    try {
+      const res = await fetch("./audio/personal/manifest.json");
+      if (res.ok) {
+        const manifest = await res.json();
+        let n = 0;
+        await Promise.all(Object.entries(manifest).map(async ([id, files]) => {
+          for (const f of files) {
+            const data = await this._fetchWav(`./audio/personal/${encodeURIComponent(id)}/${encodeURIComponent(f)}`);
+            if (data) { this._addTemplate(id, data); n++; }
+          }
+        }));
+        this._dbg(`personal templates (bundled): ${n}`);
+      }
+    } catch { /* no personal set */ }
+
+    try {
+      const clips = await loadDeviceClips();
+      for (const clip of clips) {
+        const f32 = Float32Array.from(new Int16Array(clip.data), v => v / 32768);
+        this._addTemplate(clip.symbolId.normalize("NFC"), f32);
+      }
+      if (clips.length) this._dbg(`personal templates (this device): ${clips.length}`);
+    } catch { /* no recordings on this device */ }
+
+    let total = 0;
+    for (const t of this._templates.values()) total += t.length;
+    this._dbg(`templates ready: ${this._templates.size}/${ids.length} ids, ${total} takes`);
   }
 
   // ── live capture ─────────────────────────────────────────────────────────────
@@ -192,9 +232,31 @@ export class VoiceMatcher {
     if (frames.length < 5) return [];
     const scores = [];
     for (const id of candidateIds) {
-      const tpl = this._templates.get(id);
-      if (tpl) scores.push({ id, d: dtw(frames, tpl) });
+      const takes = this._templates.get(id);
+      if (!takes?.length) continue;
+      let best = Infinity;
+      for (const t of takes) best = Math.min(best, dtw(frames, t));
+      scores.push({ id, d: best });
     }
     return scores.sort((a, b) => a.d - b.d);
   }
+}
+
+// Read takes saved by record.html on this device (same DB schema).
+function loadDeviceClips() {
+  return new Promise((resolve, reject) => {
+    const req = indexedDB.open("zhuyin-training", 1);
+    req.onupgradeneeded = () => {
+      // DB didn't exist yet — create the store record.html expects
+      req.result.createObjectStore("clips", { keyPath: "key", autoIncrement: true })
+        .createIndex("bySymbol", "symbolId");
+    };
+    req.onsuccess = () => {
+      const db = req.result;
+      const getAll = db.transaction("clips").objectStore("clips").getAll();
+      getAll.onsuccess = () => { db.close(); resolve(getAll.result); };
+      getAll.onerror = () => { db.close(); reject(getAll.error); };
+    };
+    req.onerror = () => reject(req.error);
+  });
 }
