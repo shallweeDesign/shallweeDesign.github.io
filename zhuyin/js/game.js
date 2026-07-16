@@ -230,7 +230,51 @@ function onMiss() {
 
 // ── level lifecycle ────────────────────────────────────────────────────────────
 
-function startLevel(idx) {
+let matcherReady = null;   // Promise: template loading
+let grantedStream = null;  // mic stream acquired by the permission gate
+
+// Permission gate: resolve with a live mic stream, or null if denied.
+async function ensureMic() {
+  if (grantedStream?.getTracks().some(t => t.readyState === "live")) return grantedStream;
+  let alreadyGranted = false;
+  try {
+    const st = await navigator.permissions.query({ name: "microphone" });
+    alreadyGranted = st.state === "granted";
+  } catch { /* Safari has no mic permission query — just prompt */ }
+  if (!alreadyGranted) {
+    showOverlay({ title: "🎤 麥克風檢查中…", desc: "請在詢問視窗按「允許」" });
+  }
+  try {
+    grantedStream = await navigator.mediaDevices.getUserMedia({
+      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+    });
+    $("game-overlay").hidden = true;
+    return grantedStream;
+  } catch {
+    return null;
+  }
+}
+
+async function startLevel(idx) {
+  // construct the matcher synchronously inside the tap gesture —
+  // iOS only grants a running audio session to gesture-created contexts
+  if (ENGINE === "voice" && !matcher) {
+    matcher = new VoiceMatcher({ onUtterance: handleUtterance, onDebug: debugLog });
+    matcherReady = matcher.init(Object.keys(GAME_ITEMS));
+  }
+
+  // don't enter the level until the mic is confirmed
+  const stream = await ensureMic();
+  if (!stream) {
+    showOverlay({
+      title: "需要麥克風權限",
+      desc: "請到瀏覽器設定允許使用麥克風，再重新開始。",
+      primary: { label: "再試一次", onClick: () => startLevel(idx) },
+      secondary: { label: "回關卡選單", onClick: showLevelSelect },
+    });
+    return;
+  }
+
   levelIndex = idx;
   deck = buildDeck(LEVELS[idx]);
   roundIndex = 0;
@@ -271,11 +315,8 @@ function startWaveform(stream) {
 
 async function startVoiceEngine() {
   try {
-    if (!matcher) {
-      matcher = new VoiceMatcher({ onUtterance: handleUtterance, onDebug: debugLog });
-      await matcher.init(Object.keys(GAME_ITEMS));
-    }
-    const stream = await matcher.start();
+    await matcherReady; // templates (matcher itself is created in startLevel)
+    const stream = await matcher.start(grantedStream);
     startWaveform(stream); // share the matcher's mic session
   } catch (err) {
     debugLog(`voice engine failed: ${err?.message ?? err}`);
@@ -302,6 +343,10 @@ function handleUtterance(samples) {
 // ── legacy Web Speech engine (?engine=asr) ─────────────────────────────────────
 
 function startAsrEngine() {
+  // Web Speech opens its own mic session — release the gate's stream first
+  // so the two don't fight over the mic (iOS)
+  grantedStream?.getTracks().forEach(t => t.stop());
+  grantedStream = null;
   if (!recognizer) {
     recognizer = createRecognizer({
       onText: (texts) => {
@@ -367,8 +412,13 @@ function showOverlay({ title, desc, stars = 0, primary, secondary }) {
     : "";
 
   const btn = $("overlay-btn");
-  btn.textContent = primary.label;
-  btn.onclick = primary.onClick;
+  if (primary) {
+    btn.hidden = false;
+    btn.textContent = primary.label;
+    btn.onclick = primary.onClick;
+  } else {
+    btn.hidden = true; // button-less state (e.g. permission check in progress)
+  }
 
   const btn2 = $("overlay-btn2");
   if (secondary) {
@@ -385,7 +435,10 @@ function showOverlay({ title, desc, stars = 0, primary, secondary }) {
 // ── init ───────────────────────────────────────────────────────────────────────
 
 function init() {
-  if (!isRecognitionSupported()) {
+  const supported = ENGINE === "asr"
+    ? isRecognitionSupported()
+    : !!(navigator.mediaDevices?.getUserMedia && (window.AudioContext || window.webkitAudioContext));
+  if (!supported) {
     showOverlay({
       title: "此瀏覽器不支援語音辨識",
       desc: "請改用 Safari（iPhone / iPad）或 Chrome 開啟。",

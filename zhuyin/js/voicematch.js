@@ -75,12 +75,16 @@ export class VoiceMatcher {
 
   // ── live capture ─────────────────────────────────────────────────────────────
 
-  async start() {
+  // Reuses `existingStream` when given (e.g. acquired by a permission gate)
+  // so the page keeps a single mic session.
+  async start(existingStream) {
     if (this._stream) return this._stream;
     if (this._ctx.state === "suspended") await this._ctx.resume();
-    this._stream = await navigator.mediaDevices.getUserMedia({
-      audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
-    });
+    this._stream = existingStream?.getTracks().some(t => t.readyState === "live")
+      ? existingStream
+      : await navigator.mediaDevices.getUserMedia({
+          audio: { echoCancellation: true, noiseSuppression: true, autoGainControl: true },
+        });
     this._source = this._ctx.createMediaStreamSource(this._stream);
     const ratio = this._ctx.sampleRate / SAMPLE_RATE;
 
