@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>錄音室｜ㄅㄆㄇ大冒險</title>
+  <meta name="description" content="錄製自己的注音發音，做成專屬的語音比對範本與訓練音檔。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+  <style>
+    body { font-family: "Noto Sans TC", system-ui, sans-serif; background: #fef9ef; margin: 0; }
+    .rec-shell { max-width: 720px; margin: 0 auto; padding: 12px 16px 96px; }
+    .rec-header { display: flex; align-items: center; justify-content: space-between; padding: 8px 0; }
+    .rec-header h1 { font-size: 20px; margin: 0; }
+    .rec-header .nav-link { text-decoration: none; font-weight: 700; color: #0ea5e9; }
+    .rec-hint { color: #666; font-size: 14px; margin: 4px 0 12px; }
+    .rec-section { font-size: 16px; margin: 18px 0 8px; color: #444; }
+    .rec-cards { display: grid; grid-template-columns: repeat(auto-fill, minmax(96px, 1fr)); gap: 8px; }
+    .rec-card { position: relative; border: 2px solid #eee; border-radius: 14px; background: #fff;
+      padding: 10px 4px 8px; text-align: center; cursor: pointer; touch-action: manipulation;
+      display: flex; flex-direction: column; gap: 2px; font-family: inherit; }
+    .rec-card--has { border-color: #34d399; background: #f0fdf6; }
+    .rec-card__symbol { font-size: 26px; font-weight: 900; }
+    .rec-card__word { font-size: 12px; color: #666; }
+    .rec-card__count { position: absolute; top: 4px; right: 6px; font-size: 11px; color: #059669; font-weight: 700; }
+    .rec-gate { text-align: center; padding: 48px 0; }
+    .rec-gate button, .rec-toolbar button, .rec-panel button {
+      font-family: inherit; font-size: 16px; font-weight: 700; border: none; border-radius: 12px;
+      padding: 12px 20px; cursor: pointer; touch-action: manipulation; }
+    .rec-gate button { background: #0ea5e9; color: #fff; font-size: 18px; }
+    .rec-toolbar { position: fixed; left: 0; right: 0; bottom: 0; background: #fffdf5ee;
+      border-top: 1px solid #eee; padding: 10px 16px; display: flex; gap: 10px;
+      justify-content: space-between; align-items: center; backdrop-filter: blur(6px); }
+    .rec-toolbar button { background: #f59e0b; color: #fff; }
+    .rec-panel { position: fixed; inset: 0; background: #0008; display: flex;
+      align-items: center; justify-content: center; z-index: 50; }
+    .rec-panel[hidden] { display: none; }
+    .rec-panel__box { background: #fff; border-radius: 20px; padding: 20px 22px;
+      width: min(92vw, 420px); max-height: 86vh; overflow-y: auto; text-align: center; }
+    .rec-panel__symbol { font-size: 56px; font-weight: 900; line-height: 1.1; }
+    .rec-panel__word { color: #666; margin-bottom: 10px; }
+    .rec-status { min-height: 24px; margin: 10px 0; font-weight: 700; color: #555; }
+    .rec-status--live { color: #dc2626; }
+    .rec-status--ok { color: #059669; }
+    .rec-status--warn { color: #d97706; }
+    .rec-actions { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+    .rec-actions button { background: #eee; }
+    .rec-actions #btn-take { background: #dc2626; color: #fff; }
+    .rec-actions #btn-save { background: #059669; color: #fff; }
+    .rec-takes { margin-top: 14px; text-align: left; }
+    .rec-take { display: flex; align-items: center; gap: 8px; padding: 6px 0;
+      border-top: 1px solid #f0f0f0; font-size: 14px; }
+    .rec-take span { flex: 1; }
+    .rec-take button { background: none; border: none; font-size: 18px; cursor: pointer; }
+    .rec-close { margin-top: 12px; background: #eee; }
+  </style>
+</head>
+<body>
+  <div class="rec-shell">
+    <header class="rec-header">
+      <a href="game.html" class="nav-link">← 回遊戲</a>
+      <h1>🎙 注音錄音室</h1>
+      <span></span>
+    </header>
+    <p class="rec-hint">點一個符號 → 聽示範 → 錄下自己的發音。每個音多錄幾段（不同語氣、距離）效果更好，錄好可整包匯出。</p>
+
+    <div id="mic-gate" class="rec-gate">
+      <button id="btn-start" type="button">🎤 開始錄音（需要麥克風）</button>
+    </div>
+
+    <div id="rec-main" hidden>
+      <div id="rec-grid"></div>
+    </div>
+  </div>
+
+  <div class="rec-toolbar">
+    <span>已錄 <b id="total-count">0</b> 段</span>
+    <button id="btn-export" type="button">⬇️ 匯出全部（zip）</button>
+  </div>
+
+  <div id="record-panel" class="rec-panel" hidden>
+    <div class="rec-panel__box">
+      <div id="panel-symbol" class="rec-panel__symbol"></div>
+      <div id="panel-word" class="rec-panel__word"></div>
+      <div id="panel-status" class="rec-status"></div>
+      <div class="rec-actions">
+        <button id="btn-ref" type="button">🔊 聽示範</button>
+        <button id="btn-take" type="button">🎙 錄一段</button>
+        <button id="btn-preview" type="button" hidden>▶️ 試聽</button>
+        <button id="btn-save" type="button" hidden>✅ 保存</button>
+      </div>
+      <div id="panel-takes" class="rec-takes"></div>
+      <button id="btn-close" type="button" class="rec-close">關閉</button>
+    </div>
+  </div>
+
+  <script type="module" src="js/record.js"></script>
+</body>
+</html>
