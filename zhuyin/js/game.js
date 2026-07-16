@@ -16,8 +16,10 @@ const NO_WAVE = PARAMS.has("nowave");
 // "voice" (default) = local MFCC+DTW template matching against the game's own
 // pronunciation WAVs; "asr" = legacy Web Speech API homophone matching.
 const ENGINE = PARAMS.get("engine") === "asr" ? "asr" : "voice";
-// accept when the target is within 10% of the best-scoring candidate
-const MATCH_MARGIN = 1.10;
+// Strict accept: the target must be rank-1 AND beat the runner-up by this
+// factor. Ambiguous wins are rejected (measured 0% false-accepts vs 3.8%
+// with the old margin rule; retries within the fall window are free).
+const MIN_SEPARATION = 1.10;
 
 let debugPanel = null;
 function debugLog(msg) {
@@ -330,13 +332,14 @@ function handleUtterance(samples) {
   const scores = matcher.match(samples, candidates);
   if (!scores.length) return;
   const target = currentItem.id;
-  const targetScore = scores.find(s => s.id === target);
-  const hit = scores[0].id === target
-    || (targetScore && targetScore.d <= scores[0].d * MATCH_MARGIN);
+  const won = scores[0].id === target;
+  const sep = scores.length > 1 ? scores[1].d / scores[0].d : Infinity;
+  const hit = won && sep >= MIN_SEPARATION;
   debugLog(`utt ${(samples.length / 16000).toFixed(2)}s → `
     + scores.slice(0, 3).map(s => `${s.id}:${s.d.toFixed(2)}`).join("  ")
-    + `  target=${target} hit=${hit}`);
+    + `  target=${target} sep=${sep.toFixed(2)} hit=${hit}`);
   if (hit) onCorrect(currentItem.symbol);
+  else if (won) setTranscript("🎤 很接近！再說清楚一次");
   else setTranscript("🎤 聽到了！再說一次試試");
 }
 
