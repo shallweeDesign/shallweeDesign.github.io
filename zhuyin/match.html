@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-Hant-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>符號記憶配對｜ㄅㄆㄇ大冒險</title>
+  <meta name="description" content="翻開卡片聽發音，找出兩張一樣的注音符號配成一對，全部配完就過關！">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+  <div class="app-shell">
+
+    <!-- Header -->
+    <header class="app-header">
+      <a href="index.html" class="nav-link">← 鍵盤</a>
+      <span id="match-level-label" class="app-header__title">符號記憶配對</span>
+      <div class="game-hud">
+        <span id="match-progress" class="game-round">0/0</span>
+        <span class="game-score-wrap">⭐ <span id="match-score">0</span></span>
+        <button id="match-level-nav-btn" type="button" class="nav-link nav-link--btn">關卡</button>
+      </div>
+    </header>
+
+    <!-- Playfield -->
+    <main class="game-playfield">
+
+      <div class="sky-decor" aria-hidden="true">
+        <span class="sky-sun">🌞</span>
+        <span class="sky-cloud" style="top:10%; animation-duration:42s;">☁️</span>
+        <span class="sky-cloud" style="top:26%; animation-duration:58s; animation-delay:-25s; font-size:30px;">☁️</span>
+        <div class="ground"></div>
+      </div>
+
+      <div id="match-tray" class="match-tray" aria-label="已配對"></div>
+      <div id="match-board" class="match-board"></div>
+
+      <!-- Level select -->
+      <div id="match-level-select" class="level-select" hidden>
+        <span class="decor decor--lg" style="top:10px; left:5%;  animation-delay:-1s;" aria-hidden="true">🧩</span>
+        <span class="decor"           style="top:12px; right:6%; animation-delay:-2.5s;" aria-hidden="true">🎈</span>
+        <span class="decor decor--sm" style="top:64px; left:16%; animation-delay:-4s;" aria-hidden="true">⭐</span>
+        <h1 class="level-select__title">🧩 選擇關卡</h1>
+        <p class="level-select__hint">翻開卡片聽聽看發音，找出兩張一樣的符號配成一對！</p>
+        <div id="match-level-grid" class="level-grid"></div>
+      </div>
+    </main>
+
+    <!-- Result overlay -->
+    <div id="match-overlay" class="game-overlay" hidden>
+      <div class="game-overlay__card">
+        <h1 id="match-overlay-title"></h1>
+        <div id="match-overlay-stars" class="game-overlay__stars" hidden></div>
+        <p id="match-overlay-desc"></p>
+        <button id="match-overlay-btn" type="button" class="game-start-btn"></button>
+        <button id="match-overlay-btn2" type="button" class="game-secondary-btn" hidden></button>
+      </div>
+    </div>
+
+  </div>
+
+  <script type="module" src="js/match.js"></script>
+</body>
+</html>
