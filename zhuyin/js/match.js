@@ -274,6 +274,7 @@ function onPointerDown(e, card) {
     if (!dragging && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
       dragging = true;
       el.classList.add("match-card--dragging");
+      hear(card); // picking the card up gives the same audio hint as a tap
     }
     if (dragging) el.style.transform = `translate(${baseX + dx}px, ${baseY + dy}px)`;
   };
@@ -290,7 +291,12 @@ function onPointerDown(e, card) {
     }
     el.classList.remove("match-card--dragging");
 
+    // the dragged card sits directly under the pointer, so it would
+    // otherwise hit-test itself — exclude it for this one lookup
+    el.style.pointerEvents = "none";
     const overZone = document.elementFromPoint(ev.clientX, ev.clientY)?.closest(".match-zone");
+    el.style.pointerEvents = "";
+
     if (overZone && !busy && !card.zoneSlot) {
       placeInZone(card);
     } else {
