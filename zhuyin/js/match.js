@@ -145,6 +145,15 @@ function startLevel(idx) {
   // other cards never reflow when one leaves for the zone
   requestAnimationFrame(() => {
     for (const card of cards) card.homeRect = card.el.getBoundingClientRect();
+    // zone slots match the actual card size for this level (card size
+    // varies with column count), not a fixed guess
+    const size = cards[0]?.homeRect;
+    if (size) {
+      for (const slot of [$("match-zone-slot-1"), $("match-zone-slot-2")]) {
+        slot.style.width = `${size.width}px`;
+        slot.style.height = `${size.height}px`;
+      }
+    }
   });
 }
 
@@ -152,6 +161,17 @@ function startLevel(idx) {
 
 function hear(card) {
   playSymbolAudio(card.id, GAME_ITEMS[card.id].exampleWord);
+}
+
+// Scale+outline pop, used for "just gave an audio hint" moments (tap,
+// drag-pickup) — not used on the reveal flip, which already has its own
+// 3D-flip animation as feedback.
+function pulse(card) {
+  const el = card.el;
+  el.classList.remove("match-card--pulse");
+  void el.offsetWidth; // restart the animation if it's re-triggered mid-play
+  el.classList.add("match-card--pulse");
+  el.addEventListener("animationend", () => el.classList.remove("match-card--pulse"), { once: true });
 }
 
 function flipUp(card) {
@@ -275,6 +295,7 @@ function onPointerDown(e, card) {
       dragging = true;
       el.classList.add("match-card--dragging");
       hear(card); // picking the card up gives the same audio hint as a tap
+      pulse(card);
     }
     if (dragging) el.style.transform = `translate(${baseX + dx}px, ${baseY + dy}px)`;
   };
@@ -287,6 +308,7 @@ function onPointerDown(e, card) {
 
     if (!dragging) {
       hear(card); // tap = listen only, never reveals the glyph
+      pulse(card);
       return;
     }
     el.classList.remove("match-card--dragging");

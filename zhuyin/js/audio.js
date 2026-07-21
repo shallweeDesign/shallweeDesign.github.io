@@ -48,12 +48,27 @@ export function playSymbolAudio(id, fallbackText) {
   // after speak() finishes, which ducks subsequent HTMLAudioElement volume.
   if (isSpeechSupported()) window.speechSynthesis.cancel();
 
-  if (_currentAudio) {
-    _currentAudio.pause();
-    _currentAudio.currentTime = 0;
+  // Reuse one <audio> element instead of creating a new one per call.
+  // Rapid re-triggers (e.g. tap a card, then immediately drag it) used to
+  // create a second Audio object and .pause() the first mid-load; that
+  // pause() rejects the first call's play() promise, which fired its own
+  // .catch(() => speak(...)) fallback — a stale TTS utterance landing on
+  // top of (or instead of) the WAV that was actually supposed to play.
+  // That's what showed up as "sometimes silent" / "sometimes a different,
+  // quieter voice."
+  if (!_currentAudio) {
+    _currentAudio = new Audio();
   }
-  const audio = new Audio(`./audio/${encodeURIComponent(id)}.wav`);
+  const audio = _currentAudio;
+  const filename = `${encodeURIComponent(id)}.wav`;
+  audio.pause();
+  audio.currentTime = 0;
   audio.volume = WAV_VOLUME;
-  _currentAudio = audio;
-  audio.play().catch(() => speak(fallbackText, 0.85));
+  audio.src = `./audio/${filename}`;
+  audio.play().catch(() => {
+    // Only fall back if this call hasn't already been superseded by a
+    // newer one (audio.src would have moved on by then — the browser
+    // resolves it to an absolute URL, so compare by suffix).
+    if (audio.src.endsWith(filename)) speak(fallbackText, 0.85);
+  });
 }
