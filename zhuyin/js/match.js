@@ -1,20 +1,20 @@
-// Matching game: cards stay face-down the whole time — tapping one only
-// plays its pronunciation as a listening hint, it never reveals the glyph.
-// To attempt a match you drag a card into the fixed 配對區 (two slots);
-// once both slots are filled the pair briefly flips face-up (sound + sight)
-// so you can see what you got, then either scores and clears, or flips back
-// and returns home. Position memory only breaks for cards that are matched
-// and removed — everything else keeps its board slot the whole level.
+// Matching game: cards stay face-down until dragged — tapping one only plays
+// its pronunciation as a listening hint, it never reveals the glyph. The
+// real move is dragging a card into the fixed 配對區 (two slots): the first
+// card flips face-up the moment it lands in slot 1, the second flips up and
+// immediately settles the verdict when it lands in slot 2 — a correct pair
+// scores and vanishes, a wrong one bounces back to its board position after
+// a beat. Position memory only breaks for cards that are matched and
+// removed — everything else keeps its board slot the whole level.
 
 import { playSymbolAudio } from "./audio.js";
 import { GAME_ITEMS } from "./levels.js";
 import { MATCH_LEVELS } from "./match-levels.js";
 
 const $ = (id) => document.getElementById(id);
-const DRAG_THRESHOLD = 8;   // px of pointer movement before a tap becomes a drag
-const STAGGER_DELAY = 400;  // gap between revealing card A's and card B's sound
-const REVEAL_HOLD = 550;    // how long both stay face-up before the verdict
-const MISMATCH_DELAY = 900; // extra hold after a wrong verdict, then flip back
+const DRAG_THRESHOLD = 8;  // px of pointer movement before a tap becomes a drag
+const JUDGE_DELAY = 350;   // let the 2nd card's flip + sound register before the verdict
+const MISMATCH_DELAY = 700; // hold both symbols visible before bouncing back
 
 // ── state ──────────────────────────────────────────────────────────────────────
 
@@ -181,17 +181,28 @@ function returnToBoard(card) {
   setOffset(card, 0, 0);
 }
 
+// Same as returnToBoard, but with a springy overshoot so a wrong guess
+// reads as "bouncing back" rather than just sliding home.
+function bounceHome(card) {
+  const el = card.el;
+  el.classList.add("match-card--bounce");
+  el.addEventListener("transitionend", () => el.classList.remove("match-card--bounce"), { once: true });
+  returnToBoard(card);
+}
+
 // ── matching zone (配對區) ───────────────────────────────────────────────────────
 
 function placeInZone(card) {
   if (!zone.slot1) {
     zone.slot1 = card;
     card.zoneSlot = 1;
+    flipUp(card); // reveal + play sound the moment it lands
     moveToRect(card, $("match-zone-slot-1").getBoundingClientRect());
     return;
   }
   zone.slot2 = card;
   card.zoneSlot = 2;
+  flipUp(card);
   moveToRect(card, $("match-zone-slot-2").getBoundingClientRect());
   resolvePair(zone.slot1, zone.slot2);
 }
@@ -218,11 +229,7 @@ function flyToTray(card) {
 
 function resolvePair(a, b) {
   busy = true;
-  flipUp(a);
-  setTimeout(() => {
-    flipUp(b);
-    setTimeout(() => finishResolve(a, b), REVEAL_HOLD);
-  }, STAGGER_DELAY);
+  setTimeout(() => finishResolve(a, b), JUDGE_DELAY);
 }
 
 function finishResolve(a, b) {
@@ -243,8 +250,8 @@ function finishResolve(a, b) {
       flipDown(b);
       removeFromZone(a);
       removeFromZone(b);
-      returnToBoard(a);
-      returnToBoard(b);
+      bounceHome(a);
+      bounceHome(b);
       zone = { slot1: null, slot2: null };
       busy = false;
     }, MISMATCH_DELAY);
