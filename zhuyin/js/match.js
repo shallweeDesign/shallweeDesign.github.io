@@ -1,26 +1,31 @@
-// Matching game: flip a card to hear its sound, then flip (or drag onto) a
-// second card — a correct pair flies into the 配對區 tray and scores.
-// Both tap-tap and drag-to-drop resolve through the same `pending` state
-// machine, so either input style plays the same way.
+// Matching game: cards stay face-down the whole time — tapping one only
+// plays its pronunciation as a listening hint, it never reveals the glyph.
+// To attempt a match you drag a card into the fixed 配對區 (two slots);
+// once both slots are filled the pair briefly flips face-up (sound + sight)
+// so you can see what you got, then either scores and clears, or flips back
+// and returns home. Position memory only breaks for cards that are matched
+// and removed — everything else keeps its board slot the whole level.
 
 import { playSymbolAudio } from "./audio.js";
 import { GAME_ITEMS } from "./levels.js";
 import { MATCH_LEVELS } from "./match-levels.js";
 
 const $ = (id) => document.getElementById(id);
-const DRAG_THRESHOLD = 8; // px of pointer movement before a tap becomes a drag
-const MISMATCH_DELAY = 850;
+const DRAG_THRESHOLD = 8;   // px of pointer movement before a tap becomes a drag
+const STAGGER_DELAY = 400;  // gap between revealing card A's and card B's sound
+const REVEAL_HOLD = 550;    // how long both stay face-up before the verdict
+const MISMATCH_DELAY = 900; // extra hold after a wrong verdict, then flip back
 
 // ── state ──────────────────────────────────────────────────────────────────────
 
 let levelIndex = 0;
-let cards = [];          // [{uid, id, el, state}] state: "down" | "up" | "matched"
-let pending = null;      // the one flipped-but-unmatched card, or null
+let cards = [];       // [{uid, id, el, state, zoneSlot, offset, homeRect}]
+let zone = { slot1: null, slot2: null };
 let mistakes = 0;
 let matchedPairs = 0;
 let totalPairs = 0;
 let score = 0;
-let busy = false;        // true during a mismatch's flip-back delay (input locked)
+let busy = false;     // true while a placed pair is revealing/settling — input locked
 
 // ── progress (stars per level, localStorage) ────────────────────────────────────
 
@@ -99,7 +104,7 @@ function buildCard(id, uid) {
     <span class="match-card__face match-card__face--back" aria-hidden="true">🧩</span>
     <span class="match-card__face match-card__face--front">${item.symbol}</span>
   `;
-  const card = { uid, id, el, state: "down" };
+  const card = { uid, id, el, state: "down", zoneSlot: null, offset: { x: 0, y: 0 }, homeRect: null };
   el.addEventListener("pointerdown", (e) => onPointerDown(e, card));
   return card;
 }
@@ -111,7 +116,7 @@ function startLevel(idx) {
   matchedPairs = 0;
   mistakes = 0;
   score = 0;
-  pending = null;
+  zone = { slot1: null, slot2: null };
   busy = false;
 
   const deck = shuffled(level.symbols.flatMap((id, i) => [
@@ -134,14 +139,25 @@ function startLevel(idx) {
   $("match-level-select").hidden = true;
   $("match-overlay").hidden = true;
   renderHud();
+
+  // home positions must be read after the grid has laid the cards out —
+  // every later move is a translate() computed relative to this rect, so
+  // other cards never reflow when one leaves for the zone
+  requestAnimationFrame(() => {
+    for (const card of cards) card.homeRect = card.el.getBoundingClientRect();
+  });
 }
 
-// ── card flip / flow ─────────────────────────────────────────────────────────────
+// ── card flip + position helpers ─────────────────────────────────────────────────
+
+function hear(card) {
+  playSymbolAudio(card.id, GAME_ITEMS[card.id].exampleWord);
+}
 
 function flipUp(card) {
   card.state = "up";
   card.el.classList.add("match-card--up");
-  playSymbolAudio(card.id, GAME_ITEMS[card.id].exampleWord);
+  hear(card);
 }
 
 function flipDown(card) {
@@ -149,12 +165,46 @@ function flipDown(card) {
   card.el.classList.remove("match-card--up");
 }
 
-function lockMatched(a, b) {
-  for (const c of [a, b]) {
-    c.state = "matched";
-    c.el.classList.add("match-card--matched");
+function setOffset(card, x, y) {
+  card.offset = { x, y };
+  card.el.style.transform = `translate(${x}px, ${y}px)`;
+}
+
+function moveToRect(card, targetRect) {
+  const home = card.homeRect;
+  const x = targetRect.left + (targetRect.width - home.width) / 2 - home.left;
+  const y = targetRect.top + (targetRect.height - home.height) / 2 - home.top;
+  setOffset(card, x, y);
+}
+
+function returnToBoard(card) {
+  setOffset(card, 0, 0);
+}
+
+// ── matching zone (配對區) ───────────────────────────────────────────────────────
+
+function placeInZone(card) {
+  if (!zone.slot1) {
+    zone.slot1 = card;
+    card.zoneSlot = 1;
+    moveToRect(card, $("match-zone-slot-1").getBoundingClientRect());
+    return;
   }
-  flyToTray(a);
+  zone.slot2 = card;
+  card.zoneSlot = 2;
+  moveToRect(card, $("match-zone-slot-2").getBoundingClientRect());
+  resolvePair(zone.slot1, zone.slot2);
+}
+
+function removeFromZone(card) {
+  if (zone.slot1 === card) zone.slot1 = null;
+  if (zone.slot2 === card) zone.slot2 = null;
+  card.zoneSlot = null;
+}
+
+function lockMatched(card) {
+  card.state = "matched";
+  card.el.classList.add("match-card--matched");
 }
 
 function flyToTray(card) {
@@ -167,40 +217,38 @@ function flyToTray(card) {
 }
 
 function resolvePair(a, b) {
+  busy = true;
+  flipUp(a);
+  setTimeout(() => {
+    flipUp(b);
+    setTimeout(() => finishResolve(a, b), REVEAL_HOLD);
+  }, STAGGER_DELAY);
+}
+
+function finishResolve(a, b) {
   if (a.id === b.id) {
     matchedPairs += 1;
     score += 10;
-    lockMatched(a, b);
+    lockMatched(a);
+    lockMatched(b);
+    flyToTray(a);
+    zone = { slot1: null, slot2: null };
+    busy = false;
     renderHud();
-    if (matchedPairs >= totalPairs) {
-      setTimeout(levelComplete, 500);
-    }
+    if (matchedPairs >= totalPairs) setTimeout(levelComplete, 500);
   } else {
     mistakes += 1;
-    busy = true;
     setTimeout(() => {
       flipDown(a);
       flipDown(b);
+      removeFromZone(a);
+      removeFromZone(b);
+      returnToBoard(a);
+      returnToBoard(b);
+      zone = { slot1: null, slot2: null };
       busy = false;
     }, MISMATCH_DELAY);
   }
-}
-
-function selectCard(card) {
-  if (busy || card.state === "matched") return;
-  if (card.state === "up" && card === pending) {
-    playSymbolAudio(card.id, GAME_ITEMS[card.id].exampleWord); // re-hear
-    return;
-  }
-  if (!pending) {
-    flipUp(card);
-    pending = card;
-    return;
-  }
-  const first = pending;
-  pending = null;
-  if (card.state === "down") flipUp(card);
-  resolvePair(first, card);
 }
 
 // ── pointer drag (falls back to a plain tap when movement < threshold) ──────────
@@ -208,17 +256,8 @@ function selectCard(card) {
 function onPointerDown(e, card) {
   if (busy || card.state === "matched") return;
 
-  // A different card is already pending — the pairing intent is already
-  // set, so this interaction is unambiguously "pick the second card".
-  // Resolve immediately rather than starting a drag: dragging is only
-  // meaningful for picking the *first* card (or for the single-gesture
-  // drag-A-onto-B shortcut below, which starts here with pending===null).
-  if (pending && pending !== card) {
-    selectCard(card);
-    return;
-  }
-
   const startX = e.clientX, startY = e.clientY;
+  const baseX = card.offset.x, baseY = card.offset.y;
   const el = card.el;
   let dragging = false;
   el.setPointerCapture(e.pointerId);
@@ -227,10 +266,9 @@ function onPointerDown(e, card) {
     const dx = ev.clientX - startX, dy = ev.clientY - startY;
     if (!dragging && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
       dragging = true;
-      if (card.state === "down") { flipUp(card); pending = card; } // pick-up
       el.classList.add("match-card--dragging");
     }
-    if (dragging) el.style.transform = `translate(${dx}px, ${dy}px)`;
+    if (dragging) el.style.transform = `translate(${baseX + dx}px, ${baseY + dy}px)`;
   };
 
   const onUp = (ev) => {
@@ -240,17 +278,21 @@ function onPointerDown(e, card) {
     el.removeEventListener("pointercancel", onUp);
 
     if (!dragging) {
-      selectCard(card);
+      hear(card); // tap = listen only, never reveals the glyph
       return;
     }
     el.classList.remove("match-card--dragging");
-    el.style.transform = "";
-    const target = document.elementFromPoint(ev.clientX, ev.clientY)?.closest(".match-card");
-    const targetCard = target && cards.find(c => c.el === target);
-    if (targetCard && targetCard !== card && targetCard.state !== "matched") {
-      selectCard(targetCard); // `pending` is already `card`, set in onMove
+
+    const overZone = document.elementFromPoint(ev.clientX, ev.clientY)?.closest(".match-zone");
+    if (overZone && !busy && !card.zoneSlot) {
+      placeInZone(card);
+    } else {
+      // dropped outside the zone, zone busy, or re-dragging an already-
+      // placed card — always settle back to the board (simplest, most
+      // predictable outcome for a kid to reason about)
+      removeFromZone(card);
+      returnToBoard(card);
     }
-    // dropped nowhere useful — card just stays face-up as `pending`
   };
 
   el.addEventListener("pointermove", onMove);
