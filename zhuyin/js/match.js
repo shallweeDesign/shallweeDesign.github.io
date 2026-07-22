@@ -92,10 +92,6 @@ function shuffled(arr) {
   return a;
 }
 
-function gridColumns(cardCount) {
-  return cardCount <= 6 ? 3 : 4; // 3–4 pairs → 3 cols; 5+ pairs → 4 cols
-}
-
 function buildCard(id, uid) {
   const item = GAME_ITEMS[id];
   const el = document.createElement("button");
@@ -127,7 +123,6 @@ function startLevel(idx) {
 
   const board = $("match-board");
   board.innerHTML = "";
-  board.style.setProperty("--cols", gridColumns(deck.length));
   $("match-tray").innerHTML = "";
 
   cards = deck.map(({ id, uid }) => {
@@ -143,18 +138,11 @@ function startLevel(idx) {
 
   // home positions must be read after the grid has laid the cards out —
   // every later move is a translate() computed relative to this rect, so
-  // other cards never reflow when one leaves for the zone
+  // other cards never reflow when one leaves for the zone. Zone slots are
+  // sized in CSS to exactly match the fixed card size, so no JS sizing
+  // is needed here anymore.
   requestAnimationFrame(() => {
     for (const card of cards) card.homeRect = card.el.getBoundingClientRect();
-    // zone slots match the actual card size for this level (card size
-    // varies with column count), not a fixed guess
-    const size = cards[0]?.homeRect;
-    if (size) {
-      for (const slot of [$("match-zone-slot-1"), $("match-zone-slot-2")]) {
-        slot.style.width = `${size.width}px`;
-        slot.style.height = `${size.height}px`;
-      }
-    }
   });
 }
 
