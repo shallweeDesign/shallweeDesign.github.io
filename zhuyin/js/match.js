@@ -25,7 +25,8 @@ let mistakes = 0;
 let matchedPairs = 0;
 let totalPairs = 0;
 let score = 0;
-let busy = false;     // true while a placed pair is revealing/settling — input locked
+let busy = false;         // true while a placed pair is revealing/settling — input locked
+let activePointerId = null; // only one finger/pointer drives the board at a time
 
 // ── progress (stars per level, localStorage) ────────────────────────────────────
 
@@ -247,6 +248,44 @@ function flyToTray(card) {
   requestAnimationFrame(() => chip.classList.add("match-tray__chip--in"));
 }
 
+// ── correct-match celebration (chime + emoji burst) ─────────────────────────────
+
+let _chimeCtx = null;
+const CELEBRATE_EMOJI = ["🎉", "⭐", "✨", "🎊"];
+
+function playChime() {
+  const Ctx = window.AudioContext || window.webkitAudioContext;
+  if (!Ctx) return;
+  _chimeCtx ??= new Ctx();
+  if (_chimeCtx.state === "suspended") _chimeCtx.resume();
+  const now = _chimeCtx.currentTime;
+  [660, 880].forEach((freq, i) => {
+    const t = now + i * 0.09;
+    const osc = _chimeCtx.createOscillator();
+    const gain = _chimeCtx.createGain();
+    osc.type = "sine";
+    osc.frequency.value = freq;
+    gain.gain.setValueAtTime(0, t);
+    gain.gain.linearRampToValueAtTime(0.25, t + 0.02);
+    gain.gain.exponentialRampToValueAtTime(0.001, t + 0.28);
+    osc.connect(gain).connect(_chimeCtx.destination);
+    osc.start(t);
+    osc.stop(t + 0.3);
+  });
+}
+
+function celebrate() {
+  playChime();
+  const rect = $("match-zone-slot-1").getBoundingClientRect();
+  const burst = document.createElement("span");
+  burst.className = "match-celebrate";
+  burst.style.left = `${(rect.left + rect.right) / 2}px`;
+  burst.style.top = `${rect.top}px`;
+  burst.textContent = CELEBRATE_EMOJI[Math.floor(Math.random() * CELEBRATE_EMOJI.length)];
+  document.body.appendChild(burst);
+  burst.addEventListener("animationend", () => burst.remove(), { once: true });
+}
+
 function resolvePair(a, b) {
   busy = true;
   setTimeout(() => finishResolve(a, b), JUDGE_DELAY);
@@ -259,6 +298,7 @@ function finishResolve(a, b) {
     lockMatched(a);
     lockMatched(b);
     flyToTray(a);
+    celebrate();
     zone = { slot1: null, slot2: null };
     busy = false;
     renderHud();
@@ -282,6 +322,14 @@ function finishResolve(a, b) {
 
 function onPointerDown(e, card) {
   if (busy || card.state === "matched") return;
+  if (activePointerId !== null) return; // one finger drives the board at a time
+  activePointerId = e.pointerId;
+
+  // Feedback fires immediately on press (mousedown/touchstart) rather than
+  // waiting for release — snappier, and it's a single call site whether
+  // this gesture ends up being a tap or turns into a drag.
+  hear(card);
+  pulse(card);
 
   const startX = e.clientX, startY = e.clientY;
   const baseX = card.offset.x, baseY = card.offset.y;
@@ -294,8 +342,6 @@ function onPointerDown(e, card) {
     if (!dragging && Math.hypot(dx, dy) > DRAG_THRESHOLD) {
       dragging = true;
       el.classList.add("match-card--dragging");
-      hear(card); // picking the card up gives the same audio hint as a tap
-      pulse(card);
     }
     if (dragging) el.style.transform = `translate(${baseX + dx}px, ${baseY + dy}px)`;
   };
@@ -305,12 +351,10 @@ function onPointerDown(e, card) {
     el.removeEventListener("pointermove", onMove);
     el.removeEventListener("pointerup", onUp);
     el.removeEventListener("pointercancel", onUp);
+    activePointerId = null;
 
-    if (!dragging) {
-      hear(card); // tap = listen only, never reveals the glyph
-      pulse(card);
-      return;
-    }
+    if (!dragging) return; // plain tap — already heard it on press
+
     el.classList.remove("match-card--dragging");
 
     // the dragged card sits directly under the pointer, so it would
