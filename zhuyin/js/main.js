@@ -1,6 +1,8 @@
 import { zhuyinSymbols, symbolById, SYMBOL_EMOJI } from "./data.js";
 import { StrokeAnimator } from "./stroke.js";
 import { playSymbolAudio, speak } from "./audio.js";
+import { initMascot } from "./mascot.js";
+import { getRescuedCount, FRIENDS } from "./story.js";
 
 // ── helpers ────────────────────────────────────────────────────────────────────
 
@@ -289,6 +291,13 @@ function init() {
   renderDisplayPanel();
   renderGhostStrokes();
   renderKeyboard();
+
+  const rescued = getRescuedCount();
+  initMascot({
+    greeting: rescued === 0
+      ? "嗨！我是波波，一起去救朋友吧！"
+      : `已經救回 ${rescued}/${FRIENDS.length} 位朋友囉！`,
+  });
 }
 
 document.addEventListener("DOMContentLoaded", init);

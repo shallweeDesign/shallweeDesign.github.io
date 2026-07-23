@@ -10,11 +10,16 @@
 import { playSymbolAudio } from "./audio.js";
 import { GAME_ITEMS } from "./levels.js";
 import { MATCH_LEVELS } from "./match-levels.js";
+import { initMascot, mascotSay } from "./mascot.js";
+import { FRIENDS, rescueFriend } from "./story.js";
 
 const $ = (id) => document.getElementById(id);
 const DRAG_THRESHOLD = 8;  // px of pointer movement before a tap becomes a drag
 const JUDGE_DELAY = 350;   // let the 2nd card's flip + sound register before the verdict
 const MISMATCH_DELAY = 700; // hold both symbols visible before bouncing back
+
+const MATCH_LINES = ["配對成功！", "你好厲害！", "波波好開心！", "太棒了！"];
+const MISMATCH_LINES = ["不是這一組，再想想！", "沒關係，再試一次！", "波波陪你繼續找！"];
 
 // ── state ──────────────────────────────────────────────────────────────────────
 
@@ -287,12 +292,14 @@ function finishResolve(a, b) {
     lockMatched(b);
     flyToTray(a);
     celebrate();
+    mascotSay(MATCH_LINES[Math.floor(Math.random() * MATCH_LINES.length)], "happy");
     zone = { slot1: null, slot2: null };
     busy = false;
     renderHud();
     if (matchedPairs >= totalPairs) setTimeout(levelComplete, 500);
   } else {
     mistakes += 1;
+    mascotSay(MISMATCH_LINES[Math.floor(Math.random() * MISMATCH_LINES.length)], "sad");
     setTimeout(() => {
       flipDown(a);
       flipDown(b);
@@ -392,11 +399,17 @@ function showOverlay({ title, desc, stars = 0, primary, secondary }) {
 function levelComplete() {
   const stars = mistakes === 0 ? 3 : mistakes <= Math.ceil(totalPairs / 3) ? 2 : 1;
   saveStars(levelIndex, stars);
+
+  const newlyRescued = stars > 0 && rescueFriend(levelIndex);
+  const friend = FRIENDS[levelIndex];
+  const rescueLine = newlyRescued && friend ? `\n🎉 你救回了 ${friend.emoji} ${friend.name}！` : "";
+  if (newlyRescued) mascotSay(`太棒了！你救回了 ${friend.emoji} ${friend.name}！`, "excited", 4200);
+
   const hasNext = levelIndex + 1 < MATCH_LEVELS.length;
   showOverlay({
     title: `第 ${levelIndex + 1} 關完成！`,
     stars,
-    desc: `配對 ${totalPairs} 組｜錯了 ${mistakes} 次｜得分 ${score}`,
+    desc: `配對 ${totalPairs} 組｜錯了 ${mistakes} 次｜得分 ${score}${rescueLine}`,
     primary: hasNext
       ? { label: "下一關 ▶", onClick: () => startLevel(levelIndex + 1) }
       : { label: "再玩一次", onClick: () => startLevel(levelIndex) },
@@ -409,6 +422,7 @@ function levelComplete() {
 function init() {
   $("match-level-nav-btn").addEventListener("click", showLevelSelect);
   showLevelSelect();
+  initMascot({ greeting: "找出兩張一樣的符號，一起救朋友吧！" });
 }
 
 document.addEventListener("DOMContentLoaded", init);

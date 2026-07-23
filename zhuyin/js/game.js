@@ -3,6 +3,11 @@ import { createRecognizer, matchesSymbol, isRecognitionSupported } from "./speec
 import { VoiceMatcher } from "./voicematch.js";
 import { LEVELS, GAME_ITEMS } from "./levels.js";
 import { Waveform } from "./waveform.js";
+import { initMascot, mascotSay } from "./mascot.js";
+import { FRIENDS, rescueFriend } from "./story.js";
+
+const CORRECT_LINES = ["答對了！好棒！", "太厲害了！", "你好會說！", "波波超開心！"];
+const MISS_LINES = ["再試一次，你可以的！", "沒關係，再聽一次！", "波波陪你再試試！"];
 
 const MAX_HEARTS = 3;
 const PROGRESS_KEY = "zhuyin-game-progress";
@@ -219,6 +224,7 @@ function onCorrect(heard) {
   renderHud();
   setTranscript(`⭐ 答對了！聽到「${heard}」`, "good");
   playSymbolAudio(currentItem.id, currentItem.exampleWord);
+  mascotSay(CORRECT_LINES[Math.floor(Math.random() * CORRECT_LINES.length)], "happy");
   endRound("falling-tile--correct", 900);
 }
 
@@ -228,6 +234,7 @@ function onMiss() {
   renderHud();
   setTranscript(`💧 是「${currentItem.symbol}」（${currentItem.exampleWord}）`, "bad");
   playSymbolAudio(currentItem.id, currentItem.exampleWord);
+  mascotSay(MISS_LINES[Math.floor(Math.random() * MISS_LINES.length)], "sad");
   endRound("falling-tile--miss", 1400);
 }
 
@@ -378,11 +385,16 @@ function levelComplete() {
   const stars = misses === 0 ? 3 : misses === 1 ? 2 : 1;
   saveStars(levelIndex, stars);
 
+  const newlyRescued = stars > 0 && rescueFriend(levelIndex);
+  const friend = FRIENDS[levelIndex];
+  const rescueLine = newlyRescued && friend ? `\n🎉 你救回了 ${friend.emoji} ${friend.name}！` : "";
+  if (newlyRescued) mascotSay(`太棒了！你救回了 ${friend.emoji} ${friend.name}！`, "excited", 4200);
+
   const hasNext = levelIndex + 1 < LEVELS.length;
   showOverlay({
     title: `第 ${levelIndex + 1} 關完成！`,
     stars,
-    desc: `得分 ${score} 分`,
+    desc: `得分 ${score} 分${rescueLine}`,
     primary: hasNext
       ? { label: "下一關 ▶", onClick: () => startLevel(levelIndex + 1) }
       : { label: "再玩一次", onClick: () => startLevel(levelIndex) },
@@ -454,6 +466,7 @@ function init() {
 
   $("level-nav-btn").addEventListener("click", showLevelSelect);
   showLevelSelect();
+  initMascot({ greeting: "說出正確的發音，一起救朋友吧！" });
 }
 
 document.addEventListener("DOMContentLoaded", init);
