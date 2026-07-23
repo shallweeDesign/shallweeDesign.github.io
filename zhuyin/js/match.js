@@ -168,10 +168,12 @@ function pulse(card) {
   el.addEventListener("animationend", () => el.classList.remove("match-card--pulse"), { once: true });
 }
 
+// Visual flip only — sound already played when the card was picked up
+// (onPointerDown's press-time hear()); playing it again here duplicated
+// every placement into the zone.
 function flipUp(card) {
   card.state = "up";
   card.el.classList.add("match-card--up");
-  hear(card);
 }
 
 function flipDown(card) {
@@ -191,7 +193,11 @@ function moveToRect(card, targetRect) {
   setOffset(card, x, y);
 }
 
+// Sends a card back to its board position — also flips it face-down if it
+// had been revealed (e.g. it was sitting alone in the zone and got picked
+// back up and cancelled), otherwise a withdrawn card stayed face-up forever.
 function returnToBoard(card) {
+  if (card.state === "up") flipDown(card);
   setOffset(card, 0, 0);
 }
 
@@ -210,7 +216,7 @@ function placeInZone(card) {
   if (!zone.slot1) {
     zone.slot1 = card;
     card.zoneSlot = 1;
-    flipUp(card); // reveal + play sound the moment it lands
+    flipUp(card); // reveal the moment it lands (sound already played on pickup)
     moveToRect(card, $("match-zone-slot-1").getBoundingClientRect());
     return;
   }
