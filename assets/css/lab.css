@@ -419,6 +419,30 @@ body {
   height: 200px;
   flex-shrink: 0;
 }
+.lab-card__preview--division2 {
+  background: linear-gradient(150deg, #0d0f12 0%, #14181d 55%, #0d0f12 100%);
+  position: relative;
+  overflow: hidden;
+}
+/* The three core colours the game sorts every build by. */
+.lab-card__preview--division2::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 28% 42%, rgba(214, 69, 69, 0.55) 0, transparent 26%),
+    radial-gradient(circle at 50% 62%, rgba(63, 127, 214, 0.55) 0, transparent 26%),
+    radial-gradient(circle at 72% 42%, rgba(224, 160, 42, 0.55) 0, transparent 26%);
+}
+.lab-card__preview--division2::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image: linear-gradient(90deg, rgba(255, 106, 31, 0.14) 1px, transparent 1px);
+  background-size: 14px 100%;
+  mask-image: linear-gradient(to bottom, transparent, black 70%);
+}
+
 .lab-card__preview--wave {
   background: linear-gradient(160deg, #070c18 0%, #0a1628 50%, #050810 100%);
   position: relative;

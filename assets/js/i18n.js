@@ -50,6 +50,7 @@
       'lab.header.desc':   'js experiments, visual effects, and interactive explorations.<br />click to view each experiment fullscreen.',
       'lab.wave.desc':     'Three.js wireframe wave animation driven by sine functions. Scroll parallax and mouse interaction.',
       'lab.blinds.desc':   'Venetian blind image reveal — slats animate open with staggered timing. Horizontal or vertical.',
+      'lab.division2.desc': 'Build planner for The Division 2: gear, brand and set bonuses, SHD watch and talents, totalled with the game\u2019s caps applied.',
       'lab.view':          'View experiment →',
       'lab.coming':        'Coming soon',
 
@@ -108,6 +109,7 @@
       'lab.header.desc':   'JS 實驗、視覺特效與互動探索。<br />點擊以全螢幕檢視每個實驗。',
       'lab.wave.desc':     '以正弦函數驅動的 Three.js 線框波浪動畫，支援滾動視差與滑鼠互動。',
       'lab.blinds.desc':   '百葉窗圖片展示效果——葉片以交錯時序開啟，支援水平或垂直方向。',
+      'lab.division2.desc': '《全境封鎖2》配裝計算器：裝備、品牌與套裝加成、SHD 手錶、天賦，依遊戲上限規則加總。',
       'lab.view':          '查看實驗 →',
       'lab.coming':        '即將推出',
 
