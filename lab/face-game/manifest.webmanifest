@@ -1,0 +1,17 @@
+{
+  "name": "這是誰？",
+  "short_name": "這是誰",
+  "description": "用家人的照片認臉的小遊戲，照片只存在自己的裝置上。",
+  "lang": "zh-Hant",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "any",
+  "background_color": "#fff4dc",
+  "theme_color": "#fff4dc",
+  "icons": [
+    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" },
+    { "src": "icon-maskable.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

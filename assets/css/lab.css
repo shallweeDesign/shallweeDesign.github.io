@@ -443,6 +443,11 @@ body {
   mask-image: linear-gradient(to bottom, transparent, black 70%);
 }
 
+/* 這是誰？: the game's own icon on its warm cream. */
+.lab-card__preview--facegame {
+  background: #fff4dc url("../../lab/face-game/icon-512.png") center / contain no-repeat;
+}
+
 .lab-card__preview--wave {
   background: linear-gradient(160deg, #070c18 0%, #0a1628 50%, #050810 100%);
   position: relative;

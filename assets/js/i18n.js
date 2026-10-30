@@ -51,6 +51,7 @@
       'lab.wave.desc':     'Three.js wireframe wave animation driven by sine functions. Scroll parallax and mouse interaction.',
       'lab.blinds.desc':   'Venetian blind image reveal — slats animate open with staggered timing. Horizontal or vertical.',
       'lab.division2.desc': 'Build planner for The Division 2: gear, brand and set bonuses, SHD watch and talents, totalled with the game\u2019s caps applied.',
+      'lab.facegame.desc': 'A face game for young kids, played with the family\u2019s own photos. Faces are found and grouped on the device; photos never leave it.',
       'lab.view':          'View experiment →',
       'lab.coming':        'Coming soon',
 
@@ -110,6 +111,7 @@
       'lab.wave.desc':     '以正弦函數驅動的 Three.js 線框波浪動畫，支援滾動視差與滑鼠互動。',
       'lab.blinds.desc':   '百葉窗圖片展示效果——葉片以交錯時序開啟，支援水平或垂直方向。',
       'lab.division2.desc': '《全境封鎖2》配裝計算器：裝備、品牌與套裝加成、SHD 手錶、天賦，依遊戲上限規則加總。',
+      'lab.facegame.desc': '給小小孩的認臉遊戲，用家人自己的照片。在裝置上自動找臉、分組，照片不會離開裝置。',
       'lab.view':          '查看實驗 →',
       'lab.coming':        '即將推出',
 
